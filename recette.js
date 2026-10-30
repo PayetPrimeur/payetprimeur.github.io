@@ -17,20 +17,30 @@
 
   async function build() {
     const { jsPDF } = window.jspdf;
-    const r = data.recette;
+    const recettes = data.recettes || [data.recette];
     const doc = new jsPDF({ unit: "mm", format: "a4" });
     const M = 18, W = 210 - 2 * M, PH = 297;
     const FR = [182, 17, 92], INK = [58, 42, 34], MUT = [122, 106, 95], VERT = [90, 120, 39];
     let y = 16;
     const color = c => doc.setTextColor(...c);
     const ensure = h => { if (y + h > PH - 18) { doc.addPage(); y = 18; } };
+    const heading = s => { ensure(12); doc.setFont("helvetica", "bold"); doc.setFontSize(10); color(VERT); doc.text(s.toUpperCase(), M, y, { charSpace: 0.6 }); y += 6; };
+    const box = on => { doc.setDrawColor(...(on ? FR : MUT)); doc.setLineWidth(0.4); doc.rect(M, y - 3.2, 3.6, 3.6); };
+    const item = (q, n, shop) => {
+      ensure(7); doc.setFontSize(10.5); box(shop); let x = M + 7;
+      if (q) { doc.setFont("helvetica", "bold"); color(INK); doc.text(T(q), x, y); x += doc.getTextWidth(T(q)) + 1.8; }
+      doc.setFont("helvetica", "normal"); color(INK); doc.text(T(n), x, y);
+      return x + doc.getTextWidth(T(n)) + 2;
+    };
     try { const logo = await toDataUrl("../logo.png", "image/png"); doc.addImage(logo.url, "PNG", M, y, 52, 52 * logo.h / logo.w); } catch (e) {}
     doc.setFont("helvetica", "normal"); doc.setFontSize(9); color(MUT);
     doc.text("Recette de la semaine", 210 - M, y + 5, { align: "right" });
     doc.text(T(data.semaine), 210 - M, y + 10, { align: "right" });
     y += 24;
-    doc.setFont("helvetica", "bold"); doc.setFontSize(28); color(FR); doc.text(T(data.nom), M, y); y += 3;
+    doc.setFont("helvetica", "bold"); doc.setFontSize(26); color(FR); doc.text(T(data.titre || data.nom), M, y); y += 3;
     doc.setDrawColor(249, 176, 15); doc.setLineWidth(1.2); doc.line(M, y, M + 40, y); y += 8;
+    if (data.sousTitre) { doc.setFont("helvetica", "normal"); doc.setFontSize(11); color(VERT); doc.text(T(data.sousTitre), M, y); y += 8; }
+    if (data.contenu && data.contenu.length) { heading("Dans votre panier"); data.contenu.forEach(([n, q]) => { item(q, n, true); y += 6.4; }); y += 4; }
     if (data.photo && data.photo.src) {
       try {
         const im = await toDataUrl(data.photo.src, "image/jpeg"); const ih = Math.min(W * im.h / im.w, 90);
@@ -39,47 +49,48 @@
         y += 3;
       } catch (e) {}
     }
-    doc.setFont("helvetica", "bold"); doc.setFontSize(17); color(INK);
-    const t = doc.splitTextToSize(T(r.titre), W); doc.text(t, M, y); y += t.length * 7 + 1;
-    doc.setFont("helvetica", "normal"); doc.setFontSize(10.5); color(MUT);
-    const intro = doc.splitTextToSize(T(r.intro), W); doc.text(intro, M, y); y += intro.length * 5 + 4;
-    doc.setFontSize(10); color(INK);
-    const meta = [r.prep && `Préparation ${r.prep}`, r.cuisson && `Cuisson ${r.cuisson}`,
-      `Pour ${r.pers}${/^\d+$/.test(r.pers) ? " personnes" : ""}`, r.niveau].filter(Boolean).join("   ·   ");
-    doc.setDrawColor(234, 223, 206); doc.setLineWidth(0.4); doc.setLineDashPattern([1.2, 1.2], 0); doc.rect(M, y - 5, W, 9); doc.setLineDashPattern([], 0);
-    doc.text(T(meta), M + 3, y + 0.8); y += 13;
-    const heading = s => { ensure(12); doc.setFont("helvetica", "bold"); doc.setFontSize(10); color(VERT); doc.text(s.toUpperCase(), M, y, { charSpace: 0.6 }); y += 6; };
-    heading("La liste de courses");
-    r.ingredients.forEach(([q, n, ref]) => {
-      ensure(7); doc.setFontSize(10.5);
-      doc.setDrawColor(...(ref ? FR : MUT)); doc.setLineWidth(0.4); doc.rect(M, y - 3.2, 3.6, 3.6);
-      let x = M + 7;
-      if (q) { doc.setFont("helvetica", "bold"); color(INK); doc.text(T(q), x, y); x += doc.getTextWidth(T(q)) + 1.8; }
-      doc.setFont("helvetica", "normal"); color(INK); doc.text(T(n), x, y);
-      if (ref) { x += doc.getTextWidth(T(n)) + 2; doc.setFont("helvetica", "italic"); color(FR); doc.text("chez nous", x, y); }
-      y += 6.4;
+    recettes.forEach((r, k) => {
+      if (k) { doc.addPage(); y = 18; }
+      if (recettes.length > 1) { doc.setFont("helvetica", "bold"); doc.setFontSize(10); color(FR); doc.text(`RECETTE ${k + 1} SUR ${recettes.length}`, M, y); y += 6; }
+      doc.setFont("helvetica", "bold"); doc.setFontSize(17); color(INK);
+      const t = doc.splitTextToSize(T(r.titre), W); ensure(t.length * 7 + 20); doc.text(t, M, y); y += t.length * 7 + 1;
+      doc.setFont("helvetica", "normal"); doc.setFontSize(10.5); color(MUT);
+      const intro = doc.splitTextToSize(T(r.intro), W); doc.text(intro, M, y); y += intro.length * 5 + 4;
+      doc.setFontSize(10); color(INK);
+      const meta = [r.prep && `Préparation ${r.prep}`, r.cuisson && `Cuisson ${r.cuisson}`,
+        `Pour ${r.pers}${/^\d+$/.test(r.pers) ? " personnes" : ""}`, r.niveau].filter(Boolean).join("   ·   ");
+      doc.setDrawColor(234, 223, 206); doc.setLineWidth(0.4); doc.setLineDashPattern([1.2, 1.2], 0); doc.rect(M, y - 5, W, 9); doc.setLineDashPattern([], 0);
+      doc.text(T(meta), M + 3, y + 0.8); y += 13;
+      heading("La liste de courses");
+      r.ingredients.forEach(([q, n, ref]) => {
+        const x = item(q, n, !!ref);
+        if (ref) { doc.setFont("helvetica", "italic"); color(FR); doc.text("chez nous", x, y); }
+        y += 6.4;
+      });
+      y += 4; heading("La préparation");
+      r.etapes.forEach((s, i) => {
+        doc.setFont("helvetica", "normal"); doc.setFontSize(10.5);
+        const lines = doc.splitTextToSize(T(s), W - 10); ensure(lines.length * 5 + 3);
+        doc.setFont("helvetica", "bold"); doc.setFontSize(13); color(FR); doc.text(`${i + 1}.`, M, y + 0.5);
+        doc.setFont("helvetica", "normal"); doc.setFontSize(10.5); color(INK); doc.text(lines, M + 10, y);
+        y += lines.length * 5 + 3;
+      });
+      y += 4; doc.setFontSize(10.5);
+      const tip = doc.splitTextToSize(T(r.conseil), W - 12); const th = tip.length * 5 + 13; ensure(th);
+      doc.setFillColor(255, 243, 207); doc.rect(M, y, W, th, "F"); doc.setFillColor(249, 176, 15); doc.rect(M, y, 1.8, th, "F");
+      doc.setFont("helvetica", "bold"); color([164, 28, 41]); doc.text("Le conseil du primeur", M + 6, y + 7);
+      doc.setFont("helvetica", "normal"); color(INK); doc.text(tip, M + 6, y + 13); y += th + 6;
     });
-    y += 4; heading("La préparation");
-    r.etapes.forEach((s, i) => {
-      doc.setFont("helvetica", "normal"); doc.setFontSize(10.5);
-      const lines = doc.splitTextToSize(T(s), W - 10); ensure(lines.length * 5 + 3);
-      doc.setFont("helvetica", "bold"); doc.setFontSize(13); color(FR); doc.text(`${i + 1}.`, M, y + 0.5);
-      doc.setFont("helvetica", "normal"); doc.setFontSize(10.5); color(INK); doc.text(lines, M + 10, y);
-      y += lines.length * 5 + 3;
-    });
-    y += 4; doc.setFontSize(10.5);
-    const tip = doc.splitTextToSize(T(r.conseil), W - 12); const th = tip.length * 5 + 13; ensure(th);
-    doc.setFillColor(255, 243, 207); doc.rect(M, y, W, th, "F"); doc.setFillColor(249, 176, 15); doc.rect(M, y, 1.8, th, "F");
-    doc.setFont("helvetica", "bold"); color([164, 28, 41]); doc.text("Le conseil du primeur", M + 6, y + 7);
-    doc.setFont("helvetica", "normal"); color(INK); doc.text(tip, M + 6, y + 13);
-    doc.setFontSize(8.5); color(MUT);
-    doc.text(T("Payet Primeur · Saint-Selve & Villenave-d'Ornon · Une nouvelle recette chaque dimanche"), 105, PH - 10, { align: "center" });
+    for (let i = 1; i <= doc.getNumberOfPages(); i++) {
+      doc.setPage(i); doc.setFont("helvetica", "normal"); doc.setFontSize(8.5); color(MUT);
+      doc.text(T("Payet Primeur · Saint-Selve & Villenave-d'Ornon · Une nouvelle recette chaque dimanche"), 105, PH - 10, { align: "center" });
+    }
     return doc;
   }
 
   btn.addEventListener("click", async () => {
     btn.disabled = true; msg.textContent = "Préparation du PDF…";
-    try { (await build()).save(`recette-${slug(data.nom)}-payet-primeur.pdf`); msg.textContent = "Recette téléchargée, bonne cuisine !"; }
+    try { (await build()).save(`recette-${slug(data.fichier || data.nom)}-payet-primeur.pdf`); msg.textContent = "Recette téléchargée, bonne cuisine !"; }
     catch (e) { msg.textContent = "Le PDF n'a pas pu être créé. Rechargez la page puis réessayez."; }
     finally { btn.disabled = false; }
   });

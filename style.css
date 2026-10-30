@@ -98,3 +98,6 @@ footer a { font-size: 13px; color: var(--muted); }
 .tiles span { font-size: 14px; color: var(--muted); line-height: 1.35; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.hero.thanks h1 { font-size: clamp(36px, 10vw, 50px); }
+.basket-list { gap: 0; }
+.top a { display: contents; }
