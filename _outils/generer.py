@@ -101,13 +101,15 @@ def page_panier(d, b):
     recs = b.get("recettes") or []
     items = "".join(f'<li class="shop"><span class="box"></span><span>{f"<span class=q>{e(q)}</span>" if q else ""}{e(n)}</span></li>'
                     for n, q in b.get("contenu", []))
-    corps = ("".join(recette_card(r, f"Recette<br>{i + 1} sur {len(recs)}", f"{b['nom']} · semaine {b.get('semaine') or d['semaine']}") for i, r in enumerate(recs))
+    stamps = ["Vite fait !", "On prend<br>son temps"]
+    kickers = ["Idée n° 1 · la recette rapide", "Idée n° 2 · la recette plus lente"]
+    corps = ("".join(recette_card(r, stamps[i] if i < 2 else "Recette", kickers[i] if i < 2 else b["nom"]) for i, r in enumerate(recs))
              if recs else '<div class="card"><p class="intro">Les recettes de ce panier arrivent très bientôt. Revenez dans quelques heures !</p></div>')
     pdf = {"titre": "Merci pour votre achat !", "sousTitre": b["nom"], "fichier": b["nom"], "semaine": d["semaine"],
            "contenu": b.get("contenu", []), "recettes": recs}
     pdf_json = json.dumps(pdf, ensure_ascii=False).replace("<", "\\u003c")
-    sous = f"Deux recettes pour cuisiner votre {b['nom'].lower()}" if recs else b["nom"]
-    return (head(f"Merci pour votre achat ! · {b['nom']} | Payet Primeur", f"Deux recettes pour cuisiner votre {b['nom'].lower()}.", "../")
+    sous = f"Deux idées au choix pour cuisiner votre {b['nom'].lower()}" if recs else b["nom"]
+    return (head(f"Merci pour votre achat ! · {b['nom']} | Payet Primeur", f"Deux idées de recettes au choix pour cuisiner votre {b['nom'].lower()}.", "../")
             + '<div class="wrap"><header class="top"><a href="../"><img src="../logo.png" alt="Payet Primeur" width="230" height="65"></a>'
             '<p>Extra-frais et de saison, en circuit court</p></header>'
             f'<section class="hero thanks"><h1>Merci pour votre achat !</h1>{UNDERLINE}<p class="season">{e(sous)}</p></section>'

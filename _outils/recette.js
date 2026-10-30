@@ -51,7 +51,7 @@
     }
     recettes.forEach((r, k) => {
       if (k) { doc.addPage(); y = 18; }
-      if (recettes.length > 1) { doc.setFont("helvetica", "bold"); doc.setFontSize(10); color(FR); doc.text(`RECETTE ${k + 1} SUR ${recettes.length}`, M, y); y += 6; }
+      if (recettes.length > 1) { doc.setFont("helvetica", "bold"); doc.setFontSize(10); color(FR); doc.text(T(["IDÉE N° 1 · LA RECETTE RAPIDE", "IDÉE N° 2 · LA RECETTE PLUS LENTE"][k] || `RECETTE ${k + 1}`), M, y); y += 6; }
       doc.setFont("helvetica", "bold"); doc.setFontSize(17); color(INK);
       const t = doc.splitTextToSize(T(r.titre), W); ensure(t.length * 7 + 20); doc.text(t, M, y); y += t.length * 7 + 1;
       doc.setFont("helvetica", "normal"); doc.setFontSize(10.5); color(MUT);
