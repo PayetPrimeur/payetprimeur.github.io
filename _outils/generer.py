@@ -29,7 +29,36 @@ def footer():
             "<span>Payet Primeur · Saint-Selve &amp; Villenave-d'Ornon</span></footer>")
 
 
+def entete(pg, prefix="../"):
+    return ('<div class="wrap">'
+            f'<header class="top"><a href="{prefix}"><img src="{prefix}logo.png" alt="Payet Primeur" width="230" height="65"></a>'
+            '<p>Extra-frais et de saison, en circuit court</p></header>'
+            f'<section class="hero"><h1>{e(pg["nom"])}</h1>{UNDERLINE}<p class="season">{e(pg.get("saison"))}</p></section>')
+
+
+def page_fruit(d, slug, pg):
+    if pg.get("maturite"):
+        corps = ('<article class="card"><span class="stamp">Le conseil<br>du primeur</span>'
+                 f'<section><h3>Comment savoir s\'il est mûr</h3><p class="advice">{e(pg["maturite"])}</p></section>'
+                 f'<div class="note"><strong>Comment le conserver</strong>{e(pg.get("conservation"))}</div></article>')
+    else:
+        corps = '<div class="card"><p class="intro">Nos conseils pour ce fruit arrivent très bientôt.</p></div>'
+    return (head(f"{pg['nom']} : bien le choisir et le conserver | Payet Primeur",
+                 f"Comment savoir si {pg['nom'].lower()} est mûr et comment le conserver : les conseils de votre primeur.", "../")
+            + entete(pg) + corps + '<a class="back" href="../">← Toutes nos recettes et conseils</a>' + footer() + '</div></body></html>')
+
+
+def page_attente(d, slug, pg):
+    return (head(f"{pg['nom']} | Payet Primeur", f"La recette de la semaine pour {pg['nom']}.", "../")
+            + entete(pg) + '<div class="card"><p class="intro">La recette de la semaine arrive très bientôt. Revenez dans quelques minutes !</p></div>'
+            '<a class="back" href="../">← Toutes nos recettes et conseils</a>' + footer() + '</div></body></html>')
+
+
 def page_recette(d, slug, pg):
+    if pg.get("type") == "fruit":
+        return page_fruit(d, slug, pg)
+    if not pg.get("recette"):
+        return page_attente(d, slug, pg)
     r = pg["recette"]
     ings = "".join(
         f'<li class="{"shop" if ref else ""}"><span class="box"></span><span>'
@@ -56,7 +85,9 @@ def page_recette(d, slug, pg):
             '<p>Extra-frais et de saison, en circuit court</p></header>'
             f'<section class="hero"><h1>{e(pg["nom"])}</h1>{UNDERLINE}<p class="season">{e(pg.get("saison"))}</p></section>'
             '<article class="card"><span class="stamp">Recette de<br>la semaine</span>'
-            f'<div><p class="kicker">Semaine {e(d["semaine"])}</p><h2 class="title">{e(r["titre"])}</h2><p class="intro">{e(r["intro"])}</p></div>'
+            f'<div><p class="kicker">Semaine {e(d["semaine"])}</p>'
+            + (f'<p class="origin">Recette traditionnelle · {e(r["origine"])}</p>' if r.get("origine") else "")
+            + f'<h2 class="title">{e(r["titre"])}</h2><p class="intro">{e(r["intro"])}</p></div>'
             f'{media}<ul class="meta">{meta}</ul>'
             f'<section><h3>La liste de courses</h3><ul class="ing">{ings}</ul>'
             '<p class="legend">Tout ce qui est marqué « chez nous » se trouve en boutique.</p></section>'
@@ -84,7 +115,9 @@ def recette_card(r, stamp, kicker, media=""):
         f"<li>Pour <b>{e(r['pers'])}</b>{' pers.' if str(r.get('pers', '')).isdigit() else ''}</li>",
         f"<li><b>{e(r['niveau'])}</b></li>"])
     return (f'<article class="card"><span class="stamp">{stamp}</span>'
-            f'<div><p class="kicker">{e(kicker)}</p><h2 class="title">{e(r["titre"])}</h2><p class="intro">{e(r["intro"])}</p></div>'
+            f'<div><p class="kicker">{e(kicker)}</p>'
+            + (f'<p class="origin">Recette traditionnelle · {e(r["origine"])}</p>' if r.get("origine") else "")
+            + f'<h2 class="title">{e(r["titre"])}</h2><p class="intro">{e(r["intro"])}</p></div>'
             f'{media}<ul class="meta">{meta}</ul>'
             f'<section><h3>La liste de courses</h3><ul class="ing">{ings}</ul>'
             '<p class="legend">Tout ce qui est marqué « chez nous » se trouve en boutique.</p></section>'
@@ -121,18 +154,24 @@ def page_panier(d, b):
             + '</body></html>')
 
 
+def tuile(pg):
+    if pg.get("type") == "fruit":
+        return "Bien le choisir et le conserver"
+    return pg["recette"]["titre"] if pg.get("recette") else "Recette en préparation"
+
+
 def page_accueil(d):
     groups = []
     for c, label in CATS:
         slugs = sorted({p["page"] for p in d["produits"] if p["c"] == c and p.get("page") and p["actif"] and p["page"] in d["pages"]},
                        key=lambda s: d["pages"][s]["nom"].lower())
         if slugs:
-            tiles = "".join(f'<li><a href="{s}/"><b>{e(d["pages"][s]["nom"])}</b><span>{e(d["pages"][s]["recette"]["titre"])}</span></a></li>' for s in slugs)
+            tiles = "".join(f'<li><a href="{s}/"><b>{e(d["pages"][s]["nom"])}</b><span>{e(tuile(d["pages"][s]))}</span></a></li>' for s in slugs)
             groups.append(f'<section class="cat"><h2>{label}</h2><ul class="tiles">{tiles}</ul></section>')
     return (head("Les recettes de la semaine | Payet Primeur",
                  "Une recette de saison pour chaque fruit et légume de la boutique Payet Primeur, renouvelée chaque dimanche.", "")
             + '<div class="wrap"><header class="top"><img src="logo.png" alt="Payet Primeur" width="230" height="65">'
-            f'<p>Les recettes de la semaine {e(d["semaine"])}</p></header>' + "".join(groups) + footer() + "</div></body></html>")
+            f'<p>Nos recettes et conseils de la semaine {e(d["semaine"])}</p></header>' + "".join(groups) + footer() + "</div></body></html>")
 
 
 def generer(data_path, out):
@@ -147,7 +186,7 @@ def generer(data_path, out):
         shutil.copy(os.path.join(ICI, f), os.path.join(out, f))
     n = 0
     for slug, pg in d["pages"].items():
-        if not re.fullmatch(r"[a-z0-9-]+", slug) or not pg.get("recette"):
+        if not re.fullmatch(r"[a-z0-9-]+", slug):
             continue
         os.makedirs(os.path.join(out, slug), exist_ok=True)
         open(os.path.join(out, slug, "index.html"), "w", encoding="utf-8").write(page_recette(d, slug, pg))

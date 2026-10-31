@@ -101,3 +101,5 @@ footer a { font-size: 13px; color: var(--muted); }
 .hero.thanks h1 { font-size: clamp(36px, 10vw, 50px); }
 .basket-list { gap: 0; }
 .top a { display: contents; }
+.origin { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: .04em; color: var(--vert); }
+.advice { margin: 0; }
