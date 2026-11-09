@@ -131,7 +131,7 @@ PDF_BTN = ('<div class="pdf"><button type="button" class="btn main" id="pdf-btn"
 
 
 def page_panier(d, b):
-    recs = b.get("recettes") or []
+    recs = [] if b.get("aFaire") else (b.get("recettes") or [])
     items = "".join(f'<li class="shop"><span class="box"></span><span>{f"<span class=q>{e(q)}</span>" if q else ""}{e(n)}</span></li>'
                     for n, q in b.get("contenu", []))
     stamps = ["Vite fait !", "On prend<br>son temps"]
@@ -201,7 +201,38 @@ def generer(data_path, out):
         head("Page introuvable | Payet Primeur", "Page introuvable", "/") +
         '<div class="wrap"><header class="top"><img src="/logo.png" alt="Payet Primeur" width="230" height="65"></header>'
         '<p>Cette recette n\'est plus en ligne.</p><a class="back" href="/">← Toutes nos recettes de la semaine</a>' + footer() + "</div></body></html>")
+    ecrire_etat(d, out)
     print(f"{n} pages recettes générées dans {out}")
+
+
+def ecrire_etat(d, out):
+    """etat.json : lu par l'appli pour afficher « recette prête » / « en préparation »."""
+    import datetime
+    pages = {}
+    for slug, pg in d["pages"].items():
+        x = {"nom": pg.get("nom", "")}
+        if pg.get("type") == "fruit":
+            x["type"] = "fruit"
+            if not pg.get("maturite"):
+                x["attente"] = True
+        elif pg.get("recette") and not pg.get("aRevoir"):
+            x["titre"] = pg["recette"]["titre"]
+        else:
+            x["attente"] = True
+        pages[slug] = x
+    paniers = {b["id"]: {"contenu": b.get("recettesPour", []), "pret": bool(b.get("recettes")) and not b.get("aFaire")}
+               for b in d.get("paniers", [])}
+    etat = {"pages": pages, "paniers": paniers}
+    chemin = os.path.join(out, "etat.json")
+    try:
+        ancien = json.load(open(chemin, encoding="utf-8"))
+        maj = ancien.pop("maj", None)
+        if ancien == etat and maj:
+            etat["maj"] = maj
+    except (OSError, ValueError):
+        pass
+    etat.setdefault("maj", datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    json.dump(etat, open(chemin, "w", encoding="utf-8"), ensure_ascii=False)
 
 
 if __name__ == "__main__":

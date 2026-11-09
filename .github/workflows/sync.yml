@@ -1,0 +1,48 @@
+# Synchronise le site des recettes avec le catalogue de l'appli Payet Primeur Pro (Firebase).
+# Lecture seule de Firebase. Tourne toutes les 30 minutes, ou à la main depuis l'onglet Actions.
+name: Synchronisation avec le catalogue
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: sync-catalogue
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lire le catalogue et les paniers dans Firebase
+        run: |
+          BASE="https://stock-romain-default-rtdb.europe-west1.firebasedatabase.app"
+          curl -sSf --retry 3 "$BASE/products.json" -o /tmp/products.json
+          curl -sSf --retry 3 "$BASE/paniers.json" -o /tmp/paniers.json
+
+      - name: Mettre à jour le site et publier
+        run: |
+          git config user.name "Payet Primeur"
+          git config user.email "PayetPrimeur@users.noreply.github.com"
+          for i in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            python3 _outils/sync.py /tmp/products.json /tmp/paniers.json _outils/data.json
+            python3 _outils/generer.py _outils/data.json .
+            if [ -z "$(git status --porcelain)" ]; then echo "Rien à changer"; exit 0; fi
+            git add -A
+            git commit -q -m "Synchronisation avec le catalogue"
+            if git push -q origin HEAD:main; then
+              curl -sS -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github+json" \
+                "https://api.github.com/repos/${{ github.repository }}/pages/builds" > /dev/null || true
+              exit 0
+            fi
+            sleep 10
+          done
+          exit 1
