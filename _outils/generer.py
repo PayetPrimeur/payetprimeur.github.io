@@ -8,6 +8,8 @@ import html, json, os, re, shutil, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 CATS = [("Fruit", "Fruits"), ("Légume", "Légumes"), ("Aromate", "Aromates")]
+# dossiers du dépôt qui ne sont pas des pages recettes : jamais effacés par le générateur
+DOSSIERS_PROTEGES = {"appli"}
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&family=Kalam:wght@400;700&display=swap">')
@@ -180,7 +182,7 @@ def generer(data_path, out):
     # on repart de zéro pour les pages produits (une page retirée disparaît)
     for name in os.listdir(out):
         p = os.path.join(out, name)
-        if os.path.isdir(p) and os.path.exists(os.path.join(p, "index.html")) and not name.startswith((".", "_")):
+        if os.path.isdir(p) and os.path.exists(os.path.join(p, "index.html")) and not name.startswith((".", "_")) and name not in DOSSIERS_PROTEGES:
             shutil.rmtree(p)
     for f in ("style.css", "recette.js", "logo.png"):
         shutil.copy(os.path.join(ICI, f), os.path.join(out, f))
