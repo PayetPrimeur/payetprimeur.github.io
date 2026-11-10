@@ -55,7 +55,7 @@
 "c": "Fruit",
 "id": "avocat-petit",
 "page": "avocat-petit",
-"actif": false
+"actif": true
 },
 {
 "n": "Banane",
@@ -769,7 +769,7 @@
 "c": "Légume",
 "id": "poireau",
 "page": "poireau",
-"actif": true
+"actif": false
 },
 {
 "n": "Poivron vert",
@@ -937,6 +937,13 @@
 "c": "Légume",
 "id": "topinambour",
 "page": "topinambour",
+"actif": true
+},
+{
+"n": "Cèleri rave",
+"c": "Légume",
+"id": "celeri-rave",
+"page": "celeri-rave",
 "actif": true
 }
 ],
@@ -1633,7 +1640,8 @@ null
 "Chou farci",
 "Potée auvergnate",
 "Garbure"
-]
+],
+"aRevoir": true
 },
 "chou-chinois": {
 "nom": "Chou chinois",
@@ -2186,7 +2194,8 @@ null
 "Navets glacés",
 "Navarin d'agneau",
 "Velouté de navets boule d'or"
-]
+],
+"aRevoir": true
 },
 "oignon": {
 "nom": "Oignon jaune",
@@ -3745,7 +3754,8 @@ null
 "Coleslaw",
 "Chou blanc braisé aux lardons",
 "Soupe au chou"
-]
+],
+"aRevoir": true
 },
 "courgette-espagne": {
 "nom": "Courgette",
@@ -4036,7 +4046,8 @@ null
 "Canard aux navets",
 "Gratin de navets",
 "Pot-au-feu"
-]
+],
+"aRevoir": true
 },
 "oignon-botte": {
 "nom": "Oignon botte",
@@ -4928,6 +4939,13 @@ null
 },
 "rutabaga": {
 "nom": "Rutabaga",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true
+},
+"celeri-rave": {
+"nom": "Cèleri rave",
 "saison": "",
 "photo": null,
 "historique": [],
