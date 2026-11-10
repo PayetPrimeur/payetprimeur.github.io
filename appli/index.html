@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&display=swap">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="qr.css">
+    <link rel="stylesheet" href="style.css?v=20261110b">
+    <link rel="stylesheet" href="qr.css?v=20261110b">
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -20,7 +20,7 @@
 <body>
 
 <!-- STOCK -->
-<section id="view-stock" class="view" aria-label="Stocks nécessaires">
+<section id="view-stock" class="view active" aria-label="Stocks nécessaires">
     <header class="top"><div class="wrap" style="display:grid;gap:12px">
         <div class="top-row">
             <div><div class="eyebrow">Payet Primeur</div><h1>Stocks nécessaires</h1></div>
@@ -97,7 +97,7 @@
 </section>
 
 <nav class="nav" aria-label="Navigation"><div>
-    <button type="button" data-go="stock">
+    <button type="button" data-go="stock" aria-current="page">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>Stocks
     </button>
     <button type="button" data-go="agenda">
@@ -108,8 +108,8 @@
     </button>
 </div></nav>
 
-<script src="app.js"></script>
-<script src="qr-liens.js"></script>
-<script src="qr.js"></script>
+<script src="app.js?v=20261110b"></script>
+<script src="qr-liens.js?v=20261110b"></script>
+<script src="qr.js?v=20261110b"></script>
 </body>
 </html>
