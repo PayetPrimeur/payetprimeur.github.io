@@ -111,6 +111,8 @@ function updQty(n, v) {
 
 /* ---------- commandes ---------- */
 const typeLabel = r => (TYPES.find(t => t[0] === r.type) || [r.type, r.type])[1] + (r.prix ? " " + r.prix.replace("€", " €") : "");
+const qtyOf = r => Math.max(1, parseInt(r && r.nb, 10) || 1);
+const qtyLabel = r => (qtyOf(r) > 1 ? qtyOf(r) + " × " : "") + typeLabel(r);
 function ordersOf(day) { return Object.entries(data.reservations).filter(([, r]) => r && r.date === day); }
 function renderAgenda() {
   const y = monthStart.getFullYear(), m = monthStart.getMonth();
@@ -135,14 +137,14 @@ function renderAgenda() {
   if (res.length) {
     html += `<div class="recap">` + Object.keys(SITES).map(site => {
       const c = {};
-      res.filter(([, r]) => r.boutique === site).forEach(([, r]) => { const k = typeLabel(r); c[k] = (c[k] || 0) + 1; });
+      res.filter(([, r]) => r.boutique === site).forEach(([, r]) => { const k = typeLabel(r); c[k] = (c[k] || 0) + qtyOf(r); });
       const txt = Object.entries(c).map(([k, n]) => `${n} × ${k}`).join(" · ") || "Rien";
       return `<div><b class="s-${site}">${SITES[site]}</b><span>${esc(txt)}</span></div>`;
     }).join("") + `</div>`;
     html += res.map(([id, r]) => {
       const tel = (r.tel || "").trim();
       return `<div class="order ${r.done ? "done" : ""}"><div class="bar ${esc(r.boutique)}"></div>
-        <div class="order-main"><div class="who"><b>${esc(r.client || "Client inconnu")}</b><span class="pill">${esc(typeLabel(r))}</span></div>
+        <div class="order-main"><div class="who"><b>${esc(r.client || "Client inconnu")}</b><span class="pill">${esc(qtyLabel(r))}</span></div>
           <span class="meta">${SITES[r.boutique] || ""}${tel ? ` · <a href="tel:${esc(tel.replace(/[^\d+]/g, ""))}">${esc(tel)}</a>` : ""}</span>
           ${r.desc ? `<span class="note">${esc(r.desc)}</span>` : ""}</div>
         <div class="order-actions">
@@ -156,13 +158,17 @@ function renderAgenda() {
 
 function orderSheet(id) {
   const r = id ? Object.assign({}, data.reservations[id]) : { date: selDate, boutique: curSite, type: "Retrait libre", prix: "", client: "", tel: "", desc: "", done: false };
-  const st = { boutique: r.boutique || "st-selve", type: r.type || "Retrait libre", prix: r.prix || "20€", confirmDel: false };
+  const st = { boutique: r.boutique || "st-selve", type: r.type || "Retrait libre", prix: r.prix || "20€", nb: qtyOf(r), confirmDel: false };
   const sheet = openSheet(id ? "Modifier la commande" : "Nouvelle commande", "");
   const draw = () => {
     sheet.body.innerHTML = `
       <div class="field">Boutique<div class="seg" role="group" aria-label="Boutique">${Object.entries(SITES).map(([k, v]) => `<button type="button" data-b="${k}" aria-pressed="${st.boutique === k}">${v}</button>`).join("")}</div></div>
       <div class="field">Type de commande<div class="pick">${TYPES.map(([k, v]) => `<button type="button" data-t="${esc(k)}" aria-pressed="${st.type === k}">${v}</button>`).join("")}</div>
         ${st.type === "Panier" ? `<div class="pick" aria-label="Budget">${PRIX.map(p => `<button type="button" data-p="${p}" aria-pressed="${st.prix === p}">${p.replace("€", " €")}</button>`).join("")}</div>` : ""}</div>
+      <div class="field">Quantité<div class="qty-row"><div class="stepper">
+        <button type="button" data-q="-1" aria-label="Une de moins"${st.nb <= 1 ? " disabled" : ""}>${icon.minus}</button>
+        <output id="f-nb" aria-live="polite">${st.nb}</output>
+        <button type="button" class="plus" data-q="1" aria-label="Une de plus">${icon.plus}</button></div></div></div>
       <div class="two"><label class="field">Client<input id="f-client" value="${esc(r.client)}" autocomplete="off" placeholder="Ex : Jean Dupont"></label>
         <label class="field">Date de retrait<input id="f-date" type="date" value="${esc(r.date)}"></label></div>
       <label class="field">Téléphone<input id="f-tel" type="tel" value="${esc(r.tel)}" placeholder="06 12 34 56 78"></label>
@@ -176,11 +182,12 @@ function orderSheet(id) {
     sheet.body.querySelectorAll("[data-b]").forEach(b => b.onclick = () => { keep(); st.boutique = b.dataset.b; draw(); });
     sheet.body.querySelectorAll("[data-t]").forEach(b => b.onclick = () => { keep(); st.type = b.dataset.t; draw(); });
     sheet.body.querySelectorAll("[data-p]").forEach(b => b.onclick = () => { keep(); st.prix = b.dataset.p; draw(); });
+    sheet.body.querySelectorAll("[data-q]").forEach(b => b.onclick = () => { keep(); st.nb = Math.max(1, Math.min(99, st.nb + Number(b.dataset.q))); draw(); });
     $("f-save").onclick = () => {
       keep();
       if (!r.client.trim()) { $("f-err").textContent = "Saisissez le nom du client."; $("f-client").focus(); return; }
       if (!r.date) { $("f-err").textContent = "Choisissez la date de retrait."; return; }
-      const rec = { date: r.date, boutique: st.boutique, type: st.type, prix: st.type === "Panier" ? st.prix : "", client: r.client.trim(), tel: r.tel.trim(), desc: r.desc.trim(), done: !!r.done };
+      const rec = { date: r.date, boutique: st.boutique, type: st.type, prix: st.type === "Panier" ? st.prix : "", client: r.client.trim(), tel: r.tel.trim(), desc: r.desc.trim(), nb: st.nb, done: !!r.done };
       if (id) db.ref("reservations/" + id).set(rec); else db.ref("reservations").push(rec);
       selDate = r.date; monthStart = monthOf(parseDay(r.date));
       sheet.close(); toast(id ? "Commande modifiée" : "Commande enregistrée");

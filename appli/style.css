@@ -152,3 +152,5 @@ h1 { margin: 2px 0 0; font-size: 26px; font-weight: 800; letter-spacing: -.01em;
 @media (prefers-reduced-motion: reduce) { .sheet { animation: none; } }
 @media (min-width: 700px) { .sheet-bg { align-items: center; } .sheet { border-radius: 24px; } }
 #orders { padding-bottom: 80px; }
+.qty-row { display: flex; }
+.stepper button:disabled { opacity: .45; }

@@ -51,11 +51,14 @@
     // commandes
     const from = since();
     const ords = Object.values(data.reservations || {}).filter(r => r && r.date && r.date >= from && sh.includes(r.boutique));
+    const PANIERS = ["Panier", "Panier Garni"];
+    const pan = ords.filter(r => PANIERS.includes(r.type));
+    const nbPaniers = pan.reduce((a, r) => a + qtyOf(r), 0);
     const months = {};
-    ords.forEach(r => { const m = r.date.slice(0, 7); const o = months[m] || (months[m] = {}); o[r.boutique] = (o[r.boutique] || 0) + 1; });
+    pan.forEach(r => { const m = r.date.slice(0, 7); const o = months[m] || (months[m] = {}); o[r.boutique] = (o[r.boutique] || 0) + qtyOf(r); });
     const types = {};
-    ords.forEach(r => { const t = typeLabel(r); types[t] = (types[t] || 0) + 1; });
-    return { bk, sh, series, prods: Object.values(prods), cats, jours, ords, months, types };
+    ords.forEach(r => { const t = typeLabel(r); types[t] = (types[t] || 0) + qtyOf(r); });
+    return { bk, sh, series, prods: Object.values(prods), cats, jours, ords, nbPaniers, months, types };
   }
 
   /* ---------- graphiques (HTML + SVG, sans librairie) ---------- */
@@ -116,7 +119,7 @@
         <div class="st-kpi"><small>Sauvegardes</small><b>${bk.length}</b><span>du ${shortDate(bk[0][0])} au ${shortDate(last.k)}</span></div>
         <div class="st-kpi"><small>Produits à prévoir</small><b>${n0(avg(series.map(s => s.nbProd)))}</b><span>en moyenne par soir</span></div>
         <div class="st-kpi"><small>Quantités à prévoir</small><b>${n0(avg(series.map(s => s.total)))}</b><span>en moyenne par soir</span></div>
-        <div class="st-kpi"><small>Commandes clients</small><b>${C.ords.length}</b><span>sur la période</span></div>
+        <div class="st-kpi"><small>Paniers commandés</small><b>${C.nbPaniers}</b><span>sur la période</span></div>
       </div>`;
 
       h += `<section class="card"><div class="card-head"><h2>Quantités à prévoir, soir par soir</h2>${legend(sh)}</div>
@@ -139,9 +142,9 @@
     // commandes
     const ms = Object.keys(C.months).sort();
     const tr = Object.entries(C.types).sort((a, b) => b[1] - a[1]);
-    h += `<section class="card"><div class="card-head"><h2>Commandes clients par mois</h2>${legend(sh)}</div>
-      ${vbars("st-cmd", ms.map(m => { const d = new Date(m + "-01T12:00:00"); const l = d.toLocaleDateString("fr-FR", { month: "long", year: "numeric" }); return { label: l.charAt(0).toUpperCase() + l.slice(1), short: d.toLocaleDateString("fr-FR", { month: "short", year: "2-digit" }), per: C.months[m] }; }), sh, "commande(s)")}
-      ${tr.length ? `<h3 class="st-h3">Par type</h3>` + hbars(tr.map(([t, v]) => ({ label: t, v })), "", false) : ""}</section>`;
+    h += `<section class="card"><div class="card-head"><h2>Paniers commandés par mois</h2>${legend(sh)}</div>
+      ${vbars("st-cmd", ms.map(m => { const d = new Date(m + "-01T12:00:00"); const l = d.toLocaleDateString("fr-FR", { month: "long", year: "numeric" }); return { label: l.charAt(0).toUpperCase() + l.slice(1), short: d.toLocaleDateString("fr-FR", { month: "short", year: "2-digit" }), per: C.months[m] }; }), sh, "panier(s)")}
+      ${tr.length ? `<h3 class="st-h3">Par type, en quantité</h3><p class="st-note">Paniers, paniers garnis, plateaux et retraits libres.</p>` + hbars(tr.map(([t, v]) => ({ label: t, v })), "", false) : ""}</section>`;
 
     // vue précise : un produit
     if (bk.length) {
