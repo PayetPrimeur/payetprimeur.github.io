@@ -65,6 +65,8 @@ jobs:
           print(f"{len(stocks)} produits sauvegardés pour le {sys.argv[1]}")
           EOF
           curl -sSf --retry 3 -X PUT -H "Content-Type: application/json" --data @sauvegarde.json "$BASE/sauvegardes/stocks/$DATE.json$FB_AUTH" > /dev/null
+          # nouvelle liste à cocher pour cette date : on repart de cases vides
+          curl -sSf -X DELETE "$BASE/coches/$DATE.json$FB_AUTH" > /dev/null || true
           # ménage : on garde 400 jours (environ 13 mois, pour les statistiques sur un an)
           LIMITE=$(TZ=Europe/Paris date -d "400 days ago" +%Y-%m-%d)
           curl -sSf "$BASE/sauvegardes/stocks.json?shallow=true${FB_AUTH:+&${FB_AUTH#?}}" -o liste.json
