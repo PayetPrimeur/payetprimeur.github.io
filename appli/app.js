@@ -110,9 +110,12 @@ function renderAgenda() {
   let w = ["L", "M", "M", "J", "V", "S", "D"].map(l => `<span class="dow" aria-hidden="true">${l}</span>`).join("");
   for (let i = 0; i < lead; i++) w += `<span></span>`;
   for (let j = 1; j <= nbDays; j++) {
-    const d = new Date(y, m, j), key = isoDay(d), nb = ordersOf(key).length;
-    w += `<button type="button" class="day ${key === today ? "today" : ""}" data-day="${key}" aria-pressed="${key === selDate}" aria-label="${d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}, ${nb} commande${nb > 1 ? "s" : ""}">
-      <span class="n">${j}</span><span class="c">${nb || ""}</span></button>`;
+    const d = new Date(y, m, j), key = isoDay(d), list = ordersOf(key), nb = list.length;
+    const shops = Object.keys(SITES).filter(site => list.some(([, r]) => r.boutique === site));
+    const dots = shops.map(site => `<i class="dot ${site}"></i>`).join("");
+    const who = shops.length ? " (" + shops.map(site => SITES[site]).join(" et ") + ")" : "";
+    w += `<button type="button" class="day ${key === today ? "today" : ""}" data-day="${key}" aria-pressed="${key === selDate}" aria-label="${d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}, ${nb} commande${nb > 1 ? "s" : ""}${who}">
+      <span class="n">${j}</span><span class="c">${dots}</span></button>`;
   }
   $("week").innerHTML = w;
   const res = ordersOf(selDate).sort((a, b) => (a[1].done === b[1].done ? 0 : a[1].done ? 1 : -1));
