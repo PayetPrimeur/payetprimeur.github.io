@@ -125,10 +125,7 @@
     g.fillStyle = "#f9b00f"; rr(g, (W - 70) / 2, H - mm(4.5), 70, 7, 3); g.fill();
     return c;
   }
-  function download(blob, name) {
-    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name;
-    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
-  }
+  function download(blob, name) { saveFile(blob, name); }
   async function downloadLabel(p) {
     const c = await labelCanvas(p.id);
     c.toBlob(b => download(b, `etiquette-${p.id}.png`), "image/png");
@@ -148,7 +145,7 @@
       doc.addImage((await labelCanvas(items[i].id)).toDataURL("image/png"), "PNG", x, y, LW, LH);
       doc.setFontSize(7.5); doc.text(clean(items[i].n), x + LW / 2, y + LH + 4, { align: "center", maxWidth: LW + 4 });
     }
-    doc.save("etiquettes-payet-primeur.pdf");
+    saveFile(doc.output("blob"), "etiquettes-payet-primeur.pdf");
     say(`Planche de ${items.length} étiquettes téléchargée.`);
   }
 

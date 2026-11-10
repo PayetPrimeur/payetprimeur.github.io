@@ -10,7 +10,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 let role = null; // "admin" ou "equipe", lu dans acces/<uid> (modifiable seulement depuis la console Firebase)
-const APP_V = "202611100240";
+const APP_V = "202611100249";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -413,8 +413,15 @@ function saveFile(blob, name) {
   const standalone = window.navigator.standalone === true || (window.matchMedia && matchMedia("(display-mode: standalone)").matches);
   if (ios && standalone && navigator.canShare) {
     const file = new File([blob], name, { type: blob.type || "application/pdf" });
-    if (navigator.canShare({ files: [file] })) { navigator.share({ files: [file] }).catch(() => {}); return; }
+    if (navigator.canShare({ files: [file] })) {
+      // si le partage est refusé (par ex. trop de temps depuis le toucher), on retombe sur le téléchargement
+      navigator.share({ files: [file] }).catch(e => { if (!e || e.name !== "AbortError") downloadBlob(blob, name); });
+      return;
+    }
   }
+  downloadBlob(blob, name);
+}
+function downloadBlob(blob, name) {
   const url = URL.createObjectURL(blob), a = document.createElement("a");
   a.href = url; a.download = name; a.rel = "noopener"; a.style.display = "none";
   document.body.appendChild(a); a.click(); a.remove();
