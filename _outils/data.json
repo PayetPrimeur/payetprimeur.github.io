@@ -1574,11 +1574,11 @@ null
 "saison": "D'octobre à mars",
 "photo": null,
 "recette": {
-"origine": "Spécialité du Sud-Ouest",
-"titre": "Garbure",
-"intro": "La soupe-repas béarnaise et gasconne : chou vert, haricots, légumes et confit de canard, si épaisse que la cuillère doit tenir debout.",
-"prep": "30 min",
-"cuisson": "2 h 30",
+"origine": "Spécialité auvergnate",
+"titre": "Soupe au chou",
+"intro": "La soupe paysanne d'Auvergne : chou vert, pommes de terre et lard mijotés longuement, à servir bien chaude sur une tranche de pain de campagne.",
+"prep": "20 min",
+"cuisson": "1 h 30",
 "pers": "6",
 "niveau": "Facile",
 "ingredients": [
@@ -1589,13 +1589,13 @@ null
 ],
 [
 "300 g",
-"de haricots tarbais ou lingots secs, trempés la veille",
+"de lard demi-sel",
 null
 ],
 [
 "4",
 "pommes de terre",
-"Pdt chérie 2kg"
+"Pdt Bintje"
 ],
 [
 "3",
@@ -1608,40 +1608,35 @@ null
 "Navet"
 ],
 [
-"2",
-"poireaux",
-"Poireaux"
-],
-[
-"4 gousses",
-"d'ail violet",
-"Ail violet"
-],
-[
 "1",
-"jarret de porc demi-sel ou un talon de jambon",
+"oignon",
+"Oignon jaune"
+],
+[
+"2 l",
+"d'eau ou de bouillon",
 null
 ],
 [
-"4",
-"cuisses de canard confites",
+"",
+"Sel, poivre",
 null
 ]
 ],
 "etapes": [
-"Mettez le jarret et les haricots égouttés dans un grand faitout d'eau froide, portez à frémissement et laissez cuire 1 h en écumant.",
-"Ajoutez les carottes, les navets, les poireaux et l'ail coupés en morceaux, et laissez cuire 30 min.",
-"Ajoutez le chou émincé et les pommes de terre en morceaux, et poursuivez 45 min.",
-"Ajoutez les cuisses de confit 15 min avant la fin. Servez très chaud sur des tranches de pain de campagne."
+"Faites dessaler le lard 30 minutes dans l'eau froide, puis mettez-le dans une grande marmite avec 2 litres d'eau. Portez à frémissement et écumez.",
+"Retirez les grosses côtes du chou, coupez-le en lanières et blanchissez-le 5 minutes dans l'eau bouillante, puis égouttez.",
+"Ajoutez dans la marmite le chou, les carottes et les navets en morceaux et l'oignon émincé. Laissez cuire 1 heure à petit feu.",
+"Ajoutez les pommes de terre en gros cubes et poursuivez 30 minutes. Salez peu (le lard est salé), poivrez et servez sur du pain de campagne avec le lard en tranches."
 ],
-"conseil": "Le chou vert est meilleur après les premières gelées. Choisissez-le lourd, aux feuilles bien croquantes : il se garde une semaine au frigo."
+"conseil": "Choisissez un chou vert lourd, aux feuilles bien craquantes et sans taches jaunes. Entier, il se garde une bonne semaine dans le bac à légumes."
 },
 "historique": [
 "Chou farci",
 "Potée auvergnate",
-"Garbure"
-],
-"aRevoir": true
+"Garbure",
+"Soupe au chou"
+]
 },
 "chou-chinois": {
 "nom": "Chou chinois",
@@ -2139,27 +2134,42 @@ null
 "photo": null,
 "recette": {
 "origine": "Grand classique de la cuisine française",
-"titre": "Velouté de navets boule d'or",
-"intro": "Un velouté doré et doux : le navet boule d'or est moins piquant que le navet blanc et donne une soupe presque sucrée.",
-"prep": "15 min",
-"cuisson": "30 min",
+"titre": "Gratin de navets boule d'or",
+"intro": "Un gratin crémeux à la manière du dauphinois, où la chair jaune et douce du navet boule d'or remplace une partie des pommes de terre.",
+"prep": "20 min",
+"cuisson": "1 h",
 "pers": "4",
-"niveau": "Très facile",
+"niveau": "Facile",
 "ingredients": [
 [
-"600 g",
+"800 g",
 "de navets boule d'or",
 "Navet boule d’or"
 ],
 [
-"1",
-"pomme de terre",
-"Pdt Bintje"
+"2",
+"pommes de terre",
+"Pdt agata"
 ],
 [
-"1",
-"poireau (le blanc)",
-"Poireaux"
+"1 gousse",
+"d'ail",
+"Ail violet"
+],
+[
+"25 cl",
+"de crème",
+null
+],
+[
+"25 cl",
+"de lait",
+null
+],
+[
+"60 g",
+"de fromage râpé",
+null
 ],
 [
 "20 g",
@@ -2167,35 +2177,25 @@ null
 null
 ],
 [
-"1 L",
-"de bouillon de volaille",
-null
-],
-[
-"10 cl",
-"de crème liquide",
-null
-],
-[
 "",
-"Sel, poivre",
+"Sel, poivre, muscade",
 null
 ]
 ],
 "etapes": [
-"Épluchez les navets et la pomme de terre et coupez-les en morceaux. Émincez le blanc de poireau.",
-"Faites fondre le poireau dans le beurre 5 min sans coloration.",
-"Ajoutez les navets, la pomme de terre et le bouillon, et laissez cuire 25 min.",
-"Mixez finement avec la crème, salez, poivrez et servez bien chaud."
+"Préchauffez le four à 180 °C. Épluchez les navets et les pommes de terre et coupez-les en fines rondelles.",
+"Frottez un plat à gratin avec la gousse d'ail coupée, puis beurrez-le.",
+"Disposez les rondelles en couches en salant et poivrant chaque couche. Mélangez le lait, la crème et une pointe de muscade, et versez sur les légumes.",
+"Parsemez de fromage râpé et enfournez 1 heure, jusqu'à ce que la pointe d'un couteau s'enfonce sans résistance et que le dessus soit doré."
 ],
-"conseil": "Le navet boule d'or se reconnaît à sa chair jaune. Gardez-le au frigo dans le bac à légumes, sans ses fanes : il tient 10 jours."
+"conseil": "Le navet boule d'or doit être ferme, lisse et lourd : un navet léger est souvent creux ou fibreux. Retirez les fanes et gardez-le au frais, il tient deux semaines."
 },
 "historique": [
 "Navets glacés",
 "Navarin d'agneau",
-"Velouté de navets boule d'or"
-],
-"aRevoir": true
+"Velouté de navets boule d'or",
+"Gratin de navets boule d'or"
+]
 },
 "oignon": {
 "nom": "Oignon jaune",
@@ -3693,69 +3693,64 @@ null
 "saison": "D'octobre à mars",
 "photo": null,
 "recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Soupe au chou",
-"intro": "La soupe paysanne d'hiver : du chou, des pommes de terre, des carottes et du lard qui mijotent ensemble. Elle est encore meilleure réchauffée.",
+"origine": "Classique de la cuisine familiale",
+"titre": "Gratin de chou blanc",
+"intro": "Un gratin réconfortant : le chou blanc blanchi puis nappé de béchamel et gratiné au four, parfait avec une viande rôtie ou seul avec une salade.",
 "prep": "20 min",
-"cuisson": "1 h 15",
-"pers": "6",
-"niveau": "Très facile",
+"cuisson": "1 h",
+"pers": "4",
+"niveau": "Facile",
 "ingredients": [
 [
-"½",
+"1/2",
 "chou blanc",
 "Chou blanc (pièce)"
 ],
 [
-"4",
-"pommes de terre",
-"Pdt Bintje"
-],
-[
-"3",
-"carottes",
-"Carotte"
-],
-[
 "1",
-"poireau",
-"Poireaux"
-],
-[
-"1",
-"oignon jaune",
+"oignon",
 "Oignon jaune"
 ],
 [
-"200 g",
-"de lard fumé",
+"40 g",
+"de beurre",
 null
 ],
 [
-"2 L",
-"d'eau ou de bouillon",
+"40 g",
+"de farine",
+null
+],
+[
+"50 cl",
+"de lait",
+null
+],
+[
+"80 g",
+"de fromage râpé",
 null
 ],
 [
 "",
-"Sel, poivre",
+"Sel, poivre, muscade",
 null
 ]
 ],
 "etapes": [
-"Émincez le chou et faites-le blanchir 5 min dans l'eau bouillante. Égouttez-le.",
-"Faites revenir le lard coupé en dés avec l'oignon émincé dans une grande marmite.",
-"Ajoutez le chou, les carottes en rondelles, le poireau émincé et l'eau. Laissez cuire 45 min à petit feu.",
-"Ajoutez les pommes de terre en morceaux et poursuivez 30 min. Goûtez avant de saler, le lard l'est déjà."
+"Émincez le chou en lanières et faites-le blanchir 8 minutes dans l'eau bouillante salée. Égouttez bien.",
+"Faites fondre l'oignon émincé dans un peu de beurre, mélangez-le au chou et versez le tout dans un plat beurré.",
+"Préparez la béchamel : faites fondre le reste du beurre, ajoutez la farine, puis le lait petit à petit en fouettant jusqu'à épaississement. Salez, poivrez, muscadez.",
+"Nappez le chou de béchamel, parsemez de fromage et enfournez 40 minutes à 190 °C, jusqu'à ce que le dessus soit bien doré."
 ],
-"conseil": "Un chou blanc lourd et serré, aux feuilles brillantes, se garde 2 à 3 semaines au frigo. Entamé, filmez la partie coupée."
+"conseil": "Un bon chou blanc est dense, lourd et serré, aux feuilles brillantes. Entamé, filmez la coupe : il se garde ainsi une semaine au frigo."
 },
 "historique": [
 "Coleslaw",
 "Chou blanc braisé aux lardons",
-"Soupe au chou"
-],
-"aRevoir": true
+"Soupe au chou",
+"Gratin de chou blanc"
+]
 },
 "courgette-espagne": {
 "nom": "Courgette",
@@ -3986,68 +3981,58 @@ null
 "photo": null,
 "recette": {
 "origine": "Grand classique de la cuisine française",
-"titre": "Pot-au-feu",
-"intro": "Le plat français par excellence : du bœuf qui cuit des heures dans un bouillon avec les légumes d'hiver. On boit le bouillon, puis on sert la viande et les légumes avec du gros sel et de la moutarde.",
-"prep": "30 min",
-"cuisson": "3 h 30",
-"pers": "6",
+"titre": "Navets glacés",
+"intro": "La garniture classique des rôtis et des volailles : des navets cuits à court mouillement avec du beurre et du sucre, jusqu'à ce qu'ils soient brillants et caramélisés.",
+"prep": "10 min",
+"cuisson": "25 min",
+"pers": "4",
 "niveau": "Facile",
 "ingredients": [
 [
-"1,5 kg",
-"de bœuf à pot-au-feu (gîte, plat de côtes, jarret)",
-null
-],
-[
-"6",
-"navets",
+"800 g",
+"de petits navets",
 "Navet"
 ],
 [
-"6",
-"carottes",
-"Carotte"
+"40 g",
+"de beurre",
+null
 ],
 [
-"3",
-"poireaux",
-"Poireaux"
-],
-[
-"2 branches",
-"de céleri",
-"Celerie branche"
-],
-[
-"1",
-"oignon jaune piqué de 3 clous de girofle",
-"Oignon jaune"
-],
-[
-"1",
-"bouquet garni",
+"1 c. à soupe",
+"de sucre",
 null
 ],
 [
 "",
-"Gros sel, poivre en grains, moutarde",
+"Eau ou bouillon",
 null
+],
+[
+"",
+"Sel, poivre",
+null
+],
+[
+"",
+"Persil haché",
+"Persil"
 ]
 ],
 "etapes": [
-"Mettez la viande dans un grand faitout d'eau froide, portez à ébullition et écumez soigneusement.",
-"Ajoutez l'oignon, le bouquet garni, le gros sel et le poivre, et laissez frémir 2 h 30 à couvert.",
-"Ajoutez les carottes, les navets épluchés et coupés en deux, les poireaux ficelés et le céleri, et poursuivez 1 h.",
-"Servez le bouillon en premier, puis la viande et les légumes avec de la moutarde et du gros sel."
+"Épluchez les navets et coupez-les en quartiers réguliers (laissez les petits entiers).",
+"Mettez-les dans une sauteuse en une seule couche, avec le beurre, le sucre, une pincée de sel, et de l'eau à mi-hauteur.",
+"Couvrez d'un papier sulfurisé percé au centre et laissez cuire à feu moyen 20 minutes, jusqu'à évaporation presque complète de l'eau.",
+"Faites rouler les navets dans le sirop restant quelques minutes pour les glacer et les dorer. Poivrez, parsemez de persil et servez."
 ],
-"conseil": "Choisissez des navets lourds, lisses et fermes : un navet léger est creux et fibreux. Ils se gardent 10 jours au frigo sans leurs fanes."
+"conseil": "Préférez des navets petits à moyens, à la peau fine et sans taches : ils sont plus tendres et moins piquants. Gardez-les au frais, sans les fanes."
 },
 "historique": [
 "Canard aux navets",
 "Gratin de navets",
-"Pot-au-feu"
-],
-"aRevoir": true
+"Pot-au-feu",
+"Navets glacés"
+]
 },
 "oignon-botte": {
 "nom": "Oignon botte",
@@ -4872,84 +4857,441 @@ null
 },
 "blette": {
 "nom": "Blette",
-"saison": "",
+"saison": "De juin à novembre",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Gratin de blettes"
+],
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Gratin de blettes",
+"intro": "Les côtes et les feuilles de blettes réunies sous une béchamel gratinée : un plat de famille simple, qui utilise tout le légume.",
+"prep": "25 min",
+"cuisson": "45 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"1 botte",
+"de blettes",
+"Blette"
+],
+[
+"1 gousse",
+"d'ail",
+"Ail violet"
+],
+[
+"40 g",
+"de beurre",
+null
+],
+[
+"40 g",
+"de farine",
+null
+],
+[
+"50 cl",
+"de lait",
+null
+],
+[
+"60 g",
+"de fromage râpé",
+null
+],
+[
+"",
+"Sel, poivre, muscade",
+null
+]
+],
+"etapes": [
+"Séparez les feuilles des côtes. Effilez les côtes et coupez-les en tronçons, puis faites-les cuire 10 minutes à l'eau bouillante salée ; ajoutez les feuilles hachées les 2 dernières minutes. Égouttez en pressant bien.",
+"Préparez une béchamel avec le beurre, la farine et le lait, puis salez, poivrez et muscadez.",
+"Frottez un plat avec l'ail, déposez les blettes, nappez de béchamel et parsemez de fromage.",
+"Enfournez 25 à 30 minutes à 200 °C, jusqu'à ce que le gratin soit doré."
+],
+"conseil": "Choisissez des côtes bien blanches et fermes et des feuilles d'un vert vif, sans flétrissure. Les blettes se gardent 3 à 4 jours au frigo, enveloppées dans un linge humide."
+}
 },
 "cepes": {
 "nom": "Cepes",
-"saison": "",
+"saison": "De septembre à novembre",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Cèpes à la bordelaise"
+],
+"recette": {
+"origine": "Spécialité bordelaise",
+"titre": "Cèpes à la bordelaise",
+"intro": "La grande recette de chez nous : des cèpes saisis puis dorés, relevés d'échalote, d'ail et de persil au dernier moment.",
+"prep": "15 min",
+"cuisson": "20 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"600 g",
+"de cèpes",
+"Cepes"
+],
+[
+"2",
+"échalotes",
+"Échalote"
+],
+[
+"2 gousses",
+"d'ail",
+"Ail violet"
+],
+[
+"1/2 bouquet",
+"de persil",
+"Persil"
+],
+[
+"4 c. à soupe",
+"d'huile ou de graisse de canard",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Nettoyez les cèpes sans les laver : grattez le pied et essuyez les chapeaux avec un linge humide. Séparez les pieds des chapeaux et coupez les chapeaux en tranches épaisses.",
+"Faites chauffer la moitié de la matière grasse dans une poêle et saisissez les chapeaux à feu vif 5 minutes, pour qu'ils rendent leur eau. Égouttez-les.",
+"Remettez le reste de matière grasse et faites dorer les cèpes 10 minutes à feu moyen. Ajoutez les pieds hachés finement avec les échalotes.",
+"Hors du feu, ajoutez l'ail et le persil hachés (la persillade), salez, poivrez, mélangez et servez aussitôt."
+],
+"conseil": "Un beau cèpe a un pied ferme et renflé et des tubes (sous le chapeau) blancs à crème : s'ils sont verts et mous, il est trop vieux. Gardez-les au frigo dans un papier, pas dans du plastique, et cuisinez-les sous 2 jours."
+}
 },
 "chou-romanesco": {
 "nom": "Chou romanesco",
-"saison": "",
+"saison": "D'octobre à décembre",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Chou romanesco à la polonaise"
+],
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Chou romanesco à la polonaise",
+"intro": "La garniture « à la polonaise » des choux-fleurs, appliquée au romanesco : œuf dur haché, chapelure dorée au beurre et persil.",
+"prep": "15 min",
+"cuisson": "15 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"1",
+"chou romanesco",
+"Chou romanesco"
+],
+[
+"2",
+"œufs",
+"Œufs plein air"
+],
+[
+"60 g",
+"de beurre",
+null
+],
+[
+"3 c. à soupe",
+"de chapelure",
+null
+],
+[
+"2 c. à soupe",
+"de persil haché",
+"Persil"
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Faites cuire les œufs 10 minutes à l'eau bouillante, écalez-les et hachez-les grossièrement.",
+"Détaillez le romanesco en bouquets et faites-le cuire 8 à 10 minutes à la vapeur ou à l'eau salée : il doit rester légèrement croquant.",
+"Faites mousser le beurre dans une poêle et dorez-y la chapelure 2 minutes.",
+"Dressez le romanesco, parsemez d'œuf haché et de persil, puis versez la chapelure au beurre bien chaude. Salez, poivrez et servez."
+],
+"conseil": "Choisissez un romanesco bien vert, aux pointes serrées et sans taches brunes. Il se garde 4 à 5 jours au frigo dans un sac perforé."
+}
 },
 "chou-rouge": {
 "nom": "Chou rouge",
-"saison": "",
+"saison": "D'octobre à mars",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Chou rouge braisé"
+],
+"recette": {
+"origine": "Spécialité alsacienne",
+"titre": "Chou rouge braisé",
+"intro": "Le chou rouge mijoté longuement avec oignon, vinaigre et une touche de sucre, qui accompagne traditionnellement le gibier, le porc ou les saucisses.",
+"prep": "15 min",
+"cuisson": "1 h 15",
+"pers": "6",
+"niveau": "Facile",
+"ingredients": [
+[
+"1",
+"chou rouge",
+"Chou rouge"
+],
+[
+"2",
+"oignons",
+"Oignon jaune"
+],
+[
+"40 g",
+"de beurre ou de graisse de canard",
+null
+],
+[
+"5 cl",
+"de vinaigre de vin rouge",
+null
+],
+[
+"2 c. à soupe",
+"de sucre",
+null
+],
+[
+"20 cl",
+"de bouillon",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Retirez les feuilles abîmées et le trognon du chou, puis émincez-le finement.",
+"Dans une cocotte, faites fondre les oignons émincés dans le beurre 5 minutes.",
+"Ajoutez le chou, le vinaigre, le sucre et le bouillon. Salez, poivrez et mélangez bien : le vinaigre garde au chou sa belle couleur.",
+"Couvrez et laissez mijoter 1 heure à feu doux en remuant de temps en temps. Rectifiez l'assaisonnement en fin de cuisson, le chou doit être fondant et légèrement aigre-doux."
+],
+"conseil": "Un bon chou rouge est lourd, compact et d'un violet brillant. Entier, il tient deux semaines au frais ; et ce plat est encore meilleur réchauffé le lendemain."
+}
 },
 "clementine-portugal": {
 "nom": "Clémentine portugal",
-"saison": "",
+"saison": "D'octobre à janvier",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "Une clémentine mûre a une peau orange vif, fine et brillante, qui se détache facilement. Elle doit être lourde dans la main, signe qu'elle est juteuse ; évitez les fruits mous ou à la peau qui gonfle et se décolle.",
+"conservation": "Elles se gardent une semaine à température ambiante dans une corbeille, ou deux semaines dans le bac à légumes du frigo. Ne les enfermez pas dans un sac plastique, elles moisiraient vite ; sortez-les une heure avant de les manger pour plus de goût."
 },
 "dattes": {
 "nom": "Dattes",
-"saison": "",
+"saison": "D'octobre à janvier",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "Les dattes sont cueillies à maturité : une bonne datte a une peau brillante, légèrement ridée, et une chair moelleuse et translucide. Évitez celles qui sont dures, sèches, ou qui présentent des cristaux de sucre blancs en surface.",
+"conservation": "Gardez-les dans une boîte hermétique, à l'abri de la chaleur : quelques semaines à température ambiante, et jusqu'à plusieurs mois au frigo. Sorties du frais un peu à l'avance, elles retrouvent tout leur moelleux."
 },
 "mandarine-orri": {
 "nom": "Mandarine orri",
-"saison": "",
+"saison": "De décembre à avril",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "L'Orri se reconnaît à sa peau orange profond, fine et un peu granuleuse, qui s'épluche très facilement. Elle doit être ferme et lourde dans la main ; sa chair sans pépins est mûre quand elle sent bon dès qu'on gratte la peau.",
+"conservation": "Elle se garde une semaine à température ambiante, et jusqu'à deux semaines dans le bac à légumes du frigo. Évitez de l'entasser ou de l'enfermer dans du plastique : laissez-la respirer pour qu'elle ne moisisse pas."
 },
 "orange-sanguine": {
 "nom": "Orange sanguine",
-"saison": "",
+"saison": "De décembre à avril",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "Une orange sanguine mûre est lourde, ferme et à la peau fine ; des taches ou des reflets rougeâtres sur l'écorce annoncent souvent une chair bien colorée. Sa couleur intérieure dépend des nuits froides : plus la saison avance, plus la chair est rouge.",
+"conservation": "Elle se garde une semaine à température ambiante, ou deux à trois semaines au frigo dans le bac à légumes. Pressée, buvez son jus rapidement : il perd vite ses vitamines et sa couleur."
 },
 "padron": {
 "nom": "Padron",
-"saison": "",
+"saison": "De juin à novembre",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Pimientos de Padrón"
+],
+"recette": {
+"origine": "Spécialité espagnole (Galice)",
+"titre": "Pimientos de Padrón",
+"intro": "Les petits piments verts de Galice simplement poêlés à l'huile d'olive et parsemés de gros sel : la tapa la plus simple qui soit. La plupart sont doux, un de temps en temps pique !",
+"prep": "5 min",
+"cuisson": "8 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"300 g",
+"de piments de Padrón",
+"Padron"
+],
+[
+"4 c. à soupe",
+"d'huile d'olive",
+null
+],
+[
+"",
+"Gros sel ou fleur de sel",
+null
+],
+[
+"1 gousse",
+"d'ail (facultatif)",
+"Ail violet"
+],
+[
+"",
+"Pain de campagne pour servir",
+null
+]
+],
+"etapes": [
+"Rincez les piments et séchez-les soigneusement : l'eau ferait gicler l'huile. Gardez les queues, elles servent à les attraper.",
+"Faites bien chauffer l'huile dans une grande poêle, avec la gousse d'ail écrasée si vous le souhaitez.",
+"Ajoutez les piments et faites-les sauter 5 à 8 minutes à feu vif en remuant, jusqu'à ce que la peau cloque et noircisse par endroits.",
+"Égouttez-les sur du papier, parsemez généreusement de gros sel et servez aussitôt, avec du pain."
+],
+"conseil": "Choisissez des piments d'un vert brillant, fermes et sans plis. Ils se gardent 4 à 5 jours dans le bac à légumes. Plus la saison avance, plus ils ont de chances de piquer."
+}
 },
 "rutabaga": {
 "nom": "Rutabaga",
-"saison": "",
+"saison": "D'octobre à mars",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Purée de rutabaga"
+],
+"recette": {
+"origine": "Classique de la cuisine familiale",
+"titre": "Purée de rutabaga",
+"intro": "Une purée douce et légèrement sucrée, mi-rutabaga mi-pomme de terre, montée au beurre : l'accompagnement idéal d'un rôti ou d'une saucisse.",
+"prep": "15 min",
+"cuisson": "30 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"800 g",
+"de rutabaga",
+"Rutabaga"
+],
+[
+"400 g",
+"de pommes de terre",
+"Pdt Bintje"
+],
+[
+"50 g",
+"de beurre",
+null
+],
+[
+"10 cl",
+"de lait chaud",
+null
+],
+[
+"",
+"Sel, poivre, muscade",
+null
+],
+[
+"",
+"Persil haché",
+"Persil"
+]
+],
+"etapes": [
+"Épluchez le rutabaga (la peau est épaisse) et les pommes de terre, puis coupez-les en gros cubes.",
+"Mettez-les dans une casserole d'eau froide salée, portez à ébullition et laissez cuire 25 à 30 minutes, jusqu'à ce qu'ils soient bien tendres.",
+"Égouttez soigneusement, puis écrasez au presse-purée avec le beurre en ajoutant le lait chaud petit à petit.",
+"Salez, poivrez, ajoutez une pointe de muscade, parsemez de persil et servez bien chaud."
+],
+"conseil": "Prenez un rutabaga lourd et ferme, de taille moyenne : les très gros sont souvent fibreux. Il se garde trois semaines au frais et au sec."
+}
 },
 "celeri-rave": {
 "nom": "Cèleri rave",
-"saison": "",
+"saison": "De septembre à mars",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Céleri rémoulade"
+],
+"recette": {
+"origine": "Classique de bistrot",
+"titre": "Céleri rémoulade",
+"intro": "Le grand classique des entrées de bistrot : du céleri-rave cru râpé en fins bâtonnets, lié d'une mayonnaise bien moutardée.",
+"prep": "20 min",
+"cuisson": "",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"1/2",
+"céleri-rave",
+"Cèleri rave"
+],
+[
+"1",
+"jaune d'œuf",
+"Œufs plein air"
+],
+[
+"1 c. à soupe",
+"de moutarde forte",
+null
+],
+[
+"15 cl",
+"d'huile",
+null
+],
+[
+"1 c. à soupe",
+"de vinaigre de vin",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+],
+[
+"",
+"Persil haché",
+"Persil"
+]
+],
+"etapes": [
+"Épluchez le céleri et râpez-le en julienne (gros trous de la râpe ou mandoline). Arrosez-le aussitôt du vinaigre et d'une pincée de sel pour qu'il ne noircisse pas.",
+"Préparez la rémoulade : fouettez le jaune d'œuf avec la moutarde, puis versez l'huile en filet en fouettant jusqu'à obtenir une mayonnaise ferme. Salez, poivrez.",
+"Mélangez le céleri avec la sauce et laissez reposer au moins 30 minutes au frais : le céleri s'attendrit.",
+"Parsemez de persil haché et servez en entrée."
+],
+"conseil": "Choisissez un céleri-rave lourd pour sa taille : s'il sonne creux, il est spongieux à l'intérieur. Entamé, filmez la coupe, il se garde une semaine au frigo."
+}
 }
 },
 "paniers": [
