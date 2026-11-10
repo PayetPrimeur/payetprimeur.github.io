@@ -5294,5 +5294,14 @@ null
 }
 }
 },
-"paniers": []
+"paniers": [
+{
+"id": "panier",
+"nom": "Panier de la semaine",
+"contenu": [],
+"recettes": [],
+"recettesPour": [],
+"semaine": ""
+}
+]
 }
