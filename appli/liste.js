@@ -55,14 +55,55 @@
         : `<p class="li-alldone">Tout est fait dans cette catégorie.</p>`;
       h += `</section>`;
     });
+    h += libres(k);
     h += `</div>`;
     const y = root.scrollTop; root.innerHTML = h; root.scrollTop = y;
+  }
+
+  // jours couverts par cette liste : du lendemain de la sauvegarde jusqu'au soir de la prochaine sauvegarde
+  // (sauvegardes les mardis, jeudis, vendredis et samedis soir)
+  function joursCouverts(k) {
+    const out = [], d = parseDay(k);
+    for (let i = 0; i < 7; i++) {
+      d.setDate(d.getDate() + 1); out.push(isoDay(d));
+      if ([2, 4, 5, 6].includes(d.getDay())) break;
+    }
+    return out;
+  }
+  function libres(k) {
+    const jours = joursCouverts(k);
+    const list = Object.entries(data.reservations || {}).filter(([, r]) => r && r.type === "Retrait libre" && jours.includes(r.date))
+      .sort((a, b) => a[1].date.localeCompare(b[1].date) || String(a[1].boutique).localeCompare(String(b[1].boutique)) || String(a[1].client).localeCompare(String(b[1].client), "fr"));
+    const lab = d => { const t = parseDay(d).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "short" }); return t.charAt(0).toUpperCase() + t.slice(1); };
+    const per = jours.length > 1 ? `du ${lab(jours[0]).toLowerCase()} au ${lab(jours[jours.length - 1]).toLowerCase()}` : lab(jours[0]).toLowerCase();
+    const nd = list.filter(([id]) => st.coches["cmd-" + id]).length;
+    let h = `<section class="li-cat"><h2><span>COMMANDES LIBRES</span><small>${nd} / ${list.length}</small></h2>
+      <p class="li-sub">Retraits libres ${esc(per)}, jusqu'à la prochaine sauvegarde.</p>`;
+    if (!list.length) return h + `<p class="li-alldone">Aucune commande libre sur ces jours.</p></section>`;
+    let jour = "";
+    list.forEach(([id, r]) => {
+      if (st.hideDone && st.coches["cmd-" + id]) return;
+      if (r.date !== jour) { jour = r.date; h += `<div class="li-day">${esc(lab(jour))}</div>`; }
+      const ok = !!st.coches["cmd-" + id], nb = qtyOf(r);
+      h += `<button type="button" class="li-row li-cmd${ok ? " ok" : ""}" data-lc="${esc(id)}" aria-pressed="${ok}">
+        <span class="li-box" aria-hidden="true">${ok ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>' : ""}</span>
+        <span class="li-who"><b>${nb > 1 ? nb + " × " : ""}${esc(r.client || "Client inconnu")}</b>
+          <small><i class="li-shop ${esc(r.boutique)}"></i>${esc(SITES[r.boutique] || "")}${r.tel ? " · " + esc(r.tel) : ""}</small>
+          ${r.desc ? `<span class="li-desc">${esc(r.desc)}</span>` : ""}</span></button>`;
+    });
+    return h + `</section>`;
   }
 
   function onClick(e) {
     const t = e.target.closest("button, input"); if (!t) return;
     if (t.id === "liste-close") return close();
     if (t.id === "li-hide") { st.hideDone = t.checked; return render(); }
+    if (t.dataset.lc && st.key) {
+      const k = "cmd-" + enc(t.dataset.lc), v = !st.coches[k];
+      st.coches[k] = v; render();
+      db.ref(`coches/${st.key}/${k}`).set(v ? true : null);
+      return;
+    }
     if (t.dataset.lp && st.key) {
       const k = enc(t.dataset.lp), v = !st.coches[k];
       st.coches[k] = v; render(); // affichage immédiat, la base suit

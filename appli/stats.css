@@ -90,3 +90,13 @@ button.st-hrow:hover { background: var(--bg); }
 .li-row.ok .li-box { background: var(--selve); border-color: var(--selve); color: #fff; }
 .li-row.ok b { text-decoration: line-through; text-decoration-thickness: 2px; }
 .li-alldone { margin: 0; padding: 14px; font-size: 14px; font-weight: 700; color: var(--selve-ink); }
+.li-sub { margin: 0; padding: 8px 14px; font-size: 12.5px; color: var(--muted); border-bottom: 1.5px solid var(--ink); }
+.li-day { padding: 8px 14px 6px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; background: var(--soft); }
+.li-row.li-cmd { grid-template-columns: 30px minmax(0, 1fr); padding: 10px 12px; align-items: start; }
+.li-who { display: grid; gap: 3px; text-align: left !important; min-width: 0; }
+.li-who b { font-size: 15px; }
+.li-who small { font-size: 13px; color: var(--muted); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.li-shop { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.li-shop.st-selve { background: var(--selve); } .li-shop.villenave { background: var(--ville); }
+.li-desc { font-size: 14px !important; color: var(--ink); white-space: pre-wrap; overflow-wrap: anywhere; text-align: left !important; }
+.li-row.ok .li-who b { text-decoration: line-through; text-decoration-thickness: 2px; }
