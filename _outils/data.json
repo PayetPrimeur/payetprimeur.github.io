@@ -135,6 +135,13 @@
 "actif": true
 },
 {
+"n": "Cèleri rave",
+"c": "Légume",
+"id": "celeri-rave",
+"page": "celeri-rave",
+"actif": true
+},
+{
 "n": "Celerie branche",
 "c": "Légume",
 "id": "celeri",
@@ -937,13 +944,6 @@
 "c": "Légume",
 "id": "topinambour",
 "page": "topinambour",
-"actif": true
-},
-{
-"n": "Cèleri rave",
-"c": "Légume",
-"id": "celeri-rave",
-"page": "celeri-rave",
 "actif": true
 }
 ],
@@ -5294,14 +5294,5 @@ null
 }
 }
 },
-"paniers": [
-{
-"id": "panier",
-"nom": "Panier de la semaine",
-"contenu": [],
-"recettes": [],
-"recettesPour": [],
-"semaine": ""
-}
-]
+"paniers": []
 }
