@@ -49,6 +49,17 @@
       ".write": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'"
     },
 
+    "liste": {
+      ".read": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'",
+      ".write": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'",
+      "actuelle": {
+        ".validate": "newData.hasChildren(['id', 'jour', 'le'])",
+        "id": { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "jour": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)" },
+        "le": { ".validate": "newData.isString() && newData.val().length <= 40" }
+      }
+    },
+
     "coches": {
       ".read": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'",
       ".write": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'",
