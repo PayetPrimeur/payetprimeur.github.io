@@ -10,7 +10,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 let role = null; // "admin" ou "equipe", lu dans acces/<uid> (modifiable seulement depuis la console Firebase)
-const APP_V = "202611101303";
+const APP_V = "202611101306";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -317,9 +317,47 @@ function renderAdmin() {
     + (bk.length > 3 ? `<button type="button" class="link" id="more-backups">${showAllBackups ? "Afficher moins" : `Voir les ${bk.length - 3} sauvegardes précédentes`}</button>` : "")
     : `<p class="empty" style="padding:6px 0">La première sauvegarde sera faite ce soir à minuit (mardi, jeudi, vendredi et samedi).</p>`;
   $("new-cat").innerHTML = CATS.map(c => `<button type="button" data-nc="${esc(c)}" aria-pressed="${newCat === c}">${esc(c === "Panier de la semaine" ? "Panier" : c)}</button>`).join("");
-  $("cat-count").textContent = `${data.products.length} produits`;
-  $("catalogue").innerHTML = data.products.map(p => `<div class="cat-row"><b>${esc(p.n)}</b><small>${esc(p.c)}</small>
+  const nbEq = data.products.filter(p => p.u && Number(p.u.q) > 0).length;
+  $("cat-count").textContent = `${data.products.length} produits · ${nbEq} avec équivalence`;
+  $("catalogue").innerHTML = `<p class="hint" style="margin:0 0 6px">Équivalence : ce que représente « 1 » dans les stocks (ex. 1 = 5 kg), pour des statistiques en kilos ou en pièces. Les stocks se notent comme avant.</p>` +
+    data.products.map(p => `<div class="cat-row"><b>${esc(p.n)}<small>${esc(p.c)}</small></b>
+      <button type="button" class="eq-btn${p.u && Number(p.u.q) > 0 ? " set" : ""}" data-eq="${esc(p.n)}" aria-label="Équivalence de ${esc(p.n)}">${esc(eqLabel(p.u))}</button>
       <button type="button" data-del="${esc(p.n)}" aria-label="Supprimer ${esc(p.n)}">${icon.trash}</button></div>`).join("");
+}
+const UNITS = [["kg", "kg", "kg"], ["pc", "pièce", "pièces"], ["botte", "botte", "bottes"], ["barq", "barquette", "barquettes"]];
+const fmtQ = q => String(Math.round(Number(q) * 1000) / 1000).replace(".", ",");
+function eqLabel(u) {
+  if (!u || !(Number(u.q) > 0)) return "+ Équivalence";
+  const U = UNITS.find(x => x[0] === u.t) || UNITS[0];
+  return `1 = ${fmtQ(u.q)} ${Number(u.q) > 1 && U[0] !== "kg" ? U[2] : U[1]}`;
+}
+function eqSheet(n) {
+  const p = data.products.find(x => x.n === n); if (!p) return;
+  const st = { t: (p.u && p.u.t) || "kg" };
+  const sh = openSheet(`Équivalence : ${n}`, "");
+  const draw = () => {
+    const cur = sh.body.querySelector("#eq-q") ? sh.body.querySelector("#eq-q").value : (p.u && Number(p.u.q) > 0 ? fmtQ(p.u.q) : "");
+    sh.body.innerHTML = `<p class="hint">Quand l'équipe note « 1 » pour ce produit dans les stocks, cela représente :</p>
+      <div class="eq-line"><input id="eq-q" type="text" inputmode="decimal" placeholder="ex. 5" value="${esc(cur)}" aria-label="Quantité">
+        <div class="pick" role="group" aria-label="Unité">${UNITS.map(u => `<button type="button" data-eu="${u[0]}" aria-pressed="${st.t === u[0]}">${u[2]}</button>`).join("")}</div></div>
+      <p class="hint">Exemples : 1 caisse de courgettes = 5 kg ; 1 filet d'ail = 0,25 kg ; 1 lot de salades = 12 pièces. Seules les statistiques utilisent cette valeur.</p>
+      <p class="err" id="eq-err" role="alert"></p>
+      <button type="button" class="btn main wide" id="eq-ok">Enregistrer</button>
+      ${p.u ? `<button type="button" class="btn wide" id="eq-del">Retirer l'équivalence</button>` : ""}`;
+    sh.body.querySelectorAll("[data-eu]").forEach(b => b.onclick = () => { st.t = b.dataset.eu; draw(); });
+    $("eq-ok").onclick = () => {
+      const q = Number($("eq-q").value.replace(",", ".").replace(/\s/g, ""));
+      if (!(q > 0) || q > 10000) { $("eq-err").textContent = "Saisissez un nombre plus grand que 0 (ex. 5 ou 0,25)."; return; }
+      save({ q: Math.round(q * 1000) / 1000, t: st.t });
+    };
+    if ($("eq-del")) $("eq-del").onclick = () => save(null);
+  };
+  const save = u => {
+    const list = data.products.map(x => x.n === n ? Object.assign({}, x, { u: u || null }) : x).map(x => { if (!x.u) { const y = Object.assign({}, x); delete y.u; return y; } return x; });
+    db.ref("products").set(list).then(() => { sh.close(); toast(u ? "Équivalence enregistrée" : "Équivalence retirée"); }).catch(() => $("eq-err").textContent = "Échec de l'enregistrement.");
+  };
+  draw();
+  setTimeout(() => { const i = $("eq-q"); if (i && !i.value) i.focus(); }, 50);
 }
 function addProduct() {
   const n = $("new-p-name").value.trim().replace(/\s+/g, " ");
@@ -442,6 +480,7 @@ document.addEventListener("click", e => {
   else if (ds.done) { const r = data.reservations[ds.done]; db.ref("reservations/" + ds.done).update({ done: !(r && r.done) }); }
   else if (ds.edit) orderSheet(ds.edit);
   else if (ds.nc) { newCat = ds.nc; renderAdmin(); }
+  else if (ds.eq) eqSheet(ds.eq);
   else if (ds.del) delProd(ds.del);
   else if (ds.brest) restoreBackup(ds.brest);
   else if (ds.bpdf) generatePDF(data.sauvegardes[ds.bpdf].stocks, `Sauvegarde du ${backupLabel(ds.bpdf).toLowerCase()}`, `Stocks_necessaires_${ds.bpdf}.pdf`);

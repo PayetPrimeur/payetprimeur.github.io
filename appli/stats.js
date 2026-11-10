@@ -5,7 +5,8 @@
   const PERIODES = [["28", "4 sem."], ["91", "3 mois"], ["365", "1 an"], ["tout", "Tout"]];
   const BOUT = [["tout", "Les deux"], ["st-selve", "St Selve"], ["villenave", "Villenave"]];
   const JOURS = ["Mardi", "Jeudi", "Vendredi", "Samedi"];
-  const st = { open: false, pas: "soir", per: "91", shop: "tout", sort: "total", cat: "Tout", prod: null, showAll: false };
+  const UNITES = [["stock", "Stocks"], ["kg", "Kilos"], ["pc", "Pièces"]];
+  const st = { open: false, unit: "stock", pas: "soir", per: "91", shop: "tout", sort: "total", cat: "Tout", prod: null, showAll: false };
 
   const nf = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 });
   const n0 = v => nf.format(Math.round(v * 10) / 10);
@@ -13,6 +14,11 @@
   const longDate = k => { const t = parseDay(k).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" }); return t.charAt(0).toUpperCase() + t.slice(1); };
   const shops = () => st.shop === "tout" ? Object.keys(SITES) : [st.shop];
   const val = (s, site) => { const v = Number(s && s[site]); return isFinite(v) && v > 0 ? v : 0; };
+  // équivalences saisies dans le catalogue : 1 dans les stocks = q kg / q pièces…
+  const eqOf = (() => { let m = null, src = null; return n => { if (src !== data.products) { src = data.products; m = {}; data.products.forEach(p => { if (p.u && Number(p.u.q) > 0) m[p.n] = p.u; }); } return m[n] || null; }; })();
+  // multiplicateur selon l'unité choisie, ou null si le produit n'a pas d'équivalence dans cette unité
+  const fac = n => { if (st.unit === "stock") return 1; const u = eqOf(n); return u && u.t === st.unit ? Number(u.q) : null; };
+  const uSuf = () => st.unit === "kg" ? " kg" : st.unit === "pc" ? " pièces" : "";
   const catOf = (() => { let m = null, src = null; return n => { if (src !== data.products) { src = data.products; m = {}; data.products.forEach(p => m[p.n] = p.c); } return m[n] || "Autre"; }; })();
 
   function since() {
@@ -30,16 +36,19 @@
     const series = bk.map(([k, b]) => {
       const per = {}; let nbProd = 0;
       sh.forEach(site => per[site] = 0);
-      Object.values(b.stocks).forEach(s => { let any = false; sh.forEach(site => { const v = val(s, site); per[site] += v; if (v) any = true; }); if (any) nbProd++; });
+      Object.entries(b.stocks).forEach(([n, s]) => { const f = fac(n); let any = false; sh.forEach(site => { const v = val(s, site); if (f !== null) per[site] += v * f; if (v) any = true; }); if (any) nbProd++; });
       return { k, per, total: sh.reduce((a, site) => a + per[site], 0), nbProd };
     });
     const prods = {};
+    const sans = new Set();
     bk.forEach(([k, b]) => Object.entries(b.stocks).forEach(([n, s]) => {
-      const v = sh.reduce((a, site) => a + val(s, site), 0);
+      const f = fac(n), raw = sh.reduce((a, site) => a + val(s, site), 0);
+      if (f === null) { if (raw) sans.add(n); return; }
+      const v = raw * f;
       const p = prods[n] || (prods[n] = { n, c: catOf(n), total: 0, fois: 0, max: 0, last: 0 });
       p.total += v; if (v) p.fois++; if (v > p.max) p.max = v;
     }));
-    if (bk.length) { const lastS = bk[bk.length - 1][1].stocks; Object.values(prods).forEach(p => p.last = sh.reduce((a, site) => a + val(lastS[p.n], site), 0)); }
+    if (bk.length) { const lastS = bk[bk.length - 1][1].stocks; Object.values(prods).forEach(p => p.last = sh.reduce((a, site) => a + val(lastS[p.n], site), 0) * (fac(p.n) || 0)); }
     const cats = {};
     Object.values(prods).forEach(p => { cats[p.c] = (cats[p.c] || 0) + p.total; });
     const jours = JOURS.map(j => ({ j, tot: 0, n: 0 }));
@@ -57,9 +66,14 @@
     const paniers = byMonth(["Panier", "Panier Garni"]), plateaux = byMonth(["Plateau"]);
     const types = {};
     ords.forEach(r => { const t = typeLabel(r); types[t] = (types[t] || 0) + qtyOf(r); });
-    return { bk, sh, series, prods: Object.values(prods), cats, jours, ords, paniers, plateaux, types };
+    return { bk, sh, sans, series, prods: Object.values(prods), cats, jours, ords, paniers, plateaux, types };
   }
 
+  function couverture(C) {
+    const avec = C.prods.filter(p => p.total > 0).length, sans = C.sans.size;
+    const u = st.unit === "kg" ? "en kilos" : "en pièces";
+    return `Calculé sur ${avec} produit${avec > 1 ? "s" : ""} qui ont une équivalence ${u}.` + (sans ? ` ${sans} produit${sans > 1 ? "s" : ""} à prévoir n'en ont pas et ne sont pas comptés : ajoutez leur équivalence dans l'admin, Catalogue.` : "");
+  }
   /* ---------- graphiques (HTML + SVG, sans librairie) ---------- */
   function niceMax(v) { if (v <= 0) return 1; const p = Math.pow(10, Math.floor(Math.log10(v))); const f = v / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; }
 
@@ -114,7 +128,7 @@
     let h = `<header class="top st-top"><div class="wrap top-row">
         <div><div class="eyebrow">Admin</div><h1>Statistiques</h1></div>
         <button type="button" class="icon-btn" id="stats-close" aria-label="Fermer les statistiques"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6 6 18"/></svg></button>
-      </div><div class="wrap st-filters">${seg("per", PERIODES)}${seg("shop", BOUT)}</div></header>
+      </div><div class="wrap st-filters">${seg("per", PERIODES)}${seg("shop", BOUT)}${seg("unit", UNITES)}</div></header>
       <div class="content st-body">`;
 
     if (typeof backupsOk !== "undefined" && !backupsOk) {
@@ -125,26 +139,26 @@
       const last = series[series.length - 1];
       h += `<p class="st-note st-range">${bk.length} sauvegarde${bk.length > 1 ? "s" : ""}, du ${shortDate(bk[0][0])} au ${shortDate(last.k)}</p><div class="st-kpis">
         <div class="st-kpi"><small>Produits à prévoir</small><b>${n0(avg(series.map(s => s.nbProd)))}</b><span>en moyenne par soir</span></div>
-        <div class="st-kpi"><small>Quantités à prévoir</small><b>${n0(avg(series.map(s => s.total)))}</b><span>en moyenne par soir</span></div>
+        <div class="st-kpi"><small>${st.unit === "kg" ? "Kilos à prévoir" : st.unit === "pc" ? "Pièces à prévoir" : "Quantités à prévoir"}</small><b>${n0(avg(series.map(s => s.total)))}${uSuf() ? `<em>${uSuf()}</em>` : ""}</b><span>en moyenne par soir</span></div>
         <div class="st-kpi"><small>Paniers commandés</small><b>${C.paniers.nb}</b><span>sur la période</span></div>
         <div class="st-kpi"><small>Plateaux commandés</small><b>${C.plateaux.nb}</b><span>sur la période</span></div>
       </div>`;
 
-      h += `<section class="card"><div class="card-head"><h2>Quantités à prévoir</h2>${legend(sh)}</div>${pasCtl()}
-        ${vbars("st-evo", parPas(series.map(s => ({ k: s.k, per: s.per })), sh), sh, "")}
-        <p class="st-note">Somme de toutes les quantités notées dans l'appli à minuit (pièces, kilos et colis confondus) : utile pour voir les tendances, pas comme un volume exact.</p></section>`;
+      h += `<section class="card"><div class="card-head"><h2>${st.unit === "kg" ? "Kilos à prévoir" : st.unit === "pc" ? "Pièces à prévoir" : "Quantités à prévoir"}</h2>${legend(sh)}</div>${pasCtl()}
+        ${vbars("st-evo", parPas(series.map(s => ({ k: s.k, per: s.per })), sh), sh, uSuf().trim())}
+        <p class="st-note">${st.unit === "stock" ? "Somme des quantités notées dans l'appli à minuit, telles quelles (pièces, kilos et colis confondus). Choisissez « Kilos » ou « Pièces » en haut pour des volumes réels." : couverture(C)}</p></section>`;
 
       const jr = C.jours.filter(j => j.n);
       h += `<section class="card"><div class="card-head"><h2>Selon le soir</h2><span>moyenne des quantités à prévoir</span></div>
-        ${hbars(jr.map(j => ({ label: j.j + " soir", sub: `${j.n} sauvegarde${j.n > 1 ? "s" : ""}`, v: j.tot / j.n })), "", false)}</section>`;
+        ${hbars(jr.map(j => ({ label: j.j + " soir", sub: `${j.n} sauvegarde${j.n > 1 ? "s" : ""}`, v: j.tot / j.n })), uSuf().trim(), false)}</section>`;
 
       const cr = Object.entries(C.cats).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);
       h += `<section class="card"><div class="card-head"><h2>Par catégorie</h2><span>total sur la période</span></div>
-        ${hbars(cr.map(([c, v]) => ({ label: CAT_LABEL[c] || c, v })), "", false)}</section>`;
+        ${hbars(cr.map(([c, v]) => ({ label: CAT_LABEL[c] || c, v })), uSuf().trim(), false)}</section>`;
 
       const top = C.prods.filter(p => p.total > 0).sort((a, b) => b.total - a.total).slice(0, 10);
       h += `<section class="card"><div class="card-head"><h2>Les 10 produits les plus à prévoir</h2><span>touchez pour le détail</span></div>
-        ${hbars(top.map(p => ({ key: p.n, label: p.n, sub: `à prévoir ${p.fois} soir${p.fois > 1 ? "s" : ""} sur ${bk.length}`, v: p.total })), "", true)}</section>`;
+        ${hbars(top.map(p => ({ key: p.n, label: p.n, sub: `à prévoir ${p.fois} soir${p.fois > 1 ? "s" : ""} sur ${bk.length}`, v: p.total })), uSuf().trim(), true)}</section>`;
     }
 
     // commandes : paniers et plateaux séparés
@@ -167,12 +181,13 @@
         <label class="field">Produit<select id="st-prod">${opts}</select></label>
         <div class="st-kpis small">
           <div class="st-kpi"><small>À prévoir</small><b>${P.fois}<em>/${bk.length}</em></b><span>soirs</span></div>
-          <div class="st-kpi"><small>Moyenne</small><b>${n0(P.fois ? P.total / P.fois : 0)}</b><span>quand il est à prévoir</span></div>
-          <div class="st-kpi"><small>Maximum</small><b>${n0(P.max)}</b><span>en un soir</span></div>
-          <div class="st-kpi"><small>Dernier soir</small><b>${n0(P.last)}</b><span>${shortDate(bk[bk.length - 1][0])}</span></div>
+          <div class="st-kpi"><small>Moyenne</small><b>${n0(P.fois ? P.total / P.fois : 0)}${uSuf() ? `<em>${uSuf()}</em>` : ""}</b><span>quand il est à prévoir</span></div>
+          <div class="st-kpi"><small>Maximum</small><b>${n0(P.max)}${uSuf() ? `<em>${uSuf()}</em>` : ""}</b><span>en un soir</span></div>
+          <div class="st-kpi"><small>Dernier soir</small><b>${n0(P.last)}${uSuf() ? `<em>${uSuf()}</em>` : ""}</b><span>${shortDate(bk[bk.length - 1][0])}</span></div>
         </div>
         <div class="card-head"><h3 class="st-h3">Historique</h3>${legend(sh)}</div>${pasCtl()}
-        ${vbars("st-prodchart", parPas(bk.map(([k, b]) => { const per = {}; sh.forEach(s => per[s] = val(b.stocks[st.prod], s)); return { k, per }; }), sh), sh, "")}
+        ${fac(st.prod) === null ? `<p class="st-note">Pas d'équivalence en ${st.unit === "kg" ? "kilos" : "pièces"} pour ce produit : ajoutez-la dans l'admin, Catalogue.</p>` :
+          vbars("st-prodchart", parPas(bk.map(([k, b]) => { const per = {}; sh.forEach(s => per[s] = val(b.stocks[st.prod], s) * fac(st.prod)); return { k, per }; }), sh), sh, uSuf().trim())}
       </section>`;
 
       // tableau complet
@@ -185,7 +200,7 @@
       const th = (k, l) => `<th scope="col"><button type="button" data-ssort="${k}" aria-pressed="${st.sort === k}">${l}${st.sort === k ? " ↓" : ""}</button></th>`;
       h += `<section class="card"><div class="card-head"><h2>Tous les produits</h2><span>${rows.length} produit${rows.length > 1 ? "s" : ""}</span></div>
         <div class="chips st-chips">${catsPresent.map(c => `<button type="button" class="chip ${c === "Tout" ? "c-tout" : "c-" + c.replace(/ /g, "-")}" style="${c === "Autre" ? "background:var(--muted)" : ""}" data-scat="${esc(c)}" aria-pressed="${st.cat === c}">${esc(c === "Tout" ? "Tout" : CAT_LABEL[c] || c)}</button>`).join("")}</div>
-        <div class="st-table-wrap"><table class="st-table"><thead><tr>${th("nom", "Produit")}${th("fois", "Soirs")}${th("moy", "Moy.")}${th("max", "Max")}${th("total", "Total")}</tr></thead>
+        <div class="st-table-wrap"><table class="st-table"><thead><tr>${th("nom", "Produit")}${th("fois", "Soirs")}${th("moy", "Moy.")}${th("max", "Max")}${th("total", "Total" + (uSuf() ? " (" + uSuf().trim() + ")" : ""))}</tr></thead>
         <tbody>${shown.map(p => `<tr data-sprod="${esc(p.n)}"><th scope="row">${esc(p.n)}</th><td>${p.fois}</td><td>${n0(p.fois ? p.total / p.fois : 0)}</td><td>${n0(p.max)}</td><td><b>${n0(p.total)}</b></td></tr>`).join("")}</tbody></table></div>
         ${rows.length > 25 ? `<button type="button" class="link" id="st-more">${st.showAll ? "Afficher moins" : `Afficher les ${rows.length - 25} autres`}</button>` : ""}
         <p class="st-note">Soirs : nombre de sauvegardes où le produit était à prévoir. Moy. : quantité moyenne ces soirs-là. Touchez une ligne pour sa vue précise.</p></section>`;
@@ -201,6 +216,7 @@
     if (t.id === "stats-close") return close();
     if (ds.sper) { st.per = ds.sper; return render(); }
     if (ds.sshop) { st.shop = ds.sshop; return render(); }
+    if (ds.sunit) { st.unit = ds.sunit; return render(); }
     if (ds.spas) { st.pas = ds.spas; return render(); }
     if (ds.ssort) { st.sort = ds.ssort; return render(); }
     if (ds.scat) { st.cat = ds.scat; st.showAll = false; return render(); }

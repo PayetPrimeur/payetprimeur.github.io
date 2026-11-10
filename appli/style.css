@@ -129,7 +129,8 @@ h1 { margin: 2px 0 0; font-size: 26px; font-weight: 800; letter-spacing: -.01em;
 .pick button { height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); font-size: 14px; font-weight: 700; }
 .pick button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; font-weight: 800; }
 .cat-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-top: 1px solid var(--soft); }
-.cat-row b { flex: 1; font-size: 15px; font-weight: 700; min-width: 0; overflow-wrap: anywhere; }
+.cat-row b { flex: 1; font-size: 15px; font-weight: 700; min-width: 0; overflow-wrap: anywhere; display: grid; }
+.cat-row b small { font-size: 12px; font-weight: 600; color: var(--muted); }
 .cat-row small { font-size: 12px; font-weight: 600; color: var(--muted); }
 .cat-row button { width: 44px; height: 44px; border: 0; border-radius: 12px; background: transparent; color: var(--danger-color); display: flex; align-items: center; justify-content: center; }
 
@@ -172,3 +173,7 @@ body.locked { padding-bottom: 0; }
 .acct-email { margin: 0; font-weight: 700; overflow-wrap: anywhere; }
 .admin-only { display: none; }
 body.is-admin .admin-only { display: grid; gap: 10px; }
+.cat-row .eq-btn { width: auto; height: 34px; padding: 0 10px; border: 1.5px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 12.5px; font-weight: 700; white-space: nowrap; background: transparent; }
+.cat-row .eq-btn.set { border-style: solid; border-color: var(--selve); color: var(--selve-ink); background: #eef3e4; }
+.eq-line { display: grid; gap: 10px; }
+.eq-line input { height: 52px; font-size: 22px; font-weight: 800; text-align: center; }
