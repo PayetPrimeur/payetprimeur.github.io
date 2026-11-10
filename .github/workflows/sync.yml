@@ -28,9 +28,14 @@ jobs:
           # sans le secret, on lit comme avant (base ouverte) ; avec, on passe par le compte de service
           if [ -n "${SA:-}" ]; then
             pip install -q google-auth requests
-            T=$(python3 _outils/jeton_firebase.py)
-            echo "::add-mask::$T"
-            echo "FB_AUTH=?access_token=$T" >> "$GITHUB_ENV"
+            # en cas de clé illisible, on continue sans (tant que la base est ouverte) et on le signale
+            if T=$(python3 _outils/jeton_firebase.py); then
+              echo "::add-mask::$T"
+              echo "FB_AUTH=?access_token=$T" >> "$GITHUB_ENV"
+            else
+              echo "::warning::Clé FIREBASE_SERVICE_ACCOUNT illisible : lecture sans jeton."
+              echo "FB_AUTH=" >> "$GITHUB_ENV"
+            fi
           else
             echo "FB_AUTH=" >> "$GITHUB_ENV"
           fi
