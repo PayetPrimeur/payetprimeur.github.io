@@ -3,7 +3,7 @@ const firebaseConfig = { databaseURL: "https://stock-romain-default-rtdb.europe-
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const MON_CODE = "Tomate47*";
-const APP_V = "202611100157";
+const APP_V = "202611100202";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -282,15 +282,63 @@ function restoreBackup(k) {
     db.ref("stocks").set(data.sauvegardes[k].stocks); toast("Sauvegarde restaurée");
   });
 }
+// logo préchargé pour le PDF (le PDF doit se créer sans attendre, sinon le partage sur iPhone est bloqué)
+let LOGO_PDF = null;
+(function () { const im = new Image(); im.onload = () => { try { const c = document.createElement("canvas"); c.width = im.naturalWidth; c.height = im.naturalHeight; c.getContext("2d").drawImage(im, 0, 0); LOGO_PDF = { url: c.toDataURL("image/png"), r: im.naturalWidth / im.naturalHeight }; } catch (e) {} }; im.src = "logo-payet.png"; })();
+
 function generatePDF(stocks, titre, fichier) {
   stocks = stocks || data.stocks;
-  const { jsPDF } = window.jspdf; const doc = new jsPDF();
-  doc.setFontSize(18); doc.setTextColor(182, 17, 92); doc.text(titre || "STOCKS NÉCESSAIRES PAYET PRIMEUR", 14, 20);
+  const { jsPDF } = window.jspdf; const doc = new jsPDF({ unit: "mm", format: "a4" });
+  const M = 14, W = 210 - 2 * M, now = new Date();
+  // en-tête
+  let x = M;
+  if (LOGO_PDF) { const h = 10, w = h * LOGO_PDF.r; doc.addImage(LOGO_PDF.url, "PNG", M, 12, w, h); x = M + w + 4; }
+  const jour = now.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  const droite1 = jour.charAt(0).toUpperCase() + jour.slice(1), droite2 = `Payet Primeur · édité à ${now.getHours()} h ${String(now.getMinutes()).padStart(2, "0")}`;
+  doc.setFont("helvetica", "bold"); doc.setFontSize(11); const wR = Math.max(doc.getTextWidth(droite1), (doc.setFont("helvetica", "normal"), doc.setFontSize(9.5), doc.getTextWidth(droite2)));
+  doc.setTextColor(17); doc.setFont("helvetica", "bold"); doc.setFontSize(11); doc.text(droite1, 210 - M, 16.5, { align: "right" });
+  doc.setFont("helvetica", "normal"); doc.setFontSize(9.5); doc.setTextColor(60); doc.text(droite2, 210 - M, 21.5, { align: "right" });
+  // titre fixe ; pour une sauvegarde, sa date en sous-titre
+  doc.setFont("helvetica", "bold"); doc.setTextColor(17); let fs = 18;
+  while (fs > 12 && (doc.setFontSize(fs), doc.getTextWidth("STOCKS NÉCESSAIRES")) > 210 - M - wR - 6 - x) fs--;
+  doc.text("STOCKS NÉCESSAIRES", x, titre ? 17.5 : 19.5);
+  if (titre) { doc.setFont("helvetica", "normal"); doc.setFontSize(9.5); doc.setTextColor(60); doc.text(titre, x, 22.5); }
+  doc.setDrawColor(17); doc.setLineWidth(0.8); doc.line(M, 25, 210 - M, 25);
+
+  // lignes par catégorie
   const cat = Object.fromEntries(data.products.map(p => [p.n, p.c]));
-  const rows = Object.entries(stocks).filter(([, s]) => s && ((s["st-selve"] || 0) > 0 || (s["villenave"] || 0) > 0))
-    .map(([n, s]) => [cat[n] || "", n, s["st-selve"] || 0, s["villenave"] || 0, (s["st-selve"] || 0) + (s["villenave"] || 0), ""])
-    .sort((a, b) => a[0] === b[0] ? a[1].localeCompare(b[1], "fr") : a[0].localeCompare(b[0], "fr"));
-  doc.autoTable({ head: [["Cat.", "Produit", "St Selve", "Vill.", "Total", "Check"]], body: rows, startY: 30, headStyles: { fillColor: [182, 17, 92] } });
+  const q = (s, k) => { const v = Number(s && s[k]); return isFinite(v) && v > 0 ? v : 0; };
+  const groups = {};
+  Object.entries(stocks).forEach(([n, s]) => { const a = q(s, "st-selve"), b = q(s, "villenave"); if (a || b) (groups[cat[n] || "Autre"] = groups[cat[n] || "Autre"] || []).push([n, a, b]); });
+  const order = CATS.concat(Object.keys(groups).filter(c => !CATS.includes(c)));
+  const nb = Object.values(groups).reduce((x, g) => x + g.length, 0);
+  doc.setFont("helvetica", "normal"); doc.setFontSize(9.5); doc.setTextColor(60);
+  doc.text(nb ? `${nb} produit${nb > 1 ? "s" : ""} à prévoir · « – » = rien à prévoir dans cette boutique` : "Rien à prévoir.", M, 31);
+  let y = 35;
+  order.filter(c => groups[c]).forEach(c => {
+    const rows = groups[c].sort((a, b) => a[0].localeCompare(b[0], "fr"));
+    const label = (CAT_LABEL[c] || c).toUpperCase();
+    doc.autoTable({
+      startY: y, margin: { left: M, right: M, top: 16, bottom: 18 }, showHead: "everyPage", theme: "plain",
+      head: [
+        [{ content: label, colSpan: 3, styles: { fillColor: [17, 17, 17], textColor: 255, fontStyle: "bold", fontSize: 12, halign: "left", cellPadding: { top: 2.2, bottom: 2.2, left: 3, right: 2 } } },
+         { content: `${rows.length} produit${rows.length > 1 ? "s" : ""}`, colSpan: 2, styles: { fillColor: [17, 17, 17], textColor: 255, fontSize: 8.5, halign: "right", valign: "middle", cellPadding: { right: 3 } } }],
+        ["PRODUIT", "ST SELVE", "VILLENAVE", "TOTAL", "FAIT"]
+      ],
+      body: rows.map(([n, a, b]) => [n, a || "–", b || "–", a + b, ""]),
+      headStyles: { fillColor: [255, 255, 255], fontSize: 7.5, textColor: [70, 70, 70], fontStyle: "bold", halign: "center", lineWidth: { bottom: 0.4 }, lineColor: [17, 17, 17] },
+      bodyStyles: { fillColor: [255, 255, 255], fontSize: 11, textColor: [17, 17, 17], halign: "center", valign: "middle", cellPadding: { top: 2.1, bottom: 2.1, left: 2, right: 2 }, lineWidth: { bottom: 0.2 }, lineColor: [190, 190, 190] },
+      alternateRowStyles: { fillColor: [241, 241, 241] },
+      columnStyles: { 0: { halign: "left", fontStyle: "bold", cellWidth: W * 0.46 }, 1: { cellWidth: W * 0.135 }, 2: { cellWidth: W * 0.135 }, 3: { cellWidth: W * 0.135, fontStyle: "bold", fontSize: 12.5 }, 4: { cellWidth: W * 0.135 } },
+      didParseCell: d => { if (d.section === "head" && d.row.index === 1 && d.column.index === 0) d.cell.styles.halign = "left"; },
+      willDrawCell: d => { if (d.section === "head" && d.row.index === 0 && d.column.index === 0 && d.table.pageNumber > 1) d.cell.text = [label + " (SUITE)"]; },
+      didDrawCell: d => { if (d.section === "body" && d.column.index === 4) { const s = 3.6; doc.setDrawColor(17); doc.setLineWidth(0.35); doc.rect(d.cell.x + (d.cell.width - s) / 2, d.cell.y + (d.cell.height - s) / 2, s, s); } }
+    });
+    y = doc.lastAutoTable.finalY + 6;
+  });
+  // numéros de page
+  const pages = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= pages; i++) { doc.setPage(i); doc.setFont("helvetica", "normal"); doc.setFontSize(8.5); doc.setTextColor(90); doc.text(`Page ${i} / ${pages}`, 105, 297 - 9, { align: "center" }); }
   saveFile(doc.output("blob"), fichier || "Stocks_necessaires.pdf");
 }
 // téléchargement direct du fichier ; sur iPhone en appli écran d'accueil, où le téléchargement n'existe pas,
@@ -322,7 +370,7 @@ document.addEventListener("click", e => {
   else if (ds.nc) { newCat = ds.nc; renderAdmin(); }
   else if (ds.del) delProd(ds.del);
   else if (ds.brest) restoreBackup(ds.brest);
-  else if (ds.bpdf) generatePDF(data.sauvegardes[ds.bpdf].stocks, `STOCKS NÉCESSAIRES DU ${backupLabel(ds.bpdf).toUpperCase()}`, `Stocks_necessaires_${ds.bpdf}.pdf`);
+  else if (ds.bpdf) generatePDF(data.sauvegardes[ds.bpdf].stocks, `Sauvegarde du ${backupLabel(ds.bpdf).toLowerCase()}`, `Stocks_necessaires_${ds.bpdf}.pdf`);
   else if (t.id === "more-backups") { showAllBackups = !showAllBackups; renderAdmin(); }
 });
 $("prev-week").onclick = () => { monthStart.setMonth(monthStart.getMonth() - 1); renderAgenda(); };
