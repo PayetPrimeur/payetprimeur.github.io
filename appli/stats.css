@@ -32,7 +32,13 @@
 .st-bar .st-seg:first-child { border-radius: 4px 4px 0 0; }
 .st-bar:hover .st-seg, .st-bar.on .st-seg { filter: brightness(.82); }
 .st-bar:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
-.st-axis { display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; color: var(--muted); padding-left: 28px; }
+.st-axis { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px; font-size: 11px; font-weight: 600; color: var(--muted); }
+.st-axw { visibility: hidden; height: 0; overflow: hidden; }
+.st-axl { display: flex; gap: 2px; height: 14px; }
+.st-axl span { flex: 1 1 0; min-width: 3px; max-width: 28px; position: relative; }
+.st-axl em { position: absolute; top: 0; font-style: normal; white-space: nowrap; }
+.st-axl em.l { left: 0; } .st-axl em.r { right: 0; }
+.st-axl span:only-child em.r, .st-axl span:only-child em.l { left: 0; right: auto; }
 
 .st-hbars { display: grid; gap: 4px; }
 .st-hrow { display: grid; grid-template-columns: minmax(0, 42%) minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 6px 0; border: 0; background: none; text-align: left; font: inherit; color: var(--ink); width: 100%; }
@@ -56,3 +62,6 @@ button.st-hrow:hover { background: var(--bg); }
 .st-table tbody tr { cursor: pointer; }
 .st-table tbody tr:hover { background: var(--bg); }
 .field select { height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); padding: 0 12px; font: inherit; font-weight: 700; color: var(--ink); width: 100%; }
+.st-pas { max-width: 260px; }
+.st-pas button { height: 32px; font-size: 13px; }
+.st-range { margin: 0 2px; font-weight: 600; }

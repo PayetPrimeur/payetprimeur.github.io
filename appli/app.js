@@ -3,7 +3,7 @@ const firebaseConfig = { databaseURL: "https://stock-romain-default-rtdb.europe-
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const MON_CODE = "Tomate47*";
-const APP_V = "202611100146";
+const APP_V = "202611100147";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
