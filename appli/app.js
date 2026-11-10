@@ -12,7 +12,7 @@ const PRIX = ["10€", "20€"];
 
 let data = { products: [], stocks: {}, reservations: {}, paniers: {}, sauvegardes: {} };
 let view = "stock", curSite = "st-selve", curCat = "Tout", query = "";
-let selDate = isoDay(new Date()), weekStart = mondayOf(new Date());
+let selDate = isoDay(new Date()), monthStart = monthOf(new Date());
 let showAllBackups = false, newCat = "Fruit";
 
 /* ---------- outils ---------- */
@@ -21,6 +21,7 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": 
 const catClass = c => c.replace(/ /g, "-");
 function isoDay(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; }
 function parseDay(s) { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); }
+function monthOf(d) { return new Date(d.getFullYear(), d.getMonth(), 1); }
 function mondayOf(d) { const x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x; }
 const stockOf = (n, site) => (data.stocks[n] && data.stocks[n][site]) || 0;
 const icon = {
@@ -101,17 +102,17 @@ function updQty(n, v) {
 const typeLabel = r => (TYPES.find(t => t[0] === r.type) || [r.type, r.type])[1] + (r.prix ? " " + r.prix.replace("€", " €") : "");
 function ordersOf(day) { return Object.entries(data.reservations).filter(([, r]) => r && r.date === day); }
 function renderAgenda() {
-  const end = new Date(weekStart); end.setDate(end.getDate() + 6);
-  $("week-label").textContent = weekStart.getMonth() === end.getMonth()
-    ? weekStart.toLocaleDateString("fr-FR", { month: "long", year: "numeric" })
-    : `${weekStart.toLocaleDateString("fr-FR", { month: "short" })} – ${end.toLocaleDateString("fr-FR", { month: "short", year: "numeric" })}`;
+  const y = monthStart.getFullYear(), m = monthStart.getMonth();
+  const lab = monthStart.toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
+  $("week-label").textContent = lab.charAt(0).toUpperCase() + lab.slice(1);
   const today = isoDay(new Date());
-  let w = "";
-  for (let i = 0; i < 7; i++) {
-    const d = new Date(weekStart); d.setDate(d.getDate() + i);
-    const key = isoDay(d), nb = ordersOf(key).length;
+  const lead = (monthStart.getDay() + 6) % 7, nbDays = new Date(y, m + 1, 0).getDate();
+  let w = ["L", "M", "M", "J", "V", "S", "D"].map(l => `<span class="dow" aria-hidden="true">${l}</span>`).join("");
+  for (let i = 0; i < lead; i++) w += `<span></span>`;
+  for (let j = 1; j <= nbDays; j++) {
+    const d = new Date(y, m, j), key = isoDay(d), nb = ordersOf(key).length;
     w += `<button type="button" class="day ${key === today ? "today" : ""}" data-day="${key}" aria-pressed="${key === selDate}" aria-label="${d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}, ${nb} commande${nb > 1 ? "s" : ""}">
-      <span class="l">${d.toLocaleDateString("fr-FR", { weekday: "short" }).replace(".", "")}</span><span class="n">${d.getDate()}</span><span class="c">${nb ? nb + " cmd" : ""}</span></button>`;
+      <span class="n">${j}</span><span class="c">${nb || ""}</span></button>`;
   }
   $("week").innerHTML = w;
   const res = ordersOf(selDate).sort((a, b) => (a[1].done === b[1].done ? 0 : a[1].done ? 1 : -1));
@@ -167,7 +168,7 @@ function orderSheet(id) {
       if (!r.date) { $("f-err").textContent = "Choisissez la date de retrait."; return; }
       const rec = { date: r.date, boutique: st.boutique, type: st.type, prix: st.type === "Panier" ? st.prix : "", client: r.client.trim(), tel: r.tel.trim(), desc: r.desc.trim(), done: !!r.done };
       if (id) db.ref("reservations/" + id).set(rec); else db.ref("reservations").push(rec);
-      selDate = r.date; weekStart = mondayOf(parseDay(r.date));
+      selDate = r.date; monthStart = monthOf(parseDay(r.date));
       sheet.close(); toast(id ? "Commande modifiée" : "Commande enregistrée");
     };
     if ($("f-del")) $("f-del").onclick = () => { keep(); st.confirmDel = true; draw(); };
@@ -275,9 +276,9 @@ document.addEventListener("click", e => {
   else if (ds.bpdf) generatePDF(data.sauvegardes[ds.bpdf].stocks, `STOCKS NÉCESSAIRES DU ${backupLabel(ds.bpdf).toUpperCase()}`, `Stocks_necessaires_${ds.bpdf}.pdf`);
   else if (t.id === "more-backups") { showAllBackups = !showAllBackups; renderAdmin(); }
 });
-$("prev-week").onclick = () => { weekStart.setDate(weekStart.getDate() - 7); renderAgenda(); };
-$("next-week").onclick = () => { weekStart.setDate(weekStart.getDate() + 7); renderAgenda(); };
-$("today-btn").onclick = () => { selDate = isoDay(new Date()); weekStart = mondayOf(new Date()); renderAgenda(); };
+$("prev-week").onclick = () => { monthStart.setMonth(monthStart.getMonth() - 1); renderAgenda(); };
+$("next-week").onclick = () => { monthStart.setMonth(monthStart.getMonth() + 1); renderAgenda(); };
+$("today-btn").onclick = () => { selDate = isoDay(new Date()); monthStart = monthOf(new Date()); renderAgenda(); };
 $("fab").onclick = () => orderSheet(null);
 $("pdf-btn").onclick = () => generatePDF();
 $("pdf-btn-2").onclick = () => generatePDF();

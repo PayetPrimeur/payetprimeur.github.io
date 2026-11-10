@@ -62,13 +62,15 @@ h1 { margin: 2px 0 0; font-size: 26px; font-weight: 800; letter-spacing: -.01em;
 .empty { text-align: center; color: var(--muted); padding: 28px 10px; font-weight: 600; }
 
 /* agenda */
-.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
-.day { height: 64px; border-radius: 14px; border: 1px solid var(--line); background: var(--card); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0; }
-.day .l { font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: .8; }
-.day .n { font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; }
-.day .c { font-size: 11px; font-weight: 700; height: 13px; line-height: 13px; opacity: .85; }
-.day.today { border-color: var(--primary); }
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.dow { text-align: center; font-size: 11px; font-weight: 800; color: var(--muted); padding-bottom: 2px; }
+.day { height: 42px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: 0; color: var(--ink); }
+.day .n { font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 18px; }
+.day .c { font-size: 10px; font-weight: 800; height: 12px; line-height: 12px; color: var(--primary); }
+.day.today { border-color: var(--primary); border-width: 2px; }
 .day[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.day[aria-pressed="true"] .c { color: #fff; }
+#view-agenda .top { position: static; }
 .day-title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
 .day-title h2 { margin: 0; font-size: 18px; font-weight: 800; }
 .day-title span { font-size: 13px; font-weight: 600; color: var(--muted); }
@@ -147,3 +149,4 @@ h1 { margin: 2px 0 0; font-size: 26px; font-weight: 800; letter-spacing: -.01em;
 @keyframes up { from { transform: translateY(30px); opacity: .5; } to { transform: none; opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .sheet { animation: none; } }
 @media (min-width: 700px) { .sheet-bg { align-items: center; } .sheet { border-radius: 24px; } }
+#orders { padding-bottom: 80px; }
