@@ -61,7 +61,7 @@ button.st-hrow:hover { background: var(--bg); }
 .st-table thead button[aria-pressed="true"] { color: var(--ink); }
 .st-table tbody tr { cursor: pointer; }
 .st-table tbody tr:hover { background: var(--bg); }
-.field select { height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); padding: 0 12px; font: inherit; font-weight: 700; color: var(--ink); width: 100%; }
+.field select { height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); padding: 0 12px; font: inherit; font-size: 16px; font-weight: 700; color: var(--ink); width: 100%; }
 .st-pas { max-width: 260px; }
 .st-pas button { height: 32px; font-size: 13px; }
 .st-range { margin: 0 2px; font-weight: 600; }

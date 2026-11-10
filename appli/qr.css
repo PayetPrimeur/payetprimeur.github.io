@@ -46,7 +46,7 @@ a.qr-btn { text-decoration: none; display: inline-flex; align-items: center; }
 
 .qr-form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: 8px; align-items: end; grid-column: 1 / -1; }
 .qr-form label { display: grid; gap: 4px; font-size: .68rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; min-width: 0; }
-.qr-form input, .qr-form select { padding: 10px; font-size: .95rem; text-transform: none; }
+.qr-form input, .qr-form select { padding: 10px; font-size: 16px; text-transform: none; }
 .qr-basket h3 { margin: 0; font-size: 1.05rem; }
 .qr-basket > .qr-state { justify-self: start; }
 .qr-basket .qty { width: 100%; padding: 8px 10px; font-size: .9rem; }
