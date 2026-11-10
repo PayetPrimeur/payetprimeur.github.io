@@ -71,4 +71,10 @@ jobs:
           python3 -c "import json; print('\n'.join(k for k in (json.load(open('liste.json')) or {}) if k < '$LIMITE'))" | while read -r K; do
             if [ -n "$K" ]; then curl -sSf -X DELETE "$BASE/sauvegardes/stocks/$K.json$FB_AUTH" > /dev/null; echo "Ancienne sauvegarde effacée : $K"; fi
           done
+          # coches de la liste à cocher : on garde 30 jours
+          LIMC=$(TZ=Europe/Paris date -d "30 days ago" +%Y-%m-%d)
+          curl -sSf "$BASE/coches.json?shallow=true${FB_AUTH:+&${FB_AUTH#?}}" -o coches.json || echo "{}" > coches.json
+          python3 -c "import json; print('\n'.join(k for k in (json.load(open('coches.json')) or {}) if k < '$LIMC'))" | while read -r K; do
+            if [ -n "$K" ]; then curl -sSf -X DELETE "$BASE/coches/$K.json$FB_AUTH" > /dev/null; fi
+          done
           echo "Sauvegarde du $DATE enregistrée."

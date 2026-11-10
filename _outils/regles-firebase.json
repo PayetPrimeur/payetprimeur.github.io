@@ -49,6 +49,12 @@
       ".write": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'"
     },
 
+    "coches": {
+      ".read": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'",
+      ".write": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'",
+      "$sauvegarde": { "$produit": { ".validate": "newData.isBoolean()" } }
+    },
+
     "sauvegardes": {
       ".read": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'",
       ".write": false
