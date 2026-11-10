@@ -46,6 +46,6 @@ jobs:
           LIMITE=$(TZ=Europe/Paris date -d "90 days ago" +%Y-%m-%d)
           curl -sSf "$BASE/sauvegardes/stocks.json?shallow=true" -o liste.json
           python3 -c "import json; print('\n'.join(k for k in (json.load(open('liste.json')) or {}) if k < '$LIMITE'))" | while read -r K; do
-            [ -n "$K" ] && curl -sSf -X DELETE "$BASE/sauvegardes/stocks/$K.json" > /dev/null && echo "Ancienne sauvegarde effacée : $K"
+            if [ -n "$K" ]; then curl -sSf -X DELETE "$BASE/sauvegardes/stocks/$K.json" > /dev/null; echo "Ancienne sauvegarde effacée : $K"; fi
           done
           echo "Sauvegarde du $DATE enregistrée."
