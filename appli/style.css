@@ -32,12 +32,10 @@ h1 { margin: 2px 0 0; font-size: 26px; font-weight: 800; letter-spacing: -.01em;
 .seg { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; background: var(--soft); border-radius: 14px; }
 .seg button { height: 40px; border: 0; border-radius: 11px; background: transparent; font-size: 15px; font-weight: 700; color: var(--muted); }
 .seg button[aria-pressed="true"] { background: var(--card); box-shadow: 0 1px 3px rgba(36,32,28,.12); font-weight: 800; color: var(--ink); }
-.search { display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 14px; border-radius: 14px; background: var(--bg); border: 1px solid var(--line); color: var(--muted); }
-.search input { flex: 1; min-width: 0; border: 0; background: transparent; font-size: 15px; color: var(--ink); outline: none; }
-.chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 5px; margin: -5px; }
+.chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
 .chips::-webkit-scrollbar { display: none; }
 .chip { flex: none; height: 34px; padding: 0 14px; border-radius: 999px; border: 0; font-size: 14px; font-weight: 800; color: #fff; }
-.chip[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--card), 0 0 0 4px var(--ink); }
+.chip[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--ink), inset 0 0 0 4px #fff; }
 .chip.c-tout { background: var(--ink); }
 .chip.c-Fruit { background: var(--c-fruit); color: var(--ink); }
 .chip.c-Légume { background: var(--c-legume); }

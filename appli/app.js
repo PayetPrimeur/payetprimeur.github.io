@@ -275,7 +275,6 @@ document.addEventListener("click", e => {
   else if (ds.bpdf) generatePDF(data.sauvegardes[ds.bpdf].stocks, `STOCKS NÉCESSAIRES DU ${backupLabel(ds.bpdf).toUpperCase()}`, `Stocks_necessaires_${ds.bpdf}.pdf`);
   else if (t.id === "more-backups") { showAllBackups = !showAllBackups; renderAdmin(); }
 });
-$("search").addEventListener("input", e => { query = e.target.value; renderStock(); });
 $("prev-week").onclick = () => { weekStart.setDate(weekStart.getDate() - 7); renderAgenda(); };
 $("next-week").onclick = () => { weekStart.setDate(weekStart.getDate() + 7); renderAgenda(); };
 $("today-btn").onclick = () => { selDate = isoDay(new Date()); weekStart = mondayOf(new Date()); renderAgenda(); };
