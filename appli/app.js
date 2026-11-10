@@ -77,11 +77,11 @@ function renderStock() {
     if (curCat !== "Tout" && curCat !== c) continue;
     const items = data.products.filter(p => p.c === c && (!q || p.n.toLowerCase().includes(q)));
     if (!items.length) continue;
-    const inStock = items.filter(p => stockOf(p.n, curSite) > 0).length;
-    html += `<div class="sec-head"><h2 class="t-${catClass(c)}">${esc(CAT_LABEL[c] || c)}</h2><span>${inStock} en stock sur ${items.length}</span></div>`;
+    const besoin = items.filter(p => stockOf(p.n, curSite) > 0).length;
+    html += `<div class="sec-head"><h2 class="t-${catClass(c)}">${esc(CAT_LABEL[c] || c)}</h2><span>${besoin} à prévoir sur ${items.length}</span></div>`;
     html += items.map(p => {
       const qn = stockOf(p.n, curSite);
-      return `<div class="item ${qn ? "" : "zero"}"><div class="item-name"><b>${esc(p.n)}</b><small>${qn ? "En stock" : "Épuisé"}</small></div>
+      return `<div class="item ${qn ? "" : "zero"}"><div class="item-name"><b>${esc(p.n)}</b><small>${qn ? "À prévoir" : "Rien à prévoir"}</small></div>
         <div class="stepper"><button type="button" data-step="-1" data-n="${esc(p.n)}" aria-label="Retirer un ${esc(p.n)}">${icon.minus}</button>
         <output aria-live="polite">${qn}</output>
         <button type="button" class="plus" data-step="1" data-n="${esc(p.n)}" aria-label="Ajouter un ${esc(p.n)}">${icon.plus}</button></div></div>`;
@@ -236,26 +236,26 @@ function delProd(n) {
   });
 }
 function resetStocks() {
-  confirmSheet("Remettre tout à zéro ?", "Toutes les quantités des deux boutiques passeront à 0. La dernière sauvegarde de minuit permet de revenir en arrière.", "Tout remettre à zéro", () => {
+  confirmSheet("Remettre tout à zéro ?", "Toutes les quantités nécessaires des deux boutiques passeront à 0. La dernière sauvegarde de minuit permet de revenir en arrière.", "Tout remettre à zéro", () => {
     const r = {}; data.products.forEach(p => { r[p.n] = { "st-selve": 0, "villenave": 0 }; });
     db.ref("stocks").set(r); toast("Quantités remises à zéro");
   });
 }
 function restoreBackup(k) {
-  confirmSheet("Restaurer cette sauvegarde ?", `Les quantités actuelles des deux boutiques seront remplacées par celles du ${backupLabel(k).toLowerCase()}.`, "Restaurer", () => {
+  confirmSheet("Restaurer cette sauvegarde ?", `Les stocks nécessaires des deux boutiques seront remplacés par ceux du ${backupLabel(k).toLowerCase()}.`, "Restaurer", () => {
     db.ref("stocks").set(data.sauvegardes[k].stocks); toast("Sauvegarde restaurée");
   });
 }
 function generatePDF(stocks, titre, fichier) {
   stocks = stocks || data.stocks;
   const { jsPDF } = window.jspdf; const doc = new jsPDF();
-  doc.setFontSize(18); doc.setTextColor(182, 17, 92); doc.text(titre || "INVENTAIRE PAYET PRIMEUR", 14, 20);
+  doc.setFontSize(18); doc.setTextColor(182, 17, 92); doc.text(titre || "STOCKS NÉCESSAIRES PAYET PRIMEUR", 14, 20);
   const cat = Object.fromEntries(data.products.map(p => [p.n, p.c]));
   const rows = Object.entries(stocks).filter(([, s]) => s && ((s["st-selve"] || 0) > 0 || (s["villenave"] || 0) > 0))
     .map(([n, s]) => [cat[n] || "", n, s["st-selve"] || 0, s["villenave"] || 0, (s["st-selve"] || 0) + (s["villenave"] || 0), ""])
     .sort((a, b) => a[0] === b[0] ? a[1].localeCompare(b[1], "fr") : a[0].localeCompare(b[0], "fr"));
   doc.autoTable({ head: [["Cat.", "Produit", "St Selve", "Vill.", "Total", "Check"]], body: rows, startY: 30, headStyles: { fillColor: [182, 17, 92] } });
-  doc.save(fichier || "Inventaire_Stock.pdf");
+  doc.save(fichier || "Stocks_necessaires.pdf");
 }
 
 /* ---------- événements ---------- */
@@ -272,7 +272,7 @@ document.addEventListener("click", e => {
   else if (ds.nc) { newCat = ds.nc; renderAdmin(); }
   else if (ds.del) delProd(ds.del);
   else if (ds.brest) restoreBackup(ds.brest);
-  else if (ds.bpdf) generatePDF(data.sauvegardes[ds.bpdf].stocks, `SAUVEGARDE DU ${backupLabel(ds.bpdf).toUpperCase()}`, `Sauvegarde_stock_${ds.bpdf}.pdf`);
+  else if (ds.bpdf) generatePDF(data.sauvegardes[ds.bpdf].stocks, `STOCKS NÉCESSAIRES DU ${backupLabel(ds.bpdf).toUpperCase()}`, `Stocks_necessaires_${ds.bpdf}.pdf`);
   else if (t.id === "more-backups") { showAllBackups = !showAllBackups; renderAdmin(); }
 });
 $("search").addEventListener("input", e => { query = e.target.value; renderStock(); });
