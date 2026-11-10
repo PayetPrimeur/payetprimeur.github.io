@@ -10,7 +10,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 let role = null; // "admin" ou "equipe", lu dans acces/<uid> (modifiable seulement depuis la console Firebase)
-const APP_V = "202611100249";
+const APP_V = "202611100254";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -71,6 +71,7 @@ function startData() { NODES.forEach(k => db.ref(k).on("value", snap => {
   renderAll();
   if (window.QR) QR.onData();
   if (window.STATS) STATS.onData();
+  if (window.LISTE) LISTE.onData();
 })); }
 let backupsOk = false, backupsWatched = false;
 function watchBackups() {
@@ -79,6 +80,7 @@ function watchBackups() {
     data.sauvegardes = snap.val() || {}; backupsOk = true;
     if (view === "admin") renderAdmin();
     if (window.STATS) STATS.onData();
+    if (window.LISTE) LISTE.onData();
   });
 }
 
@@ -455,6 +457,7 @@ $("reset-btn").onclick = resetStocks;
 $("qr-btn").onclick = () => role === "admin" && window.openQrPanel && openQrPanel();
 $("pw-btn").onclick = changePassword;
 $("logout-btn").onclick = logout;
+$("liste-btn").onclick = () => { if (role !== "admin") return; watchBackups(); window.LISTE && LISTE.open(); };
 $("stats-btn").onclick = () => { if (role !== "admin") return; watchBackups(); window.STATS && STATS.open(); };
 $("add-btn").onclick = addProduct;
 $("new-p-name").onkeydown = e => { if (e.key === "Enter") addProduct(); };

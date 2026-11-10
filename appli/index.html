@@ -13,9 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&display=swap">
-    <link rel="stylesheet" href="style.css?v=202611100249">
-    <link rel="stylesheet" href="qr.css?v=202611100249">
-    <link rel="stylesheet" href="stats.css?v=202611100249">
+    <link rel="stylesheet" href="style.css?v=202611100254">
+    <link rel="stylesheet" href="qr.css?v=202611100254">
+    <link rel="stylesheet" href="stats.css?v=202611100254">
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
@@ -93,6 +93,11 @@
                 <span class="t"><b>QR codes &amp; recettes</b><small>Produits en vente, paniers, étiquettes</small></span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
             </button>
+            <button type="button" class="tile-main" id="liste-btn" style="background:var(--selve)">
+                <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="m8 11 2.5 2.5L16 8"/><path d="M8 17h8"/></svg></span>
+                <span class="t"><b>Stock à cocher</b><small>La liste de la dernière sauvegarde de minuit</small></span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+            </button>
             <button type="button" class="tile-main alt" id="stats-btn">
                 <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg></span>
                 <span class="t"><b>Statistiques</b><small>Stocks nécessaires et commandes</small></span>
@@ -139,9 +144,10 @@
     </button>
 </div></nav>
 
-<script src="app.js?v=202611100249"></script>
-<script src="qr-liens.js?v=202611100249"></script>
-<script src="qr.js?v=202611100249"></script>
-<script src="stats.js?v=202611100249"></script>
+<script src="app.js?v=202611100254"></script>
+<script src="qr-liens.js?v=202611100254"></script>
+<script src="qr.js?v=202611100254"></script>
+<script src="stats.js?v=202611100254"></script>
+<script src="liste.js?v=202611100254"></script>
 </body>
 </html>
