@@ -177,3 +177,4 @@ body.is-admin .admin-only { display: grid; gap: 10px; }
 .cat-row .eq-btn.set { border-style: solid; border-color: var(--selve); color: var(--selve-ink); background: #eef3e4; }
 .eq-line { display: grid; gap: 10px; }
 .eq-line input { height: 52px; font-size: 22px; font-weight: 800; text-align: center; }
+.cat-row .eq-btn.part { border-style: solid; border-color: #e0a100; color: #7a5200; background: #fdf3dc; }

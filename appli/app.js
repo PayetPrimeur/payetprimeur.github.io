@@ -10,7 +10,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 let role = null; // "admin" ou "equipe", lu dans acces/<uid> (modifiable seulement depuis la console Firebase)
-const APP_V = "202611101330";
+const APP_V = "202611101333";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -317,11 +317,11 @@ function renderAdmin() {
     + (bk.length > 3 ? `<button type="button" class="link" id="more-backups">${showAllBackups ? "Afficher moins" : `Voir les ${bk.length - 3} sauvegardes précédentes`}</button>` : "")
     : `<p class="empty" style="padding:6px 0">La première sauvegarde sera faite ce soir à minuit (mardi, jeudi, vendredi et samedi).</p>`;
   $("new-cat").innerHTML = CATS.map(c => `<button type="button" data-nc="${esc(c)}" aria-pressed="${newCat === c}">${esc(c === "Panier de la semaine" ? "Panier" : c)}</button>`).join("");
-  const nbEq = data.products.filter(p => p.u && Number(p.u.q) > 0).length;
-  $("cat-count").textContent = `${data.products.length} produits · ${nbEq} avec équivalence`;
-  $("catalogue").innerHTML = `<p class="hint" style="margin:0 0 6px">Équivalence : ce que représente « 1 » dans les stocks (ex. 1 = 5 kg), pour des statistiques en kilos ou en pièces. Les stocks se notent comme avant.</p>` +
+  const nbEq = data.products.filter(p => eqComplet(p.u)).length;
+  $("cat-count").textContent = `${data.products.length} produits · ${nbEq} en kilos`;
+  $("catalogue").innerHTML = `<p class="hint" style="margin:0 0 6px">Équivalence : ce que représente « 1 » dans les stocks (ex. 1 = 5 kg, ou 1 = 1 pièce de 1 kg), pour des statistiques en kilos. Les stocks se notent comme avant.</p>` +
     data.products.map(p => `<div class="cat-row"><b>${esc(p.n)}<small>${esc(p.c)}</small></b>
-      <button type="button" class="eq-btn${p.u && Number(p.u.q) > 0 ? " set" : ""}" data-eq="${esc(p.n)}" aria-label="Équivalence de ${esc(p.n)}">${esc(eqLabel(p.u))}</button>
+      <button type="button" class="eq-btn${eqComplet(p.u) ? " set" : p.u ? " part" : ""}" data-eq="${esc(p.n)}" aria-label="Équivalence de ${esc(p.n)}">${esc(eqLabel(p.u))}</button>
       <button type="button" data-del="${esc(p.n)}" aria-label="Supprimer ${esc(p.n)}">${icon.trash}</button></div>`).join("");
 }
 const UNITS = [["kg", "kg", "kg"], ["pc", "pièce", "pièces"], ["botte", "botte", "bottes"], ["barq", "barquette", "barquettes"]];
@@ -329,18 +329,25 @@ const fmtQ = q => String(Math.round(Number(q) * 1000) / 1000).replace(".", ",");
 function eqLabel(u) {
   if (!u || !(Number(u.q) > 0)) return "+ Équivalence";
   const U = UNITS.find(x => x[0] === u.t) || UNITS[0];
-  return `1 = ${fmtQ(u.q)} ${Number(u.q) > 1 && U[0] !== "kg" ? U[2] : U[1]}`;
+  if (U[0] === "kg") return `1 = ${fmtQ(u.q)} kg`;
+  const base = `1 = ${fmtQ(u.q)} ${Number(u.q) > 1 ? U[2] : U[1]}`;
+  return Number(u.kg) > 0 ? `${base} · ${fmtQ(Number(u.q) * Number(u.kg))} kg` : `${base} · poids ?`;
 }
+const eqComplet = u => u && Number(u.q) > 0 && (u.t === "kg" || Number(u.kg) > 0);
 function eqSheet(n) {
   const p = data.products.find(x => x.n === n); if (!p) return;
   const st = { t: (p.u && p.u.t) || "kg" };
+  const U1 = () => (UNITS.find(x => x[0] === st.t) || UNITS[0])[1];
   const sh = openSheet(`Équivalence : ${n}`, "");
   const draw = () => {
     const cur = sh.body.querySelector("#eq-q") ? sh.body.querySelector("#eq-q").value : (p.u && Number(p.u.q) > 0 ? fmtQ(p.u.q) : "");
+    const curKg = sh.body.querySelector("#eq-kg") ? sh.body.querySelector("#eq-kg").value : (p.u && Number(p.u.kg) > 0 ? fmtQ(p.u.kg) : "");
     sh.body.innerHTML = `<p class="hint">Quand l'équipe note « 1 » pour ce produit dans les stocks, cela représente :</p>
       <div class="eq-line"><input id="eq-q" type="text" inputmode="decimal" placeholder="ex. 5" value="${esc(cur)}" aria-label="Quantité">
         <div class="pick" role="group" aria-label="Unité">${UNITS.map(u => `<button type="button" data-eu="${u[0]}" aria-pressed="${st.t === u[0]}">${u[2]}</button>`).join("")}</div></div>
-      <p class="hint">Exemples : 1 caisse de courgettes = 5 kg ; 1 filet d'ail = 0,25 kg ; 1 lot de salades = 12 pièces. Seules les statistiques utilisent cette valeur.</p>
+      ${st.t !== "kg" ? `<label class="field">Poids d'une ${esc(U1())}, en kg<input id="eq-kg" type="text" inputmode="decimal" placeholder="ex. 1 ou 0,3" value="${esc(curKg)}"></label>
+        <p class="hint">Pour tout ramener en kilos dans les statistiques. Ex. : 1 potimarron ≈ 1 kg, 1 botte de radis ≈ 0,3 kg.</p>` : ""}
+      <p class="hint">Exemples : 1 caisse de courgettes = 5 kg ; 1 filet d'ail = 0,25 kg ; 1 = 1 pièce de 1 kg pour un potimarron. Seules les statistiques utilisent ces valeurs.</p>
       <p class="err" id="eq-err" role="alert"></p>
       <button type="button" class="btn main wide" id="eq-ok">Enregistrer</button>
       ${p.u ? `<button type="button" class="btn wide" id="eq-del">Retirer l'équivalence</button>` : ""}`;
@@ -348,7 +355,13 @@ function eqSheet(n) {
     $("eq-ok").onclick = () => {
       const q = Number($("eq-q").value.replace(",", ".").replace(/\s/g, ""));
       if (!(q > 0) || q > 10000) { $("eq-err").textContent = "Saisissez un nombre plus grand que 0 (ex. 5 ou 0,25)."; return; }
-      save({ q: Math.round(q * 1000) / 1000, t: st.t });
+      const u = { q: Math.round(q * 1000) / 1000, t: st.t };
+      if (st.t !== "kg") {
+        const kg = Number($("eq-kg").value.replace(",", ".").replace(/\s/g, ""));
+        if (!(kg > 0) || kg > 1000) { $("eq-err").textContent = `Indiquez le poids d'une ${U1()} en kg (ex. 1 ou 0,3).`; return; }
+        u.kg = Math.round(kg * 1000) / 1000;
+      }
+      save(u);
     };
     if ($("eq-del")) $("eq-del").onclick = () => save(null);
   };
