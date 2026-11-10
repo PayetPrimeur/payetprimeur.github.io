@@ -1,7 +1,7 @@
 # Sauvegarde des stocks de l'appli Payet Primeur Pro, à minuit (heure de Paris)
 # les mardis, jeudis, vendredis et samedis soir. La sauvegarde est rangée dans
 # la base Firebase (sauvegardes/stocks/<date>) : l'appli l'affiche dans l'admin
-# (PDF et restauration). Les sauvegardes de plus de 90 jours sont effacées.
+# (PDF, restauration et statistiques). Les sauvegardes de plus de 400 jours sont effacées.
 name: Sauvegarde des stocks
 
 on:
@@ -42,8 +42,8 @@ jobs:
           print(f"{len(stocks)} produits sauvegardés pour le {sys.argv[1]}")
           EOF
           curl -sSf --retry 3 -X PUT -H "Content-Type: application/json" --data @sauvegarde.json "$BASE/sauvegardes/stocks/$DATE.json" > /dev/null
-          # ménage : on garde 90 jours
-          LIMITE=$(TZ=Europe/Paris date -d "90 days ago" +%Y-%m-%d)
+          # ménage : on garde 400 jours (environ 13 mois, pour les statistiques sur un an)
+          LIMITE=$(TZ=Europe/Paris date -d "400 days ago" +%Y-%m-%d)
           curl -sSf "$BASE/sauvegardes/stocks.json?shallow=true" -o liste.json
           python3 -c "import json; print('\n'.join(k for k in (json.load(open('liste.json')) or {}) if k < '$LIMITE'))" | while read -r K; do
             if [ -n "$K" ]; then curl -sSf -X DELETE "$BASE/sauvegardes/stocks/$K.json" > /dev/null; echo "Ancienne sauvegarde effacée : $K"; fi

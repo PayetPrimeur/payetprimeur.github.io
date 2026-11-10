@@ -38,18 +38,29 @@ function toast(t) {
 }
 
 /* ---------- données ---------- */
-db.ref("/").on("value", snap => {
-  const d = snap.val() || {};
-  data = {
-    products: (Array.isArray(d.products) ? d.products : Object.values(d.products || {})).filter(p => p && p.n),
-    stocks: d.stocks || {}, reservations: d.reservations || {}, paniers: d.paniers || {},
-    sauvegardes: (d.sauvegardes && d.sauvegardes.stocks) || {}
-  };
-  data.products.sort((a, b) => a.n.localeCompare(b.n, "fr"));
-  window.QR_DATA_OK = true;
+// chaque partie de la base est écoutée séparément ; les sauvegardes ne sont chargées qu'à l'ouverture de l'admin
+const NODES = ["products", "stocks", "reservations", "paniers"], loaded = {};
+NODES.forEach(k => db.ref(k).on("value", snap => {
+  const v = snap.val();
+  if (k === "products") {
+    data.products = (Array.isArray(v) ? v : Object.values(v || {})).filter(p => p && p.n);
+    data.products.sort((a, b) => a.n.localeCompare(b.n, "fr"));
+  } else data[k] = v || {};
+  loaded[k] = true;
+  if (NODES.every(n => loaded[n])) window.QR_DATA_OK = true; else return;
   renderAll();
   if (window.QR) QR.onData();
-});
+  if (window.STATS) STATS.onData();
+}));
+let backupsOk = false, backupsWatched = false;
+function watchBackups() {
+  if (backupsWatched) return; backupsWatched = true;
+  db.ref("sauvegardes/stocks").on("value", snap => {
+    data.sauvegardes = snap.val() || {}; backupsOk = true;
+    if (view === "admin") renderAdmin();
+    if (window.STATS) STATS.onData();
+  });
+}
 
 /* ---------- navigation ---------- */
 function isSessionValid() {
@@ -212,8 +223,9 @@ function askCode() {
 function backupList() { return Object.entries(data.sauvegardes).filter(([, b]) => b && b.stocks).sort((a, b) => b[0].localeCompare(a[0])); }
 const backupLabel = key => { const d = parseDay(key); const t = d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "short" }); return t.charAt(0).toUpperCase() + t.slice(1) + " · minuit"; };
 function renderAdmin() {
+  watchBackups();
   const bk = backupList(), shown = showAllBackups ? bk : bk.slice(0, 3);
-  $("backups").innerHTML = shown.length ? shown.map(([k]) => `<div class="backup"><span>${esc(backupLabel(k))}</span>
+  $("backups").innerHTML = !backupsOk ? `<p class="empty" style="padding:6px 0">Chargement des sauvegardes…</p>` : shown.length ? shown.map(([k]) => `<div class="backup"><span>${esc(backupLabel(k))}</span>
       <button type="button" class="btn" data-bpdf="${esc(k)}">PDF</button><button type="button" class="btn dark" data-brest="${esc(k)}">Restaurer</button></div>`).join("")
     + (bk.length > 3 ? `<button type="button" class="link" id="more-backups">${showAllBackups ? "Afficher moins" : `Voir les ${bk.length - 3} sauvegardes précédentes`}</button>` : "")
     : `<p class="empty" style="padding:6px 0">La première sauvegarde sera faite ce soir à minuit (mardi, jeudi, vendredi et samedi).</p>`;
@@ -287,6 +299,7 @@ $("pdf-btn").onclick = () => generatePDF();
 $("pdf-btn-2").onclick = () => generatePDF();
 $("reset-btn").onclick = resetStocks;
 $("qr-btn").onclick = () => window.openQrPanel && openQrPanel();
+$("stats-btn").onclick = () => { watchBackups(); window.STATS && STATS.open(); };
 $("add-btn").onclick = addProduct;
 $("new-p-name").onkeydown = e => { if (e.key === "Enter") addProduct(); };
 document.addEventListener("keydown", e => { if (e.key === "Escape") { const s = document.querySelectorAll(".sheet-bg"); if (s.length) s[s.length - 1].querySelector(".sheet-head button").click(); } });
