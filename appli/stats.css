@@ -125,3 +125,6 @@ em.up { color: var(--selve-ink); } em.down { color: #b23a3a; } em.eq { color: va
 .st-prev thead th { font-size: 12px; font-weight: 800; color: var(--muted); padding: 0 6px 6px; text-align: right; }
 .st-prev thead th:first-child { text-align: left; padding-left: 4px; }
 .st-prev td { padding-left: 8px; }
+.st-kpi-wide { grid-column: 1 / -1; }
+.st-units { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; font-size: 14px; font-weight: 700; color: var(--muted); }
+.st-units b { font-size: 26px; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }

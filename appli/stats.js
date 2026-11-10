@@ -5,7 +5,7 @@
   const PERIODES = [["7", "1 sem."], ["28", "4 sem."], ["91", "3 mois"], ["365", "1 an"], ["tout", "Tout"]];
   const BOUT = [["tout", "Les deux"], ["st-selve", "St Selve"], ["villenave", "Villenave"]];
   const JOURS = ["Mardi", "Jeudi", "Vendredi", "Samedi"];
-  const st = { open: false, showPrev: false, unit: "kg", pas: "soir", per: "91", shop: "tout", sort: "total", cat: "Tout", prod: null, showAll: false };
+  const st = { open: false, showPrev: false, unit: "kg", cu: "kg", pas: "soir", per: "91", shop: "tout", sort: "total", cat: "Tout", prod: null, showAll: false };
 
   const nf = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 });
   const n0 = v => nf.format(Math.round(v * 10) / 10);
@@ -15,15 +15,22 @@
   const val = (s, site) => { const v = Number(s && s[site]); return isFinite(v) && v > 0 ? v : 0; };
   // équivalences saisies dans le catalogue : 1 dans les stocks = q kg / q pièces…
   const eqOf = (() => { let m = null, src = null; return n => { if (src !== data.products) { src = data.products; m = {}; data.products.forEach(p => { if (p.u && Number(p.u.q) > 0) m[p.n] = p.u; }); } return m[n] || null; }; })();
-  // multiplicateur selon l'unité choisie, ou null si le produit n'a pas d'équivalence dans cette unité
-  // tout est ramené en kilos : 1 dans les stocks = q kg, ou q pièces (bottes, barquettes) de « kg » chacune
+  // logique d'achat : chaque produit a son unité d'achat (kg, pièce, botte, barquette).
+  // Un produit à la pièce avec un poids indiqué compte en kilos dans les totaux ; sans poids, il compte en pièces.
+  const UL = { kg: "kg", pc: "pc", botte: "bottes", barq: "barq.", brut: "sans unité" };
+  const UORD = ["kg", "pc", "botte", "barq", "brut"];
   const kgPer = n => { const u = eqOf(n); if (!u) return null; if (u.t === "kg") return Number(u.q); return Number(u.kg) > 0 ? Number(u.q) * Number(u.kg) : null; };
-  const fac = kgPer;
-  // unité propre d'un produit (point 3) : sa propre équivalence, ou la quantité brute
-  const OWN = { kg: "kg", pc: "pc", botte: "bottes", barq: "barq." };
-  const ownF = n => kgPer(n) || 1;
-  const own = (n, v) => { const f = kgPer(n); return f ? `${n0(v * f)} kg` : n0(v); };
-  const uSuf = () => st.unit === "kg" ? " kg" : st.unit === "pc" ? " pièces" : "";
+  const aggU = n => { const u = eqOf(n); return !u ? "brut" : kgPer(n) !== null ? "kg" : u.t; };
+  const aggF = n => { const u = eqOf(n); return !u ? 1 : kgPer(n) !== null ? kgPer(n) : Number(u.q); };
+  // facteur dans l'unité du graphique (st.cu), ou null si le produit compte dans une autre unité
+  const fac = n => aggU(n) === st.cu ? aggF(n) : null;
+  const addU = (o, n, v) => { if (v) { const u = aggU(n); o[u] = (o[u] || 0) + v * aggF(n); } return o; };
+  const fmtTot = (o, div) => { const t = UORD.filter(u => o[u] > 0).map(u => `${n0(o[u] / (div || 1))} ${UL[u]}`); return t.length ? t.join(" · ") : "0"; };
+  // unité d'achat d'un produit, pour tout ce qui concerne un produit précis
+  const OWN = UL;
+  const ownF = n => { const u = eqOf(n); return u ? Number(u.q) : 1; };
+  const own = (n, v) => { const u = eqOf(n); return u ? `${n0(v * Number(u.q))} ${UL[u.t] || ""}`.trim() : n0(v); };
+  const uSuf = () => st.cu === "brut" ? "" : " " + UL[st.cu];
   const catOf = (() => { let m = null, src = null; return n => { if (src !== data.products) { src = data.products; m = {}; data.products.forEach(p => m[p.n] = p.c); } return m[n] || "Autre"; }; })();
 
   function since() {
@@ -41,8 +48,9 @@
     const series = bk.map(([k, b]) => {
       const per = {}; let nbProd = 0;
       sh.forEach(site => per[site] = 0);
-      Object.entries(b.stocks).forEach(([n, s]) => { const f = fac(n); let any = false; sh.forEach(site => { const v = val(s, site); if (f !== null) per[site] += v * f; if (v) any = true; }); if (any) nbProd++; });
-      return { k, per, total: sh.reduce((a, site) => a + per[site], 0), nbProd };
+      const tu = {};
+      Object.entries(b.stocks).forEach(([n, s]) => { const f = fac(n); let any = false, r = 0; sh.forEach(site => { const v = val(s, site); r += v; if (f !== null) per[site] += v * f; if (v) any = true; }); addU(tu, n, r); if (any) nbProd++; });
+      return { k, per, tu, total: sh.reduce((a, site) => a + per[site], 0), nbProd };
     });
     const prods = {}, raw = {};
     const sans = new Set();
@@ -61,16 +69,16 @@
     }));
     if (bk.length) { const lastS = bk[bk.length - 1][1].stocks; Object.values(prods).forEach(p => p.last = sh.reduce((a, site) => a + val(lastS[p.n], site), 0) * (fac(p.n) || 0)); }
     const cats = {};
-    Object.values(prods).forEach(p => { cats[p.c] = (cats[p.c] || 0) + p.total; });
-    const jours = JOURS.map(j => ({ j, tot: 0, n: 0, cats: {} }));
+    Object.values(raw).forEach(p => { addU(cats[p.c] = cats[p.c] || {}, p.n, p.total); });
+    const jours = JOURS.map(j => ({ j, tot: 0, n: 0, cats: {}, tu: {} }));
     bk.forEach(([k, b]) => {
       const i = { 2: 0, 4: 1, 5: 2, 6: 3 }[parseDay(k).getDay()]; if (i === undefined) return;
-      Object.entries(b.stocks).forEach(([n, s]) => { const f = fac(n); if (f === null) return; const c = catOf(n); jours[i].cats[c] = (jours[i].cats[c] || 0) + sh.reduce((a, site) => a + val(s, site), 0) * f; });
+      Object.entries(b.stocks).forEach(([n, s]) => { const r = sh.reduce((a, site) => a + val(s, site), 0); addU(jours[i].tu, n, r); if (aggU(n) === "kg") { const c = catOf(n); jours[i].cats[c] = (jours[i].cats[c] || 0) + r * aggF(n); } });
     });
     series.forEach(s => {
       // sauvegarde de minuit datée du soir : mardi soir → commande pour le mercredi, etc.
       const i = { 2: 0, 4: 1, 5: 2, 6: 3 }[parseDay(s.k).getDay()];
-      if (i !== undefined) { jours[i].tot += s.total; jours[i].n++; }
+      if (i !== undefined) { jours[i].n++; }
     });
     // commandes
     const from = since();
@@ -87,7 +95,7 @@
   // part des quantités notées qui ont une équivalence dans l'unité u
   function coverage(bk, sh, u) {
     let tot = 0, ok = 0;
-    bk.forEach(([, b]) => Object.entries(b.stocks).forEach(([n, s]) => { const v = sh.reduce((a, site) => a + val(s, site), 0); tot += v; if (kgPer(n) !== null) ok += v; }));
+    bk.forEach(([, b]) => Object.entries(b.stocks).forEach(([n, s]) => { const v = sh.reduce((a, site) => a + val(s, site), 0); tot += v; if (eqOf(n)) ok += v; }));
     return tot ? ok / tot : 0;
   }
   const allBk = () => Object.entries(data.sauvegardes || {}).filter(([, b]) => b && b.stocks).sort((a, b) => a[0].localeCompare(b[0]));
@@ -157,10 +165,11 @@
   }
 
   function couverture(C) {
-    const avec = C.prods.filter(p => p.total > 0).length, sans = C.sans.size;
-    const u = st.unit === "kg" ? "en kilos" : "en pièces";
-    return `${Math.round(C.cov * 100)} % des quantités notées sont couvertes. Calculé sur ${avec} produit${avec > 1 ? "s" : ""} qui ont une équivalence ${u}.` + (sans ? ` ${sans} produit${sans > 1 ? "s" : ""} à prévoir n'en ont pas et ne sont pas comptés : ajoutez leur équivalence dans l'admin, Catalogue.` : "");
+    const n = C.raw.filter(p => p.total > 0 && !eqOf(p.n)).length;
+    return `Chaque produit compte dans son unité d'achat ; un produit à la pièce avec un poids indiqué compte en kilos.` + (n ? ` ${n} produit${n > 1 ? "s" : ""} sans unité d'achat sont comptés « sans unité » : ajoutez-la dans l'admin, Catalogue.` : "");
   }
+  // unités présentes sur la période (pour le graphique)
+  const unitsIn = C => UORD.filter(u => C.series.some(s => s.tu[u] > 0));
   /* ---------- graphiques (HTML + SVG, sans librairie) ---------- */
   function niceMax(v) { if (v <= 0) return 1; const p = Math.pow(10, Math.floor(Math.log10(v))); const f = v / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10) * p; }
 
@@ -191,7 +200,7 @@
       const tag = clickable ? `button type="button" data-sprod="${esc(r.key)}"` : "div";
       return `<${tag} class="st-hrow"><span class="st-hl">${esc(r.label)}${r.sub ? `<small>${esc(r.sub)}</small>` : ""}</span>
         <span class="st-ht"><span class="st-hf" style="width:${Math.max(2, r.v / max * 100)}%;background:${r.col || "var(--primary)"}"></span></span>
-        <b>${n0(r.v)}${unit ? " " + unit : ""}</b></${clickable ? "button" : "div"}>`;
+        <b>${r.txt != null ? esc(r.txt) : n0(r.v) + (unit ? " " + unit : "")}</b></${clickable ? "button" : "div"}>`;
     }).join("") + `</div>`;
   }
   // regroupe les sauvegardes par semaine (du lundi au dimanche) si besoin
@@ -209,7 +218,9 @@
   function render() {
     const root = $("stats-panel"); if (!root) return;
     // ajustement : ouverture en Kilos quand la plupart des volumes ont une équivalence (tant qu'on n'a pas choisi)
-    const C = compute(), { bk, sh, series } = C;
+    let C = compute();
+    { const us = unitsIn(C); if (us.length && !us.includes(st.cu)) { st.cu = us[0]; C = compute(); } }
+    const { bk, sh, series } = C;
     const avg = a => a.length ? a.reduce((x, y) => x + y, 0) / a.length : 0;
     const seg = (key, opts) => `<div class="st-seg-ctl" role="group">${opts.map(([v, l]) => `<button type="button" data-s${key}="${v}" aria-pressed="${st[key] === v}">${l}</button>`).join("")}</div>`;
 
@@ -226,30 +237,31 @@
     } else {
       const last = series[series.length - 1];
       h += `<p class="st-note st-range">${bk.length} sauvegarde${bk.length > 1 ? "s" : ""}, du ${shortDate(bk[0][0])} au ${shortDate(last.k)}</p><div class="st-kpis">
-        <div class="st-kpi"><small>Produits à prévoir</small><b>${n0(avg(series.map(s => s.nbProd)))}</b><span>en moyenne par soir</span></div>
-        <div class="st-kpi"><small>${st.unit === "kg" ? "Kilos à prévoir" : st.unit === "pc" ? "Pièces à prévoir" : "Quantités à prévoir"}</small><b>${n0(avg(series.map(s => s.total)))}${uSuf() ? `<em>${uSuf()}</em>` : ""}</b><span>en moyenne par soir</span></div>
         <div class="st-kpi"><small>Paniers commandés</small><b>${C.paniers.nb}</b><span>sur la période</span></div>
         <div class="st-kpi"><small>Plateaux commandés</small><b>${C.plateaux.nb}</b><span>sur la période</span></div>
       </div>`;
-      if (st.unit !== "stock") h += `<p class="st-cov ${C.cov >= 0.85 ? "good" : C.cov >= 0.6 ? "mid" : "low"}">${Math.round(C.cov * 100)} % des volumes couverts ${st.unit === "kg" ? "en kilos" : "en pièces"}${C.cov < 0.85 ? " · ajoutez des équivalences dans l'admin, Catalogue" : ""}</p>`;
+      if (C.cov < 0.999) h += `<p class="st-cov ${C.cov >= 0.85 ? "good" : C.cov >= 0.6 ? "mid" : "low"}">${Math.round(C.cov * 100)} % des quantités ont une unité d'achat${C.cov < 0.85 ? " · ajoutez-la dans l'admin, Catalogue" : ""}</p>`;
       h += prevision(sh);
 
-      h += `<section class="card"><div class="card-head"><h2>${st.unit === "kg" ? "Kilos à prévoir" : st.unit === "pc" ? "Pièces à prévoir" : "Quantités à prévoir"}</h2>${legend(sh)}</div>${pasCtl()}
+      const us = unitsIn(C);
+      h += `<section class="card"><div class="card-head"><h2>À prévoir${st.cu === "brut" ? " (sans unité)" : ", en " + (st.cu === "kg" ? "kilos" : UL[st.cu] === "pc" ? "pièces" : UL[st.cu])}</h2>${legend(sh)}</div>
+        ${us.length > 1 ? `<div class="st-seg-ctl st-pas" role="group" aria-label="Unité du graphique">${us.map(u => `<button type="button" data-scu="${u}" aria-pressed="${st.cu === u}">${u === "pc" ? "pièces" : u === "brut" ? "sans unité" : UL[u]}</button>`).join("")}</div>` : ""}${pasCtl()}
         ${vbars("st-evo", parPas(series.map(s => ({ k: s.k, per: s.per })), sh), sh, uSuf().trim())}
-        <p class="st-note">${st.unit === "stock" ? "Somme des quantités notées dans l'appli à minuit, telles quelles (pièces, kilos et colis confondus). Choisissez « Kilos » ou « Pièces » en haut pour des volumes réels." : couverture(C)}</p></section>`;
+        <p class="st-note">${couverture(C)}</p></section>`;
       h += tendances(sh);
 
       const jr = C.jours.filter(j => j.n);
-      h += `<section class="card"><div class="card-head"><h2>Selon le soir</h2><span>${st.unit === "stock" ? "moyenne des quantités à prévoir" : "moyenne par soir, avec les 3 premières catégories"}</span></div>
-        ${hbars(jr.map(j => ({ label: j.j + " soir", sub: st.unit === "stock" ? `${j.n} sauvegarde${j.n > 1 ? "s" : ""}` : Object.entries(j.cats).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([c, v]) => `${CAT_LABEL[c] || c} ${n0(v / j.n)}`).join(" · "), v: j.tot / j.n })), uSuf().trim(), false)}</section>`;
+      h += `<section class="card"><div class="card-head"><h2>Selon le soir</h2><span>moyenne par soir</span></div>
+        ${hbars(jr.map(j => { const autres = UORD.filter(u => u !== "kg" && j.tu[u] > 0).map(u => `${n0(j.tu[u] / j.n)} ${UL[u]}`); const cs = Object.entries(j.cats).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([c, v]) => `${CAT_LABEL[c] || c} ${n0(v / j.n)} kg`);
+          return { label: j.j + " soir", sub: cs.concat(autres.length ? ["+ " + autres.join(", ")] : []).join(" · "), v: (j.tu.kg || 0) / j.n, txt: `${n0((j.tu.kg || 0) / j.n)} kg` }; }), "", false)}</section>`;
 
-      const cr = Object.entries(C.cats).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]);
+      const cr = Object.entries(C.cats).filter(([, o]) => UORD.some(u => o[u] > 0)).sort((a, b) => (b[1].kg || 0) - (a[1].kg || 0));
       h += `<section class="card"><div class="card-head"><h2>Par catégorie</h2><span>total sur la période</span></div>
-        ${hbars(cr.map(([c, v]) => ({ label: CAT_LABEL[c] || c, v })), uSuf().trim(), false)}</section>`;
+        ${hbars(cr.map(([c, o]) => { const autres = UORD.filter(u => u !== "kg" && o[u] > 0).map(u => `${n0(o[u])} ${UL[u]}`); return { label: CAT_LABEL[c] || c, sub: autres.length ? "+ " + autres.join(", ") : "", v: o.kg || 0, txt: `${n0(o.kg || 0)} kg` }; }), "", false)}</section>`;
 
-      const top = C.prods.filter(p => p.total > 0).sort((a, b) => b.total - a.total).slice(0, 10);
-      h += `<section class="card"><div class="card-head"><h2>Les 10 produits les plus à prévoir</h2><span>touchez pour le détail</span></div>
-        ${hbars(top.map(p => ({ key: p.n, label: p.n, sub: `à prévoir ${p.fois} soir${p.fois > 1 ? "s" : ""} sur ${bk.length}`, v: p.total })), uSuf().trim(), true)}</section>`;
+      const top = C.raw.filter(p => p.total > 0).sort((a, b) => b.fois - a.fois || b.total * ownF(b.n) - a.total * ownF(a.n)).slice(0, 10);
+      h += `<section class="card"><div class="card-head"><h2>Les 10 produits les plus souvent à prévoir</h2><span>touchez pour le détail</span></div>
+        ${hbars(top.map(p => ({ key: p.n, label: p.n, sub: `en moyenne ${own(p.n, p.total / p.fois)} ces soirs-là`, v: p.fois, txt: `${p.fois} soir${p.fois > 1 ? "s" : ""} / ${bk.length}` })), "", true)}</section>`;
     }
 
     // commandes : paniers et plateaux séparés
@@ -267,7 +279,7 @@
       const names = [...new Set(bk.flatMap(([, b]) => Object.keys(b.stocks)))].sort((a, b) => a.localeCompare(b, "fr"));
       if (!st.prod || !names.includes(st.prod)) st.prod = (C.raw.filter(p => p.total > 0).sort((a, b) => b.total * ownF(b.n) - a.total * ownF(a.n))[0] || {}).n || names[0];
       const P = C.raw.find(p => p.n === st.prod) || { total: 0, fois: 0, max: 0, last: 0 };
-      const E = eqOf(st.prod), ou = kgPer(st.prod) ? "kg" : "";
+      const E = eqOf(st.prod), ou = E ? UL[E.t] : "";
       const opts = CATS.concat(["Autre"]).map(c => { const ns = names.filter(n => catOf(n) === c); return ns.length ? `<optgroup label="${esc(CAT_LABEL[c] || c)}">${ns.map(n => `<option${n === st.prod ? " selected" : ""}>${esc(n)}</option>`).join("")}</optgroup>` : ""; }).join("");
       h += `<section class="card" id="st-detail"><div class="card-head"><h2>Vue précise d'un produit</h2></div>
         <label class="field">Produit<select id="st-prod">${opts}</select></label>
@@ -277,7 +289,7 @@
           <div class="st-kpi"><small>Maximum</small><b>${n0(P.max * ownF(st.prod))}${ou ? `<em> ${ou}</em>` : ""}</b><span>en un soir</span></div>
           <div class="st-kpi"><small>Dernier soir</small><b>${n0(P.last * ownF(st.prod))}${ou ? `<em> ${ou}</em>` : ""}</b><span>${shortDate(bk[bk.length - 1][0])}</span></div>
         </div>
-        <p class="st-note">${kgPer(st.prod) ? `1 dans les stocks = ${esc(E.t === "kg" ? n0(E.q) + " kg" : n0(E.q) + " " + (OWN[E.t] || "") + " de " + n0(E.kg) + " kg, soit " + n0(kgPer(st.prod)) + " kg")}.` : E ? "Il manque le poids d'une pièce pour ce produit : quantités telles qu'elles sont notées. Complétez-le dans l'admin, Catalogue." : "Pas d'équivalence pour ce produit : quantités telles qu'elles sont notées. Ajoutez-la dans l'admin, Catalogue."}</p>
+        <p class="st-note">${E ? `Unité d'achat : 1 dans les stocks = ${esc(own(st.prod, 1))}${E.t !== "kg" && Number(E.kg) > 0 ? ` (≈ ${esc(n0(kgPer(st.prod)))} kg)` : ""}.` : "Pas d'unité d'achat pour ce produit : quantités telles qu'elles sont notées. Ajoutez-la dans l'admin, Catalogue."}</p>
         <div class="card-head"><h3 class="st-h3">Historique</h3>${legend(sh)}</div>${pasCtl()}
         ${vbars("st-prodchart", parPas(bk.map(([k, b]) => { const per = {}; sh.forEach(s => per[s] = val(b.stocks[st.prod], s) * ownF(st.prod)); return { k, per }; }), sh), sh, ou)}
       </section>`;
@@ -287,7 +299,8 @@
       if (!catsPresent.includes(st.cat)) st.cat = "Tout";
       let rows = C.raw.filter(p => st.cat === "Tout" || p.c === st.cat);
       // tri comparable : dans l'unité choisie en haut (produits sans équivalence à la fin), sinon brut
-      const cmp = (p, v) => st.unit === "stock" ? v : (fac(p.n) === null ? -1 : v * fac(p.n));
+      // tri : produits comptés en kilos d'abord (comparables entre eux), puis les autres
+      const cmp = (p, v) => (aggU(p.n) === "kg" ? 1e9 : 0) + v * aggF(p.n);
       const key = { total: p => -cmp(p, p.total), fois: p => -p.fois, moy: p => -cmp(p, p.fois ? p.total / p.fois : 0), max: p => -cmp(p, p.max), nom: null }[st.sort];
       rows.sort((a, b) => key ? key(a) - key(b) || a.n.localeCompare(b.n, "fr") : a.n.localeCompare(b.n, "fr"));
       const shown = st.showAll ? rows : rows.slice(0, 25);
@@ -297,7 +310,7 @@
         <div class="st-table-wrap"><table class="st-table"><thead><tr>${th("nom", "Produit")}${th("fois", "Soirs")}${th("moy", "Moy.")}${th("max", "Max")}${th("total", "Total")}</tr></thead>
         <tbody>${shown.map(p => `<tr data-sprod="${esc(p.n)}"><th scope="row">${esc(p.n)}</th><td>${p.fois}</td><td>${own(p.n, p.fois ? p.total / p.fois : 0)}</td><td>${own(p.n, p.max)}</td><td><b>${own(p.n, p.total)}</b></td></tr>`).join("")}</tbody></table></div>
         ${rows.length > 25 ? `<button type="button" class="link" id="st-more">${st.showAll ? "Afficher moins" : `Afficher les ${rows.length - 25} autres`}</button>` : ""}
-        <p class="st-note">Soirs : nombre de sauvegardes où le produit était à prévoir. Moy. : quantité moyenne ces soirs-là. Tout est en kilos, sauf les produits sans équivalence, affichés tels qu'ils sont notés. Touchez une ligne pour sa vue précise.</p></section>`;
+        <p class="st-note">Soirs : nombre de sauvegardes où le produit était à prévoir. Moy. : quantité moyenne ces soirs-là. Chaque produit est dans son unité d'achat (kg, pc, bottes, barq.). Touchez une ligne pour sa vue précise.</p></section>`;
     }
     h += `</div>`;
     const y = root.scrollTop; root.innerHTML = h; root.scrollTop = y;
@@ -313,6 +326,7 @@
     if (ds.spas) { st.pas = ds.spas; return render(); }
     if (ds.ssort) { st.sort = ds.ssort; return render(); }
     if (ds.scat) { st.cat = ds.scat; st.showAll = false; return render(); }
+    if (ds.scu) { st.cu = ds.scu; return render(); }
     if (t.id === "st-prevmore") { st.showPrev = !st.showPrev; return render(); }
     if (t.id === "st-more") { st.showAll = !st.showAll; return render(); }
     if (ds.sprod) { st.prod = ds.sprod; render(); const d = $("st-detail"); if (d) d.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
