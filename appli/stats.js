@@ -2,7 +2,7 @@
    Lit les sauvegardes de minuit (stocks nécessaires) et les commandes déjà chargées dans `data`. */
 (function () {
   const SHOP_COL = { "st-selve": "#5a7827", "villenave": "#2f6fa8" };
-  const PERIODES = [["28", "4 sem."], ["91", "3 mois"], ["365", "1 an"], ["tout", "Tout"]];
+  const PERIODES = [["7", "1 sem."], ["28", "4 sem."], ["91", "3 mois"], ["365", "1 an"], ["tout", "Tout"]];
   const BOUT = [["tout", "Les deux"], ["st-selve", "St Selve"], ["villenave", "Villenave"]];
   const JOURS = ["Mardi", "Jeudi", "Vendredi", "Samedi"];
   const UNITES = [["stock", "Stocks"], ["kg", "Kilos"], ["pc", "Pièces"]];
