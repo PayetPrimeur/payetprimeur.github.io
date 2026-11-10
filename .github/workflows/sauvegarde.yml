@@ -20,6 +20,24 @@ jobs:
   sauvegarde:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: _outils
+
+      - name: Jeton d'accès Firebase
+        env:
+          SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          # sans le secret, on lit comme avant (base ouverte) ; avec, on passe par le compte de service
+          if [ -n "${SA:-}" ]; then
+            pip install -q google-auth requests
+            T=$(python3 _outils/jeton_firebase.py)
+            echo "::add-mask::$T"
+            echo "FB_AUTH=?access_token=$T" >> "$GITHUB_ENV"
+          else
+            echo "FB_AUTH=" >> "$GITHUB_ENV"
+          fi
+
       - name: Sauvegarder les stocks
         env:
           FORCER: ${{ inputs.forcer }}
@@ -33,7 +51,7 @@ jobs:
           fi
           DATE=$(TZ=Europe/Paris date +%Y-%m-%d)
           BASE="https://stock-romain-default-rtdb.europe-west1.firebasedatabase.app"
-          curl -sSf --retry 3 "$BASE/stocks.json" -o stocks.json
+          curl -sSf --retry 3 "$BASE/stocks.json$FB_AUTH" -o stocks.json
           python3 - "$DATE" <<'EOF'
           import json, sys, datetime
           stocks = json.load(open("stocks.json")) or {}
@@ -41,11 +59,11 @@ jobs:
                     open("sauvegarde.json", "w"), ensure_ascii=False)
           print(f"{len(stocks)} produits sauvegardés pour le {sys.argv[1]}")
           EOF
-          curl -sSf --retry 3 -X PUT -H "Content-Type: application/json" --data @sauvegarde.json "$BASE/sauvegardes/stocks/$DATE.json" > /dev/null
+          curl -sSf --retry 3 -X PUT -H "Content-Type: application/json" --data @sauvegarde.json "$BASE/sauvegardes/stocks/$DATE.json$FB_AUTH" > /dev/null
           # ménage : on garde 400 jours (environ 13 mois, pour les statistiques sur un an)
           LIMITE=$(TZ=Europe/Paris date -d "400 days ago" +%Y-%m-%d)
-          curl -sSf "$BASE/sauvegardes/stocks.json?shallow=true" -o liste.json
+          curl -sSf "$BASE/sauvegardes/stocks.json?shallow=true${FB_AUTH:+&${FB_AUTH#?}}" -o liste.json
           python3 -c "import json; print('\n'.join(k for k in (json.load(open('liste.json')) or {}) if k < '$LIMITE'))" | while read -r K; do
-            if [ -n "$K" ]; then curl -sSf -X DELETE "$BASE/sauvegardes/stocks/$K.json" > /dev/null; echo "Ancienne sauvegarde effacée : $K"; fi
+            if [ -n "$K" ]; then curl -sSf -X DELETE "$BASE/sauvegardes/stocks/$K.json$FB_AUTH" > /dev/null; echo "Ancienne sauvegarde effacée : $K"; fi
           done
           echo "Sauvegarde du $DATE enregistrée."

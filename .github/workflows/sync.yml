@@ -1,5 +1,5 @@
 # Synchronise le site des recettes avec le catalogue de l'appli Payet Primeur Pro (Firebase).
-# Lecture seule de Firebase. Tourne toutes les 30 minutes, ou à la main depuis l'onglet Actions.
+# Lecture seule de Firebase (avec le compte de service une fois la base protégée). Tourne toutes les 30 minutes, ou à la main depuis l'onglet Actions.
 name: Synchronisation avec le catalogue
 
 on:
@@ -21,11 +21,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Jeton d'accès Firebase
+        env:
+          SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          # sans le secret, on lit comme avant (base ouverte) ; avec, on passe par le compte de service
+          if [ -n "${SA:-}" ]; then
+            pip install -q google-auth requests
+            T=$(python3 _outils/jeton_firebase.py)
+            echo "::add-mask::$T"
+            echo "FB_AUTH=?access_token=$T" >> "$GITHUB_ENV"
+          else
+            echo "FB_AUTH=" >> "$GITHUB_ENV"
+          fi
+
       - name: Lire le catalogue et les paniers dans Firebase
         run: |
           BASE="https://stock-romain-default-rtdb.europe-west1.firebasedatabase.app"
-          curl -sSf --retry 3 "$BASE/products.json" -o /tmp/products.json
-          curl -sSf --retry 3 "$BASE/paniers.json" -o /tmp/paniers.json
+          curl -sSf --retry 3 "$BASE/products.json$FB_AUTH" -o /tmp/products.json
+          curl -sSf --retry 3 "$BASE/paniers.json$FB_AUTH" -o /tmp/paniers.json
 
       - name: Mettre à jour le site et publier
         run: |

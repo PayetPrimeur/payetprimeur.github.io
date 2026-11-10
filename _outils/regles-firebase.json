@@ -1,0 +1,57 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "acces": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+
+    "products": {
+      ".read": "auth != null && root.child('acces').child(auth.uid).exists()",
+      ".write": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'",
+      "$i": {
+        ".validate": "newData.hasChildren(['n', 'c']) && newData.child('n').isString() && newData.child('n').val().length > 0 && newData.child('n').val().length <= 80 && newData.child('c').isString() && newData.child('c').val().length <= 40"
+      }
+    },
+
+    "stocks": {
+      ".read": "auth != null && root.child('acces').child(auth.uid).exists()",
+      ".write": "auth != null && root.child('acces').child(auth.uid).exists()",
+      "$produit": {
+        "st-selve": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 9999" },
+        "villenave": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 9999" }
+      }
+    },
+
+    "reservations": {
+      ".read": "auth != null && root.child('acces').child(auth.uid).exists()",
+      "$id": {
+        ".write": "auth != null && root.child('acces').child(auth.uid).exists()",
+        ".validate": "newData.hasChildren(['date', 'boutique'])",
+        "date": { ".validate": "newData.isString() && newData.val().matches(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)" },
+        "boutique": { ".validate": "newData.val() === 'st-selve' || newData.val() === 'villenave'" },
+        "type": { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "prix": { ".validate": "newData.isString() && newData.val().length <= 10" },
+        "client": { ".validate": "newData.isString() && newData.val().length <= 100" },
+        "tel": { ".validate": "newData.isString() && newData.val().length <= 30" },
+        "desc": { ".validate": "newData.isString() && newData.val().length <= 1000" },
+        "nb": { ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 99" },
+        "done": { ".validate": "newData.isBoolean()" }
+      }
+    },
+
+    "paniers": {
+      ".read": "auth != null && root.child('acces').child(auth.uid).exists()",
+      ".write": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'"
+    },
+
+    "sauvegardes": {
+      ".read": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'",
+      ".write": false
+    }
+  }
+}

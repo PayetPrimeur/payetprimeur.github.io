@@ -1,0 +1,39 @@
+# Installe les règles de sécurité de la base Firebase (fichier _outils/regles-firebase.json).
+# À lancer à la main depuis l'onglet Actions. Utilise le compte de service rangé dans le secret
+# FIREBASE_SERVICE_ACCOUNT. Option « ouvrir » : remet la base ouverte (retour en arrière d'urgence).
+name: Règles de sécurité Firebase
+
+on:
+  workflow_dispatch:
+    inputs:
+      ouvrir:
+        description: "Retour en arrière : rouvrir la base (déconseillé)"
+        type: boolean
+        default: false
+
+jobs:
+  regles:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Installer les règles
+        env:
+          SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          OUVRIR: ${{ inputs.ouvrir }}
+        run: |
+          set -euo pipefail
+          if [ -z "${SA:-}" ]; then echo "Le secret FIREBASE_SERVICE_ACCOUNT manque."; exit 1; fi
+          pip install -q google-auth requests
+          T=$(python3 _outils/jeton_firebase.py); echo "::add-mask::$T"
+          BASE="https://stock-romain-default-rtdb.europe-west1.firebasedatabase.app"
+          if [ "${OUVRIR:-false}" = "true" ]; then
+            echo '{"rules":{".read":true,".write":true}}' > regles.json
+          else
+            cp _outils/regles-firebase.json regles.json
+          fi
+          curl -sSf -X PUT -H "Content-Type: application/json" --data @regles.json "$BASE/.settings/rules.json?access_token=$T"
+          echo
+          echo "Règles installées."
+          # vérification : sans compte, la base doit refuser la lecture
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" "$BASE/stocks.json?shallow=true")
+          echo "Lecture sans compte : HTTP $CODE (401 attendu si la base est fermée)"
