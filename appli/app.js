@@ -3,7 +3,7 @@ const firebaseConfig = { databaseURL: "https://stock-romain-default-rtdb.europe-
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const MON_CODE = "Tomate47*";
-const APP_V = "202611100147";
+const APP_V = "202611100157";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -291,7 +291,21 @@ function generatePDF(stocks, titre, fichier) {
     .map(([n, s]) => [cat[n] || "", n, s["st-selve"] || 0, s["villenave"] || 0, (s["st-selve"] || 0) + (s["villenave"] || 0), ""])
     .sort((a, b) => a[0] === b[0] ? a[1].localeCompare(b[1], "fr") : a[0].localeCompare(b[0], "fr"));
   doc.autoTable({ head: [["Cat.", "Produit", "St Selve", "Vill.", "Total", "Check"]], body: rows, startY: 30, headStyles: { fillColor: [182, 17, 92] } });
-  doc.save(fichier || "Stocks_necessaires.pdf");
+  saveFile(doc.output("blob"), fichier || "Stocks_necessaires.pdf");
+}
+// téléchargement direct du fichier ; sur iPhone en appli écran d'accueil, où le téléchargement n'existe pas,
+// on ouvre le menu Partager (« Enregistrer dans Fichiers ») au lieu d'une page
+function saveFile(blob, name) {
+  const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const standalone = window.navigator.standalone === true || (window.matchMedia && matchMedia("(display-mode: standalone)").matches);
+  if (ios && standalone && navigator.canShare) {
+    const file = new File([blob], name, { type: blob.type || "application/pdf" });
+    if (navigator.canShare({ files: [file] })) { navigator.share({ files: [file] }).catch(() => {}); return; }
+  }
+  const url = URL.createObjectURL(blob), a = document.createElement("a");
+  a.href = url; a.download = name; a.rel = "noopener"; a.style.display = "none";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
 }
 
 /* ---------- événements ---------- */
