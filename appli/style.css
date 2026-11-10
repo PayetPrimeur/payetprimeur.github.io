@@ -154,3 +154,20 @@ h1 { margin: 2px 0 0; font-size: 26px; font-weight: 800; letter-spacing: -.01em;
 #orders { padding-bottom: 80px; }
 .qty-row { display: flex; }
 .stepper button:disabled { opacity: .45; }
+
+/* connexion */
+#view-login { display: none; min-height: 100vh; min-height: 100dvh; align-items: center; justify-content: center; padding: 24px 18px; }
+body.locked #view-login { display: flex; }
+body.locked .view, body.locked .nav, body.locked .fab { display: none !important; }
+body.locked { padding-bottom: 0; }
+.login-card { width: 100%; max-width: 380px; background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 24px 20px; display: grid; gap: 14px; }
+.login-card h1 { font-size: 22px; margin: 0; }
+.login-logo { height: 44px; width: auto; justify-self: start; }
+.hint { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+.pw-wrap { position: relative; display: block; }
+.pw-wrap input { padding-right: 84px; }
+.pw-wrap .link { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); }
+.login-card .link { justify-self: center; }
+.acct-email { margin: 0; font-weight: 700; overflow-wrap: anywhere; }
+.admin-only { display: none; }
+body.is-admin .admin-only { display: grid; gap: 10px; }

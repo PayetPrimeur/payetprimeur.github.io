@@ -1,9 +1,16 @@
 /* Payet Primeur Pro — stock, commandes, admin (base Firebase « stock-romain ») */
-const firebaseConfig = { databaseURL: "https://stock-romain-default-rtdb.europe-west1.firebasedatabase.app/" };
+// configuration web du projet Firebase (ces valeurs ne sont pas secrètes : la protection vient des comptes et des règles)
+const firebaseConfig = {
+  apiKey: "AIzaSyDktc4NLMqB-f3x5n2Mlr8dAdAs1XOZcN0",
+  authDomain: "stock-romain.firebaseapp.com",
+  databaseURL: "https://stock-romain-default-rtdb.europe-west1.firebasedatabase.app/",
+  projectId: "stock-romain"
+};
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
-const MON_CODE = "Tomate47*";
-const APP_V = "202611100202";
+const auth = firebase.auth();
+let role = null; // "admin" ou "equipe", lu dans acces/<uid> (modifiable seulement depuis la console Firebase)
+const APP_V = "202611100240";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -53,7 +60,7 @@ function toast(t) {
 /* ---------- données ---------- */
 // chaque partie de la base est écoutée séparément ; les sauvegardes ne sont chargées qu'à l'ouverture de l'admin
 const NODES = ["products", "stocks", "reservations", "paniers"], loaded = {};
-NODES.forEach(k => db.ref(k).on("value", snap => {
+function startData() { NODES.forEach(k => db.ref(k).on("value", snap => {
   const v = snap.val();
   if (k === "products") {
     data.products = (Array.isArray(v) ? v : Object.values(v || {})).filter(p => p && p.n);
@@ -64,10 +71,10 @@ NODES.forEach(k => db.ref(k).on("value", snap => {
   renderAll();
   if (window.QR) QR.onData();
   if (window.STATS) STATS.onData();
-}));
+})); }
 let backupsOk = false, backupsWatched = false;
 function watchBackups() {
-  if (backupsWatched) return; backupsWatched = true;
+  if (backupsWatched || role !== "admin") return; backupsWatched = true;
   db.ref("sauvegardes/stocks").on("value", snap => {
     data.sauvegardes = snap.val() || {}; backupsOk = true;
     if (view === "admin") renderAdmin();
@@ -76,11 +83,7 @@ function watchBackups() {
 }
 
 /* ---------- navigation ---------- */
-function isSessionValid() {
-  try { const s = localStorage.getItem("adminSession"); return s && (Date.now() - parseInt(s, 10)) / 60000 < 20; } catch (e) { return false; }
-}
 function go(v) {
-  if (v === "admin" && !isSessionValid()) { askCode(); return; }
   view = v;
   document.querySelectorAll(".view").forEach(el => el.classList.toggle("active", el.id === "view-" + v));
   document.querySelectorAll(".nav button").forEach(b => { if (b.dataset.go === v) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
@@ -229,20 +232,82 @@ function confirmSheet(title, text, okLabel, onOk) {
   s.body.querySelector("[data-no]").onclick = s.close;
   s.body.querySelector("[data-ok]").onclick = () => { s.close(); onOk(); };
 }
-function askCode() {
-  const s = openSheet("Accès admin", `<label class="field">Code admin<input id="code-in" type="password" autocomplete="current-password" inputmode="text"></label><p class="err" id="code-err" role="alert"></p><button type="button" class="btn main wide" id="code-ok">Entrer</button>`);
-  const ok = () => {
-    if ($("code-in").value === MON_CODE) { try { localStorage.setItem("adminSession", Date.now()); } catch (e) {} s.close(); go("admin"); }
-    else { $("code-err").textContent = "Code incorrect."; $("code-in").select(); }
+/* ---------- connexion ---------- */
+const AUTH_ERR = {
+  "auth/invalid-email": "Adresse e-mail invalide.",
+  "auth/user-disabled": "Ce compte est désactivé.",
+  "auth/user-not-found": "E-mail ou mot de passe incorrect.",
+  "auth/wrong-password": "E-mail ou mot de passe incorrect.",
+  "auth/invalid-login-credentials": "E-mail ou mot de passe incorrect.",
+  "auth/invalid-credential": "E-mail ou mot de passe incorrect.",
+  "auth/too-many-requests": "Trop d'essais. Réessayez dans quelques minutes.",
+  "auth/network-request-failed": "Pas de connexion internet.",
+  "auth/weak-password": "Mot de passe trop faible.",
+  "auth/requires-recent-login": "Reconnectez-vous puis recommencez."
+};
+const authMsg = e => AUTH_ERR[e && e.code] || "Une erreur est survenue. Réessayez.";
+let loginMsg = "";
+function showLogin(msg) {
+  document.body.classList.add("locked");
+  $("login-err").textContent = msg || loginMsg;
+  $("login-btn").disabled = false;
+}
+$("login-form").addEventListener("submit", e => {
+  e.preventDefault();
+  const em = $("login-email").value.trim(), pw = $("login-pw").value;
+  if (!em || !pw) { $("login-err").textContent = "Saisissez l'e-mail et le mot de passe."; return; }
+  $("login-btn").disabled = true; $("login-err").textContent = ""; loginMsg = "";
+  auth.signInWithEmailAndPassword(em, pw).catch(err => { $("login-btn").disabled = false; $("login-err").textContent = authMsg(err); });
+});
+$("login-show").onclick = () => { const i = $("login-pw"); i.type = i.type === "password" ? "text" : "password"; $("login-show").textContent = i.type === "password" ? "Afficher" : "Masquer"; };
+$("login-forgot").onclick = () => {
+  const em = $("login-email").value.trim();
+  if (!em) { $("login-err").textContent = "Saisissez d'abord votre e-mail."; return; }
+  auth.sendPasswordResetEmail(em).then(() => { $("login-err").textContent = ""; toast("Si ce compte existe, un e-mail vient d'être envoyé."); })
+    .catch(err => { $("login-err").textContent = authMsg(err); });
+};
+let started = false;
+auth.onAuthStateChanged(user => {
+  if (!user) { role = null; return showLogin(); }
+  db.ref("acces/" + user.uid).once("value").then(s => {
+    const r = s.val();
+    if (r !== "admin" && r !== "equipe") { loginMsg = "Ce compte n'a pas accès à l'appli."; auth.signOut(); return showLogin(); }
+    role = r;
+    document.body.classList.remove("locked");
+    document.body.classList.toggle("is-admin", role === "admin");
+    $("login-pw").value = "";
+    document.querySelector('.nav button[data-go="admin"] .lbl').textContent = role === "admin" ? "Admin" : "Compte";
+    $("admin-title").textContent = role === "admin" ? "Admin" : "Mon compte";
+    if (!started) { started = true; startData(); }
+    renderAll();
+  }).catch(() => { loginMsg = "Accès refusé."; auth.signOut(); showLogin(); });
+});
+function logout() { auth.signOut().then(() => location.reload()); }
+function changePassword() {
+  const s = openSheet("Changer le mot de passe", `<p class="hint">Au moins 10 caractères. Le nouveau mot de passe sera demandé sur tous les téléphones connectés à ce compte.</p>
+    <label class="field">Mot de passe actuel<input id="pw-old" type="password" autocomplete="current-password"></label>
+    <label class="field">Nouveau mot de passe<input id="pw-new" type="password" autocomplete="new-password"></label>
+    <label class="field">Confirmer le nouveau mot de passe<input id="pw-new2" type="password" autocomplete="new-password"></label>
+    <p class="err" id="pw-err" role="alert"></p><button type="button" class="btn main wide" id="pw-ok">Enregistrer</button>`);
+  $("pw-ok").onclick = () => {
+    const o = $("pw-old").value, n = $("pw-new").value, n2 = $("pw-new2").value, u = auth.currentUser;
+    if (n.length < 10) { $("pw-err").textContent = "Le nouveau mot de passe doit faire au moins 10 caractères."; return; }
+    if (n !== n2) { $("pw-err").textContent = "Les deux nouveaux mots de passe ne sont pas identiques."; return; }
+    $("pw-ok").disabled = true;
+    const cred = firebase.auth.EmailAuthProvider.credential(u.email, o);
+    u.reauthenticateWithCredential(cred).then(() => u.updatePassword(n)).then(() => { s.close(); toast("Mot de passe modifié"); })
+      .catch(err => { $("pw-ok").disabled = false; $("pw-err").textContent = authMsg(err); });
   };
-  $("code-ok").onclick = ok; $("code-in").onkeydown = e => { if (e.key === "Enter") ok(); };
-  setTimeout(() => $("code-in").focus(), 50);
 }
 
 /* ---------- admin ---------- */
 function backupList() { return Object.entries(data.sauvegardes).filter(([, b]) => b && b.stocks).sort((a, b) => b[0].localeCompare(a[0])); }
 const backupLabel = key => { const d = parseDay(key); const t = d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "short" }); return t.charAt(0).toUpperCase() + t.slice(1) + " · minuit"; };
 function renderAdmin() {
+  const u = auth.currentUser;
+  $("acct-email").textContent = u ? u.email : "";
+  $("acct-role").textContent = role === "admin" ? "Administrateur" : "Équipe";
+  if (role !== "admin") return;
   watchBackups();
   const bk = backupList(), shown = showAllBackups ? bk : bk.slice(0, 3);
   $("backups").innerHTML = !backupsOk ? `<p class="empty" style="padding:6px 0">Chargement des sauvegardes…</p>` : shown.length ? shown.map(([k]) => `<div class="backup"><span>${esc(backupLabel(k))}</span>
@@ -380,8 +445,10 @@ $("fab").onclick = () => orderSheet(null);
 $("pdf-btn").onclick = () => generatePDF();
 $("pdf-btn-2").onclick = () => generatePDF();
 $("reset-btn").onclick = resetStocks;
-$("qr-btn").onclick = () => window.openQrPanel && openQrPanel();
-$("stats-btn").onclick = () => { watchBackups(); window.STATS && STATS.open(); };
+$("qr-btn").onclick = () => role === "admin" && window.openQrPanel && openQrPanel();
+$("pw-btn").onclick = changePassword;
+$("logout-btn").onclick = logout;
+$("stats-btn").onclick = () => { if (role !== "admin") return; watchBackups(); window.STATS && STATS.open(); };
 $("add-btn").onclick = addProduct;
 $("new-p-name").onkeydown = e => { if (e.key === "Enter") addProduct(); };
 document.addEventListener("keydown", e => { if (e.key === "Escape") { const s = document.querySelectorAll(".sheet-bg"); if (s.length) s[s.length - 1].querySelector(".sheet-head button").click(); } });
