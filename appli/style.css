@@ -57,12 +57,10 @@ h1 { margin: 2px 0 0; font-size: 26px; font-weight: 800; letter-spacing: -.01em;
 .item-name { flex: 1; min-width: 0; display: grid; gap: 2px; }
 .item-name b { font-size: 16px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .item-name small { font-size: 12px; font-weight: 600; color: var(--muted); }
-.item.zero .item-name b { color: var(--muted); }
 .stepper { display: flex; align-items: center; gap: 4px; background: var(--bg); border-radius: 14px; padding: 4px; }
 .stepper button { width: 44px; height: 44px; border: 0; border-radius: 11px; background: var(--card); display: flex; align-items: center; justify-content: center; color: var(--ink); }
 .stepper button.plus { background: var(--primary); color: #fff; }
 .stepper output { min-width: 34px; text-align: center; font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; }
-.item.zero output { color: #8a8178; }
 .empty { text-align: center; color: var(--muted); padding: 28px 10px; font-weight: 600; }
 
 /* agenda */

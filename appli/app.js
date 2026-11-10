@@ -81,7 +81,7 @@ function renderStock() {
     html += `<div class="sec-head"><h2 class="t-${catClass(c)}">${esc(CAT_LABEL[c] || c)}</h2><span>${besoin} à prévoir sur ${items.length}</span></div>`;
     html += items.map(p => {
       const qn = stockOf(p.n, curSite);
-      return `<div class="item ${qn ? "" : "zero"}"><div class="item-name"><b>${esc(p.n)}</b><small>${qn ? "À prévoir" : "Rien à prévoir"}</small></div>
+      return `<div class="item"><div class="item-name"><b>${esc(p.n)}</b></div>
         <div class="stepper"><button type="button" data-step="-1" data-n="${esc(p.n)}" aria-label="Retirer un ${esc(p.n)}">${icon.minus}</button>
         <output aria-live="polite">${qn}</output>
         <button type="button" class="plus" data-step="1" data-n="${esc(p.n)}" aria-label="Ajouter un ${esc(p.n)}">${icon.plus}</button></div></div>`;
