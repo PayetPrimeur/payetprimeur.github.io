@@ -1,0 +1,51 @@
+# Sauvegarde des stocks de l'appli Payet Primeur Pro, à minuit (heure de Paris)
+# les mardis, jeudis, vendredis et samedis soir. La sauvegarde est rangée dans
+# la base Firebase (sauvegardes/stocks/<date>) : l'appli l'affiche dans l'admin
+# (PDF et restauration). Les sauvegardes de plus de 90 jours sont effacées.
+name: Sauvegarde des stocks
+
+on:
+  schedule:
+    # deux horaires UTC pour tomber vers 23 h 30 à Paris en hiver (UTC+1) comme en été (UTC+2) ;
+    # le script ne garde que celui qui tombe à 23 h, heure de Paris
+    - cron: "30 21,22 * * 2,4,5,6"
+  workflow_dispatch:
+    inputs:
+      forcer:
+        description: "Faire une sauvegarde maintenant (même hors horaire)"
+        type: boolean
+        default: false
+
+jobs:
+  sauvegarde:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sauvegarder les stocks
+        env:
+          FORCER: ${{ inputs.forcer }}
+        run: |
+          set -euo pipefail
+          HEURE=$(TZ=Europe/Paris date +%H)
+          JOUR=$(TZ=Europe/Paris date +%u)   # 1 = lundi … 7 = dimanche
+          if [ "${FORCER:-false}" != "true" ]; then
+            case "$JOUR" in 2|4|5|6) ;; *) echo "Pas de sauvegarde ce soir."; exit 0;; esac
+            if [ "$HEURE" != "23" ]; then echo "Heure de Paris : $HEURE h, l'autre déclenchement s'en charge."; exit 0; fi
+          fi
+          DATE=$(TZ=Europe/Paris date +%Y-%m-%d)
+          BASE="https://stock-romain-default-rtdb.europe-west1.firebasedatabase.app"
+          curl -sSf --retry 3 "$BASE/stocks.json" -o stocks.json
+          python3 - "$DATE" <<'EOF'
+          import json, sys, datetime
+          stocks = json.load(open("stocks.json")) or {}
+          json.dump({"stocks": stocks, "le": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")},
+                    open("sauvegarde.json", "w"), ensure_ascii=False)
+          print(f"{len(stocks)} produits sauvegardés pour le {sys.argv[1]}")
+          EOF
+          curl -sSf --retry 3 -X PUT -H "Content-Type: application/json" --data @sauvegarde.json "$BASE/sauvegardes/stocks/$DATE.json" > /dev/null
+          # ménage : on garde 90 jours
+          LIMITE=$(TZ=Europe/Paris date -d "90 days ago" +%Y-%m-%d)
+          curl -sSf "$BASE/sauvegardes/stocks.json?shallow=true" -o liste.json
+          python3 -c "import json; print('\n'.join(k for k in (json.load(open('liste.json')) or {}) if k < '$LIMITE'))" | while read -r K; do
+            [ -n "$K" ] && curl -sSf -X DELETE "$BASE/sauvegardes/stocks/$K.json" > /dev/null && echo "Ancienne sauvegarde effacée : $K"
+          done
+          echo "Sauvegarde du $DATE enregistrée."
