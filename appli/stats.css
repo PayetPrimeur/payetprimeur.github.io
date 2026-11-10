@@ -100,3 +100,28 @@ button.st-hrow:hover { background: var(--bg); }
 .li-shop.st-selve { background: var(--selve); } .li-shop.villenave { background: var(--ville); }
 .li-desc { font-size: 14px !important; color: var(--ink); white-space: pre-wrap; overflow-wrap: anywhere; text-align: left !important; }
 .li-row.ok .li-who b { text-decoration: line-through; text-decoration-thickness: 2px; }
+
+/* couverture, prévision, tendances */
+.st-cov { margin: 0; padding: 8px 12px; border-radius: 12px; font-size: 13px; font-weight: 700; }
+.st-cov.good { background: #eef3e4; color: var(--selve-ink); }
+.st-cov.mid { background: #fdf3dc; color: #7a5200; }
+.st-cov.low { background: #fbe6e6; color: #8f2424; }
+.st-prev td:last-child { width: 34px; }
+.pv-b { display: inline-flex; width: 26px; height: 26px; border-radius: 8px; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; background: var(--soft); color: var(--muted); }
+.pv-plus .pv-b { background: #fdf3dc; color: #7a5200; }
+.pv-moins .pv-b { background: #e5eef7; color: var(--ville-ink); }
+.pv-vide .pv-b { background: #fbe6e6; color: #8f2424; }
+.pv-nouveau .pv-b { background: #eef3e4; color: var(--selve-ink); }
+.st-trend { display: grid; gap: 6px; }
+.st-tcats { display: flex; flex-wrap: wrap; gap: 6px; }
+.st-tcat { display: inline-flex; gap: 6px; align-items: baseline; padding: 6px 10px; border-radius: 10px; background: var(--bg); font-size: 13px; }
+.st-trow { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; padding: 8px 4px; border: 0; border-bottom: 1px solid var(--line); background: none; text-align: left; font: inherit; color: var(--ink); cursor: pointer; }
+.st-trow span { display: grid; min-width: 0; }
+.st-trow b { font-size: 14px; overflow-wrap: anywhere; }
+.st-trow small { font-size: 12px; color: var(--muted); font-weight: 600; }
+.st-trend em, .st-tcat em { font-style: normal; font-weight: 800; font-size: 13.5px; white-space: nowrap; }
+em.up { color: var(--selve-ink); } em.down { color: #b23a3a; } em.eq { color: var(--muted); } em.nv { color: var(--ville-ink); }
+.st-prev td, .st-prev thead th { white-space: nowrap; }
+.st-prev thead th { font-size: 12px; font-weight: 800; color: var(--muted); padding: 0 6px 6px; text-align: right; }
+.st-prev thead th:first-child { text-align: left; padding-left: 4px; }
+.st-prev td { padding-left: 8px; }
