@@ -103,12 +103,10 @@
   function prochainSoir() { const d = new Date(); for (let i = 0; i < 7; i++) { if ([2, 4, 5, 6].includes(d.getDay())) return d; d.setDate(d.getDate() + 1); } return d; }
 
   /* point 1 : prévision du prochain soir, d'après les 4 derniers soirs identiques */
-  function prevision(sh) {
+  function prevData(sh) {
     const cible = prochainSoir(), jour = cible.getDay(), ck = isoDay(cible);
     const memes = allBk().filter(([k]) => parseDay(k).getDay() === jour && k < ck).slice(-4);
-    const nom = cible.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
-    let h = `<section class="card"><div class="card-head"><h2>Prévision : ${esc(nom)}</h2><span>soir de sauvegarde</span></div>`;
-    if (!memes.length) return h + `<p class="st-note">Il faut au moins une sauvegarde d'un ${esc(cible.toLocaleDateString("fr-FR", { weekday: "long" }))} précédent pour prévoir.</p></section>`;
+    if (!memes.length) return { cible, memes, rows: [], alertes: 0 };
     const hab = {};
     memes.forEach(([, b]) => Object.entries(b.stocks).forEach(([n, s]) => { hab[n] = (hab[n] || 0) + sh.reduce((a, site) => a + val(s, site), 0); }));
     const noms = new Set(Object.keys(hab).concat(Object.keys(data.stocks || {})));
@@ -123,7 +121,13 @@
     });
     const ord = { vide: 0, plus: 1, moins: 1, nouveau: 2, ok: 3 };
     rows.sort((a, b) => ord[a.flag] - ord[b.flag] || b.poids - a.poids);
-    const alertes = rows.filter(r => r.flag !== "ok").length;
+    return { cible, memes, rows, alertes: rows.filter(r => r.flag !== "ok").length };
+  }
+  function prevision(sh, P) {
+    const { cible, memes, rows, alertes } = P || prevData(sh);
+    const nom = cible.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
+    let h = `<section class="card" id="st-prevsec"><div class="card-head"><h2>Prévision : ${esc(nom)}</h2><span>soir de sauvegarde</span></div>`;
+    if (!memes.length) return h + `<p class="st-note">Il faut au moins une sauvegarde d'un ${esc(cible.toLocaleDateString("fr-FR", { weekday: "long" }))} précédent pour prévoir.</p></section>`;
     const shown = st.showPrev ? rows : rows.slice(0, 12);
     const badge = { ok: ["≈", "comme d'habitude"], plus: ["↑", "plus que d'habitude"], moins: ["↓", "moins que d'habitude"], vide: ["!", "rien de noté"], nouveau: ["+", "pas habituel"] };
     h += `<p class="st-note">Quantité habituelle : moyenne des ${memes.length} dernier${memes.length > 1 ? "s" : ""} ${esc(cible.toLocaleDateString("fr-FR", { weekday: "long" }))}s soir, comparée à ce qui est noté maintenant dans les stocks. ${alertes ? `<b>${alertes} écart${alertes > 1 ? "s" : ""} à vérifier</b> en haut de la liste.` : "Aucun écart notable."}</p>
@@ -136,20 +140,27 @@
   }
 
   /* point 2 : tendances, 4 dernières semaines contre les 4 précédentes (moyenne par soir) */
-  function tendances(sh) {
+  const HORS = ["Fourniture", "Plateaux", "Panier de la semaine"];
+  const pct = r => (r > 0 ? "+" : "−") + Math.round(Math.abs(r) * 100) + "\u00a0%";
+  function trendData(sh) {
     const d1 = new Date(); d1.setDate(d1.getDate() - 28); const d2 = new Date(); d2.setDate(d2.getDate() - 56);
     const a1 = isoDay(d1), a2 = isoDay(d2), all = allBk();
     const cur = all.filter(([k]) => k >= a1), prev = all.filter(([k]) => k >= a2 && k < a1);
-    let h = `<section class="card"><div class="card-head"><h2>Tendances</h2><span>4 dernières semaines / 4 précédentes</span></div>`;
-    if (cur.length < 2 || prev.length < 2) return h + `<p class="st-note">Il faut environ 8 semaines de sauvegardes pour comparer deux périodes de 4 semaines. Les tendances apparaîtront d'elles-mêmes.</p></section>`;
+    if (cur.length < 2 || prev.length < 2) return { ok: false };
     const moy = list => { const m = {}; list.forEach(([, b]) => Object.entries(b.stocks).forEach(([n, s]) => { m[n] = (m[n] || 0) + sh.reduce((a, site) => a + val(s, site), 0); })); Object.keys(m).forEach(n => m[n] /= list.length); return m; };
     const mc = moy(cur), mp = moy(prev);
-    const prods = [...new Set(Object.keys(mc).concat(Object.keys(mp)))].map(n => ({ n, c: mc[n] || 0, p: mp[n] || 0 }));
+    const prods = [...new Set(Object.keys(mc).concat(Object.keys(mp)))].filter(n => !HORS.includes(catOf(n))).map(n => ({ n, c: mc[n] || 0, p: mp[n] || 0 }));
     const var_ = prods.filter(x => x.p >= 0.5 && (x.c + x.p) >= 1).map(x => Object.assign(x, { r: (x.c - x.p) / x.p }));
     const hausse = var_.filter(x => x.r >= 0.15).sort((a, b) => b.r - a.r).slice(0, 5);
     const baisse = var_.filter(x => x.r <= -0.15).sort((a, b) => a.r - b.r).slice(0, 5);
     const nouv = prods.filter(x => x.p < 0.25 && x.c >= 0.5).sort((a, b) => b.c * ownF(b.n) - a.c * ownF(a.n)).slice(0, 5);
-    const pct = r => (r > 0 ? "+" : "−") + Math.round(Math.abs(r) * 100) + " %";
+    return { ok: true, mc, mp, hausse, baisse, nouv };
+  }
+  function tendances(sh, T) {
+    T = T || trendData(sh);
+    let h = `<section class="card" id="st-trendsec"><div class="card-head"><h2>Tendances</h2><span>4 dernières semaines / 4 précédentes</span></div>`;
+    if (!T.ok) return h + `<p class="st-note">Il faut environ 8 semaines de sauvegardes pour comparer deux périodes de 4 semaines. Les tendances apparaîtront d'elles-mêmes.</p></section>`;
+    const { mc, mp, hausse, baisse, nouv } = T;
     const line = (x, cls) => `<button type="button" class="st-trow" data-sprod="${esc(x.n)}"><span><b>${esc(x.n)}</b><small>${own(x.n, x.p)} → ${own(x.n, x.c)} par soir</small></span><em class="${cls}">${cls === "nv" ? "nouveau" : pct(x.r)}</em></button>`;
     // catégories dans l'unité choisie
     const catT = {};
@@ -161,6 +172,32 @@
       <h3 class="st-h3">En baisse</h3>${baisse.length ? baisse.map(x => line(x, "down")).join("") : `<p class="st-note">Aucune baisse marquée.</p>`}
       ${nouv.length ? `<h3 class="st-h3">Nouveaux ces 4 semaines</h3>${nouv.map(x => line(x, "nv")).join("")}` : ""}
       </div><p class="st-note">Comparaison des moyennes par soir de sauvegarde. Touchez un produit pour sa vue précise.</p></section>`;
+    return h;
+  }
+
+  /* produits dormants : au catalogue, mais pas à prévoir depuis 4 semaines */
+  function dormData(sh) {
+    const all = allBk(), d1 = new Date(); d1.setDate(d1.getDate() - 28); const a1 = isoDay(d1);
+    if (!all.length || all[0][0] > a1) return { ok: false };
+    const recents = new Set();
+    all.filter(([k]) => k >= a1).forEach(([, b]) => Object.entries(b.stocks).forEach(([n, s]) => { if (sh.some(site => val(s, site))) recents.add(n); }));
+    const list = data.products.filter(p => !HORS.includes(p.c) && !recents.has(p.n)).map(p => {
+      let last = null;
+      for (let i = all.length - 1; i >= 0; i--) { const s = all[i][1].stocks[p.n]; if (sh.some(site => val(s, site))) { last = all[i][0]; break; } }
+      return { n: p.n, c: p.c, last };
+    }).sort((a, b) => (b.last || "").localeCompare(a.last || "") || a.n.localeCompare(b.n, "fr"));
+    return { ok: true, list };
+  }
+  function dormants(sh, D) {
+    D = D || dormData(sh);
+    let h = `<section class="card" id="st-dormsec"><div class="card-head"><h2>Produits dormants</h2><span>pas à prévoir depuis 4 semaines</span></div>`;
+    if (!D.ok) return h + `<p class="st-note">Il faut 4 semaines de sauvegardes pour repérer les produits dormants.</p></section>`;
+    if (!D.list.length) return h + `<p class="st-note">Aucun : tous les produits du catalogue ont été à prévoir ces 4 dernières semaines.</p></section>`;
+    const fd = k => parseDay(k).toLocaleDateString("fr-FR", { day: "numeric", month: "short" }).replace(/\./g, "");
+    const shown = st.showDorm ? D.list : D.list.slice(0, 12);
+    h += `<p class="st-note">À retirer du catalogue s'ils ne sont plus vendus, ou à vérifier s'ils sont oubliés dans les commandes. Fournitures, plateaux et panier ne sont pas comptés.</p>
+      ${shown.map(x => `<div class="st-trow st-dorm"><span><b>${esc(x.n)}</b><small>${esc(CAT_LABEL[x.c] || x.c)}</small></span><em class="eq">${x.last ? "dernière fois " + esc(fd(x.last)) : "jamais"}</em></div>`).join("")}
+      ${D.list.length > 12 ? `<button type="button" class="link" id="st-dormmore">${st.showDorm ? "Afficher moins" : `Afficher les ${D.list.length - 12} autres`}</button>` : ""}</section>`;
     return h;
   }
 
@@ -236,19 +273,25 @@
       h += `<section class="card"><h2>Pas encore de sauvegarde sur cette période</h2><p class="st-note">Les stocks nécessaires sont sauvegardés à minuit les mardis, jeudis, vendredis et samedis soir. Les statistiques se remplissent au fil des sauvegardes.</p></section>`;
     } else {
       const last = series[series.length - 1];
+      const P = prevData(sh), T = trendData(sh), D = dormData(sh);
+      const nomSoir = P.cible.toLocaleDateString("fr-FR", { weekday: "long" });
+      const top1 = T.ok && T.hausse[0], bas1 = T.ok && T.baisse[0];
       h += `<p class="st-note st-range">${bk.length} sauvegarde${bk.length > 1 ? "s" : ""}, du ${shortDate(bk[0][0])} au ${shortDate(last.k)}</p><div class="st-kpis">
+        <button type="button" class="st-kpi st-kpi-go" data-sgo="st-prevsec"><small>Écarts à vérifier</small><b>${P.memes.length ? P.alertes : "–"}</b><span>${P.memes.length ? "pour " + esc(nomSoir) + " soir" : "pas encore assez de sauvegardes"}</span></button>
         <div class="st-kpi"><small>Paniers commandés</small><b>${C.paniers.nb}</b><span>sur la période</span></div>
-        <div class="st-kpi"><small>Plateaux commandés</small><b>${C.plateaux.nb}</b><span>sur la période</span></div>
+        <button type="button" class="st-kpi st-kpi-go" data-sgo="st-trendsec"><small>Tendance du mois</small>${T.ok ? `<span class="st-tk">${top1 ? `<i class="up">↑ ${esc(top1.n)} ${pct(top1.r)}</i>` : "<i>Pas de hausse marquée</i>"}${bas1 ? `<i class="down">↓ ${esc(bas1.n)} ${pct(bas1.r)}</i>` : "<i>Pas de baisse marquée</i>"}</span>` : `<b>–</b><span>il faut 8 semaines de sauvegardes</span>`}</button>
+        <button type="button" class="st-kpi st-kpi-go" data-sgo="st-dormsec"><small>Produits dormants</small><b>${D.ok ? D.list.length : "–"}</b><span>${D.ok ? "pas à prévoir depuis 4\u00a0semaines" : "il faut 4 semaines de sauvegardes"}</span></button>
       </div>`;
       if (C.cov < 0.999) h += `<p class="st-cov ${C.cov >= 0.85 ? "good" : C.cov >= 0.6 ? "mid" : "low"}">${Math.round(C.cov * 100)} % des quantités ont une unité d'achat${C.cov < 0.85 ? " · ajoutez-la dans l'admin, Catalogue" : ""}</p>`;
-      h += prevision(sh);
+      h += prevision(sh, P);
 
       const us = unitsIn(C);
       h += `<section class="card"><div class="card-head"><h2>À prévoir${st.cu === "brut" ? " (sans unité)" : ", en " + (st.cu === "kg" ? "kilos" : UL[st.cu] === "pc" ? "pièces" : UL[st.cu])}</h2>${legend(sh)}</div>
         ${us.length > 1 ? `<div class="st-seg-ctl st-pas" role="group" aria-label="Unité du graphique">${us.map(u => `<button type="button" data-scu="${u}" aria-pressed="${st.cu === u}">${u === "pc" ? "pièces" : u === "brut" ? "sans unité" : UL[u]}</button>`).join("")}</div>` : ""}${pasCtl()}
         ${vbars("st-evo", parPas(series.map(s => ({ k: s.k, per: s.per })), sh), sh, uSuf().trim())}
         <p class="st-note">${couverture(C)}</p></section>`;
-      h += tendances(sh);
+      h += tendances(sh, T);
+      h += dormants(sh, D);
 
       const jr = C.jours.filter(j => j.n);
       h += `<section class="card"><div class="card-head"><h2>Selon le soir</h2><span>moyenne par soir</span></div>
@@ -327,6 +370,8 @@
     if (ds.ssort) { st.sort = ds.ssort; return render(); }
     if (ds.scat) { st.cat = ds.scat; st.showAll = false; return render(); }
     if (ds.scu) { st.cu = ds.scu; return render(); }
+    if (ds.sgo) { const el = $(ds.sgo); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+    if (t.id === "st-dormmore") { st.showDorm = !st.showDorm; return render(); }
     if (t.id === "st-prevmore") { st.showPrev = !st.showPrev; return render(); }
     if (t.id === "st-more") { st.showAll = !st.showAll; return render(); }
     if (ds.sprod) { st.prod = ds.sprod; render(); const d = $("st-detail"); if (d) d.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
