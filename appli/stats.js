@@ -37,8 +37,8 @@
     if (st.per === "tout") return "0000";
     const d = new Date(); d.setDate(d.getDate() - Number(st.per)); return isoDay(d);
   }
-  // les statistiques de stocks ne portent que sur les fruits, les légumes et l'épicerie
-  const STAT_CATS = ["Fruit", "Légume", "Épicerie"];
+  // les statistiques de stocks portent sur les fruits, légumes, aromates et l'épicerie
+  const STAT_CATS = ["Fruit", "Légume", "Aromate", "Épicerie"];
   const garde = n => STAT_CATS.includes(catOf(n));
   const filtre = stocks => { const o = {}; Object.entries(stocks || {}).forEach(([n, v]) => { if (garde(n)) o[n] = v; }); return o; };
   const filtreBk = ([k, b]) => [k, Object.assign({}, b, { stocks: filtre(b.stocks) })];
@@ -200,7 +200,7 @@
     if (!D.list.length) return h + `<p class="st-note">Aucun : tous les produits du catalogue ont été à prévoir ces 4 dernières semaines.</p></section>`;
     const fd = k => parseDay(k).toLocaleDateString("fr-FR", { day: "numeric", month: "short" }).replace(/\./g, "");
     const shown = st.showDorm ? D.list : D.list.slice(0, 12);
-    h += `<p class="st-note">À retirer du catalogue s'ils ne sont plus vendus, ou à vérifier s'ils sont oubliés dans les commandes. Seuls les fruits, légumes et l'épicerie sont comptés.</p>
+    h += `<p class="st-note">À retirer du catalogue s'ils ne sont plus vendus, ou à vérifier s'ils sont oubliés dans les commandes. Seuls les fruits, légumes, aromates et l'épicerie sont comptés.</p>
       ${shown.map(x => `<div class="st-trow st-dorm"><span><b>${esc(x.n)}</b><small>${esc(CAT_LABEL[x.c] || x.c)}</small></span><em class="eq">${x.last ? "dernière fois " + esc(fd(x.last)) : "jamais"}</em></div>`).join("")}
       ${D.list.length > 12 ? `<button type="button" class="link" id="st-dormmore">${st.showDorm ? "Afficher moins" : `Afficher les ${D.list.length - 12} autres`}</button>` : ""}</section>`;
     return h;

@@ -10,7 +10,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 let role = null; // "admin" ou "equipe", lu dans acces/<uid> (modifiable seulement depuis la console Firebase)
-const APP_V = "202611111238";
+const APP_V = "202611111240";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -317,13 +317,13 @@ function renderAdmin() {
     + (bk.length > 3 ? `<button type="button" class="link" id="more-backups">${showAllBackups ? "Afficher moins" : `Voir les ${bk.length - 3} sauvegardes précédentes`}</button>` : "")
     : `<p class="empty" style="padding:6px 0">La première sauvegarde sera faite ce soir à minuit (mardi, jeudi, vendredi et samedi).</p>`;
   $("new-cat").innerHTML = CATS.map(c => `<button type="button" data-nc="${esc(c)}" aria-pressed="${newCat === c}">${esc(c === "Panier de la semaine" ? "Panier" : c)}</button>`).join("");
-  const nbEq = data.products.filter(p => ["Fruit", "Légume", "Épicerie"].includes(p.c) && eqComplet(p.u)).length;
+  const nbEq = data.products.filter(p => ["Fruit", "Légume", "Aromate", "Épicerie"].includes(p.c) && eqComplet(p.u)).length;
   $("cat-count").textContent = `${data.products.length} produits · ${nbEq} avec unité d'achat`;
-  $("catalogue").innerHTML = `<p class="hint" style="margin:0 0 6px">Unité d'achat : ce que représente « 1 » dans les stocks (ex. 1 = 5 kg, 1 = 1 pièce, 1 = 1 botte), pour des statistiques précises (fruits, légumes et épicerie). Les stocks se notent comme avant.</p>` +
+  $("catalogue").innerHTML = `<p class="hint" style="margin:0 0 6px">Unité d'achat : ce que représente « 1 » dans les stocks (ex. 1 = 5 kg, 1 = 1 pièce, 1 = 1 botte), pour des statistiques précises (fruits, légumes, aromates et épicerie). Les stocks se notent comme avant.</p>` +
     CATS.concat([...new Set(data.products.map(p => p.c))].filter(c => !CATS.includes(c))).map(c => {
       const ps = data.products.filter(p => p.c === c).sort((x, y) => x.n.localeCompare(y.n, "fr"));
       if (!ps.length) return "";
-      const ok = ps.filter(p => eqComplet(p.u)).length, stat = ["Fruit", "Légume", "Épicerie"].includes(c);
+      const ok = ps.filter(p => eqComplet(p.u)).length, stat = ["Fruit", "Légume", "Aromate", "Épicerie"].includes(c);
       return `<h3 class="cat-group"><span>${esc(CAT_LABEL[c] || c)}</span><small>${ps.length} produit${ps.length > 1 ? "s" : ""}${stat ? ` · ${ok} avec unité` : ""}</small></h3>` +
         ps.map(p => `<div class="cat-row"><b>${esc(p.n)}</b>
       ${stat ? `<button type="button" class="eq-btn${eqComplet(p.u) ? " set" : p.u ? " part" : ""}" data-eq="${esc(p.n)}" aria-label="Équivalence de ${esc(p.n)}">${esc(eqLabel(p.u))}</button>` : ""}
