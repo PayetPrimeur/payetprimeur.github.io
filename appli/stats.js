@@ -37,9 +37,14 @@
     if (st.per === "tout") return "0000";
     const d = new Date(); d.setDate(d.getDate() - Number(st.per)); return isoDay(d);
   }
+  // les statistiques de stocks ne portent que sur les fruits, les légumes et l'épicerie
+  const STAT_CATS = ["Fruit", "Légume", "Épicerie"];
+  const garde = n => STAT_CATS.includes(catOf(n));
+  const filtre = stocks => { const o = {}; Object.entries(stocks || {}).forEach(([n, v]) => { if (garde(n)) o[n] = v; }); return o; };
+  const filtreBk = ([k, b]) => [k, Object.assign({}, b, { stocks: filtre(b.stocks) })];
   function backups() {
     const from = since();
-    return Object.entries(data.sauvegardes || {}).filter(([k, b]) => b && b.stocks && k >= from).sort((a, b) => a[0].localeCompare(b[0]));
+    return Object.entries(data.sauvegardes || {}).filter(([k, b]) => b && b.stocks && k >= from).sort((a, b) => a[0].localeCompare(b[0])).map(filtreBk);
   }
 
   /* ---------- calculs ---------- */
@@ -98,7 +103,7 @@
     bk.forEach(([, b]) => Object.entries(b.stocks).forEach(([n, s]) => { const v = sh.reduce((a, site) => a + val(s, site), 0); tot += v; if (eqOf(n)) ok += v; }));
     return tot ? ok / tot : 0;
   }
-  const allBk = () => Object.entries(data.sauvegardes || {}).filter(([, b]) => b && b.stocks).sort((a, b) => a[0].localeCompare(b[0]));
+  const allBk = () => Object.entries(data.sauvegardes || {}).filter(([, b]) => b && b.stocks).sort((a, b) => a[0].localeCompare(b[0])).map(filtreBk);
   // prochain soir de sauvegarde (aujourd'hui s'il en est un)
   function prochainSoir() { const d = new Date(); for (let i = 0; i < 7; i++) { if ([2, 4, 5, 6].includes(d.getDay())) return d; d.setDate(d.getDate() + 1); } return d; }
 
@@ -109,7 +114,7 @@
     if (!memes.length) return { cible, memes, rows: [], alertes: 0 };
     const hab = {};
     memes.forEach(([, b]) => Object.entries(b.stocks).forEach(([n, s]) => { hab[n] = (hab[n] || 0) + sh.reduce((a, site) => a + val(s, site), 0); }));
-    const noms = new Set(Object.keys(hab).concat(Object.keys(data.stocks || {})));
+    const noms = new Set(Object.keys(hab).concat(Object.keys(filtre(data.stocks))));
     const rows = [];
     noms.forEach(n => {
       const hv = (hab[n] || 0) / memes.length, nv = sh.reduce((a, site) => a + val((data.stocks || {})[n], site), 0);
@@ -181,7 +186,7 @@
     if (!all.length || all[0][0] > a1) return { ok: false };
     const recents = new Set();
     all.filter(([k]) => k >= a1).forEach(([, b]) => Object.entries(b.stocks).forEach(([n, s]) => { if (sh.some(site => val(s, site))) recents.add(n); }));
-    const list = data.products.filter(p => !HORS.includes(p.c) && !recents.has(p.n)).map(p => {
+    const list = data.products.filter(p => STAT_CATS.includes(p.c) && !recents.has(p.n)).map(p => {
       let last = null;
       for (let i = all.length - 1; i >= 0; i--) { const s = all[i][1].stocks[p.n]; if (sh.some(site => val(s, site))) { last = all[i][0]; break; } }
       return { n: p.n, c: p.c, last };
@@ -195,7 +200,7 @@
     if (!D.list.length) return h + `<p class="st-note">Aucun : tous les produits du catalogue ont été à prévoir ces 4 dernières semaines.</p></section>`;
     const fd = k => parseDay(k).toLocaleDateString("fr-FR", { day: "numeric", month: "short" }).replace(/\./g, "");
     const shown = st.showDorm ? D.list : D.list.slice(0, 12);
-    h += `<p class="st-note">À retirer du catalogue s'ils ne sont plus vendus, ou à vérifier s'ils sont oubliés dans les commandes. Fournitures, plateaux et panier ne sont pas comptés.</p>
+    h += `<p class="st-note">À retirer du catalogue s'ils ne sont plus vendus, ou à vérifier s'ils sont oubliés dans les commandes. Seuls les fruits, légumes et l'épicerie sont comptés.</p>
       ${shown.map(x => `<div class="st-trow st-dorm"><span><b>${esc(x.n)}</b><small>${esc(CAT_LABEL[x.c] || x.c)}</small></span><em class="eq">${x.last ? "dernière fois " + esc(fd(x.last)) : "jamais"}</em></div>`).join("")}
       ${D.list.length > 12 ? `<button type="button" class="link" id="st-dormmore">${st.showDorm ? "Afficher moins" : `Afficher les ${D.list.length - 12} autres`}</button>` : ""}</section>`;
     return h;
