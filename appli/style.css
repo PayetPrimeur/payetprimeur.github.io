@@ -21,7 +21,9 @@ button { cursor: pointer; }
 
 /* en-têtes */
 .top { background: var(--card); border-bottom: 1px solid var(--line); padding: calc(16px + env(safe-area-inset-top, 0px)) max(18px, env(safe-area-inset-right, 0px)) 14px max(18px, env(safe-area-inset-left, 0px)); display: grid; gap: 12px; position: sticky; top: 0; z-index: 50; }
-.top-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.top-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; }
+.top-row > div:first-child { min-width: 0; }
+.top-row h1 { overflow-wrap: anywhere; }
 .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 h1 { margin: 2px 0 0; font-size: 26px; font-weight: 800; letter-spacing: -.01em; }
 .wrap { max-width: 640px; width: 100%; margin: 0 auto; }
@@ -52,11 +54,11 @@ h1 { margin: 2px 0 0; font-size: 26px; font-weight: 800; letter-spacing: -.01em;
 .sec-head span { font-size: 13px; font-weight: 600; color: var(--muted); }
 .t-Fruit { color: #a85f00; } .t-Légume { color: var(--selve-ink); } .t-Aromate { color: #0a6d6d; } .t-Épicerie { color: #7a3f94; }
 .t-Fourniture { color: var(--muted); } .t-Plateaux { color: #8e4409; } .t-Panier-de-la-semaine { color: var(--primary-dark); }
-.item { display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 14px; background: var(--card); border-radius: var(--radius); border: 1px solid var(--line); }
-.item-name { flex: 1; min-width: 0; display: grid; gap: 2px; }
-.item-name b { font-size: 16px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.item { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 8px 8px 8px 14px; background: var(--card); border-radius: var(--radius); border: 1px solid var(--line); }
+.item-name { flex: 1 1 8em; min-width: 0; display: grid; gap: 2px; }
+.item-name b { font-size: 16px; font-weight: 700; line-height: 1.25; overflow-wrap: anywhere; hyphens: auto; }
 .item-name small { font-size: 12px; font-weight: 600; color: var(--muted); }
-.stepper { display: flex; align-items: center; gap: 4px; background: var(--bg); border-radius: 14px; padding: 4px; }
+.stepper { display: flex; align-items: center; gap: 4px; margin-left: auto; flex: none; background: var(--bg); border-radius: 14px; padding: 4px; }
 .stepper button { width: 44px; height: 44px; border: 0; border-radius: 11px; background: var(--card); display: flex; align-items: center; justify-content: center; color: var(--ink); }
 .stepper button.plus { background: var(--primary); color: #fff; }
 .stepper output { min-width: 34px; text-align: center; font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; }
@@ -113,7 +115,7 @@ h1 { margin: 2px 0 0; font-size: 26px; font-weight: 800; letter-spacing: -.01em;
 .card h2 { margin: 0; font-size: 16px; font-weight: 800; }
 .card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
 .card-head span { font-size: 12px; font-weight: 600; color: var(--muted); }
-.backup { display: flex; align-items: center; gap: 8px; padding-top: 8px; border-top: 1px solid var(--soft); }
+.backup { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-top: 8px; border-top: 1px solid var(--soft); }
 .backup:first-of-type { border-top: 0; padding-top: 0; }
 .backup span { flex: 1; font-size: 14px; font-weight: 700; min-width: 0; }
 .btn { height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); font-size: 13px; font-weight: 800; color: var(--ink); }
@@ -182,3 +184,6 @@ body.is-admin .admin-only { display: grid; gap: 10px; }
 input, select, textarea { font-size: max(16px, 1em); }
 html, body { max-width: 100%; overflow-x: hidden; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+/* grande taille de texte : les libellés passent à la ligne au lieu d'être coupés */
+.nav button { white-space: normal; line-height: 1.1; text-align: center; }
+.order, .order * { overflow-wrap: anywhere; }
