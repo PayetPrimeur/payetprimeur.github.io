@@ -10,7 +10,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 let role = null; // "admin" ou "equipe", lu dans acces/<uid> (modifiable seulement depuis la console Firebase)
-const APP_V = "202611111025";
+const APP_V = "202611111230";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -407,7 +407,15 @@ function restoreBackup(k) {
 let LOGO_PDF = null;
 (function () { const im = new Image(); im.onload = () => { try { const c = document.createElement("canvas"); c.width = im.naturalWidth; c.height = im.naturalHeight; c.getContext("2d").drawImage(im, 0, 0); LOGO_PDF = { url: c.toDataURL("image/png"), r: im.naturalWidth / im.naturalHeight }; } catch (e) {} }; im.src = "logo-payet.png"; })();
 
-function generatePDF(stocks, titre, fichier) {
+// jours couverts par une liste : du lendemain d'une sauvegarde (ou du jour même pour les stocks actuels)
+// jusqu'au soir de la prochaine sauvegarde (mardi, jeudi, vendredi, samedi)
+function joursCouverts(k, memeJour) {
+  const out = [], d = parseDay(k);
+  if (memeJour) { out.push(isoDay(d)); if ([2, 4, 5, 6].includes(d.getDay())) return out; }
+  for (let i = 0; i < 7; i++) { d.setDate(d.getDate() + 1); out.push(isoDay(d)); if ([2, 4, 5, 6].includes(d.getDay())) break; }
+  return out;
+}
+function generatePDF(stocks, titre, fichier, cleSauvegarde) {
   stocks = stocks || data.stocks;
   const { jsPDF } = window.jspdf; const doc = new jsPDF({ unit: "mm", format: "a4" });
   const M = 14, W = 210 - 2 * M, now = new Date();
@@ -457,6 +465,31 @@ function generatePDF(stocks, titre, fichier) {
     });
     y = doc.lastAutoTable.finalY + 6;
   });
+  // commandes libres jusqu'à la prochaine sauvegarde
+  const jours = cleSauvegarde ? joursCouverts(cleSauvegarde, false) : joursCouverts(isoDay(now), true);
+  const libres = Object.values(data.reservations || {}).filter(r => r && r.type === "Retrait libre" && jours.includes(r.date))
+    .sort((a, b) => a.date.localeCompare(b.date) || String(a.boutique).localeCompare(String(b.boutique)) || String(a.client || "").localeCompare(String(b.client || ""), "fr"));
+  const jl = d => { const t = parseDay(d).toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" }).replace(/\./g, ""); return t.charAt(0).toUpperCase() + t.slice(1); };
+  const periode = jours.length > 1 ? `du ${jl(jours[0]).toLowerCase()} au ${jl(jours[jours.length - 1]).toLowerCase()}` : jl(jours[0]).toLowerCase();
+  doc.autoTable({
+    startY: y + 2, margin: { left: M, right: M, top: 16, bottom: 18 }, showHead: "everyPage", theme: "plain", rowPageBreak: "avoid",
+    head: [
+      [{ content: "COMMANDES LIBRES", colSpan: 3, styles: { fillColor: [17, 17, 17], textColor: 255, fontStyle: "bold", fontSize: 12, halign: "left", cellPadding: { top: 2.2, bottom: 2.2, left: 3, right: 2 } } },
+       { content: `${libres.length} commande${libres.length > 1 ? "s" : ""}`, colSpan: 2, styles: { fillColor: [17, 17, 17], textColor: 255, fontSize: 8.5, halign: "right", valign: "middle", cellPadding: { right: 3 } } }],
+      [{ content: `Retraits libres ${periode}, jusqu'à la prochaine sauvegarde`, colSpan: 5, styles: { fontStyle: "normal", fontSize: 8.5, textColor: [70, 70, 70], halign: "left", cellPadding: { top: 1.8, bottom: 1.2, left: 2 } } }],
+      ["JOUR", "CLIENT", "BOUTIQUE", "COMMANDE", "FAIT"]
+    ],
+    body: libres.length ? libres.map(r => [jl(r.date), (qtyOf(r) > 1 ? qtyOf(r) + " × " : "") + (r.client || "Client") + (r.tel ? "\n" + r.tel : ""), SITES[r.boutique] || "", r.desc || "", ""])
+      : [[{ content: "Aucune commande libre sur ces jours.", colSpan: 5, styles: { halign: "left", fontStyle: "normal", textColor: [90, 90, 90] } }]],
+    headStyles: { fillColor: [255, 255, 255], fontSize: 7.5, textColor: [70, 70, 70], fontStyle: "bold", halign: "left", lineWidth: { bottom: 0.4 }, lineColor: [17, 17, 17] },
+    bodyStyles: { fillColor: [255, 255, 255], fontSize: 10, textColor: [17, 17, 17], valign: "top", cellPadding: { top: 2.2, bottom: 2.2, left: 2, right: 2 }, lineWidth: { bottom: 0.2 }, lineColor: [190, 190, 190] },
+    alternateRowStyles: { fillColor: [241, 241, 241] },
+    columnStyles: { 0: { cellWidth: W * 0.15, fontStyle: "bold" }, 1: { cellWidth: W * 0.25, fontStyle: "bold" }, 2: { cellWidth: W * 0.14 }, 3: { cellWidth: W * 0.33 }, 4: { cellWidth: W * 0.13, halign: "center" } },
+    didParseCell: d => { if (d.section === "head" && d.row.index === 2 && d.column.index === 4) d.cell.styles.halign = "center"; if (d.section === "body" && d.column.index === 1) { /* téléphone en plus petit sur la 2e ligne : laissé en gras simple */ } },
+    willDrawCell: d => { if (d.section === "head" && d.row.index === 0 && d.column.index === 0 && d.table.pageNumber > 1) d.cell.text = ["COMMANDES LIBRES (SUITE)"]; },
+    didDrawCell: d => { if (d.section === "body" && d.column.index === 4 && libres.length) { const s = 3.6; doc.setDrawColor(17); doc.setLineWidth(0.35); doc.rect(d.cell.x + (d.cell.width - s) / 2, d.cell.y + 2.2, s, s); } }
+  });
+
   // numéros de page
   const pages = doc.internal.getNumberOfPages();
   for (let i = 1; i <= pages; i++) { doc.setPage(i); doc.setFont("helvetica", "normal"); doc.setFontSize(8.5); doc.setTextColor(90); doc.text(`Page ${i} / ${pages}`, 105, 297 - 9, { align: "center" }); }
@@ -499,7 +532,7 @@ document.addEventListener("click", e => {
   else if (ds.eq) eqSheet(ds.eq);
   else if (ds.del) delProd(ds.del);
   else if (ds.brest) restoreBackup(ds.brest);
-  else if (ds.bpdf) generatePDF(data.sauvegardes[ds.bpdf].stocks, `Sauvegarde du ${backupLabel(ds.bpdf).toLowerCase()}`, `Stocks_necessaires_${ds.bpdf}.pdf`);
+  else if (ds.bpdf) generatePDF(data.sauvegardes[ds.bpdf].stocks, `Sauvegarde du ${backupLabel(ds.bpdf).toLowerCase()}`, `Stocks_necessaires_${ds.bpdf}.pdf`, ds.bpdf);
   else if (t.id === "more-backups") { showAllBackups = !showAllBackups; renderAdmin(); }
 });
 $("prev-week").onclick = () => { monthStart.setMonth(monthStart.getMonth() - 1); renderAgenda(); };
@@ -508,6 +541,7 @@ $("today-btn").onclick = () => { selDate = isoDay(new Date()); monthStart = mont
 $("fab").onclick = () => orderSheet(null);
 $("pdf-btn").onclick = () => generatePDF();
 $("pdf-btn-2").onclick = () => generatePDF();
+
 $("reset-btn").onclick = resetStocks;
 $("qr-btn").onclick = () => role === "admin" && window.openQrPanel && openQrPanel();
 $("pw-btn").onclick = changePassword;
