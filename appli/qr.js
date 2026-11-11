@@ -125,6 +125,45 @@
     g.fillStyle = "#f9b00f"; rr(g, (W - 70) / 2, H - mm(4.5), 70, 7, 3); g.fill();
     return c;
   }
+  // carte « Merci de votre achat » d'un panier : 92 × 64 mm, logo, message et QR code fixe du panier
+  async function basketCardCanvas(id) {
+    const logo = await ensureLibs();
+    try { await document.fonts.load("800 40px Figtree"); await document.fonts.load("600 20px Figtree"); } catch (e) {}
+    const mm = v => Math.round(v / 25.4 * 300);
+    const W = mm(92), H = mm(64);
+    const c = document.createElement("canvas"); c.width = W; c.height = H;
+    const g = c.getContext("2d");
+    g.fillStyle = "#fff"; g.fillRect(0, 0, W, H);
+    g.strokeStyle = "#b6115c"; g.lineWidth = mm(0.6); rr(g, mm(1), mm(1), W - mm(2), H - mm(2), mm(4)); g.stroke();
+    // QR code à gauche
+    const qr = qrcode(0, "Q"); qr.addData(`${SITE}/${id}/`); qr.make();
+    const n = qr.getModuleCount(), quiet = 3, qs = mm(48), cell = qs / (n + 2 * quiet);
+    const qx = mm(4), qy = (H - qs) / 2;
+    g.fillStyle = "#690834";
+    for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (qr.isDark(r, k))
+      g.fillRect(Math.floor(qx + (k + quiet) * cell), Math.floor(qy + (r + quiet) * cell), Math.ceil(cell), Math.ceil(cell));
+    // logo et message à droite
+    const rx = qx + qs + mm(2), rw = W - rx - mm(5);
+    const lw = rw, lh = Math.round(logo.height * lw / logo.width);
+    g.drawImage(logo, rx, mm(9), lw, lh);
+    g.fillStyle = "#690834"; g.textAlign = "center"; g.textBaseline = "top";
+    g.font = `800 ${mm(5.2)}px Figtree, Helvetica, Arial, sans-serif`;
+    const cx = rx + rw / 2; let y = mm(9) + lh + mm(5);
+    ["Merci de", "votre achat !"].forEach(t => { g.fillText(t, cx, y); y += mm(6.2); });
+    g.fillStyle = "#6b625a"; g.font = `600 ${mm(3)}px Figtree, Helvetica, Arial, sans-serif`; y += mm(2.5);
+    ["Scannez le QR code", "pour vos 2 recettes", "de la semaine"].forEach(t => { g.fillText(t, cx, y); y += mm(3.9); });
+    g.fillStyle = "#f9b00f"; rr(g, cx - mm(6), H - mm(7), mm(12), mm(1.6), mm(0.8)); g.fill();
+    return c;
+  }
+  async function downloadBasketSheet(p) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: "mm", format: "a4" });
+    const img = (await basketCardCanvas(p.id)).toDataURL("image/png");
+    const CW = 92, CH = 64, GX = 6, GY = 6, x0 = (210 - (2 * CW + GX)) / 2, y0 = (297 - (4 * CH + 3 * GY)) / 2;
+    for (let k = 0; k < 8; k++) doc.addImage(img, "PNG", x0 + (k % 2) * (CW + GX), y0 + Math.floor(k / 2) * (CH + GY), CW, CH);
+    saveFile(doc.output("blob"), `cartes-${p.id}.pdf`);
+    say(`8 cartes « ${p.n} » prêtes à imprimer.`);
+  }
   function download(blob, name) { saveFile(blob, name); }
   async function downloadLabel(p) {
     const c = await labelCanvas(p.id);
@@ -212,6 +251,7 @@
         <button class="qr-btn main" type="submit">Ajouter</button>
       </form>
       <div class="qr-actions">
+        <button class="qr-btn main" type="button" data-bcards="${i}">Cartes « Merci » à imprimer (PDF, 8 par page)</button>
         <button class="qr-btn" type="button" data-label="${i}">Étiquette QR du panier</button>
         <a class="qr-btn" href="${SITE}/${esc(p.id)}/" target="_blank" rel="noopener">Voir la page</a>
         <button class="qr-btn" type="button" data-rename="${i}">Renommer</button>
@@ -258,6 +298,7 @@
       const t = f.elements.t ? f.elements.t.value.trim() : undefined;
       if (await renameProduct(f.dataset.edit, n, t)) { editId = null; say("Nom modifié."); render(); }
     });
+    root.querySelectorAll("[data-bcards]").forEach(b => b.onclick = async () => { b.disabled = true; say("Préparation des cartes…"); try { await downloadBasketSheet(byId(b.dataset.bcards)); } catch (e) { say("Les cartes n'ont pas pu être créées."); } b.disabled = false; });
     root.querySelectorAll("[data-label]").forEach(b => b.onclick = async () => { b.disabled = true; try { await downloadLabel(byId(b.dataset.label)); } catch (e) { say("L'étiquette n'a pas pu être créée."); } b.disabled = false; });
     root.querySelectorAll("[data-bq]").forEach(inp => inp.onchange = () => {
       const [id, j] = inp.dataset.bq.split(":"); const c = (paniers()[id].contenu || []).map(x => x.slice());
