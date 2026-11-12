@@ -821,6 +821,13 @@
 "actif": true
 },
 {
+"n": "Pomme granny",
+"c": "Fruit",
+"id": "pomme-granny",
+"page": "pomme-granny",
+"actif": true
+},
+{
 "n": "Pommes gala",
 "c": "Fruit",
 "id": "pomme-gala",
@@ -930,6 +937,13 @@
 "c": "Légume",
 "id": "topinambour",
 "page": "topinambour",
+"actif": true
+},
+{
+"n": "Pomme fuji",
+"c": "Fruit",
+"id": "pomme-fuji",
+"page": "pomme-fuji",
 "actif": true
 }
 ],
@@ -5278,6 +5292,22 @@ null
 ],
 "conseil": "Choisissez un céleri-rave lourd pour sa taille : s'il sonne creux, il est spongieux à l'intérieur. Entamé, filmez la coupe, il se garde une semaine au frigo."
 }
+},
+"pomme-granny": {
+"nom": "Pomme granny",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true,
+"type": "fruit"
+},
+"pomme-fuji": {
+"nom": "Pomme fuji",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true,
+"type": "fruit"
 }
 },
 "paniers": [
