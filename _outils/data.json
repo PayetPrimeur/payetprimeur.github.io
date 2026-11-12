@@ -55,7 +55,7 @@
 "c": "Fruit",
 "id": "avocat-petit",
 "page": "avocat-petit",
-"actif": true
+"actif": false
 },
 {
 "n": "Banane",
@@ -135,6 +135,13 @@
 "actif": true
 },
 {
+"n": "Céleri rave",
+"c": "Légume",
+"id": "chou-rave",
+"page": "chou-rave",
+"actif": false
+},
+{
 "n": "Cèleri rave",
 "c": "Légume",
 "id": "celeri-rave",
@@ -203,13 +210,6 @@
 "id": "chou-fleur",
 "page": "chou-fleur",
 "actif": true
-},
-{
-"n": "Chou rave",
-"c": "Légume",
-"id": "chou-rave",
-"page": "chou-rave",
-"actif": false
 },
 {
 "n": "Chou romanesco",
@@ -314,7 +314,7 @@
 "c": "Aromate",
 "id": "coriandre",
 "page": "coriandre",
-"actif": false
+"actif": true
 },
 {
 "n": "Courge spaghettis",
@@ -727,14 +727,14 @@
 "c": "Légume",
 "id": "pdt-grenailles",
 "page": "pdt-grenailles",
-"actif": true
+"actif": false
 },
 {
 "n": "Pdt mitrailles",
 "c": "Légume",
 "id": "pdt-mitrailles",
 "page": "pdt-mitrailles",
-"actif": false
+"actif": true
 },
 {
 "n": "Persil",
@@ -776,7 +776,7 @@
 "c": "Légume",
 "id": "poireau",
 "page": "poireau",
-"actif": false
+"actif": true
 },
 {
 "n": "Poivron vert",
@@ -814,11 +814,18 @@
 "actif": true
 },
 {
+"n": "Pomme fuji",
+"c": "Fruit",
+"id": "pomme-fuji",
+"page": "pomme-fuji",
+"actif": true
+},
+{
 "n": "Pomme Goldrush",
 "c": "Fruit",
 "id": "pomme-goldrush",
 "page": "pomme-goldrush",
-"actif": true
+"actif": false
 },
 {
 "n": "Pomme granny",
@@ -937,13 +944,6 @@
 "c": "Légume",
 "id": "topinambour",
 "page": "topinambour",
-"actif": true
-},
-{
-"n": "Pomme fuji",
-"c": "Fruit",
-"id": "pomme-fuji",
-"page": "pomme-fuji",
 "actif": true
 }
 ],
@@ -1770,7 +1770,7 @@ null
 ]
 },
 "chou-rave": {
-"nom": "Chou-rave",
+"nom": "Céleri rave",
 "saison": "De mai à novembre",
 "photo": null,
 "historique": [
@@ -5316,10 +5316,56 @@ null
 {
 "id": "panier",
 "nom": "Panier de la semaine",
-"contenu": [],
+"contenu": [
+[
+"Carotte",
+"1kg"
+],
+[
+"Pdt Bintje",
+"1kg"
+],
+[
+"Radis blue meat",
+"1 pièce"
+],
+[
+"Navet",
+"1 pièce"
+],
+[
+"Oignon jaune",
+"2 pièces"
+],
+[
+"Échalote",
+"3 pièces"
+],
+[
+"Potimarron (pièce)",
+"1 pièce"
+],
+[
+"Poireaux",
+"2 pièces"
+],
+[
+"Clémentine portugal",
+"1kg"
+],
+[
+"Orange dessert",
+"2 pièces"
+],
+[
+"Poire conférence",
+"4 pièces"
+]
+],
 "recettes": [],
 "recettesPour": [],
-"semaine": ""
+"semaine": "",
+"aFaire": true
 }
 ]
 }
