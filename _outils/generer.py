@@ -132,6 +132,26 @@ PDF_BTN = ('<div class="pdf"><button type="button" class="btn main" id="pdf-btn"
            'Télécharger la recette (PDF)</button><p class="status" id="pdf-msg" role="status"></p></div>')
 
 
+def conseils_panier(d, b):
+    """Conseils du primeur pour chaque produit du panier : fiche des fruits, conseil de la recette des légumes et aromates."""
+    prods = {p["n"]: p for p in d.get("produits", [])}
+    vus, out = set(), []
+    for n, _q in b.get("contenu", []):
+        p = prods.get(n)
+        slug = p.get("page") if p else None
+        pg = d.get("pages", {}).get(slug) if slug else None
+        if not pg or slug in vus:
+            continue
+        if pg.get("type") == "fruit":
+            if pg.get("maturite") or pg.get("conservation"):
+                vus.add(slug)
+                out.append({"nom": n, "fruit": True, "maturite": pg.get("maturite", ""), "conservation": pg.get("conservation", "")})
+        elif (pg.get("recette") or {}).get("conseil"):
+            vus.add(slug)
+            out.append({"nom": n, "fruit": False, "conseil": pg["recette"]["conseil"]})
+    return out
+
+
 def page_panier(d, b):
     recs = [] if b.get("aFaire") else (b.get("recettes") or [])
     items = "".join(f'<li class="shop"><span class="box"></span><span>{f"<span class=q>{e(q)}</span>" if q else ""}{e(n)}</span></li>'
@@ -140,8 +160,18 @@ def page_panier(d, b):
     kickers = ["Idée n° 1 · la recette rapide", "Idée n° 2 · la recette plus lente"]
     corps = ("".join(recette_card(r, stamps[i] if i < 2 else "Recette", kickers[i] if i < 2 else b["nom"]) for i, r in enumerate(recs))
              if recs else '<div class="card"><p class="intro">Les recettes de ce panier arrivent très bientôt. Revenez dans quelques heures !</p></div>')
+    tips = conseils_panier(d, b)
+    tips_html = ""
+    if tips:
+        lignes = "".join(
+            f'<div class="tip"><h4>{e(t["nom"])}</h4>'
+            + (("".join([f'<p><b>Bien mûr ?</b> {e(t["maturite"])}</p>' if t.get("maturite") else "",
+                         f'<p><b>Conservation :</b> {e(t["conservation"])}</p>' if t.get("conservation") else ""]))
+               if t["fruit"] else f'<p>{e(t["conseil"])}</p>')
+            + '</div>' for t in tips)
+        tips_html = f'<section class="card tips"><h3>Les conseils du primeur pour votre panier</h3>{lignes}</section>'
     pdf = {"titre": "Merci pour votre achat !", "sousTitre": b["nom"], "fichier": b["nom"], "semaine": d["semaine"],
-           "contenu": b.get("contenu", []), "recettes": recs}
+           "contenu": b.get("contenu", []), "recettes": recs, "conseils": tips}
     pdf_json = json.dumps(pdf, ensure_ascii=False).replace("<", "\\u003c")
     sous = f"Deux idées au choix pour cuisiner votre {b['nom'].lower()}" if recs else b["nom"]
     return (head(f"Merci pour votre achat ! · {b['nom']} | Payet Primeur", f"Deux idées de recettes au choix pour cuisiner votre {b['nom'].lower()}.", "../")
@@ -149,7 +179,7 @@ def page_panier(d, b):
             '<p>Extra-frais et de saison, en circuit court</p></header>'
             f'<section class="hero thanks"><h1>Merci pour votre achat !</h1>{UNDERLINE}<p class="season">{e(sous)}</p></section>'
             + (f'<section class="card basket-list"><h3>Dans votre panier</h3><ul class="ing">{items}</ul></section>' if items else "")
-            + corps + (PDF_BTN if recs else "")
+            + corps + tips_html + (PDF_BTN if recs else "")
             + '<a class="back" href="../">← Toutes nos recettes de la semaine</a>' + footer() + '</div>'
             + f'<script type="application/json" id="recette">{pdf_json}</script>'
             + ('<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><script src="../recette.js"></script>' if recs else "")

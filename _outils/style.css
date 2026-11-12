@@ -103,3 +103,11 @@ footer a { font-size: 13px; color: var(--muted); }
 .top a { display: contents; }
 .origin { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: .04em; color: var(--vert); }
 .advice { margin: 0; }
+
+/* conseils du primeur en fin de page panier */
+.tips { gap: 0; }
+.tips h3 { margin-bottom: 4px; }
+.tip { padding: 12px 0; border-top: 1px dashed var(--line, #eadfce); }
+.tip:first-of-type { border-top: 0; }
+.tip h4 { margin: 0 0 4px; font-size: 17px; }
+.tip p { margin: 4px 0 0; line-height: 1.5; }

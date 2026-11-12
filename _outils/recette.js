@@ -81,6 +81,22 @@
       doc.setFont("helvetica", "bold"); color([164, 28, 41]); doc.text("Le conseil du primeur", M + 6, y + 7);
       doc.setFont("helvetica", "normal"); color(INK); doc.text(tip, M + 6, y + 13); y += th + 6;
     });
+    // conseils du primeur pour chaque produit du panier
+    if (data.conseils && data.conseils.length) {
+      doc.addPage(); y = 18;
+      doc.setFont("helvetica", "bold"); doc.setFontSize(17); color(FR); doc.text(T("Les conseils du primeur"), M, y); y += 3;
+      doc.setDrawColor(249, 176, 15); doc.setLineWidth(1.2); doc.line(M, y, M + 40, y); y += 9;
+      data.conseils.forEach(c => {
+        const parts = c.fruit ? [c.maturite && ["Bien mûr ? ", c.maturite], c.conservation && ["Conservation : ", c.conservation]].filter(Boolean) : [["", c.conseil]];
+        doc.setFontSize(10.5);
+        const blocs = parts.map(([lab, txt]) => doc.splitTextToSize(T(lab + txt), W));
+        ensure(8 + blocs.reduce((a, b) => a + b.length * 5 + 2, 0));
+        doc.setFont("helvetica", "bold"); doc.setFontSize(12); color(INK); doc.text(T(c.nom), M, y); y += 6;
+        doc.setFont("helvetica", "normal"); doc.setFontSize(10.5); color(INK);
+        blocs.forEach(l => { doc.text(l, M, y); y += l.length * 5 + 2; });
+        y += 4;
+      });
+    }
     for (let i = 1; i <= doc.getNumberOfPages(); i++) {
       doc.setPage(i); doc.setFont("helvetica", "normal"); doc.setFontSize(8.5); color(MUT);
       doc.text(T("Payet Primeur · Saint-Selve & Villenave-d'Ornon · Une nouvelle recette chaque dimanche"), 105, PH - 10, { align: "center" });
