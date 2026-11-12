@@ -5295,19 +5295,21 @@ null
 },
 "pomme-granny": {
 "nom": "Pomme granny",
-"saison": "",
+"saison": "D'octobre à juin",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "Une Granny Smith se cueille et se mange bien verte : choisissez-la d'un vert franc et brillant, bien ferme sous le doigt, sans taches molles. Si elle tire sur le jaune, elle a perdu de son acidité et de son croquant. Elle doit sonner plein et sentir légèrement acidulé.",
+"conservation": "Elle se garde très bien : une semaine dans une corbeille au frais, et 3 à 4 semaines dans le bac à légumes du frigo. Tenez-la à l'écart des autres fruits, car elle dégage de l'éthylène qui les fait mûrir plus vite. Une fois coupée, elle brunit lentement, mais mangez-la dans la journée."
 },
 "pomme-fuji": {
 "nom": "Pomme fuji",
-"saison": "",
+"saison": "D'octobre à mai",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "Une Fuji mûre est bien ferme, avec une peau rose à rouge striée sur fond jaune, sans zone verte marquée. Elle doit être lourde dans la main et sentir bon le sucre près de la queue. Évitez celles qui cèdent sous le pouce : la chair serait farineuse.",
+"conservation": "Gardez-la au frais : environ une semaine à température ambiante, et jusqu'à un mois dans le bac à légumes du frigo, dans un sac percé. Sortez-la une demi-heure avant de la croquer pour retrouver tout son parfum. Écartez celles qui sont abîmées, elles feraient mûrir les autres trop vite."
 }
 },
 "paniers": [
