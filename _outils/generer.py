@@ -163,13 +163,15 @@ def page_panier(d, b):
     tips = conseils_panier(d, b)
     tips_html = ""
     if tips:
-        lignes = "".join(
-            f'<div class="tip"><h4>{e(t["nom"])}</h4>'
-            + (("".join([f'<p><b>Bien mûr ?</b> {e(t["maturite"])}</p>' if t.get("maturite") else "",
-                         f'<p><b>Conservation :</b> {e(t["conservation"])}</p>' if t.get("conservation") else ""]))
-               if t["fruit"] else f'<p>{e(t["conseil"])}</p>')
+        notes = "".join(
+            f'<div class="note"><strong>Le conseil du primeur · {e(t["nom"])}</strong>'
+            + ((f'<span class="tip-l"><b>Bien mûr ?</b> {e(t["maturite"])}</span>' if t.get("maturite") else "")
+               + (f'<span class="tip-l"><b>Conservation :</b> {e(t["conservation"])}</span>' if t.get("conservation") else "")
+               if t["fruit"] else e(t["conseil"]))
             + '</div>' for t in tips)
-        tips_html = f'<section class="card tips"><h3>Les conseils du primeur pour votre panier</h3>{lignes}</section>'
+        tips_html = ('<article class="card tips"><span class="stamp">Le conseil<br>du primeur</span>'
+                     '<div><p class="kicker">Pour bien profiter de votre panier</p><h2 class="title">Les conseils du primeur</h2></div>'
+                     f'{notes}</article>')
     pdf = {"titre": "Merci pour votre achat !", "sousTitre": b["nom"], "fichier": b["nom"], "semaine": d["semaine"],
            "contenu": b.get("contenu", []), "recettes": recs, "conseils": tips}
     pdf_json = json.dumps(pdf, ensure_ascii=False).replace("<", "\\u003c")
