@@ -1,4 +1,4 @@
-# Sauvegarde des stocks de l'appli Payet Primeur Pro, à minuit (heure de Paris)
+# Sauvegarde des stocks de l'appli Payet Primeur Pro, à 22 h (heure de Paris)
 # les mardis, jeudis, vendredis et samedis soir. La sauvegarde est rangée dans
 # la base Firebase (sauvegardes/stocks/<date>) : l'appli l'affiche dans l'admin
 # (PDF, restauration et statistiques). Les sauvegardes de plus de 400 jours sont effacées.
@@ -6,9 +6,9 @@ name: Sauvegarde des stocks
 
 on:
   schedule:
-    # deux horaires UTC pour tomber vers 23 h 30 à Paris en hiver (UTC+1) comme en été (UTC+2) ;
-    # le script ne garde que celui qui tombe à 23 h, heure de Paris
-    - cron: "30 21,22 * * 2,4,5,6"
+    # deux horaires UTC pour tomber à 22 h à Paris en hiver (UTC+1) comme en été (UTC+2) ;
+    # le script ne garde que celui qui tombe à 22 h, heure de Paris
+    - cron: "2 20,21 * * 2,4,5,6"
   workflow_dispatch:
     inputs:
       forcer:
@@ -52,7 +52,7 @@ jobs:
           JOUR=$(TZ=Europe/Paris date +%u)   # 1 = lundi … 7 = dimanche
           if [ "${FORCER:-false}" != "true" ]; then
             case "$JOUR" in 2|4|5|6) ;; *) echo "Pas de sauvegarde ce soir."; exit 0;; esac
-            if [ "$HEURE" != "23" ]; then echo "Heure de Paris : $HEURE h, l'autre déclenchement s'en charge."; exit 0; fi
+            if [ "$HEURE" != "22" ]; then echo "Heure de Paris : $HEURE h, l'autre déclenchement s'en charge."; exit 0; fi
           fi
           DATE=$(TZ=Europe/Paris date +%Y-%m-%d)
           BASE="https://stock-romain-default-rtdb.europe-west1.firebasedatabase.app"
