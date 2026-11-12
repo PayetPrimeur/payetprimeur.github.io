@@ -1,5 +1,5 @@
 /* Liste à cocher — Payet Primeur Pro
-   Reprend la dernière sauvegarde de minuit des stocks nécessaires, classée comme le PDF.
+   Reprend la dernière sauvegarde de 22 h des stocks nécessaires, classée comme le PDF.
    Les coches sont partagées entre les téléphones (coches/<date de la sauvegarde>) et repartent
    à zéro toutes seules à chaque nouvelle sauvegarde. */
 (function () {
@@ -17,7 +17,7 @@
     st.ref = db.ref("coches/" + k);
     st.ref.on("value", s => { st.coches = s.val() || {}; render(); });
   }
-  // la liste vient de la dernière sauvegarde de minuit, ou d'une mise à jour manuelle plus récente
+  // la liste vient de la dernière sauvegarde de 22 h, ou d'une mise à jour manuelle plus récente
   // (liste/actuelle : ce n'est pas une sauvegarde, elle ne compte ni dans l'historique ni dans les stats)
   function source() {
     const k = latest(), M = st.manuel;
@@ -32,7 +32,7 @@
   }
   function miseAJour() {
     const sh = openSheet("Mettre à jour la liste", `<p class="hint">La liste reprend tout de suite les stocks nécessaires actuels des deux boutiques, et les cases cochées repartent à zéro.</p>
-      <p class="hint">Ce n'est pas une sauvegarde : la sauvegarde de minuit continue comme d'habitude et remplacera cette liste le soir venu.</p>
+      <p class="hint">Ce n'est pas une sauvegarde : la sauvegarde de 22 h continue comme d'habitude et remplacera cette liste le soir venu.</p>
       <button type="button" class="btn main wide" id="li-maj-ok">Mettre à jour maintenant</button>`);
     $("li-maj-ok").onclick = () => {
       const now = new Date(), jour = isoDay(now);
@@ -55,7 +55,7 @@
     if (typeof backupsOk !== "undefined" && !backupsOk) { root.innerHTML = h + `<p class="empty">Chargement…</p></div>`; return; }
     const S = source(); follow(S && S.id);
     const majBtn = `<button type="button" class="btn wide" id="li-maj">Mettre à jour avec les stocks actuels</button>`;
-    if (!S) { root.innerHTML = h + `<p class="empty">La liste apparaîtra après la première sauvegarde de minuit.</p>${majBtn}</div>`; return; }
+    if (!S) { root.innerHTML = h + `<p class="empty">La liste apparaîtra après la première sauvegarde de 22 h.</p>${majBtn}</div>`; return; }
     const k = S.id, stocks = S.stocks, cat = Object.fromEntries(data.products.map(p => [p.n, p.c]));
     const groups = {};
     Object.entries(stocks).forEach(([n, s]) => { const a = q(s, "st-selve"), b = q(s, "villenave"); if (a || b) (groups[cat[n] || "Autre"] = groups[cat[n] || "Autre"] || []).push({ n, a, b }); });
@@ -65,7 +65,7 @@
     h += `<div class="li-head card">
         <div class="card-head"><h2>${esc(S.label)}</h2><span>${done} / ${all.length} fait${done > 1 ? "s" : ""}</span></div>
         <div class="li-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="Avancement"><span style="width:${pct}%"></span></div>
-        <p class="li-note">${S.manuel ? "Liste mise à jour à la main : la prochaine sauvegarde de minuit la remplacera." : "Liste figée à la sauvegarde de minuit : elle se renouvelle toute seule à la prochaine sauvegarde."} Les cases cochées se voient sur tous les téléphones.</p>
+        <p class="li-note">${S.manuel ? "Liste mise à jour à la main : la prochaine sauvegarde de 22 h la remplacera." : "Liste figée à la sauvegarde de 22 h : elle se renouvelle toute seule à la prochaine sauvegarde."} Les cases cochées se voient sur tous les téléphones.</p>
         <label class="li-toggle"><input type="checkbox" id="li-hide"${st.hideDone ? " checked" : ""}> Masquer ce qui est fait</label>
         ${majBtn}
       </div>`;

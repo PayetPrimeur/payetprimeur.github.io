@@ -1,5 +1,5 @@
 /* Statistiques — Payet Primeur Pro
-   Lit les sauvegardes de minuit (stocks nécessaires) et les commandes déjà chargées dans `data`. */
+   Lit les sauvegardes de 22 h (stocks nécessaires) et les commandes déjà chargées dans `data`. */
 (function () {
   const SHOP_COL = { "st-selve": "#5a7827", "villenave": "#2f6fa8" };
   const PERIODES = [["7", "1 sem."], ["28", "4 sem."], ["91", "3 mois"], ["365", "1 an"], ["tout", "Tout"]];
@@ -81,7 +81,7 @@
       Object.entries(b.stocks).forEach(([n, s]) => { const r = sh.reduce((a, site) => a + val(s, site), 0); addU(jours[i].tu, n, r); if (aggU(n) === "kg") { const c = catOf(n); jours[i].cats[c] = (jours[i].cats[c] || 0) + r * aggF(n); } });
     });
     series.forEach(s => {
-      // sauvegarde de minuit datée du soir : mardi soir → commande pour le mercredi, etc.
+      // sauvegarde de 22 h datée du soir : mardi soir → commande pour le mercredi, etc.
       const i = { 2: 0, 4: 1, 5: 2, 6: 3 }[parseDay(s.k).getDay()];
       if (i !== undefined) { jours[i].n++; }
     });
@@ -275,7 +275,7 @@
     if (typeof backupsOk !== "undefined" && !backupsOk) {
       h += `<section class="card"><p class="st-note">Chargement des sauvegardes…</p></section>`;
     } else if (!bk.length) {
-      h += `<section class="card"><h2>Pas encore de sauvegarde sur cette période</h2><p class="st-note">Les stocks nécessaires sont sauvegardés à minuit les mardis, jeudis, vendredis et samedis soir. Les statistiques se remplissent au fil des sauvegardes.</p></section>`;
+      h += `<section class="card"><h2>Pas encore de sauvegarde sur cette période</h2><p class="st-note">Les stocks nécessaires sont sauvegardés à 22 h les mardis, jeudis, vendredis et samedis soir. Les statistiques se remplissent au fil des sauvegardes.</p></section>`;
     } else {
       const last = series[series.length - 1];
       const P = prevData(sh), T = trendData(sh), D = dormData(sh);

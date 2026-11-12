@@ -10,7 +10,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 let role = null; // "admin" ou "equipe", lu dans acces/<uid> (modifiable seulement depuis la console Firebase)
-const APP_V = "202611111240";
+const APP_V = "202611122025";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -304,7 +304,7 @@ function changePassword() {
 
 /* ---------- admin ---------- */
 function backupList() { return Object.entries(data.sauvegardes).filter(([, b]) => b && b.stocks).sort((a, b) => b[0].localeCompare(a[0])); }
-const backupLabel = key => { const d = parseDay(key); const t = d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "short" }); return t.charAt(0).toUpperCase() + t.slice(1) + " · minuit"; };
+const backupLabel = key => { const d = parseDay(key); const t = d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "short" }); return t.charAt(0).toUpperCase() + t.slice(1) + " · 22 h"; };
 function renderAdmin() {
   const u = auth.currentUser;
   $("acct-email").textContent = u ? u.email : "";
@@ -315,7 +315,7 @@ function renderAdmin() {
   $("backups").innerHTML = !backupsOk ? `<p class="empty" style="padding:6px 0">Chargement des sauvegardes…</p>` : shown.length ? shown.map(([k]) => `<div class="backup"><span>${esc(backupLabel(k))}</span>
       <button type="button" class="btn" data-bpdf="${esc(k)}">PDF</button><button type="button" class="btn dark" data-brest="${esc(k)}">Restaurer</button></div>`).join("")
     + (bk.length > 3 ? `<button type="button" class="link" id="more-backups">${showAllBackups ? "Afficher moins" : `Voir les ${bk.length - 3} sauvegardes précédentes`}</button>` : "")
-    : `<p class="empty" style="padding:6px 0">La première sauvegarde sera faite ce soir à minuit (mardi, jeudi, vendredi et samedi).</p>`;
+    : `<p class="empty" style="padding:6px 0">La première sauvegarde sera faite ce soir à 22 h (mardi, jeudi, vendredi et samedi).</p>`;
   $("new-cat").innerHTML = CATS.map(c => `<button type="button" data-nc="${esc(c)}" aria-pressed="${newCat === c}">${esc(c === "Panier de la semaine" ? "Panier" : c)}</button>`).join("");
   const nbEq = data.products.filter(p => ["Fruit", "Légume", "Aromate", "Épicerie"].includes(p.c) && eqComplet(p.u)).length;
   $("cat-count").textContent = `${data.products.length} produits · ${nbEq} avec unité d'achat`;
@@ -399,7 +399,7 @@ function delProd(n) {
   });
 }
 function resetStocks() {
-  confirmSheet("Remettre tout à zéro ?", "Toutes les quantités nécessaires des deux boutiques passeront à 0. La dernière sauvegarde de minuit permet de revenir en arrière.", "Tout remettre à zéro", () => {
+  confirmSheet("Remettre tout à zéro ?", "Toutes les quantités nécessaires des deux boutiques passeront à 0. La dernière sauvegarde de 22 h permet de revenir en arrière.", "Tout remettre à zéro", () => {
     const r = {}; data.products.forEach(p => { r[p.n] = { "st-selve": 0, "villenave": 0 }; });
     db.ref("stocks").set(r); toast("Quantités remises à zéro");
   });
