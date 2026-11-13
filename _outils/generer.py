@@ -26,9 +26,10 @@ def head(title, desc, prefix):
             f'<link rel="icon" href="{prefix}logo.png">{FONTS}<link rel="stylesheet" href="{prefix}style.css"></head><body>')
 
 
-def footer():
-    return ('<footer><span class="hand">Une nouvelle recette chaque dimanche !</span>'
-            "<span>Payet Primeur · Saint-Selve &amp; Villenave-d'Ornon</span></footer>")
+def footer(panier=False):
+    # sur la page d'un panier, pas de « nouvelle recette chaque dimanche » : ses recettes valent pour la semaine du panier
+    return ('<footer>' + ('' if panier else '<span class="hand">Une nouvelle recette chaque dimanche !</span>')
+            + "<span>Payet Primeur · Saint-Selve &amp; Villenave-d'Ornon</span></footer>")
 
 
 def entete(pg, prefix="../"):
@@ -181,7 +182,7 @@ def page_panier(d, b):
             f'<section class="hero thanks"><h1>Merci pour votre achat !</h1>{UNDERLINE}<p class="season">{e(sous)}</p></section>'
             + (f'<section class="card basket-list"><h3>Dans votre panier</h3><ul class="ing">{items}</ul></section>' if items else "")
             + corps + tips_html + (PDF_BTN if recs else "")
-            + footer() + '</div>'
+            + footer(panier=True) + '</div>'
             + f'<script type="application/json" id="recette">{pdf_json}</script>'
             + ('<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><script src="../recette.js"></script>' if recs else "")
             + '</body></html>')

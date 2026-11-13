@@ -99,7 +99,7 @@
     }
     for (let i = 1; i <= doc.getNumberOfPages(); i++) {
       doc.setPage(i); doc.setFont("helvetica", "normal"); doc.setFontSize(8.5); color(MUT);
-      doc.text(T("Payet Primeur · Saint-Selve & Villenave-d'Ornon · Une nouvelle recette chaque dimanche"), 105, PH - 10, { align: "center" });
+      doc.text(T(data.contenu ? "Payet Primeur · Saint-Selve & Villenave-d'Ornon" : "Payet Primeur · Saint-Selve & Villenave-d'Ornon · Une nouvelle recette chaque dimanche"), 105, PH - 10, { align: "center" });
     }
     return doc;
   }
