@@ -47,13 +47,13 @@ def page_fruit(d, slug, pg):
         corps = '<div class="card"><p class="intro">Nos conseils pour ce fruit arrivent très bientôt.</p></div>'
     return (head(f"{pg['nom']} : bien le choisir et le conserver | Payet Primeur",
                  f"Comment savoir si {pg['nom'].lower()} est mûr et comment le conserver : les conseils de votre primeur.", "../")
-            + entete(pg) + corps + '<a class="back" href="../">← Toutes nos recettes et conseils</a>' + footer() + '</div></body></html>')
+            + entete(pg) + corps + footer() + '</div></body></html>')
 
 
 def page_attente(d, slug, pg):
     return (head(f"{pg['nom']} | Payet Primeur", f"La recette de la semaine pour {pg['nom']}.", "../")
             + entete(pg) + '<div class="card"><p class="intro">La recette de la semaine arrive très bientôt. Revenez dans quelques minutes !</p></div>'
-            '<a class="back" href="../">← Toutes nos recettes et conseils</a>' + footer() + '</div></body></html>')
+            + footer() + '</div></body></html>')
 
 
 def page_recette(d, slug, pg):
@@ -98,7 +98,6 @@ def page_recette(d, slug, pg):
             '<div class="pdf"><button type="button" class="btn main" id="pdf-btn" disabled>'
             '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>'
             'Télécharger la recette (PDF)</button><p class="status" id="pdf-msg" role="status"></p></div>'
-            '<a class="back" href="../">← Toutes nos recettes de la semaine</a>'
             + footer() + '</div>'
             f'<script type="application/json" id="recette">{pdf_json}</script>'
             '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>'
@@ -182,7 +181,7 @@ def page_panier(d, b):
             f'<section class="hero thanks"><h1>Merci pour votre achat !</h1>{UNDERLINE}<p class="season">{e(sous)}</p></section>'
             + (f'<section class="card basket-list"><h3>Dans votre panier</h3><ul class="ing">{items}</ul></section>' if items else "")
             + corps + tips_html + (PDF_BTN if recs else "")
-            + '<a class="back" href="../">← Toutes nos recettes de la semaine</a>' + footer() + '</div>'
+            + footer() + '</div>'
             + f'<script type="application/json" id="recette">{pdf_json}</script>'
             + ('<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><script src="../recette.js"></script>' if recs else "")
             + '</body></html>')
