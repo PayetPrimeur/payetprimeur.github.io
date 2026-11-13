@@ -3092,9 +3092,57 @@ null
 "saison": "Toute l'année",
 "photo": null,
 "historique": [
-"Guacamole à la coriandre"
+"Guacamole à la coriandre",
+"Soupe de carottes à la coriandre"
 ],
-"aRevoir": true
+"recette": {
+"origine": "Classique de la cuisine britannique",
+"titre": "Soupe de carottes à la coriandre",
+"intro": "Un grand classique des soupes d'hiver outre-Manche : des carottes fondantes relevées par la coriandre fraîche, mixée dans la soupe et parsemée au moment de servir.",
+"prep": "15 min",
+"cuisson": "30 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"800 g",
+"de carottes",
+"Carotte"
+],
+[
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"1 botte",
+"de coriandre fraîche",
+"Coriandre"
+],
+[
+"30 g",
+"de beurre",
+null
+],
+[
+"1 litre",
+"de bouillon de légumes",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Épluchez et émincez l'oignon, pelez les carottes et coupez-les en rondelles. Séparez les tiges et les feuilles de coriandre ; hachez finement les tiges.",
+"Faites fondre le beurre dans une grande casserole, ajoutez l'oignon et les tiges de coriandre et laissez-les suer 5 minutes à feu doux sans coloration.",
+"Ajoutez les carottes, versez le bouillon, salez peu et poivrez. Portez à ébullition puis laissez cuire 25 minutes à frémissement, jusqu'à ce que les carottes s'écrasent facilement.",
+"Ajoutez la moitié des feuilles de coriandre, mixez finement et rectifiez l'assaisonnement. Servez bien chaud, parsemé du reste de coriandre ciselée."
+],
+"conseil": "Choisissez une botte de coriandre aux feuilles bien vertes et fermes, sans jaunissement. Elle se garde 4 à 5 jours au réfrigérateur, tiges plongées dans un verre d'eau et feuilles couvertes d'un sachet."
+}
 },
 "gingembre": {
 "nom": "Gingembre",
@@ -4453,9 +4501,52 @@ null
 "photo": null,
 "historique": [
 "Mitrailles en papillote au beurre d'herbes",
-"Mitrailles croustillantes écrasées, œuf mollet et rillettes"
+"Mitrailles croustillantes écrasées, œuf mollet et rillettes",
+"Pommes de terre sarladaises"
 ],
-"aRevoir": true
+"recette": {
+"origine": "Spécialité du Périgord",
+"titre": "Pommes de terre sarladaises",
+"intro": "La recette emblématique de Sarlat : des pommes de terre dorées dans la graisse de canard, finies avec de l'ail et du persil. Les petites mitrailles s'y prêtent à merveille, entières ou coupées en deux.",
+"prep": "15 min",
+"cuisson": "35 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"1 kg",
+"de pommes de terre mitrailles",
+"Pdt mitrailles"
+],
+[
+"4 cuillères à soupe",
+"de graisse de canard",
+null
+],
+[
+"3 gousses",
+"d'ail violet",
+"Ail violet"
+],
+[
+"1/2 botte",
+"de persil plat",
+"Persil"
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Lavez soigneusement les mitrailles (inutile de les éplucher) et coupez les plus grosses en deux. Séchez-les bien dans un torchon.",
+"Faites chauffer la graisse de canard dans une grande poêle ou une sauteuse. Ajoutez les pommes de terre en une seule couche et faites-les dorer 5 minutes à feu vif en remuant.",
+"Baissez le feu, couvrez et laissez cuire 25 minutes en remuant de temps en temps, jusqu'à ce qu'elles soient tendres à cœur.",
+"Pendant ce temps, hachez l'ail et le persil ensemble. Découvrez, augmentez le feu pour bien rissoler 5 minutes, ajoutez la persillade, salez, poivrez, mélangez une minute et servez aussitôt."
+],
+"conseil": "Prenez des mitrailles fermes, à la peau lisse et sans germe ni tache verte. Gardez-les dans un endroit frais, sec et à l'abri de la lumière, jamais au réfrigérateur : elles se conservent ainsi 2 à 3 semaines."
+}
 },
 "poivron-vert": {
 "nom": "Poivron vert",
@@ -5362,10 +5453,167 @@ null
 "4 pièces"
 ]
 ],
-"recettes": [],
-"recettesPour": [],
-"semaine": "",
-"aFaire": true
+"recettes": [
+{
+"origine": "Classique de la cuisine française d'automne",
+"titre": "Velouté de potimarron",
+"intro": "Le velouté qui annonce l'automne : le potimarron se cuit avec sa peau et donne une soupe douce, au léger goût de châtaigne, prête en une demi-heure.",
+"prep": "10 min",
+"cuisson": "20 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"1",
+"potimarron (environ 1,2 kg)",
+"Potimarron (pièce)"
+],
+[
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"20 g",
+"de beurre",
+null
+],
+[
+"80 cl",
+"de bouillon de légumes",
+null
+],
+[
+"10 cl",
+"de crème fraîche",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Lavez le potimarron, coupez-le en deux, retirez les graines avec une cuillère et taillez-le en cubes sans l'éplucher. Émincez l'oignon.",
+"Faites fondre le beurre dans une cocotte et faites revenir l'oignon 3 minutes. Ajoutez le potimarron et mélangez.",
+"Couvrez avec le bouillon, portez à ébullition et laissez cuire 20 minutes à couvert, jusqu'à ce que les cubes soient bien tendres.",
+"Mixez finement avec la crème, salez, poivrez et servez bien chaud."
+],
+"conseil": "Un bon potimarron est lourd pour sa taille, d'un orange profond, avec un pédoncule sec et bien attaché. Entier, il se garde plusieurs semaines dans un endroit frais et sec ; une fois entamé, filmez-le et gardez-le 4 à 5 jours au réfrigérateur."
+},
+{
+"origine": "Grand classique de la cuisine française",
+"titre": "Pot-au-feu",
+"intro": "Le plat familial par excellence : de la viande de bœuf mijotée longuement avec les légumes d'hiver. Le bouillon se boit en entrée, la viande et les légumes se servent ensuite avec moutarde et gros sel.",
+"prep": "30 min",
+"cuisson": "3 h 30",
+"pers": "6",
+"niveau": "Facile",
+"ingredients": [
+[
+"1,5 kg",
+"de bœuf à pot-au-feu (paleron, gîte, plat de côtes)",
+null
+],
+[
+"1",
+"os à moelle",
+null
+],
+[
+"6",
+"carottes",
+"Carotte"
+],
+[
+"1",
+"navet",
+"Navet"
+],
+[
+"2",
+"poireaux",
+"Poireaux"
+],
+[
+"1",
+"oignon jaune piqué de 2 clous de girofle",
+"Oignon jaune"
+],
+[
+"6",
+"pommes de terre",
+"Pdt Bintje"
+],
+[
+"1",
+"bouquet garni, gros sel, poivre en grains",
+null
+],
+[
+"",
+"Moutarde et cornichons pour servir",
+null
+]
+],
+"etapes": [
+"Placez la viande dans un grand faitout, couvrez largement d'eau froide et portez doucement à ébullition. Écumez soigneusement pendant 10 minutes.",
+"Ajoutez l'oignon piqué de girofle, le bouquet garni, une cuillère à soupe de gros sel et quelques grains de poivre. Laissez frémir 2 heures à couvert, sans bouillir fort.",
+"Épluchez les carottes et le navet, coupez-les en gros tronçons ; nettoyez les poireaux, ficelez-les en botte. Ajoutez-les avec l'os à moelle et poursuivez 1 heure.",
+"Faites cuire les pommes de terre épluchées 25 minutes dans une louche de bouillon et de l'eau, à part, pour que le bouillon reste clair.",
+"Servez le bouillon chaud en entrée, puis la viande tranchée entourée des légumes, avec moutarde, cornichons et gros sel."
+],
+"conseil": "Choisissez des poireaux bien droits, au blanc ferme et long, avec des feuilles d'un vert franc. Gardez-les 5 à 6 jours dans le bac à légumes, enveloppés dans un linge humide, pour qu'ils ne parfument pas tout le réfrigérateur."
+}
+],
+"recettesPour": [
+[
+"Carotte",
+"1kg"
+],
+[
+"Pdt Bintje",
+"1kg"
+],
+[
+"Radis blue meat",
+"1 pièce"
+],
+[
+"Navet",
+"1 pièce"
+],
+[
+"Oignon jaune",
+"2 pièces"
+],
+[
+"Échalote",
+"3 pièces"
+],
+[
+"Potimarron (pièce)",
+"1 pièce"
+],
+[
+"Poireaux",
+"2 pièces"
+],
+[
+"Clémentine portugal",
+"1kg"
+],
+[
+"Orange dessert",
+"2 pièces"
+],
+[
+"Poire conférence",
+"4 pièces"
+]
+],
+"semaine": "du 8 au 14 novembre"
 }
 ]
 }
