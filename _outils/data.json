@@ -303,6 +303,13 @@
 "actif": true
 },
 {
+"n": "Coppa",
+"c": "Épicerie",
+"id": "coppa",
+"page": null,
+"actif": true
+},
+{
 "n": "Coriandre",
 "c": "Aromate",
 "id": "coriandre",
@@ -716,6 +723,13 @@
 "actif": true
 },
 {
+"n": "Petit plateau charcuterie",
+"c": "Épicerie",
+"id": "petit-plateau-charcuterie",
+"page": null,
+"actif": true
+},
+{
 "n": "Poche de pruneaux 500g",
 "c": "Épicerie",
 "id": "poche-de-pruneaux-500g",
@@ -877,6 +891,13 @@
 "actif": true
 },
 {
+"n": "Rosette",
+"c": "Épicerie",
+"id": "rosette",
+"page": null,
+"actif": true
+},
+{
 "n": "Rutabaga",
 "c": "Légume",
 "id": "rutabaga",
@@ -909,6 +930,13 @@
 "c": "Légume",
 "id": "tomate-cerise",
 "page": "tomate-cerise",
+"actif": true
+},
+{
+"n": "Chorizo basque",
+"c": "Épicerie",
+"id": "chorizo-basque",
+"page": null,
 "actif": true
 }
 ],
