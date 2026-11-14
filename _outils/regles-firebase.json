@@ -44,6 +44,14 @@
       }
     },
 
+    "categories": {
+      ".read": "auth != null && root.child('acces').child(auth.uid).exists()",
+      ".write": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'",
+      "$id": {
+        ".validate": "newData.hasChildren(['n']) && newData.child('n').isString() && newData.child('n').val().length > 0 && newData.child('n').val().length <= 30"
+      }
+    },
+
     "paniers": {
       ".read": "auth != null && root.child('acces').child(auth.uid).exists()",
       ".write": "auth != null && root.child('acces').child(auth.uid).val() === 'admin'"
