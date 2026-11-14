@@ -161,7 +161,7 @@
     const doc = new jsPDF({ unit: "mm", format: "a4" });
     const img = (await basketCardCanvas(p.id)).toDataURL("image/png");
     const CW = 92, CH = 64, GX = 6, GY = 6, x0 = (210 - (2 * CW + GX)) / 2, y0 = (297 - (4 * CH + 3 * GY)) / 2;
-    for (let k = 0; k < 8; k++) doc.addImage(img, "PNG", x0 + (k % 2) * (CW + GX), y0 + Math.floor(k / 2) * (CH + GY), CW, CH);
+    for (let k = 0; k < 8; k++) doc.addImage(img, "PNG", x0 + (k % 2) * (CW + GX), y0 + Math.floor(k / 2) * (CH + GY), CW, CH, "carte", "FAST");
     saveFile(doc.output("blob"), `cartes-${p.id}.pdf`);
     say(`8 cartes « ${p.n} » prêtes à imprimer.`);
   }
@@ -175,16 +175,16 @@
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: "mm", format: "a4" });
     const items = prods().filter(p => p.actif && (p.page || p.c === CAT_PANIER)).sort((a, b) => a.c === b.c ? a.n.localeCompare(b.n, "fr") : TABS.findIndex(t => t[0] === a.c) - TABS.findIndex(t => t[0] === b.c));
-    // 4 grandes étiquettes par page (2 × 2), même proportions que l'étiquette de 40 × 52 mm
-    const LW = 88, LH = 88 * 52 / 40, GX = 10, GY = 16, cols = 2, per = 4, x0 = (210 - (cols * LW + (cols - 1) * GX)) / 2;
+    // 6 étiquettes par page (2 × 3), 62 × 81 mm, mêmes proportions que l'étiquette de 40 × 52 mm
+    const LW = 62, LH = 62 * 52 / 40, GX = 18, GY = 12, cols = 2, per = 6, x0 = (210 - (cols * LW + (cols - 1) * GX)) / 2;
     const clean = s => String(s).replace(/œ/g, "oe").replace(/[’]/g, "'");
     for (let i = 0; i < items.length; i++) {
       const k = i % per;
       if (i && !k) doc.addPage();
       if (!k) { doc.setFontSize(8); doc.setTextColor(122, 106, 95); doc.text(`Étiquettes Payet Primeur · page ${i / per + 1} · le nom sous chaque étiquette est à découper`, 105, 8, { align: "center" }); }
       const x = x0 + (k % cols) * (LW + GX), y = 14 + Math.floor(k / cols) * (LH + GY);
-      doc.addImage((await labelCanvas(items[i].id, 2.2)).toDataURL("image/png"), "PNG", x, y, LW, LH);
-      doc.setFontSize(11); doc.setTextColor(58, 42, 34); doc.text(clean(items[i].n), x + LW / 2, y + LH + 6, { align: "center", maxWidth: LW });
+      doc.addImage((await labelCanvas(items[i].id, 1.6)).toDataURL("image/png"), "PNG", x, y, LW, LH, undefined, "FAST");
+      doc.setFontSize(10); doc.setTextColor(58, 42, 34); doc.text(clean(items[i].n), x + LW / 2, y + LH + 5, { align: "center", maxWidth: LW });
     }
     saveFile(doc.output("blob"), "etiquettes-payet-primeur.pdf");
     say(`Planche de ${items.length} étiquettes téléchargée.`);
