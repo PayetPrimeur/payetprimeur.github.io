@@ -10,7 +10,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 let role = null; // "admin" ou "equipe", lu dans acces/<uid> (modifiable seulement depuis la console Firebase)
-const APP_V = "202611141059";
+const APP_V = "202611141933";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -517,6 +517,8 @@ function saveFile(blob, name) {
   downloadBlob(blob, name);
 }
 function downloadBlob(blob, name) {
+  // sur iPhone, Safari affiche un PDF au lieu de le télécharger : en « fichier binaire », il propose « Télécharger »
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) blob = new Blob([blob], { type: "application/octet-stream" });
   const url = URL.createObjectURL(blob), a = document.createElement("a");
   a.href = url; a.download = name; a.rel = "noopener"; a.style.display = "none";
   document.body.appendChild(a); a.click(); a.remove();
