@@ -10,7 +10,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 let role = null; // "admin" ou "equipe", lu dans acces/<uid> (modifiable seulement depuis la console Firebase)
-const APP_V = "202611141949";
+const APP_V = "202611142012";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -25,7 +25,20 @@ const APP_V = "202611141949";
 })();
 
 const SITES = { "st-selve": "St Selve", "villenave": "Villenave" };
-const CATS = ["Fruit", "Légume", "Aromate", "Épicerie", "Fourniture", "Plateaux", "Panier de la semaine"];
+const BASE_CATS = ["Fruit", "Légume", "Aromate", "Épicerie", "Fourniture", "Plateaux", "Panier de la semaine"];
+// catégories ajoutées dans l'admin (base : categories/<id> = { n, col }) : rangées avant « Panier de la semaine »
+let CATS = BASE_CATS.slice();
+const CAT_COULEURS = ["#c2410c", "#0f766e", "#1d4ed8", "#7c3aed", "#be185d", "#4d7c0f", "#a16207", "#475569"];
+function majCategories() {
+  const perso = Object.values(data.categories || {}).filter(x => x && x.n && !BASE_CATS.includes(x.n)).sort((a, b) => a.n.localeCompare(b.n, "fr"));
+  CATS = BASE_CATS.slice(0, -1).concat(perso.map(x => x.n), BASE_CATS.slice(-1));
+  let css = "";
+  perso.forEach(x => { const k = CSS.escape(catClass(x.n)), col = /^#[0-9a-f]{6}$/i.test(x.col || "") ? x.col : "#475569";
+    css += `.chip.c-${k}{background:${col};color:#fff}.t-${k}{color:${col}}`; });
+  let st = document.getElementById("cat-couleurs");
+  if (!st) { st = document.createElement("style"); st.id = "cat-couleurs"; document.head.appendChild(st); }
+  st.textContent = css;
+}
 const CAT_LABEL = { "Fruit": "Fruits", "Légume": "Légumes", "Aromate": "Aromates", "Épicerie": "Épicerie", "Fourniture": "Fournitures", "Plateaux": "Plateaux", "Panier de la semaine": "Paniers" };
 const TYPES = [["Retrait libre", "Libre"], ["Panier", "Panier"], ["Panier Garni", "Panier garni"], ["Plateau", "Plateau"]];
 const PRIX = ["10€", "20€"];
@@ -59,13 +72,14 @@ function toast(t) {
 
 /* ---------- données ---------- */
 // chaque partie de la base est écoutée séparément ; les sauvegardes ne sont chargées qu'à l'ouverture de l'admin
-const NODES = ["products", "stocks", "reservations", "paniers"], loaded = {};
+const NODES = ["products", "stocks", "reservations", "paniers", "categories"], loaded = {};
 function startData() { NODES.forEach(k => db.ref(k).on("value", snap => {
   const v = snap.val();
   if (k === "products") {
     data.products = (Array.isArray(v) ? v : Object.values(v || {})).filter(p => p && p.n);
     data.products.sort((a, b) => a.n.localeCompare(b.n, "fr"));
   } else data[k] = v || {};
+  if (k === "categories") majCategories();
   loaded[k] = true;
   if (NODES.every(n => loaded[n])) window.QR_DATA_OK = true; else return;
   renderAll();
@@ -316,6 +330,12 @@ function renderAdmin() {
       <button type="button" class="btn" data-bpdf="${esc(k)}">PDF</button><button type="button" class="btn dark" data-brest="${esc(k)}">Restaurer</button></div>`).join("")
     + (bk.length > 3 ? `<button type="button" class="link" id="more-backups">${showAllBackups ? "Afficher moins" : `Voir les ${bk.length - 3} sauvegardes précédentes`}</button>` : "")
     : `<p class="empty" style="padding:6px 0">La première sauvegarde sera faite ce soir à 22 h (mardi, jeudi, vendredi et samedi).</p>`;
+  const perso = Object.entries(data.categories || {}).filter(([, x]) => x && x.n).sort((a, b) => a[1].n.localeCompare(b[1].n, "fr"));
+  $("cats-perso").innerHTML = perso.length ? perso.map(([id, x]) => { const n = data.products.filter(p => p.c === x.n).length;
+    return `<div class="cat-row"><b><span><span class="cat-dot" style="background:${esc(x.col || "#475569")}"></span>${esc(x.n)}</span><small>${n} produit${n > 1 ? "s" : ""}</small></b>
+      <button type="button" data-delcat="${esc(id)}" aria-label="Supprimer la catégorie ${esc(x.n)}">${icon.trash}</button></div>`; }).join("")
+    : `<p class="hint" style="margin:0">Aucune catégorie ajoutée pour l'instant.</p>`;
+  $("new-cat-col").innerHTML = CAT_COULEURS.map(c => `<button type="button" class="col-pick" data-ncol="${c}" style="background:${c}" aria-pressed="${newCatCol === c}" aria-label="Couleur ${c}"></button>`).join("");
   $("new-cat").innerHTML = CATS.map(c => `<button type="button" data-nc="${esc(c)}" aria-pressed="${newCat === c}">${esc(c === "Panier de la semaine" ? "Panier" : c)}</button>`).join("");
   const nbEq = data.products.filter(p => ["Fruit", "Légume", "Aromate", "Épicerie"].includes(p.c) && eqComplet(p.u)).length;
   $("cat-count").textContent = `${data.products.length} produits · ${nbEq} avec unité d'achat`;
@@ -380,6 +400,24 @@ function eqSheet(n) {
   };
   draw();
   setTimeout(() => { const i = $("eq-q"); if (i && !i.value) i.focus(); }, 50);
+}
+let newCatCol = CAT_COULEURS[0];
+function addCategory() {
+  const n = $("new-c-name").value.trim().replace(/\s+/g, " ");
+  const err = m => { $("new-c-err").textContent = m; };
+  if (!n) return err("Saisissez le nom de la catégorie.");
+  if (n.length > 30) return err("30 caractères au maximum.");
+  if (/[.#$\[\]\/]/.test(n)) return err("Le nom ne peut pas contenir . # $ [ ] /");
+  if (CATS.some(c => c.toLowerCase() === n.toLowerCase()) || Object.values(CAT_LABEL).some(c => c.toLowerCase() === n.toLowerCase())) return err("Cette catégorie existe déjà.");
+  err("");
+  db.ref("categories").push({ n, col: newCatCol }).then(() => { $("new-c-name").value = ""; toast(`Catégorie « ${n} » ajoutée`); })
+    .catch(() => err("Échec de l'enregistrement."));
+}
+function delCategory(id) {
+  const x = (data.categories || {})[id]; if (!x) return;
+  const n = data.products.filter(p => p.c === x.n).length;
+  if (n) { toast(`Impossible : ${n} produit${n > 1 ? "s sont" : " est"} encore dans « ${x.n} ».`); return; }
+  confirmSheet(`Supprimer « ${x.n} » ?`, "La catégorie disparaîtra de la liste. Elle ne contient aucun produit.", "Supprimer", () => db.ref("categories/" + id).remove());
 }
 function addProduct() {
   const n = $("new-p-name").value.trim().replace(/\s+/g, " ");
@@ -538,6 +576,8 @@ document.addEventListener("click", e => {
   else if (ds.edit) orderSheet(ds.edit);
   else if (ds.nc) { newCat = ds.nc; renderAdmin(); }
   else if (ds.eq) eqSheet(ds.eq);
+  else if (ds.delcat) delCategory(ds.delcat);
+  else if (ds.ncol) { newCatCol = ds.ncol; renderAdmin(); }
   else if (ds.del) delProd(ds.del);
   else if (ds.brest) restoreBackup(ds.brest);
   else if (ds.bpdf) generatePDF(data.sauvegardes[ds.bpdf].stocks, `Sauvegarde du ${backupLabel(ds.bpdf).toLowerCase()}`, `Stocks_necessaires_${ds.bpdf}.pdf`, ds.bpdf);
@@ -557,6 +597,7 @@ $("logout-btn").onclick = logout;
 $("liste-btn").onclick = () => { if (role !== "admin") return; watchBackups(); window.LISTE && LISTE.open(); };
 $("stats-btn").onclick = () => { if (role !== "admin") return; watchBackups(); window.STATS && STATS.open(); };
 $("add-btn").onclick = addProduct;
+$("add-cat-btn").onclick = addCategory;
 $("new-p-name").onkeydown = e => { if (e.key === "Enter") addProduct(); };
 document.addEventListener("keydown", e => { if (e.key === "Escape") { const s = document.querySelectorAll(".sheet-bg"); if (s.length) s[s.length - 1].querySelector(".sheet-head button").click(); } });
 go("stock");

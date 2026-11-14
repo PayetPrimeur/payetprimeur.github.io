@@ -13,9 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&display=swap">
-    <link rel="stylesheet" href="style.css?v=202611141949">
-    <link rel="stylesheet" href="qr.css?v=202611141949">
-    <link rel="stylesheet" href="stats.css?v=202611141949">
+    <link rel="stylesheet" href="style.css?v=202611142012">
+    <link rel="stylesheet" href="qr.css?v=202611142012">
+    <link rel="stylesheet" href="stats.css?v=202611142012">
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
@@ -124,6 +124,15 @@
             <button type="button" class="btn dark wide" id="add-btn">Ajouter</button>
         </section>
 
+        <section class="card">
+            <h2>Ajouter une catégorie</h2>
+            <label class="field">Nom de la catégorie<input type="text" id="new-c-name" placeholder="Ex : Fromages" autocomplete="off" maxlength="30"></label>
+            <div class="field">Couleur<div class="cols" id="new-cat-col" role="group" aria-label="Couleur"></div></div>
+            <p class="err" id="new-c-err" role="alert"></p>
+            <button type="button" class="btn dark wide" id="add-cat-btn">Ajouter la catégorie</button>
+            <div id="cats-perso"></div>
+        </section>
+
         <section class="card" style="gap:0">
             <div class="card-head" style="padding-bottom:6px"><h2>Catalogue</h2><span id="cat-count"></span></div>
             <div id="catalogue"></div>
@@ -144,10 +153,10 @@
     </button>
 </div></nav>
 
-<script src="app.js?v=202611141949"></script>
-<script src="qr-liens.js?v=202611141949"></script>
-<script src="qr.js?v=202611141949"></script>
-<script src="stats.js?v=202611141949"></script>
-<script src="liste.js?v=202611141949"></script>
+<script src="app.js?v=202611142012"></script>
+<script src="qr-liens.js?v=202611142012"></script>
+<script src="qr.js?v=202611142012"></script>
+<script src="stats.js?v=202611142012"></script>
+<script src="liste.js?v=202611142012"></script>
 </body>
 </html>
