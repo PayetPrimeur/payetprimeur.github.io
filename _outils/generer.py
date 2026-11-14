@@ -4,7 +4,7 @@
 Usage : python3 generer.py data.json dossier_sortie
 Crée index.html, une page par produit (<slug>/index.html), style.css, recette.js et logo.png.
 """
-import html, json, os, re, shutil, sys
+import hashlib, html, json, os, re, shutil, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 CATS = [("Fruit", "Fruits"), ("Légume", "Légumes"), ("Aromate", "Aromates")]
@@ -18,12 +18,23 @@ UNDERLINE = ('<svg class="underline" viewBox="0 0 150 12" aria-hidden="true"><pa
 e = lambda s: html.escape(str(s or ""), quote=True)
 
 
+def _v(nom):
+    # empreinte du fichier : le téléphone recharge style.css / recette.js dès qu'ils changent
+    try:
+        return hashlib.md5(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), nom), "rb").read()).hexdigest()[:8]
+    except OSError:
+        return "1"
+
+
+V_CSS, V_JS = _v("style.css"), _v("recette.js")
+
+
 def head(title, desc, prefix):
     return (f'<!doctype html><html lang="fr"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
             f'<title>{e(title)}</title><meta name="description" content="{e(desc)}">'
             f'<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
-            f'<link rel="icon" href="{prefix}logo.png">{FONTS}<link rel="stylesheet" href="{prefix}style.css"></head><body>')
+            f'<link rel="icon" href="{prefix}logo.png">{FONTS}<link rel="stylesheet" href="{prefix}style.css?v={V_CSS}"></head><body>')
 
 
 def footer(panier=False):
@@ -102,7 +113,7 @@ def page_recette(d, slug, pg):
             + footer() + '</div>'
             f'<script type="application/json" id="recette">{pdf_json}</script>'
             '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>'
-            f'<script src="../recette.js"></script></body></html>')
+            f'<script src="../recette.js?v={V_JS}"></script></body></html>')
 
 
 def recette_card(r, stamp, kicker, media=""):
@@ -184,7 +195,7 @@ def page_panier(d, b):
             + corps + tips_html + (PDF_BTN if recs else "")
             + footer(panier=True) + '</div>'
             + f'<script type="application/json" id="recette">{pdf_json}</script>'
-            + ('<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><script src="../recette.js"></script>' if recs else "")
+            + (f'<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><script src="../recette.js?v={V_JS}"></script>' if recs else "")
             + '</body></html>')
 
 
