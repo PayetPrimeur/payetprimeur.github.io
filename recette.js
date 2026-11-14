@@ -108,6 +108,8 @@
   const nom = `recette-${slug(data.fichier || data.nom)}-payet-primeur.pdf`;
   const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   const telecharger = blob => {
+    // sur iPhone, Safari affiche un PDF au lieu de le télécharger : en « fichier binaire », il propose « Télécharger »
+    if (ios) blob = new Blob([blob], { type: "application/octet-stream" });
     const url = URL.createObjectURL(blob), a = document.createElement("a");
     a.href = url; a.download = nom; a.rel = "noopener"; a.style.display = "none";
     document.body.appendChild(a); a.click(); a.remove();
