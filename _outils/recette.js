@@ -104,10 +104,32 @@
     return doc;
   }
 
+  // téléchargement direct du fichier (sur iPhone, Safari propose « Télécharger » vers l'app Fichiers)
+  const nom = `recette-${slug(data.fichier || data.nom)}-payet-primeur.pdf`;
+  const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const telecharger = blob => {
+    const url = URL.createObjectURL(blob), a = document.createElement("a");
+    a.href = url; a.download = nom; a.rel = "noopener"; a.style.display = "none";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+  };
+  // le PDF est préparé à l'avance, pour que le toucher déclenche tout de suite le téléchargement
+  let pret = null;
+  const preparer = () => pret || (pret = build().then(doc => doc.output("blob")).catch(e => { pret = null; throw e; }));
+  setTimeout(() => preparer().catch(() => {}), 800);
+
   btn.addEventListener("click", async () => {
     btn.disabled = true; msg.textContent = "Préparation du PDF…";
-    try { (await build()).save(`recette-${slug(data.fichier || data.nom)}-payet-primeur.pdf`); msg.textContent = "Recette téléchargée, bonne cuisine !"; }
-    catch (e) { msg.textContent = "Le PDF n'a pas pu être créé. Rechargez la page puis réessayez."; }
+    try {
+      const blob = await preparer();
+      const file = typeof File === "function" ? new File([blob], nom, { type: "application/pdf" }) : null;
+      // sur iPhone en mode application (écran d'accueil), le téléchargement n'existe pas : on passe par « Enregistrer dans Fichiers »
+      const standalone = window.navigator.standalone === true || (window.matchMedia && matchMedia("(display-mode: standalone)").matches);
+      if (ios && standalone && file && navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file] }).catch(e => { if (!e || e.name !== "AbortError") telecharger(blob); });
+      } else telecharger(blob);
+      msg.textContent = ios ? "Touchez « Télécharger » : le PDF arrive dans Fichiers > Téléchargements. Bonne cuisine !" : "Recette téléchargée, bonne cuisine !";
+    } catch (e) { msg.textContent = "Le PDF n'a pas pu être créé. Rechargez la page puis réessayez."; }
     finally { btn.disabled = false; }
   });
 })();
