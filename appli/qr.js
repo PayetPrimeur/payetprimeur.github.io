@@ -106,6 +106,18 @@
     return libs;
   }
   function rr(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+  // impression noir et blanc : niveaux de gris, et tout ce qui est foncé (QR code, cadre) passe en noir pur
+  let noirBlanc = false; try { noirBlanc = localStorage.getItem("qrNB") === "1"; } catch (e) {}
+  function enNB(c) {
+    if (!noirBlanc) return c;
+    const g = c.getContext("2d"), im = g.getImageData(0, 0, c.width, c.height), d = im.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const l = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
+      const v = l < 140 ? 0 : l > 235 ? 255 : l;
+      d[i] = d[i + 1] = d[i + 2] = v;
+    }
+    g.putImageData(im, 0, 0); return c;
+  }
   async function labelCanvas(id, k) {
     k = k || 1; // agrandissement (planche 4 par page) : même dessin, en plus haute définition
     const logo = await ensureLibs();
@@ -124,7 +136,7 @@
     for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (qr.isDark(r, k))
       g.fillRect(Math.floor(qx + (k + quiet) * cell), Math.floor(qy + (r + quiet) * cell), Math.ceil(cell), Math.ceil(cell));
     g.fillStyle = "#f9b00f"; rr(g, (W - 70) / 2, H - mm(4.5), 70, 7, 3); g.fill();
-    return c;
+    return enNB(c);
   }
   // carte « Merci de votre achat » d'un panier : 92 × 64 mm, logo, message et QR code fixe du panier
   async function basketCardCanvas(id) {
@@ -154,7 +166,7 @@
     g.fillStyle = "#6b625a"; g.font = `600 ${mm(3)}px Figtree, Helvetica, Arial, sans-serif`; y += mm(2.5);
     ["Scannez le QR code", "pour vos 2 recettes", "de la semaine"].forEach(t => { g.fillText(t, cx, y); y += mm(3.9); });
     g.fillStyle = "#f9b00f"; rr(g, cx - mm(6), H - mm(7), mm(12), mm(1.6), mm(0.8)); g.fill();
-    return c;
+    return enNB(c);
   }
   async function downloadBasketSheet(p) {
     const { jsPDF } = window.jspdf;
@@ -162,7 +174,7 @@
     const img = (await basketCardCanvas(p.id)).toDataURL("image/png");
     const CW = 92, CH = 64, GX = 6, GY = 6, x0 = (210 - (2 * CW + GX)) / 2, y0 = (297 - (4 * CH + 3 * GY)) / 2;
     for (let k = 0; k < 8; k++) doc.addImage(img, "PNG", x0 + (k % 2) * (CW + GX), y0 + Math.floor(k / 2) * (CH + GY), CW, CH, "carte", "FAST");
-    saveFile(doc.output("blob"), `cartes-${p.id}.pdf`);
+    saveFile(doc.output("blob"), `cartes-${p.id}${noirBlanc ? "-noir-et-blanc" : ""}.pdf`);
     say(`8 cartes « ${p.n} » prêtes à imprimer.`);
   }
   function download(blob, name) { saveFile(blob, name); }
@@ -181,12 +193,12 @@
     for (let i = 0; i < items.length; i++) {
       const k = i % per;
       if (i && !k) doc.addPage();
-      if (!k) { doc.setFontSize(8); doc.setTextColor(122, 106, 95); doc.text(`Étiquettes Payet Primeur · page ${i / per + 1} · le nom sous chaque étiquette est à découper`, 105, 8, { align: "center" }); }
+      if (!k) { doc.setFontSize(8); noirBlanc ? doc.setTextColor(60) : doc.setTextColor(122, 106, 95); doc.text(`Étiquettes Payet Primeur · page ${i / per + 1} · le nom sous chaque étiquette est à découper`, 105, 8, { align: "center" }); }
       const x = x0 + (k % cols) * (LW + GX), y = 14 + Math.floor(k / cols) * (LH + GY);
       doc.addImage((await labelCanvas(items[i].id, 1.6)).toDataURL("image/png"), "PNG", x, y, LW, LH, undefined, "FAST");
-      doc.setFontSize(10); doc.setTextColor(58, 42, 34); doc.text(clean(items[i].n), x + LW / 2, y + LH + 5, { align: "center", maxWidth: LW });
+      doc.setFontSize(10); noirBlanc ? doc.setTextColor(0) : doc.setTextColor(58, 42, 34); doc.text(clean(items[i].n), x + LW / 2, y + LH + 5, { align: "center", maxWidth: LW });
     }
-    saveFile(doc.output("blob"), "etiquettes-payet-primeur.pdf");
+    saveFile(doc.output("blob"), noirBlanc ? "etiquettes-payet-primeur-noir-et-blanc.pdf" : "etiquettes-payet-primeur.pdf");
     say(`Planche de ${items.length} étiquettes téléchargée.`);
   }
 
@@ -274,6 +286,7 @@
         <div class="qr-card">
           <p class="qr-help">Le site des recettes suit ce catalogue tout seul, en moins d'une heure : un produit désactivé disparaît du site, un nouveau produit reçoit sa recette (ou sa fiche, pour un fruit). Les recettes de légumes changent chaque dimanche.${etat && etat.maj ? ` Dernière mise à jour du site : ${new Date(etat.maj).toLocaleString("fr-FR", { weekday: "short", hour: "2-digit", minute: "2-digit" })}.` : ""}</p>
           <div class="qr-actions"><button class="qr-btn main" type="button" id="qr-sheet">Planche de toutes les étiquettes (PDF)</button><a class="qr-btn" href="${SITE}/" target="_blank" rel="noopener">Voir le site</a></div>
+          <label class="qr-nb"><input type="checkbox" id="qr-nb"${noirBlanc ? " checked" : ""}> Impression noir et blanc (étiquettes, planche et cartes des paniers)</label>
           <p class="qr-msg" id="qr-msg" role="status">${esc(msgText)}</p>
         </div>
         <div class="qr-tabs" role="group" aria-label="Catégories">${TABS.map(([c, label], k) =>
@@ -289,6 +302,7 @@
 
   function bind(root) {
     $("qr-close").onclick = close;
+    $("qr-nb").onchange = e => { noirBlanc = e.target.checked; try { localStorage.setItem("qrNB", noirBlanc ? "1" : "0"); } catch (err) {} say(noirBlanc ? "Les téléchargements sortiront en noir et blanc." : "Les téléchargements sortiront en couleur."); };
     $("qr-sheet").onclick = async e => { e.target.disabled = true; say("Préparation de la planche…"); try { await downloadSheet(); } catch (err) { say("La planche n'a pas pu être créée."); } e.target.disabled = false; };
     root.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; editId = confirmDel = null; render(); });
     root.querySelectorAll("[data-actif]").forEach(cb => cb.onchange = () => { byId(cb.dataset.actif).actif = cb.checked; saveProducts(); say(cb.checked ? "Remis en vente." : "Retiré de la vente : sa page sera retirée du site dans l'heure."); });
