@@ -116,3 +116,8 @@ footer a { font-size: 13px; color: var(--muted); }
 .tips .note:nth-of-type(even) { transform: rotate(0.5deg); }
 .tip-l { display: block; margin-top: 6px; }
 .tip-l b { color: var(--rouge); }
+
+/* mentions légales */
+.legal section + section { margin-top: 14px; }
+.legal p { margin: 4px 0 0; line-height: 1.55; }
+.legal a { color: var(--framboise); overflow-wrap: anywhere; }

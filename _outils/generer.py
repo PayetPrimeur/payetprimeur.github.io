@@ -36,10 +36,46 @@ def head(title, desc, prefix):
             f'<link rel="icon" href="{prefix}logo.png">{FONTS}<link rel="stylesheet" href="{prefix}style.css?v={V_CSS}"></head><body>')
 
 
-def footer(panier=False):
+# éditeur du site, pour les mentions légales
+EDITEUR = {
+    "nom": "PAYET PRIMEUR",
+    "forme": "Société à responsabilité limitée (SARL)",
+    "capital": "",  # ex. "1 000 €" : à compléter
+    "adresse": "3 allée des Vignoles, 33650 Saint-Selve",
+    "siret": "927 572 925 00018",
+    "rcs": "RCS Bordeaux 927 572 925",
+    "email": "christophepayetprimeur@gmail.com",
+    "directeur": "Christophe Payet",
+}
+
+
+def footer(panier=False, prefix="../"):
     # sur la page d'un panier, pas de « nouvelle recette chaque dimanche » : ses recettes valent pour la semaine du panier
     return ('<footer>' + ('' if panier else '<span class="hand">Une nouvelle recette chaque dimanche !</span>')
-            + "<span>Payet Primeur · Saint-Selve &amp; Villenave-d'Ornon</span></footer>")
+            + "<span>Payet Primeur · Saint-Selve &amp; Villenave-d'Ornon</span>"
+            + f'<a href="{prefix}mentions-legales/">Mentions légales</a></footer>')
+
+
+def page_mentions():
+    E = EDITEUR
+    soc = E["forme"] + (f" au capital de {E['capital']}" if E["capital"] else "")
+    bloc = lambda t, c: f'<section><h3>{t}</h3>{c}</section>'
+    corps = (
+        bloc("Éditeur du site", f'<p><b>{e(E["nom"])}</b><br>{e(soc)}<br>{e(E["adresse"])}<br>SIRET {e(E["siret"])} · {e(E["rcs"])}<br>'
+             f'Contact : <a href="mailto:{e(E["email"])}">{e(E["email"])}</a></p>')
+        + bloc("Directeur de la publication", f'<p>{e(E["directeur"])}</p>')
+        + bloc("Hébergeur", '<p>GitHub, Inc. (service GitHub Pages)<br>88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br>https://github.com</p>')
+        + bloc("Données personnelles", '<p>Ce site ne demande aucune information, ne dépose aucun cookie et n\'utilise aucun outil de mesure d\'audience. '
+               'Les polices de caractères et les outils sont hébergés sur le site lui-même : aucune donnée n\'est transmise à des tiers lors de votre visite. '
+               'Comme tout hébergeur, GitHub peut enregistrer techniquement l\'adresse IP des visiteurs pour assurer la sécurité du service.</p>'
+               f'<p>Pour toute question : <a href="mailto:{e(E["email"])}">{e(E["email"])}</a>.</p>')
+        + bloc("Contenus", '<p>Les textes, recettes et conseils sont rédigés pour Payet Primeur. Le logo et le nom Payet Primeur sont la propriété de la société. '
+               'Les recettes sont données à titre indicatif ; vérifiez les ingrédients en cas d\'allergie.</p>'))
+    return (head("Mentions légales | Payet Primeur", "Mentions légales du site des recettes Payet Primeur.", "../")
+            + '<div class="wrap"><header class="top"><img src="../logo.png" alt="Payet Primeur" width="230" height="65">'
+            '<p>Extra-frais et de saison, en circuit court</p></header>'
+            f'<section class="hero"><h1>Mentions légales</h1>{UNDERLINE}</section>'
+            f'<article class="card legal">{corps}</article>' + footer(panier=True) + '</div></body></html>')
 
 
 def entete(pg, prefix="../"):
@@ -215,7 +251,7 @@ def page_accueil(d):
     return (head("Les recettes de la semaine | Payet Primeur",
                  "Une recette de saison pour chaque fruit et légume de la boutique Payet Primeur, renouvelée chaque dimanche.", "")
             + '<div class="wrap"><header class="top"><img src="logo.png" alt="Payet Primeur" width="230" height="65">'
-            f'<p>Nos recettes et conseils de la semaine {e(d["semaine"])}</p></header>' + "".join(groups) + footer() + "</div></body></html>")
+            f'<p>Nos recettes et conseils de la semaine {e(d["semaine"])}</p></header>' + "".join(groups) + footer(prefix="") + "</div></body></html>")
 
 
 def generer(data_path, out):
@@ -228,6 +264,8 @@ def generer(data_path, out):
             shutil.rmtree(p)
     for f in ("style.css", "recette.js", "logo.png", "jspdf.umd.min.js"):
         shutil.copy(os.path.join(ICI, f), os.path.join(out, f))
+    os.makedirs(os.path.join(out, "mentions-legales"), exist_ok=True)
+    open(os.path.join(out, "mentions-legales", "index.html"), "w", encoding="utf-8").write(page_mentions())
     os.makedirs(os.path.join(out, "polices"), exist_ok=True)
     for f in os.listdir(os.path.join(ICI, "polices")):
         shutil.copy(os.path.join(ICI, "polices", f), os.path.join(out, "polices", f))
@@ -247,7 +285,7 @@ def generer(data_path, out):
     open(os.path.join(out, "404.html"), "w", encoding="utf-8").write(
         head("Page introuvable | Payet Primeur", "Page introuvable", "/") +
         '<div class="wrap"><header class="top"><img src="/logo.png" alt="Payet Primeur" width="230" height="65"></header>'
-        '<p>Cette recette n\'est plus en ligne.</p><a class="back" href="/">← Toutes nos recettes de la semaine</a>' + footer() + "</div></body></html>")
+        '<p>Cette recette n\'est plus en ligne.</p><a class="back" href="/">← Toutes nos recettes de la semaine</a>' + footer(prefix="/") + "</div></body></html>")
     ecrire_etat(d, out)
     print(f"{n} pages recettes générées dans {out}")
 
