@@ -10,9 +10,8 @@ ICI = os.path.dirname(os.path.abspath(__file__))
 CATS = [("Fruit", "Fruits"), ("Légume", "Légumes"), ("Aromate", "Aromates")]
 # dossiers du dépôt qui ne sont pas des pages recettes : jamais effacés par le générateur
 DOSSIERS_PROTEGES = {"appli"}
-FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
-         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&family=Kalam:wght@400;700&display=swap">')
+# polices hébergées sur le site (plus d'appel à Google Fonts : aucune adresse IP des visiteurs envoyée à Google)
+FONTS = ""
 UNDERLINE = ('<svg class="underline" viewBox="0 0 150 12" aria-hidden="true"><path d="M3 8 C 30 3, 60 10, 90 5 S 135 4, 147 7" '
              'stroke="#f9b00f" stroke-width="4" fill="none" stroke-linecap="round"/></svg>')
 e = lambda s: html.escape(str(s or ""), quote=True)
@@ -112,7 +111,7 @@ def page_recette(d, slug, pg):
             'Télécharger la recette (PDF)</button><p class="status" id="pdf-msg" role="status"></p></div>'
             + footer() + '</div>'
             f'<script type="application/json" id="recette">{pdf_json}</script>'
-            '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>'
+            '<script src="../jspdf.umd.min.js"></script>'
             f'<script src="../recette.js?v={V_JS}"></script></body></html>')
 
 
@@ -195,7 +194,7 @@ def page_panier(d, b):
             + corps + tips_html + (PDF_BTN if recs else "")
             + footer(panier=True) + '</div>'
             + f'<script type="application/json" id="recette">{pdf_json}</script>'
-            + (f'<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><script src="../recette.js?v={V_JS}"></script>' if recs else "")
+            + (f'<script src="../jspdf.umd.min.js"></script><script src="../recette.js?v={V_JS}"></script>' if recs else "")
             + '</body></html>')
 
 
@@ -227,8 +226,11 @@ def generer(data_path, out):
         p = os.path.join(out, name)
         if os.path.isdir(p) and os.path.exists(os.path.join(p, "index.html")) and not name.startswith((".", "_")) and name not in DOSSIERS_PROTEGES:
             shutil.rmtree(p)
-    for f in ("style.css", "recette.js", "logo.png"):
+    for f in ("style.css", "recette.js", "logo.png", "jspdf.umd.min.js"):
         shutil.copy(os.path.join(ICI, f), os.path.join(out, f))
+    os.makedirs(os.path.join(out, "polices"), exist_ok=True)
+    for f in os.listdir(os.path.join(ICI, "polices")):
+        shutil.copy(os.path.join(ICI, "polices", f), os.path.join(out, "polices", f))
     n = 0
     for slug, pg in d["pages"].items():
         if not re.fullmatch(r"[a-z0-9-]+", slug):

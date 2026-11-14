@@ -1,3 +1,10 @@
+/* polices hébergées sur le site */
+@font-face { font-family: "Nunito"; font-style: normal; font-weight: 500; font-display: swap; src: url("polices/nunito-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Nunito"; font-style: normal; font-weight: 700; font-display: swap; src: url("polices/nunito-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Nunito"; font-style: normal; font-weight: 800; font-display: swap; src: url("polices/nunito-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Nunito"; font-style: normal; font-weight: 900; font-display: swap; src: url("polices/nunito-latin-900-normal.woff2") format("woff2"); }
+@font-face { font-family: "Kalam"; font-style: normal; font-weight: 400; font-display: swap; src: url("polices/kalam-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Kalam"; font-style: normal; font-weight: 700; font-display: swap; src: url("polices/kalam-latin-700-normal.woff2") format("woff2"); }
 /* Recettes Payet Primeur : fiche de comptoir, couleurs du logo. */
 
 /* Layout : fiche recette de comptoir, papier clair, notes à la main, couleurs du logo Payet Primeur. Un seul thème clair, assumé. */
