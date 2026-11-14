@@ -106,12 +106,13 @@
     return libs;
   }
   function rr(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
-  async function labelCanvas(id) {
+  async function labelCanvas(id, k) {
+    k = k || 1; // agrandissement (planche 4 par page) : même dessin, en plus haute définition
     const logo = await ensureLibs();
     const mm = v => Math.round(v / 25.4 * 300);
     const W = mm(40), H = mm(52);
-    const c = document.createElement("canvas"); c.width = W; c.height = H;
-    const g = c.getContext("2d");
+    const c = document.createElement("canvas"); c.width = Math.round(W * k); c.height = Math.round(H * k);
+    const g = c.getContext("2d"); g.scale(k, k);
     g.fillStyle = "#fff"; g.fillRect(0, 0, W, H);
     g.strokeStyle = "#b6115c"; g.lineWidth = 5; rr(g, 6, 6, W - 12, H - 12, 28); g.stroke();
     const lw = W - mm(8), lh = Math.round(logo.height * lw / logo.width);
@@ -174,15 +175,16 @@
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: "mm", format: "a4" });
     const items = prods().filter(p => p.actif && (p.page || p.c === CAT_PANIER)).sort((a, b) => a.c === b.c ? a.n.localeCompare(b.n, "fr") : TABS.findIndex(t => t[0] === a.c) - TABS.findIndex(t => t[0] === b.c));
-    const LW = 40, LH = 52, GX = 6, GY = 10, cols = 4, per = 16, x0 = (210 - (cols * LW + (cols - 1) * GX)) / 2;
+    // 4 grandes étiquettes par page (2 × 2), même proportions que l'étiquette de 40 × 52 mm
+    const LW = 88, LH = 88 * 52 / 40, GX = 10, GY = 16, cols = 2, per = 4, x0 = (210 - (cols * LW + (cols - 1) * GX)) / 2;
     const clean = s => String(s).replace(/œ/g, "oe").replace(/[’]/g, "'");
     for (let i = 0; i < items.length; i++) {
       const k = i % per;
       if (i && !k) doc.addPage();
       if (!k) { doc.setFontSize(8); doc.setTextColor(122, 106, 95); doc.text(`Étiquettes Payet Primeur · page ${i / per + 1} · le nom sous chaque étiquette est à découper`, 105, 8, { align: "center" }); }
       const x = x0 + (k % cols) * (LW + GX), y = 14 + Math.floor(k / cols) * (LH + GY);
-      doc.addImage((await labelCanvas(items[i].id)).toDataURL("image/png"), "PNG", x, y, LW, LH);
-      doc.setFontSize(7.5); doc.text(clean(items[i].n), x + LW / 2, y + LH + 4, { align: "center", maxWidth: LW + 4 });
+      doc.addImage((await labelCanvas(items[i].id, 2.2)).toDataURL("image/png"), "PNG", x, y, LW, LH);
+      doc.setFontSize(11); doc.setTextColor(58, 42, 34); doc.text(clean(items[i].n), x + LW / 2, y + LH + 6, { align: "center", maxWidth: LW });
     }
     saveFile(doc.output("blob"), "etiquettes-payet-primeur.pdf");
     say(`Planche de ${items.length} étiquettes téléchargée.`);
