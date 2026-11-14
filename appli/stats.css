@@ -134,3 +134,10 @@ em.up { color: var(--selve-ink); } em.down { color: #b23a3a; } em.eq { color: va
 .st-tk i { font-style: normal; font-size: 13.5px; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; color: var(--muted); }
 .st-tk i.up { color: var(--selve-ink); } .st-tk i.down { color: #b23a3a; }
 .st-dorm { cursor: default; }
+.st-fid .st-hl { display: grid; grid-template-columns: auto 1fr; column-gap: 8px; align-items: baseline; }
+.st-fid .st-hl small { grid-column: 2; display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.st-rank { font-weight: 800; color: var(--muted); font-variant-numeric: tabular-nums; }
+.st-fid .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.st-fid .dot.st-selve { background: var(--selve); } .st-fid .dot.villenave { background: var(--ville); }
+.st-fid { grid-template-columns: minmax(0, 58%) minmax(0, 1fr) auto; }
+.st-fid .st-hf { background: var(--primary); }

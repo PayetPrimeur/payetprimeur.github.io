@@ -322,6 +322,27 @@
     if (tr.length) h += `<section class="card"><div class="card-head"><h2>Commandes par type</h2><span>en quantité</span></div>
       ${hbars(tr.map(([t, v]) => ({ label: t, v })), "", false)}</section>`;
 
+    // clients les plus fidèles : regroupés par téléphone (ou par nom s'il n'y en a pas)
+    const cli = {};
+    C.ords.forEach(r => {
+      const nom = String(r.client || "").trim(); if (!nom) return;
+      const tel = String(r.tel || "").replace(/\D/g, "");
+      const key = tel.length >= 6 ? "t" + tel.slice(-9) : "n" + nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ");
+      const c = cli[key] || (cli[key] = { nom, cmd: 0, pan: 0, last: "", shops: {} });
+      c.cmd++; if (["Panier", "Panier Garni"].includes(r.type)) c.pan += qtyOf(r);
+      if (r.date > c.last) { c.last = r.date; c.nom = nom; }
+      c.shops[r.boutique] = (c.shops[r.boutique] || 0) + 1;
+    });
+    const fid = Object.values(cli).filter(c => c.cmd >= 2).sort((a, b) => b.cmd - a.cmd || b.pan - a.pan || b.last.localeCompare(a.last)).slice(0, st.showFid ? 50 : 10);
+    const nbFid = Object.values(cli).filter(c => c.cmd >= 2).length;
+    h += `<section class="card"><div class="card-head"><h2>Clients les plus fidèles</h2><span>sur la période</span></div>
+      ${fid.length ? `<div class="st-hbars">${fid.map((c, i) => { const max = fid[0].cmd; const sp = Object.keys(c.shops).sort((a, b) => c.shops[b] - c.shops[a]);
+        return `<div class="st-hrow st-fid"><span class="st-hl"><span class="st-rank">${i + 1}</span>${esc(c.nom)}<small>${sp.map(x => `<i class="dot ${x}"></i>`).join("")}${c.pan ? `${c.pan} panier${c.pan > 1 ? "s" : ""} · ` : ""}dernière le ${esc(parseDay(c.last).toLocaleDateString("fr-FR", { day: "numeric", month: "short" }).replace(/\./g, ""))}</small></span>
+          <span class="st-ht"><span class="st-hf" style="width:${Math.max(4, c.cmd / max * 100)}%"></span></span><b>${c.cmd} cmd</b></div>`; }).join("")}</div>
+        ${nbFid > 10 ? `<button type="button" class="link" id="st-fidmore">${st.showFid ? "Afficher les 10 premiers" : `Afficher jusqu'à ${Math.min(50, nbFid)} clients`}</button>` : ""}
+        <p class="st-note">Clients avec au moins 2 commandes sur la période, regroupés par numéro de téléphone (ou par nom). Les points indiquent la boutique.</p>`
+      : `<p class="st-note">Aucun client n'a encore passé 2 commandes sur cette période.</p>`}</section>`;
+
     // vue précise : un produit
     if (bk.length) {
       const names = [...new Set(bk.flatMap(([, b]) => Object.keys(b.stocks)))].sort((a, b) => a.localeCompare(b, "fr"));
@@ -376,6 +397,7 @@
     if (ds.scat) { st.cat = ds.scat; st.showAll = false; return render(); }
     if (ds.scu) { st.cu = ds.scu; return render(); }
     if (ds.sgo) { const el = $(ds.sgo); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+    if (t.id === "st-fidmore") { st.showFid = !st.showFid; return render(); }
     if (t.id === "st-dormmore") { st.showDorm = !st.showDorm; return render(); }
     if (t.id === "st-prevmore") { st.showPrev = !st.showPrev; return render(); }
     if (t.id === "st-more") { st.showAll = !st.showAll; return render(); }
