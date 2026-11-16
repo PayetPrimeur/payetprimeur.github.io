@@ -5404,10 +5404,69 @@ null
 },
 "tomate-cerise-gustatives-47": {
 "nom": "Tomate cerise gustatives (47)",
-"saison": "",
+"saison": "De juin à novembre, du Lot-et-Garonne",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Clafoutis de tomates cerises"
+],
+"recette": {
+"origine": "Grand classique de la cuisine familiale française",
+"titre": "Clafoutis de tomates cerises",
+"intro": "La version salée du clafoutis : un appareil aux œufs et au fromage qui gonfle au four autour de tomates cerises entières. Les tomates gustatives du Lot-et-Garonne, sucrées et parfumées, y éclatent en bouche.",
+"prep": "15 min",
+"cuisson": "35 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"400 g",
+"de tomates cerises gustatives",
+"Tomate cerise gustatives (47)"
+],
+[
+"3",
+"œufs",
+"Œufs plein air"
+],
+[
+"20 cl",
+"de crème liquide",
+null
+],
+[
+"10 cl",
+"de lait",
+null
+],
+[
+"50 g",
+"de farine",
+null
+],
+[
+"80 g",
+"de fromage râpé (comté ou emmental)",
+null
+],
+[
+"1 petit bouquet",
+"de persil",
+"Persil"
+],
+[
+"",
+"Sel, poivre, un peu de beurre pour le moule",
+null
+]
+],
+"etapes": [
+"Préchauffez le four à 180 °C. Lavez et séchez les tomates cerises, beurrez un plat à gratin et disposez-y les tomates entières en une seule couche.",
+"Dans un saladier, fouettez les œufs avec la farine jusqu'à ce qu'il n'y ait plus de grumeaux, puis ajoutez la crème et le lait petit à petit.",
+"Incorporez le fromage râpé et le persil ciselé, salez légèrement et poivrez.",
+"Versez l'appareil sur les tomates et enfournez 35 minutes, jusqu'à ce que le clafoutis soit gonflé et bien doré. Servez tiède avec une salade verte."
+],
+"conseil": "Choisissez des tomates cerises bien brillantes, fermes et encore attachées à la grappe si possible. Ne les mettez jamais au réfrigérateur : gardées à température ambiante, elles conservent tout leur goût sucré 4 à 5 jours."
+}
 }
 },
 "paniers": [
