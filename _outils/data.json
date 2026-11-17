@@ -184,6 +184,13 @@
 "actif": true
 },
 {
+"n": "Chayotte",
+"c": "Légume",
+"id": "chayotte",
+"page": "chayotte",
+"actif": true
+},
+{
 "n": "Chorizo basque",
 "c": "Épicerie",
 "id": "chorizo-basque",
@@ -265,13 +272,6 @@
 "c": "Légume",
 "id": "citrouille",
 "page": "citrouille",
-"actif": true
-},
-{
-"n": "Clémentine Corse 12kg",
-"c": "Fruit",
-"id": "clementine-corse",
-"page": "clementine-corse",
 "actif": true
 },
 {
@@ -944,6 +944,13 @@
 "c": "Légume",
 "id": "tomate-cerise-gustatives-47",
 "page": "tomate-cerise-gustatives-47",
+"actif": true
+},
+{
+"n": "Clémentine corse 6kg",
+"c": "Fruit",
+"id": "clementine-corse-6kg",
+"page": "clementine-corse-6kg",
 "actif": true
 }
 ],
@@ -5467,6 +5474,21 @@ null
 ],
 "conseil": "Choisissez des tomates cerises bien brillantes, fermes et encore attachées à la grappe si possible. Ne les mettez jamais au réfrigérateur : gardées à température ambiante, elles conservent tout leur goût sucré 4 à 5 jours."
 }
+},
+"chayotte": {
+"nom": "Chayotte",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true
+},
+"clementine-corse-6kg": {
+"nom": "Clémentine corse 6kg",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true,
+"type": "fruit"
 }
 },
 "paniers": [
