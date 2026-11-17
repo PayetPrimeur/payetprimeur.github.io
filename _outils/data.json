@@ -1799,9 +1799,62 @@ null
 "photo": null,
 "historique": [
 "Tzatziki au concombre, aneth et menthe",
-"Concombre poêlé au gingembre et aux noisettes"
+"Concombre poêlé au gingembre et aux noisettes",
+"Concombres à la crème"
 ],
-"aRevoir": true
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Concombres à la crème",
+"intro": "L'entrée fraîche des tables familiales : de fines rondelles de concombre dégorgées, nappées d'une crème vinaigrée aux herbes.",
+"prep": "15 min",
+"cuisson": "",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"2",
+"concombres",
+"Concombre"
+],
+[
+"1",
+"échalote",
+"Échalote"
+],
+[
+"1/2 bouquet",
+"persil plat",
+"Persil"
+],
+[
+"20 cl",
+"crème fraîche épaisse",
+null
+],
+[
+"1 c. à soupe",
+"vinaigre de vin blanc",
+null
+],
+[
+"1 c. à café",
+"moutarde",
+null
+],
+[
+"",
+"sel, poivre",
+null
+]
+],
+"etapes": [
+"Pelez les concombres en laissant une bande de peau sur deux, coupez-les en deux dans la longueur, retirez les graines à la cuillère si elles sont grosses, puis taillez-les en fines demi-rondelles.",
+"Mettez-les dans une passoire avec une bonne pincée de sel, mélangez et laissez dégorger 30 minutes au frais, puis pressez-les légèrement dans les mains pour en retirer l'eau.",
+"Dans un saladier, fouettez la crème avec la moutarde, le vinaigre, l'échalote finement ciselée et le persil haché ; poivrez.",
+"Ajoutez les concombres égouttés, mélangez et goûtez avant de saler (ils le sont déjà). Servez bien frais, en entrée ou avec un poisson grillé."
+],
+"conseil": "Choisissez un concombre bien ferme sur toute sa longueur, à la peau lisse et d'un vert franc, sans partie molle aux extrémités. Il se garde 4 à 5 jours dans le bac à légumes, loin des tomates et des fruits qui le font jaunir ; une fois entamé, filmez la partie coupée."
+}
 },
 "courge-spaghetti": {
 "nom": "Courge spaghetti",
