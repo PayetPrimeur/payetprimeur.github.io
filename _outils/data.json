@@ -275,6 +275,13 @@
 "actif": true
 },
 {
+"n": "Clémentine corse 6kg",
+"c": "Fruit",
+"id": "clementine-corse-6kg",
+"page": "clementine-corse-6kg",
+"actif": true
+},
+{
 "n": "Clémentine portugal",
 "c": "Fruit",
 "id": "clementine-portugal",
@@ -947,10 +954,10 @@
 "actif": true
 },
 {
-"n": "Clémentine corse 6kg",
-"c": "Fruit",
-"id": "clementine-corse-6kg",
-"page": "clementine-corse-6kg",
+"n": "Concombre",
+"c": "Légume",
+"id": "concombre",
+"page": "concombre",
 "actif": true
 }
 ],
