@@ -5477,18 +5477,78 @@ null
 },
 "chayotte": {
 "nom": "Chayotte",
-"saison": "",
+"saison": "octobre à décembre",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Christophines au gratin"
+],
+"recette": {
+"origine": "Spécialité antillaise et réunionnaise",
+"titre": "Christophines au gratin",
+"intro": "Le grand classique des Antilles et de la Réunion : la chair fondante de la chayotte, mêlée à une béchamel à l'ail, gratinée dans sa propre écorce.",
+"prep": "20 min",
+"cuisson": "45 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"3",
+"chayottes",
+"Chayotte"
+],
+[
+"2 gousses",
+"ail",
+"Ail violet"
+],
+[
+"1 petit bouquet",
+"persil",
+"Persil"
+],
+[
+"40 g",
+"beurre",
+null
+],
+[
+"30 g",
+"farine",
+null
+],
+[
+"30 cl",
+"lait",
+null
+],
+[
+"80 g",
+"fromage râpé (emmental ou gruyère)",
+null
+],
+[
+"",
+"sel, poivre, muscade",
+null
+]
+],
+"etapes": [
+"Coupez les chayottes en deux dans la longueur et faites-les cuire 20 à 25 minutes dans une grande casserole d'eau salée bouillante, jusqu'à ce que la pointe d'un couteau s'enfonce sans résistance.",
+"Égouttez-les, laissez-les tiédir, retirez le noyau central puis évidez-les délicatement à la cuillère en gardant 5 mm de chair contre la peau. Écrasez la chair à la fourchette et laissez-la s'égoutter dans une passoire.",
+"Préchauffez le four à 200 °C. Faites fondre le beurre, ajoutez la farine, mélangez 1 minute puis versez le lait en fouettant jusqu'à obtenir une béchamel épaisse. Ajoutez l'ail haché, le persil ciselé, la chair de chayotte, la moitié du fromage, sel, poivre et une pointe de muscade.",
+"Garnissez les demi-écorces de cette farce, parsemez du reste de fromage et faites gratiner 15 à 20 minutes au four, jusqu'à ce que le dessus soit bien doré. Servez chaud, en entrée ou avec une viande grillée."
+],
+"conseil": "Choisissez des chayottes fermes, bien vertes et sans taches brunes, de la taille d'une grosse poire : trop grosses, elles deviennent fibreuses. Elles se gardent deux semaines dans le bac à légumes du réfrigérateur."
+}
 },
 "clementine-corse-6kg": {
 "nom": "Clémentine corse 6kg",
-"saison": "",
+"saison": "novembre à janvier",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "La clémentine de Corse est cueillie à maturité, souvent avec ses feuilles : des feuilles bien vertes et souples garantissent une cueillette récente. En début de saison, la peau peut garder des zones vertes sans que le fruit soit acide, car elle n'est pas déverdie. Choisissez-la lourde en main, la peau fine, brillante et légèrement souple.",
+"conservation": "Gardez-la à température ambiante, dans un endroit frais et aéré, jusqu'à une semaine, en retirant les fruits abîmés pour qu'ils ne gâtent pas les autres. Au réfrigérateur, dans le bac à légumes et hors sachet plastique, elle tient environ deux semaines. Sortez-la un peu avant de la manger pour qu'elle retrouve tout son parfum."
 }
 },
 "paniers": [
