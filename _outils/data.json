@@ -5655,10 +5655,169 @@ null
 "1kg"
 ]
 ],
-"recettes": [],
-"recettesPour": [],
-"semaine": "",
-"aFaire": true
+"recettes": [
+{
+"origine": "Spécialité espagnole",
+"titre": "Tortilla de pommes de terre",
+"intro": "L'omelette épaisse aux pommes de terre et à l'oignon, fondante à cœur : un repas complet avec trois fois rien, prêt en une demi-heure.",
+"prep": "10 min",
+"cuisson": "20 min",
+"pers": "3",
+"niveau": "Facile",
+"ingredients": [
+[
+"600 g",
+"de pommes de terre",
+"Pdt agata"
+],
+[
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"6",
+"œufs",
+"Œufs plein air"
+],
+[
+"15 cl",
+"d'huile d'olive",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Épluchez les pommes de terre et coupez-les en fines lamelles. Émincez l'oignon.",
+"Faites chauffer l'huile dans une poêle de 24 cm et faites cuire pommes de terre et oignon 12 à 15 minutes à feu moyen, en remuant, jusqu'à ce qu'ils soient tendres sans trop colorer. Égouttez-les en gardant 1 cuillère d'huile.",
+"Battez les œufs avec du sel et du poivre, ajoutez les pommes de terre chaudes et mélangez.",
+"Versez dans la poêle huilée et laissez prendre 3 à 4 minutes à feu doux. Retournez la tortilla à l'aide d'une assiette et faites cuire encore 2 minutes. Servez tiède ou froide."
+],
+"conseil": "L'agata, à chair ferme, tient bien à la cuisson en lamelles. Gardez vos pommes de terre au noir et au frais, hors du frigo, pour éviter qu'elles verdissent ou germent."
+},
+{
+"origine": "Grand classique de la cuisine française",
+"titre": "Bœuf aux carottes",
+"intro": "Le mijoté familial par excellence : le bœuf devient fondant et les carottes s'imprègnent de la sauce au fil d'une longue cuisson douce.",
+"prep": "20 min",
+"cuisson": "2 h 30",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"1,2 kg",
+"de bœuf à braiser (paleron ou macreuse)",
+null
+],
+[
+"1 kg",
+"de carottes",
+"Carotte"
+],
+[
+"2",
+"oignons jaunes",
+"Oignon jaune"
+],
+[
+"2",
+"gousses d'ail",
+"Ail violet"
+],
+[
+"1",
+"branche de céleri",
+"Celerie branche"
+],
+[
+"1 c. à soupe",
+"de farine",
+null
+],
+[
+"50 cl",
+"de bouillon de bœuf",
+null
+],
+[
+"2 c. à soupe",
+"d'huile",
+null
+],
+[
+"",
+"Sel, poivre, thym, laurier",
+null
+]
+],
+"etapes": [
+"Coupez la viande en gros cubes. Épluchez les carottes et taillez-les en rondelles épaisses. Émincez les oignons, écrasez l'ail et coupez le céleri en tronçons.",
+"Dans une cocotte, faites dorer la viande dans l'huile sur toutes les faces, puis ajoutez les oignons et laissez-les fondre 5 minutes.",
+"Saupoudrez de farine, mélangez 1 minute, puis versez le bouillon. Ajoutez l'ail, le céleri, le thym, le laurier, salez et poivrez.",
+"Couvrez et laissez mijoter 1 heure à feu très doux. Ajoutez les carottes et poursuivez 1 h 30, jusqu'à ce que la viande se défasse à la fourchette. Retirez le céleri et les herbes avant de servir."
+],
+"conseil": "Choisissez des carottes bien fermes, sans taches ni fanes molles. Sans leurs fanes, elles se gardent une à deux semaines dans le bac à légumes du réfrigérateur."
+}
+],
+"recettesPour": [
+[
+"Carotte",
+"1kg"
+],
+[
+"Courgette",
+"1kg"
+],
+[
+"Pdt agata",
+"1kg"
+],
+[
+"Navet",
+"2 pièces"
+],
+[
+"Oignon jaune",
+"4 pièces"
+],
+[
+"Échalote",
+"3 pièces"
+],
+[
+"Ail violet",
+"1 pièce"
+],
+[
+"Celerie branche",
+"1 branche"
+],
+[
+"Œufs plein air",
+"1 boite de 6"
+],
+[
+"Banane",
+"4 pièces"
+],
+[
+"Avocat",
+"2 pièces"
+],
+[
+"Clémentine portugal",
+"1kg"
+],
+[
+"Pomme fuji",
+"1kg"
+]
+],
+"semaine": "du 8 au 14 novembre"
 },
 {
 "id": "panier",
