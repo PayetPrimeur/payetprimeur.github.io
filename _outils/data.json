@@ -5601,10 +5601,64 @@ null
 {
 "id": "panier-clementine-esp",
 "nom": "Clémentine esp",
-"contenu": [],
+"contenu": [
+[
+"Carotte",
+"1kg"
+],
+[
+"Courgette",
+"1kg"
+],
+[
+"Pdt agata",
+"1kg"
+],
+[
+"Navet",
+"2 pièces"
+],
+[
+"Oignon jaune",
+"4 pièces"
+],
+[
+"Échalote",
+"3 pièces"
+],
+[
+"Ail violet",
+"1 pièce"
+],
+[
+"Celerie branche",
+"1 branche"
+],
+[
+"Œufs plein air",
+"1 boite de 6"
+],
+[
+"Banane",
+"4 pièces"
+],
+[
+"Avocat",
+"2 pièces"
+],
+[
+"Clémentine portugal",
+"1kg"
+],
+[
+"Pomme fuji",
+"1kg"
+]
+],
 "recettes": [],
 "recettesPour": [],
-"semaine": ""
+"semaine": "",
+"aFaire": true
 },
 {
 "id": "panier",
