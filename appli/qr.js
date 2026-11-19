@@ -168,6 +168,45 @@
     g.fillStyle = "#f9b00f"; rr(g, cx - mm(6), H - mm(7), mm(12), mm(1.6), mm(0.8)); g.fill();
     return enNB(c);
   }
+  // étiquette adhésive 50 × 30 mm pour petite imprimante d'étiquettes (thermique, donc toujours en noir et blanc)
+  async function basketMiniCanvas(id) {
+    const logo = await ensureLibs();
+    try { await document.fonts.load("800 40px Figtree"); await document.fonts.load("700 20px Figtree"); } catch (e) {}
+    const mm = v => Math.round(v / 25.4 * 300);
+    const W = mm(50), H = mm(30);
+    const c = document.createElement("canvas"); c.width = W; c.height = H;
+    const g = c.getContext("2d");
+    g.fillStyle = "#fff"; g.fillRect(0, 0, W, H);
+    // QR code à gauche, sur presque toute la hauteur
+    const qr = qrcode(0, "Q"); qr.addData(`${SITE}/${id}/`); qr.make();
+    const n = qr.getModuleCount(), quiet = 2, qs = mm(27), cell = qs / (n + 2 * quiet);
+    const qx = mm(1), qy = (H - qs) / 2;
+    g.fillStyle = "#000";
+    for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (qr.isDark(r, k))
+      g.fillRect(Math.floor(qx + (k + quiet) * cell), Math.floor(qy + (r + quiet) * cell), Math.ceil(cell), Math.ceil(cell));
+    // logo et message à droite
+    const rx = qx + qs + mm(0.5), rw = W - rx - mm(1.5), cx = rx + rw / 2;
+    const lh = Math.round(logo.height * rw / logo.width);
+    g.drawImage(logo, rx, mm(3), rw, lh);
+    g.fillStyle = "#000"; g.textAlign = "center"; g.textBaseline = "top";
+    g.font = `800 ${mm(3.3)}px Figtree, Helvetica, Arial, sans-serif`;
+    let y = mm(3) + lh + mm(2.2);
+    ["Merci de", "votre achat !"].forEach(t => { g.fillText(t, cx, y); y += mm(3.9); });
+    g.font = `700 ${mm(2.1)}px Figtree, Helvetica, Arial, sans-serif`; y += mm(1.2);
+    ["Scannez pour vos", "2 recettes"].forEach(t => { g.fillText(t, cx, y); y += mm(2.6); });
+    // noir et blanc franc pour l'impression thermique
+    const im = g.getImageData(0, 0, W, H), d = im.data;
+    for (let i = 0; i < d.length; i += 4) { const l = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2], v = l < 170 ? 0 : 255; d[i] = d[i + 1] = d[i + 2] = v; }
+    g.putImageData(im, 0, 0);
+    return c;
+  }
+  async function downloadBasketMini(p) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: "mm", format: [50, 30], orientation: "landscape" });
+    doc.addImage((await basketMiniCanvas(p.id)).toDataURL("image/png"), "PNG", 0, 0, 50, 30, "mini", "FAST");
+    saveFile(doc.output("blob"), `etiquette-50x30-${p.id}.pdf`);
+    say(`Étiquette 50 × 30 mm « ${p.n} » prête : choisissez le nombre de copies au moment d'imprimer.`);
+  }
   async function downloadBasketSheet(p) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: "mm", format: "a4" });
@@ -266,6 +305,7 @@
       </form>
       <div class="qr-actions">
         <button class="qr-btn main" type="button" data-bcards="${i}">Cartes « Merci » à imprimer (PDF, 8 par page)</button>
+        <button class="qr-btn main" type="button" data-bmini="${i}">Étiquette adhésive 50 × 30 mm (PDF)</button>
         <button class="qr-btn" type="button" data-label="${i}">Étiquette QR du panier</button>
         <a class="qr-btn" href="${SITE}/${esc(p.id)}/" target="_blank" rel="noopener">Voir la page</a>
         <button class="qr-btn" type="button" data-rename="${i}">Renommer</button>
@@ -314,6 +354,7 @@
       const t = f.elements.t ? f.elements.t.value.trim() : undefined;
       if (await renameProduct(f.dataset.edit, n, t)) { editId = null; say("Nom modifié."); render(); }
     });
+    root.querySelectorAll("[data-bmini]").forEach(b => b.onclick = async () => { b.disabled = true; say("Préparation de l'étiquette…"); try { await downloadBasketMini(byId(b.dataset.bmini)); } catch (e) { say("L'étiquette n'a pas pu être créée."); } b.disabled = false; });
     root.querySelectorAll("[data-bcards]").forEach(b => b.onclick = async () => { b.disabled = true; say("Préparation des cartes…"); try { await downloadBasketSheet(byId(b.dataset.bcards)); } catch (e) { say("Les cartes n'ont pas pu être créées."); } b.disabled = false; });
     root.querySelectorAll("[data-label]").forEach(b => b.onclick = async () => { b.disabled = true; try { await downloadLabel(byId(b.dataset.label)); } catch (e) { say("L'étiquette n'a pas pu être créée."); } b.disabled = false; });
     root.querySelectorAll("[data-bq]").forEach(inp => inp.onchange = () => {
