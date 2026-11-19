@@ -5676,11 +5676,12 @@ null
 },
 "clementine-espagne": {
 "nom": "Clémentine Espagne",
-"saison": "",
+"saison": "De novembre à février",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "Choisissez une clémentine lourde dans la main, à la peau fine, lisse et d'un orange vif et uniforme. Elle doit être souple sans être molle : une peau qui se décolle déjà ou qui paraît gonflée signale un fruit qui commence à sécher. Comme tous les agrumes, elle est cueillie mûre et ne mûrit plus ensuite.",
+"conservation": "Elle se garde une semaine environ à température ambiante, dans un endroit frais et aéré, et jusqu'à deux semaines dans le bac à légumes du réfrigérateur. Évitez de l'enfermer dans un sac plastique, qui favorise les moisissures, et retirez tout fruit abîmé pour protéger les autres. Sortez-la un peu avant de la déguster pour qu'elle retrouve tout son parfum."
 }
 },
 "paniers": [
