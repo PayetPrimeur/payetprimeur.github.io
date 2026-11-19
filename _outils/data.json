@@ -5657,18 +5657,18 @@ null
 ],
 "recettes": [
 {
-"origine": "Spécialité espagnole",
-"titre": "Tortilla de pommes de terre",
-"intro": "L'omelette épaisse aux pommes de terre et à l'oignon, fondante à cœur : un repas complet avec trois fois rien, prêt en une demi-heure.",
+"origine": "Grand classique de la cuisine française",
+"titre": "Velouté de courgettes",
+"intro": "Un velouté doux et onctueux, prêt en une demi-heure : la meilleure façon de profiter d'un kilo de courgettes un soir de semaine.",
 "prep": "10 min",
 "cuisson": "20 min",
-"pers": "3",
-"niveau": "Facile",
+"pers": "4",
+"niveau": "Très facile",
 "ingredients": [
 [
-"600 g",
-"de pommes de terre",
-"Pdt agata"
+"1 kg",
+"de courgettes",
+"Courgette"
 ],
 [
 "1",
@@ -5676,12 +5676,27 @@ null
 "Oignon jaune"
 ],
 [
-"6",
-"œufs",
-"Œufs plein air"
+"1",
+"gousse d'ail",
+"Ail violet"
 ],
 [
-"15 cl",
+"1",
+"pomme de terre",
+"Pdt agata"
+],
+[
+"75 cl",
+"de bouillon de légumes",
+null
+],
+[
+"10 cl",
+"de crème fraîche",
+null
+],
+[
+"1 c. à soupe",
 "d'huile d'olive",
 null
 ],
@@ -5692,31 +5707,41 @@ null
 ]
 ],
 "etapes": [
-"Épluchez les pommes de terre et coupez-les en fines lamelles. Émincez l'oignon.",
-"Faites chauffer l'huile dans une poêle de 24 cm et faites cuire pommes de terre et oignon 12 à 15 minutes à feu moyen, en remuant, jusqu'à ce qu'ils soient tendres sans trop colorer. Égouttez-les en gardant 1 cuillère d'huile.",
-"Battez les œufs avec du sel et du poivre, ajoutez les pommes de terre chaudes et mélangez.",
-"Versez dans la poêle huilée et laissez prendre 3 à 4 minutes à feu doux. Retournez la tortilla à l'aide d'une assiette et faites cuire encore 2 minutes. Servez tiède ou froide."
+"Lavez les courgettes sans les éplucher et coupez-les en rondelles. Épluchez la pomme de terre et coupez-la en dés. Émincez l'oignon et l'ail.",
+"Dans une grande casserole, faites revenir l'oignon et l'ail dans l'huile 3 minutes à feu moyen, sans coloration.",
+"Ajoutez les courgettes et la pomme de terre, versez le bouillon chaud : il doit tout juste couvrir les légumes. Laissez cuire 15 à 20 minutes à frémissement, jusqu'à ce que la pomme de terre s'écrase facilement.",
+"Mixez finement en ajoutant la crème, rectifiez le sel et le poivre. Servez bien chaud, avec un filet d'huile d'olive."
 ],
-"conseil": "L'agata, à chair ferme, tient bien à la cuisson en lamelles. Gardez vos pommes de terre au noir et au frais, hors du frigo, pour éviter qu'elles verdissent ou germent."
+"conseil": "Choisissez des courgettes fermes, à la peau brillante et sans taches : moyennes plutôt que grosses, elles ont moins de pépins. Elles se gardent 4 à 5 jours dans le bac à légumes."
 },
 {
 "origine": "Grand classique de la cuisine française",
-"titre": "Bœuf aux carottes",
-"intro": "Le mijoté familial par excellence : le bœuf devient fondant et les carottes s'imprègnent de la sauce au fil d'une longue cuisson douce.",
-"prep": "20 min",
-"cuisson": "2 h 30",
-"pers": "4",
+"titre": "Pot-au-feu",
+"intro": "Le plat familial par excellence : une viande fondante et des légumes cuits doucement dans un bouillon parfumé, qu'on sert en deux temps, la soupe puis la viande.",
+"prep": "30 min",
+"cuisson": "3 h 30",
+"pers": "6",
 "niveau": "Facile",
 "ingredients": [
 [
-"1,2 kg",
-"de bœuf à braiser (paleron ou macreuse)",
+"1,5 kg",
+"de bœuf à pot-au-feu (paleron, plat de côtes, gîte)",
 null
 ],
 [
-"1 kg",
-"de carottes",
+"6",
+"carottes",
 "Carotte"
+],
+[
+"2",
+"navets",
+"Navet"
+],
+[
+"1",
+"branche de céleri",
+"Celerie branche"
 ],
 [
 "2",
@@ -5729,38 +5754,29 @@ null
 "Ail violet"
 ],
 [
+"800 g",
+"de pommes de terre",
+"Pdt agata"
+],
+[
 "1",
-"branche de céleri",
-"Celerie branche"
-],
-[
-"1 c. à soupe",
-"de farine",
-null
-],
-[
-"50 cl",
-"de bouillon de bœuf",
-null
-],
-[
-"2 c. à soupe",
-"d'huile",
+"bouquet garni, 3 clous de girofle",
 null
 ],
 [
 "",
-"Sel, poivre, thym, laurier",
+"Gros sel, poivre en grains, moutarde",
 null
 ]
 ],
 "etapes": [
-"Coupez la viande en gros cubes. Épluchez les carottes et taillez-les en rondelles épaisses. Émincez les oignons, écrasez l'ail et coupez le céleri en tronçons.",
-"Dans une cocotte, faites dorer la viande dans l'huile sur toutes les faces, puis ajoutez les oignons et laissez-les fondre 5 minutes.",
-"Saupoudrez de farine, mélangez 1 minute, puis versez le bouillon. Ajoutez l'ail, le céleri, le thym, le laurier, salez et poivrez.",
-"Couvrez et laissez mijoter 1 heure à feu très doux. Ajoutez les carottes et poursuivez 1 h 30, jusqu'à ce que la viande se défasse à la fourchette. Retirez le céleri et les herbes avant de servir."
+"Mettez la viande dans un grand faitout, couvrez largement d'eau froide et portez doucement à ébullition. Écumez soigneusement pendant 10 minutes.",
+"Ajoutez les oignons piqués des clous de girofle, l'ail, le bouquet garni, une poignée de gros sel et quelques grains de poivre. Laissez frémir 2 heures à couvert, sans bouillir fort.",
+"Épluchez les carottes et les navets, coupez-les en gros tronçons, taillez le céleri en morceaux. Ajoutez-les au faitout et poursuivez 1 heure de cuisson douce.",
+"Faites cuire les pommes de terre épluchées à part, 25 minutes dans une louche de bouillon et de l'eau salée, pour ne pas troubler le bouillon.",
+"Servez d'abord le bouillon bien chaud, puis la viande tranchée entourée des légumes, avec gros sel, moutarde et cornichons."
 ],
-"conseil": "Choisissez des carottes bien fermes, sans taches ni fanes molles. Sans leurs fanes, elles se gardent une à deux semaines dans le bac à légumes du réfrigérateur."
+"conseil": "Prenez des navets lourds et fermes, à la peau lisse : trop gros, ils deviennent fibreux. Sans leurs fanes, ils se conservent une semaine au frais, comme les carottes."
 }
 ],
 "recettesPour": [
@@ -5809,16 +5825,15 @@ null
 "2 pièces"
 ],
 [
-"Clémentine portugal",
+"Pomme fuji",
 "1kg"
 ],
 [
-"Pomme fuji",
+"Clémentine portugal",
 "1kg"
 ]
 ],
-"semaine": "du 8 au 14 novembre",
-"aFaire": true
+"semaine": "du 8 au 14 novembre"
 },
 {
 "id": "panier",
