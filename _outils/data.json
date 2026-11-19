@@ -5612,10 +5612,60 @@ null
 },
 "pdt-monique": {
 "nom": "Pdt Monique",
-"saison": "",
+"saison": "Récoltée en fin d'été, se garde tout l'hiver",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Purée de pommes de terre maison"
+],
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Purée de pommes de terre maison",
+"intro": "La Monique, à chair tendre et peau claire, se défait facilement à la cuisson : c'est la pomme de terre idéale pour une purée onctueuse, au beurre et au lait chaud.",
+"prep": "15 min",
+"cuisson": "25 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"1 kg",
+"de pommes de terre Monique",
+"Pdt Monique"
+],
+[
+"80 g",
+"de beurre",
+null
+],
+[
+"25 cl",
+"de lait entier",
+null
+],
+[
+"",
+"Sel",
+null
+],
+[
+"",
+"Poivre",
+null
+],
+[
+"1 pincée",
+"de muscade râpée",
+null
+]
+],
+"etapes": [
+"Épluchez les pommes de terre, coupez-les en gros morceaux de taille égale et mettez-les dans une casserole d'eau froide salée.",
+"Portez à ébullition et laissez cuire 20 à 25 minutes, jusqu'à ce que la pointe d'un couteau s'y enfonce sans résistance.",
+"Égouttez-les soigneusement, puis remettez-les une minute sur feu doux pour évaporer l'eau restante. Pendant ce temps, faites chauffer le lait.",
+"Écrasez les pommes de terre au presse-purée (jamais au mixeur, la purée deviendrait collante), incorporez le beurre en morceaux puis le lait chaud petit à petit en mélangeant à la cuillère en bois.",
+"Salez, poivrez, ajoutez la muscade et servez aussitôt."
+],
+"conseil": "Choisissez des Monique bien fermes, sans germes ni taches vertes. Conservez-les dans un endroit frais, sec et à l'abri de la lumière (pas au réfrigérateur) : elles se gardent ainsi plusieurs semaines."
+}
 }
 },
 "paniers": [
