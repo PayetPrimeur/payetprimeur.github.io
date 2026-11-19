@@ -730,6 +730,13 @@
 "actif": true
 },
 {
+"n": "Pdt Monique",
+"c": "Légume",
+"id": "pdt-monique",
+"page": "pdt-monique",
+"actif": true
+},
+{
 "n": "Persil",
 "c": "Aromate",
 "id": "persil",
@@ -954,10 +961,10 @@
 "actif": true
 },
 {
-"n": "Pdt Monique",
-"c": "Légume",
-"id": "pdt-monique",
-"page": "pdt-monique",
+"n": "Clémentine Espagne",
+"c": "Fruit",
+"id": "clementine-espagne",
+"page": "clementine-espagne",
 "actif": true
 }
 ],
@@ -5666,6 +5673,14 @@ null
 ],
 "conseil": "Choisissez des Monique bien fermes, sans germes ni taches vertes. Conservez-les dans un endroit frais, sec et à l'abri de la lumière (pas au réfrigérateur) : elles se gardent ainsi plusieurs semaines."
 }
+},
+"clementine-espagne": {
+"nom": "Clémentine Espagne",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true,
+"type": "fruit"
 }
 },
 "paniers": [
