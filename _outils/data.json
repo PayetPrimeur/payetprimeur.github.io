@@ -5600,7 +5600,7 @@ null
 "paniers": [
 {
 "id": "panier-clementine-esp",
-"nom": "Clémentine esp",
+"nom": "Panier semaine 1611",
 "contenu": [
 [
 "Carotte",
@@ -5647,11 +5647,11 @@ null
 "2 pièces"
 ],
 [
-"Clémentine portugal",
+"Pomme fuji",
 "1kg"
 ],
 [
-"Pomme fuji",
+"Clémentine portugal",
 "1kg"
 ]
 ],
@@ -5817,7 +5817,8 @@ null
 "1kg"
 ]
 ],
-"semaine": "du 8 au 14 novembre"
+"semaine": "du 8 au 14 novembre",
+"aFaire": true
 },
 {
 "id": "panier",
