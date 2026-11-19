@@ -863,6 +863,13 @@
 "actif": true
 },
 {
+"n": "Radis noir",
+"c": "Légume",
+"id": "radis-noir",
+"page": "radis-noir",
+"actif": true
+},
+{
 "n": "Radis red meat",
 "c": "Légume",
 "id": "radis-hiver",
@@ -944,6 +951,13 @@
 "c": "Légume",
 "id": "tomate-cerise-gustatives-47",
 "page": "tomate-cerise-gustatives-47",
+"actif": true
+},
+{
+"n": "Pdt Monique",
+"c": "Légume",
+"id": "pdt-monique",
+"page": "pdt-monique",
 "actif": true
 }
 ],
@@ -5595,9 +5609,227 @@ null
 "type": "fruit",
 "maturite": "La clémentine de Corse est cueillie à maturité, souvent avec ses feuilles : des feuilles bien vertes et souples garantissent une cueillette récente. En début de saison, la peau peut garder des zones vertes sans que le fruit soit acide, car elle n'est pas déverdie. Choisissez-la lourde en main, la peau fine, brillante et légèrement souple.",
 "conservation": "Gardez-la à température ambiante, dans un endroit frais et aéré, jusqu'à une semaine, en retirant les fruits abîmés pour qu'ils ne gâtent pas les autres. Au réfrigérateur, dans le bac à légumes et hors sachet plastique, elle tient environ deux semaines. Sortez-la un peu avant de la manger pour qu'elle retrouve tout son parfum."
+},
+"pdt-monique": {
+"nom": "Pdt Monique",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true
 }
 },
 "paniers": [
+{
+"id": "panier",
+"nom": "Panier de la semaine",
+"contenu": [
+[
+"Carotte",
+"1kg"
+],
+[
+"Pdt Bintje",
+"1kg"
+],
+[
+"Radis blue meat",
+"1 pièce"
+],
+[
+"Navet",
+"1 pièce"
+],
+[
+"Oignon jaune",
+"2 pièces"
+],
+[
+"Échalote",
+"3 pièces"
+],
+[
+"Potimarron (pièce)",
+"1 pièce"
+],
+[
+"Poireaux",
+"2 pièces"
+],
+[
+"Clémentine portugal",
+"1kg"
+],
+[
+"Orange dessert",
+"2 pièces"
+],
+[
+"Poire conférence",
+"4 pièces"
+]
+],
+"recettes": [
+{
+"origine": "Classique de la cuisine française d'automne",
+"titre": "Velouté de potimarron",
+"intro": "Le velouté qui annonce l'automne : le potimarron se cuit avec sa peau et donne une soupe douce, au léger goût de châtaigne, prête en une demi-heure.",
+"prep": "10 min",
+"cuisson": "20 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"1",
+"potimarron (environ 1,2 kg)",
+"Potimarron (pièce)"
+],
+[
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"20 g",
+"de beurre",
+null
+],
+[
+"80 cl",
+"de bouillon de légumes",
+null
+],
+[
+"10 cl",
+"de crème fraîche",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Lavez le potimarron, coupez-le en deux, retirez les graines avec une cuillère et taillez-le en cubes sans l'éplucher. Émincez l'oignon.",
+"Faites fondre le beurre dans une cocotte et faites revenir l'oignon 3 minutes. Ajoutez le potimarron et mélangez.",
+"Couvrez avec le bouillon, portez à ébullition et laissez cuire 20 minutes à couvert, jusqu'à ce que les cubes soient bien tendres.",
+"Mixez finement avec la crème, salez, poivrez et servez bien chaud."
+],
+"conseil": "Un bon potimarron est lourd pour sa taille, d'un orange profond, avec un pédoncule sec et bien attaché. Entier, il se garde plusieurs semaines dans un endroit frais et sec ; une fois entamé, filmez-le et gardez-le 4 à 5 jours au réfrigérateur."
+},
+{
+"origine": "Grand classique de la cuisine française",
+"titre": "Pot-au-feu",
+"intro": "Le plat familial par excellence : de la viande de bœuf mijotée longuement avec les légumes d'hiver. Le bouillon se boit en entrée, la viande et les légumes se servent ensuite avec moutarde et gros sel.",
+"prep": "30 min",
+"cuisson": "3 h 30",
+"pers": "6",
+"niveau": "Facile",
+"ingredients": [
+[
+"1,5 kg",
+"de bœuf à pot-au-feu (paleron, gîte, plat de côtes)",
+null
+],
+[
+"1",
+"os à moelle",
+null
+],
+[
+"6",
+"carottes",
+"Carotte"
+],
+[
+"1",
+"navet",
+"Navet"
+],
+[
+"2",
+"poireaux",
+"Poireaux"
+],
+[
+"1",
+"oignon jaune piqué de 2 clous de girofle",
+"Oignon jaune"
+],
+[
+"6",
+"pommes de terre",
+"Pdt Bintje"
+],
+[
+"1",
+"bouquet garni, gros sel, poivre en grains",
+null
+],
+[
+"",
+"Moutarde et cornichons pour servir",
+null
+]
+],
+"etapes": [
+"Placez la viande dans un grand faitout, couvrez largement d'eau froide et portez doucement à ébullition. Écumez soigneusement pendant 10 minutes.",
+"Ajoutez l'oignon piqué de girofle, le bouquet garni, une cuillère à soupe de gros sel et quelques grains de poivre. Laissez frémir 2 heures à couvert, sans bouillir fort.",
+"Épluchez les carottes et le navet, coupez-les en gros tronçons ; nettoyez les poireaux, ficelez-les en botte. Ajoutez-les avec l'os à moelle et poursuivez 1 heure.",
+"Faites cuire les pommes de terre épluchées 25 minutes dans une louche de bouillon et de l'eau, à part, pour que le bouillon reste clair.",
+"Servez le bouillon chaud en entrée, puis la viande tranchée entourée des légumes, avec moutarde, cornichons et gros sel."
+],
+"conseil": "Choisissez des poireaux bien droits, au blanc ferme et long, avec des feuilles d'un vert franc. Gardez-les 5 à 6 jours dans le bac à légumes, enveloppés dans un linge humide, pour qu'ils ne parfument pas tout le réfrigérateur."
+}
+],
+"recettesPour": [
+[
+"Carotte",
+"1kg"
+],
+[
+"Pdt Bintje",
+"1kg"
+],
+[
+"Radis blue meat",
+"1 pièce"
+],
+[
+"Navet",
+"1 pièce"
+],
+[
+"Oignon jaune",
+"2 pièces"
+],
+[
+"Échalote",
+"3 pièces"
+],
+[
+"Potimarron (pièce)",
+"1 pièce"
+],
+[
+"Poireaux",
+"2 pièces"
+],
+[
+"Clémentine portugal",
+"1kg"
+],
+[
+"Orange dessert",
+"2 pièces"
+],
+[
+"Poire conférence",
+"4 pièces"
+]
+],
+"semaine": "du 8 au 14 novembre"
+},
 {
 "id": "panier-clementine-esp",
 "nom": "Panier semaine 1611",
@@ -5831,217 +6063,6 @@ null
 [
 "Clémentine portugal",
 "1kg"
-]
-],
-"semaine": "du 8 au 14 novembre"
-},
-{
-"id": "panier",
-"nom": "Panier de la semaine",
-"contenu": [
-[
-"Carotte",
-"1kg"
-],
-[
-"Pdt Bintje",
-"1kg"
-],
-[
-"Radis blue meat",
-"1 pièce"
-],
-[
-"Navet",
-"1 pièce"
-],
-[
-"Oignon jaune",
-"2 pièces"
-],
-[
-"Échalote",
-"3 pièces"
-],
-[
-"Potimarron (pièce)",
-"1 pièce"
-],
-[
-"Poireaux",
-"2 pièces"
-],
-[
-"Clémentine portugal",
-"1kg"
-],
-[
-"Orange dessert",
-"2 pièces"
-],
-[
-"Poire conférence",
-"4 pièces"
-]
-],
-"recettes": [
-{
-"origine": "Classique de la cuisine française d'automne",
-"titre": "Velouté de potimarron",
-"intro": "Le velouté qui annonce l'automne : le potimarron se cuit avec sa peau et donne une soupe douce, au léger goût de châtaigne, prête en une demi-heure.",
-"prep": "10 min",
-"cuisson": "20 min",
-"pers": "4",
-"niveau": "Très facile",
-"ingredients": [
-[
-"1",
-"potimarron (environ 1,2 kg)",
-"Potimarron (pièce)"
-],
-[
-"1",
-"oignon jaune",
-"Oignon jaune"
-],
-[
-"20 g",
-"de beurre",
-null
-],
-[
-"80 cl",
-"de bouillon de légumes",
-null
-],
-[
-"10 cl",
-"de crème fraîche",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Lavez le potimarron, coupez-le en deux, retirez les graines avec une cuillère et taillez-le en cubes sans l'éplucher. Émincez l'oignon.",
-"Faites fondre le beurre dans une cocotte et faites revenir l'oignon 3 minutes. Ajoutez le potimarron et mélangez.",
-"Couvrez avec le bouillon, portez à ébullition et laissez cuire 20 minutes à couvert, jusqu'à ce que les cubes soient bien tendres.",
-"Mixez finement avec la crème, salez, poivrez et servez bien chaud."
-],
-"conseil": "Un bon potimarron est lourd pour sa taille, d'un orange profond, avec un pédoncule sec et bien attaché. Entier, il se garde plusieurs semaines dans un endroit frais et sec ; une fois entamé, filmez-le et gardez-le 4 à 5 jours au réfrigérateur."
-},
-{
-"origine": "Grand classique de la cuisine française",
-"titre": "Pot-au-feu",
-"intro": "Le plat familial par excellence : de la viande de bœuf mijotée longuement avec les légumes d'hiver. Le bouillon se boit en entrée, la viande et les légumes se servent ensuite avec moutarde et gros sel.",
-"prep": "30 min",
-"cuisson": "3 h 30",
-"pers": "6",
-"niveau": "Facile",
-"ingredients": [
-[
-"1,5 kg",
-"de bœuf à pot-au-feu (paleron, gîte, plat de côtes)",
-null
-],
-[
-"1",
-"os à moelle",
-null
-],
-[
-"6",
-"carottes",
-"Carotte"
-],
-[
-"1",
-"navet",
-"Navet"
-],
-[
-"2",
-"poireaux",
-"Poireaux"
-],
-[
-"1",
-"oignon jaune piqué de 2 clous de girofle",
-"Oignon jaune"
-],
-[
-"6",
-"pommes de terre",
-"Pdt Bintje"
-],
-[
-"1",
-"bouquet garni, gros sel, poivre en grains",
-null
-],
-[
-"",
-"Moutarde et cornichons pour servir",
-null
-]
-],
-"etapes": [
-"Placez la viande dans un grand faitout, couvrez largement d'eau froide et portez doucement à ébullition. Écumez soigneusement pendant 10 minutes.",
-"Ajoutez l'oignon piqué de girofle, le bouquet garni, une cuillère à soupe de gros sel et quelques grains de poivre. Laissez frémir 2 heures à couvert, sans bouillir fort.",
-"Épluchez les carottes et le navet, coupez-les en gros tronçons ; nettoyez les poireaux, ficelez-les en botte. Ajoutez-les avec l'os à moelle et poursuivez 1 heure.",
-"Faites cuire les pommes de terre épluchées 25 minutes dans une louche de bouillon et de l'eau, à part, pour que le bouillon reste clair.",
-"Servez le bouillon chaud en entrée, puis la viande tranchée entourée des légumes, avec moutarde, cornichons et gros sel."
-],
-"conseil": "Choisissez des poireaux bien droits, au blanc ferme et long, avec des feuilles d'un vert franc. Gardez-les 5 à 6 jours dans le bac à légumes, enveloppés dans un linge humide, pour qu'ils ne parfument pas tout le réfrigérateur."
-}
-],
-"recettesPour": [
-[
-"Carotte",
-"1kg"
-],
-[
-"Pdt Bintje",
-"1kg"
-],
-[
-"Radis blue meat",
-"1 pièce"
-],
-[
-"Navet",
-"1 pièce"
-],
-[
-"Oignon jaune",
-"2 pièces"
-],
-[
-"Échalote",
-"3 pièces"
-],
-[
-"Potimarron (pièce)",
-"1 pièce"
-],
-[
-"Poireaux",
-"2 pièces"
-],
-[
-"Clémentine portugal",
-"1kg"
-],
-[
-"Orange dessert",
-"2 pièces"
-],
-[
-"Poire conférence",
-"4 pièces"
 ]
 ],
 "semaine": "du 8 au 14 novembre"
