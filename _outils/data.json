@@ -849,13 +849,6 @@
 "actif": true
 },
 {
-"n": "Pommes gala",
-"c": "Fruit",
-"id": "pomme-gala",
-"page": "pomme-gala",
-"actif": false
-},
-{
 "n": "Potimarron (pièce)",
 "c": "Légume",
 "id": "potimarron",
