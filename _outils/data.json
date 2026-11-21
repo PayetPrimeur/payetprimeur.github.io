@@ -366,10 +366,10 @@
 "actif": false
 },
 {
-"n": "Cresson",
+"n": "Cresson uniquement vo",
 "c": "Légume",
-"id": "cresson",
-"page": "cresson",
+"id": "cresson-uniquement-vo",
+"page": "cresson-uniquement-vo",
 "actif": true
 },
 {
@@ -405,6 +405,13 @@
 "c": "Légume",
 "id": "fenouil",
 "page": "fenouil",
+"actif": true
+},
+{
+"n": "Figue séchées",
+"c": "Fruit",
+"id": "figue-sechees",
+"page": "figue-sechees",
 "actif": true
 },
 {
@@ -660,6 +667,13 @@
 "actif": true
 },
 {
+"n": "Orange chocolat",
+"c": "Fruit",
+"id": "orange-chocolat",
+"page": "orange-chocolat",
+"actif": true
+},
+{
 "n": "Orange dessert",
 "c": "Fruit",
 "id": "orange",
@@ -842,6 +856,13 @@
 "actif": true
 },
 {
+"n": "Pommes compotes",
+"c": "Fruit",
+"id": "pommes-compotes",
+"page": "pommes-compotes",
+"actif": true
+},
+{
 "n": "Potimarron (pièce)",
 "c": "Légume",
 "id": "potimarron",
@@ -954,10 +975,10 @@
 "actif": true
 },
 {
-"n": "Pommes compotes",
-"c": "Fruit",
-"id": "pommes-compotes",
-"page": "pommes-compotes",
+"n": "Choux de Bruxelles",
+"c": "Légume",
+"id": "choux-de-bruxelles",
+"page": "choux-de-bruxelles",
 "actif": true
 }
 ],
@@ -5683,6 +5704,36 @@ null
 "historique": [],
 "aRevoir": true,
 "type": "fruit"
+},
+"cresson-uniquement-vo": {
+"nom": "Cresson uniquement vo",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true
+},
+"figue-sechees": {
+"nom": "Figue séchées",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true,
+"type": "fruit"
+},
+"orange-chocolat": {
+"nom": "Orange chocolat",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true,
+"type": "fruit"
+},
+"choux-de-bruxelles": {
+"nom": "Choux de Bruxelles",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true
 }
 },
 "paniers": [
