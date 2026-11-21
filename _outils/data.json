@@ -5708,33 +5708,138 @@ null
 },
 "cresson-uniquement-vo": {
 "nom": "Cresson uniquement vo",
-"saison": "",
+"saison": "D'octobre à avril",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Velouté de cresson"
+],
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Velouté de cresson",
+"intro": "Le potage de cresson à l'ancienne : une soupe d'un beau vert, poivrée et douce à la fois, liée simplement par la pomme de terre.",
+"prep": "15 min",
+"cuisson": "25 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"1 botte",
+"cresson",
+"Cresson uniquement vo"
+],
+[
+"300 g",
+"pommes de terre",
+"Pdt Bintje"
+],
+[
+"1",
+"poireau (le blanc)",
+"Poireaux"
+],
+[
+"30 g",
+"beurre",
+null
+],
+[
+"1 l",
+"bouillon de volaille ou de légumes",
+null
+],
+[
+"10 cl",
+"crème fraîche",
+null
+],
+[
+"",
+"sel, poivre",
+null
+]
+],
+"etapes": [
+"Lavez soigneusement le cresson, retirez les grosses tiges et gardez quelques feuilles pour le service. Épluchez les pommes de terre et coupez-les en cubes ; émincez le blanc de poireau.",
+"Faites fondre le beurre dans une casserole et faites suer le poireau 5 minutes sans coloration. Ajoutez les pommes de terre et le bouillon, puis laissez cuire 15 minutes à frémissement.",
+"Ajoutez le cresson et poursuivez la cuisson 5 minutes seulement, pour qu'il garde sa couleur.",
+"Mixez finement, incorporez la crème, salez et poivrez. Servez bien chaud avec les feuilles de cresson réservées."
+],
+"conseil": "Choisissez un cresson aux feuilles bien vertes et fermes, sans jaunissement. Il se garde 2 jours au frigo, les tiges dans un verre d'eau ou enveloppé dans un torchon humide."
+}
 },
 "figue-sechees": {
 "nom": "Figue séchées",
-"saison": "",
+"saison": "Toute l'année (récolte de fin d'été)",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "Les figues séchées sont récoltées bien mûres puis séchées au soleil : elles sont prêtes à manger. Choisissez-les souples et charnues sous le doigt, d'une couleur brun doré régulière. Un léger voile blanc sur la peau est normal : c'est le sucre du fruit qui remonte, pas de la moisissure.",
+"conservation": "Gardez-les dans une boîte hermétique, au sec et à l'abri de la chaleur : elles se conservent plusieurs mois. Une fois le sachet ouvert, mettez-les au frais pour qu'elles restent moelleuses plus longtemps. Si elles durcissent, laissez-les tremper quelques minutes dans de l'eau tiède ou du thé."
 },
 "orange-chocolat": {
 "nom": "Orange chocolat",
-"saison": "",
+"saison": "De décembre à février",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "L'orange chocolat est une variété de navel à la chair orange teintée de brun, très parfumée. Comme tous les agrumes, elle ne mûrit plus après la cueillette : choisissez-la lourde pour sa taille, signe qu'elle est juteuse, avec une peau ferme, fine et brillante. Elle doit sentir bon quand on gratte légèrement l'écorce ; écartez les fruits mous ou à la peau ridée.",
+"conservation": "Elle se garde une semaine à température ambiante, dans une corbeille aérée, et jusqu'à 2 à 3 semaines dans le bac à légumes du frigo. Sortez-la un peu avant de la manger pour qu'elle retrouve tout son parfum. Une fois pelée, consommez-la dans la journée."
 },
 "choux-de-bruxelles": {
 "nom": "Choux de Bruxelles",
-"saison": "",
+"saison": "D'octobre à mars",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Choux de Bruxelles poêlés aux lardons"
+],
+"recette": {
+"origine": "Classique de la cuisine familiale française",
+"titre": "Choux de Bruxelles poêlés aux lardons",
+"intro": "Blanchis puis dorés à la poêle avec des lardons et de l'échalote, les choux de Bruxelles deviennent fondants et légèrement caramélisés.",
+"prep": "15 min",
+"cuisson": "20 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"600 g",
+"choux de Bruxelles",
+"Choux de Bruxelles"
+],
+[
+"150 g",
+"lardons fumés",
+null
+],
+[
+"2",
+"échalotes",
+"Échalote"
+],
+[
+"20 g",
+"beurre",
+null
+],
+[
+"1 c. à soupe",
+"huile",
+null
+],
+[
+"",
+"sel, poivre",
+null
+]
+],
+"etapes": [
+"Retirez les premières feuilles abîmées des choux et coupez le bout du pied. Faites-les cuire 8 minutes dans une grande casserole d'eau bouillante salée, puis égouttez-les.",
+"Dans une grande poêle, faites revenir les lardons à sec jusqu'à ce qu'ils soient dorés. Réservez-les.",
+"Ajoutez le beurre et l'huile dans la poêle, puis les échalotes émincées et les choux coupés en deux. Faites-les dorer 8 à 10 minutes à feu moyen en remuant.",
+"Remettez les lardons, poivrez, salez légèrement et servez aussitôt, par exemple avec une volaille rôtie."
+],
+"conseil": "Prenez des petits choux bien serrés, d'un vert vif, sans feuilles jaunies : ce sont les plus doux. Ils se gardent 4 à 5 jours au bac à légumes, non lavés."
+}
 }
 },
 "paniers": [
