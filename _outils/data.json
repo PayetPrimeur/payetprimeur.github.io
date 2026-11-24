@@ -37,13 +37,6 @@
 "actif": false
 },
 {
-"n": "Aubergine",
-"c": "Légume",
-"id": "aubergine",
-"page": "aubergine",
-"actif": true
-},
-{
 "n": "Avocat",
 "c": "Fruit",
 "id": "avocat",
@@ -146,13 +139,6 @@
 "c": "Légume",
 "id": "celeri",
 "page": "celeri",
-"actif": true
-},
-{
-"n": "Cepes",
-"c": "Légume",
-"id": "cepes",
-"page": "cepes",
 "actif": true
 },
 {
@@ -419,6 +405,13 @@
 "c": "Fruit",
 "id": "figue-sechees",
 "page": "figue-sechees",
+"actif": true
+},
+{
+"n": "Fraise",
+"c": "Fruit",
+"id": "fraise",
+"page": "fraise",
 "actif": true
 },
 {
@@ -751,13 +744,6 @@
 "actif": true
 },
 {
-"n": "Pdt grenailles 1,99€",
-"c": "Légume",
-"id": "pdt-grenailles",
-"page": "pdt-grenailles",
-"actif": false
-},
-{
 "n": "Pdt mitrailles",
 "c": "Légume",
 "id": "pdt-mitrailles",
@@ -986,13 +972,6 @@
 "c": "Légume",
 "id": "tomate-cerise-gustatives-47",
 "page": "tomate-cerise-gustatives-47",
-"actif": true
-},
-{
-"n": "Fraise",
-"c": "Fruit",
-"id": "fraise",
-"page": "fraise",
 "actif": true
 }
 ],
