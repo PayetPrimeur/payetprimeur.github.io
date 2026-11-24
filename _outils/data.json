@@ -240,6 +240,13 @@
 "actif": true
 },
 {
+"n": "Choux de Bruxelles",
+"c": "Légume",
+"id": "choux-de-bruxelles",
+"page": "choux-de-bruxelles",
+"actif": true
+},
+{
 "n": "Ciboulette",
 "c": "Aromate",
 "id": "ciboulette",
@@ -447,6 +454,13 @@
 "c": "Fruit",
 "id": "grenade",
 "page": "grenade",
+"actif": true
+},
+{
+"n": "Grenadilles",
+"c": "Fruit",
+"id": "grenadilles",
+"page": "grenadilles",
 "actif": true
 },
 {
@@ -975,10 +989,10 @@
 "actif": true
 },
 {
-"n": "Choux de Bruxelles",
-"c": "Légume",
-"id": "choux-de-bruxelles",
-"page": "choux-de-bruxelles",
+"n": "Fraise",
+"c": "Fruit",
+"id": "fraise",
+"page": "fraise",
 "actif": true
 }
 ],
@@ -5840,6 +5854,22 @@ null
 ],
 "conseil": "Prenez des petits choux bien serrés, d'un vert vif, sans feuilles jaunies : ce sont les plus doux. Ils se gardent 4 à 5 jours au bac à légumes, non lavés."
 }
+},
+"grenadilles": {
+"nom": "Grenadilles",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true,
+"type": "fruit"
+},
+"fraise": {
+"nom": "Fraise",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true,
+"type": "fruit"
 }
 },
 "paniers": [
