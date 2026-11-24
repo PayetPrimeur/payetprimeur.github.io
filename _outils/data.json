@@ -5857,19 +5857,21 @@ null
 },
 "grenadilles": {
 "nom": "Grenadilles",
-"saison": "",
+"saison": "Arrivages toute l'année",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "Une grenadille mûre a une coque orange bien uniforme, parfois mouchetée de petites taches brunes. Elle doit sembler lourde pour sa taille et la coque, lisse et dure, peut céder très légèrement sous le pouce. Secouez-la : si vous n'entendez pas la pulpe ballotter, c'est qu'elle est bien juteuse.",
+"conservation": "Gardez-la à température ambiante, à l'abri du soleil : elle se conserve une à deux semaines grâce à sa coque. Au frigo, elle tient jusqu'à trois semaines. Une fois ouverte, dégustez la pulpe à la petite cuillère dans la journée."
 },
 "fraise": {
 "nom": "Fraise",
-"saison": "",
+"saison": "D'avril à octobre",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "Une fraise mûre est rouge vif jusqu'au pied, sans zone blanche ou verte autour de la queue, qui doit rester bien verte et fraîche. Elle sent bon dès qu'on approche le nez de la barquette et reste brillante et ferme. Attention : la fraise ne mûrit plus une fois cueillie.",
+"conservation": "Mangez-les idéalement le jour même, sinon gardez-les 2 à 3 jours au frigo, dans le bac à légumes, sans les laver ni les équeuter. Sortez-les une demi-heure avant de les servir pour retrouver tout leur parfum. Lavez-les rapidement avant d'enlever la queue, pour qu'elles ne se gorgent pas d'eau."
 }
 },
 "paniers": [
