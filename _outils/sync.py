@@ -22,6 +22,25 @@ def charger(path, defaut):
         return defaut
 
 
+MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+
+
+def semaine_en_cours(auj=None):
+    """« du 22 au 28 novembre » : semaine du dimanche au samedi qui contient aujourd'hui (heure de Paris)."""
+    import datetime
+    try:
+        from zoneinfo import ZoneInfo
+        auj = auj or datetime.datetime.now(ZoneInfo("Europe/Paris")).date()
+    except Exception:
+        auj = auj or datetime.date.today()
+    deb = auj - datetime.timedelta(days=(auj.weekday() + 1) % 7)
+    fin = deb + datetime.timedelta(days=6)
+    j = lambda d: "1er" if d.day == 1 else str(d.day)
+    if deb.month == fin.month:
+        return f"du {j(deb)} au {j(fin)} {MOIS[fin.month - 1]}"
+    return f"du {j(deb)} {MOIS[deb.month - 1]} au {j(fin)} {MOIS[fin.month - 1]}"
+
+
 def main(prod_path, pan_path, data_path):
     fb = charger(prod_path, [])
     if isinstance(fb, dict):  # Firebase renvoie parfois un objet indexé
@@ -95,6 +114,8 @@ def main(prod_path, pan_path, data_path):
 
     d["produits"] = produits
     d["paniers"] = paniers
+    # la semaine affichée suit toujours le calendrier, même si le renouvellement des recettes a raté
+    d["semaine"] = semaine_en_cours()
     json.dump(d, open(data_path, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     print(f"{len(produits)} produits, {len(paniers)} paniers ; renommés : {renommes or 'aucun'} ; "
           f"en attente : {[s for s, pg in d['pages'].items() if pg.get('aRevoir') and s in pages_actives]}")
