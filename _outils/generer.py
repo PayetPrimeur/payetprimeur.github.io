@@ -80,7 +80,7 @@ def page_mentions():
 
 def entete(pg, prefix="../"):
     return ('<div class="wrap">'
-            f'<header class="top"><a href="{prefix}"><img src="{prefix}logo.png" alt="Payet Primeur" width="230" height="65"></a>'
+            f'<header class="top"><img src="{prefix}logo.png" alt="Payet Primeur" width="230" height="65">'
             '<p>Extra-frais et de saison, en circuit court</p></header>'
             f'<section class="hero"><h1>{e(pg["nom"])}</h1>{UNDERLINE}<p class="season">{e(pg.get("saison"))}</p></section>')
 
@@ -130,7 +130,7 @@ def page_recette(d, slug, pg):
     return (head(f"{pg['nom']} · {r['titre']} | Payet Primeur",
                  f"Recette de la semaine pour {pg['nom']} : {r['titre']}. {r['intro']}", "../")
             + '<div class="wrap">'
-            '<header class="top"><a href="../"><img src="../logo.png" alt="Payet Primeur" width="230" height="65"></a>'
+            '<header class="top"><img src="../logo.png" alt="Payet Primeur" width="230" height="65">'
             '<p>Extra-frais et de saison, en circuit court</p></header>'
             f'<section class="hero"><h1>{e(pg["nom"])}</h1>{UNDERLINE}<p class="season">{e(pg.get("saison"))}</p></section>'
             '<article class="card"><span class="stamp">Recette de<br>la semaine</span>'
@@ -223,7 +223,7 @@ def page_panier(d, b):
     pdf_json = json.dumps(pdf, ensure_ascii=False).replace("<", "\\u003c")
     sous = f"Deux idées au choix pour cuisiner votre {b['nom'].lower()}" if recs else b["nom"]
     return (head(f"Merci pour votre achat ! · {b['nom']} | Payet Primeur", f"Deux idées de recettes au choix pour cuisiner votre {b['nom'].lower()}.", "../")
-            + '<div class="wrap"><header class="top"><a href="../"><img src="../logo.png" alt="Payet Primeur" width="230" height="65"></a>'
+            + '<div class="wrap"><header class="top"><img src="../logo.png" alt="Payet Primeur" width="230" height="65">'
             '<p>Extra-frais et de saison, en circuit court</p></header>'
             f'<section class="hero thanks"><h1>Merci pour votre achat !</h1>{UNDERLINE}<p class="season">{e(sous)}</p></section>'
             + (f'<section class="card basket-list"><h3>Dans votre panier</h3><ul class="ing">{items}</ul></section>' if items else "")
