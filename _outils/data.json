@@ -5940,10 +5940,69 @@ null
 },
 "maches": {
 "nom": "Mâches",
-"saison": "",
+"saison": "d'octobre à mars",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Salade de mâche à la betterave et aux œufs durs"
+],
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Salade de mâche à la betterave et aux œufs durs",
+"intro": "L'entrée d'hiver par excellence : la douceur de la mâche, le sucré de la betterave et une vinaigrette bien moutardée. Simple et toujours réussie.",
+"prep": "15 min",
+"cuisson": "10 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"200 g",
+"de mâche",
+"Mâches"
+],
+[
+"2",
+"betteraves cuites",
+"Betterave cuite"
+],
+[
+"4",
+"œufs",
+"Œufs plein air"
+],
+[
+"1",
+"échalote",
+"Échalote"
+],
+[
+"1 c. à soupe",
+"de moutarde",
+null
+],
+[
+"2 c. à soupe",
+"de vinaigre de vin",
+null
+],
+[
+"6 c. à soupe",
+"d'huile",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Faites cuire les œufs 10 minutes dans l'eau bouillante, refroidissez-les à l'eau froide, écalez-les et coupez-les en quartiers.",
+"Épluchez les betteraves et taillez-les en petits dés. Pelez et ciselez finement l'échalote.",
+"Dans le saladier, fouettez la moutarde, le vinaigre, le sel et le poivre, puis ajoutez l'huile petit à petit et l'échalote.",
+"Lavez délicatement la mâche, essorez-la bien, puis mélangez-la à la vinaigrette juste avant de servir. Disposez la betterave et les œufs par-dessus."
+],
+"conseil": "Choisissez une mâche aux petites rosettes bien vertes, fermes et sans feuilles jaunies. Gardez-la au bac à légumes du réfrigérateur dans un sachet, 2 à 3 jours maximum, et ne l'assaisonnez qu'au dernier moment."
+}
 }
 },
 "paniers": [
