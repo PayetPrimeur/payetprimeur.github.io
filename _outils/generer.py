@@ -299,10 +299,14 @@ def page_accueil(d):
         ss = tri(s for s in actifs if cat_de.get(s) == c)
         if ss:
             groups.append(f'<section class="cat" id="{ancres.get(c, "")}"><h2>{label}</h2><ul class="tiles">{tuiles(ss, True)}</ul></section>')
+    liens = ([("de-saison", "De saison")] if saison else []) + [
+        (ancres[c], label) for c, label in CATS if any(cat_de.get(x) == c for x in actifs)]
+    nav = ('<nav class="cat-nav" aria-label="Catégories">'
+           + "".join(f'<a href="#{a}">{e(t)}</a>' for a, t in liens) + '</nav>')
     return (head("Les recettes de la semaine | Payet Primeur",
                  "Une recette de saison pour chaque fruit et légume de la boutique Payet Primeur, renouvelée chaque dimanche.", "")
             + '<div class="wrap"><header class="top"><img src="logo.png" alt="Payet Primeur" width="230" height="65">'
-            f'<p>Nos recettes et conseils de la semaine {e(d["semaine"])}</p></header>' + "".join(groups) + footer(prefix="") + "</div></body></html>")
+            f'<p>Nos recettes et conseils de la semaine {e(d["semaine"])}</p></header>' + nav + "".join(groups) + footer(prefix="") + "</div></body></html>")
 
 
 def generer(data_path, out):
