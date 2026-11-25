@@ -56,6 +56,34 @@ def footer(panier=False, prefix="../"):
             + f'<a href="{prefix}mentions-legales/">Mentions légales</a></footer>')
 
 
+MOIS_NUM = {"janvier": 1, "février": 2, "fevrier": 2, "mars": 3, "avril": 4, "mai": 5, "juin": 6, "juillet": 7,
+            "août": 8, "aout": 8, "septembre": 9, "octobre": 10, "novembre": 11, "décembre": 12, "decembre": 12}
+
+
+def de_saison(pg, mois=None):
+    """Vrai si le mois en cours est dans la période « De … à … » de la page (« Toute l'année » ne compte pas)."""
+    if mois is None:
+        try:
+            from zoneinfo import ZoneInfo
+            import datetime
+            mois = datetime.datetime.now(ZoneInfo("Europe/Paris")).month
+        except Exception:
+            import datetime
+            mois = datetime.date.today().month
+    m = re.search(r"(janvier|f[ée]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[ée]cembre)\s+(?:à|a|au)\s+"
+                  r"(janvier|f[ée]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[ée]cembre)",
+                  (pg.get("saison") or "").lower())
+    if not m:
+        return False
+    a, b = MOIS_NUM[m.group(1)], MOIS_NUM[m.group(2)]
+    return a <= mois <= b if a <= b else (mois >= a or mois <= b)
+
+
+def autres(ancre):
+    """Bouton vers la liste de tous les fruits et légumes, positionnée sur le produit."""
+    return f'<a class="btn-list" href="../#{e(ancre)}">Les autres fruits et légumes</a>'
+
+
 def page_mentions():
     E = EDITEUR
     soc = E["forme"] + (f" au capital de {E['capital']}" if E["capital"] else "")
@@ -94,13 +122,13 @@ def page_fruit(d, slug, pg):
         corps = '<div class="card"><p class="intro">Nos conseils pour ce fruit arrivent très bientôt.</p></div>'
     return (head(f"{pg['nom']} : bien le choisir et le conserver | Payet Primeur",
                  f"Comment savoir si {pg['nom'].lower()} est mûr et comment le conserver : les conseils de votre primeur.", "../")
-            + entete(pg) + corps + footer() + '</div></body></html>')
+            + entete(pg) + corps + autres(slug) + footer() + '</div></body></html>')
 
 
 def page_attente(d, slug, pg):
     return (head(f"{pg['nom']} | Payet Primeur", f"La recette de la semaine pour {pg['nom']}.", "../")
             + entete(pg) + '<div class="card"><p class="intro">La recette de la semaine arrive très bientôt. Revenez dans quelques minutes !</p></div>'
-            + footer() + '</div></body></html>')
+            + autres(slug) + footer() + '</div></body></html>')
 
 
 def page_recette(d, slug, pg):
@@ -145,7 +173,7 @@ def page_recette(d, slug, pg):
             '<div class="pdf"><button type="button" class="btn main" id="pdf-btn" disabled>'
             '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>'
             'Télécharger la recette (PDF)</button><p class="status" id="pdf-msg" role="status"></p></div>'
-            + footer() + '</div>'
+            + autres(slug) + footer() + '</div>'
             f'<script type="application/json" id="recette">{pdf_json}</script>'
             '<script src="../jspdf.umd.min.js"></script>'
             f'<script src="../recette.js?v={V_JS}"></script></body></html>')
@@ -228,7 +256,7 @@ def page_panier(d, b):
             f'<section class="hero thanks"><h1>Merci pour votre achat !</h1>{UNDERLINE}<p class="season">{e(sous)}</p></section>'
             + (f'<section class="card basket-list"><h3>Dans votre panier</h3><ul class="ing">{items}</ul></section>' if items else "")
             + corps + tips_html + (PDF_BTN if recs else "")
-            + footer(panier=True) + '</div>'
+            + autres("de-saison") + footer(panier=True) + '</div>'
             + f'<script type="application/json" id="recette">{pdf_json}</script>'
             + (f'<script src="../jspdf.umd.min.js"></script><script src="../recette.js?v={V_JS}"></script>' if recs else "")
             + '</body></html>')
@@ -241,13 +269,27 @@ def tuile(pg):
 
 
 def page_accueil(d):
+    actifs = {p["page"] for p in d["produits"] if p.get("page") and p["actif"] and p["page"] in d["pages"]}
+    cat_de = {}
+    for p in d["produits"]:
+        if p.get("page") in actifs:
+            cat_de.setdefault(p["page"], p["c"])
+    tri = lambda ss: sorted(ss, key=lambda s: d["pages"][s]["nom"].lower())
+    tuiles = lambda ss, ids: "".join(f'<li{f" id={chr(34)}{s}{chr(34)}" if ids else ""}><a href="{s}/"><b>{e(d["pages"][s]["nom"])}</b><span>{e(tuile(d["pages"][s]))}</span></a></li>' for s in ss)
     groups = []
+    # en premier : ce qui est de saison ce mois-ci
+    saison = []
+    for c, label in (("Fruit", "Fruits de saison"), ("Légume", "Légumes de saison")):
+        ss = tri(s for s in actifs if cat_de.get(s) == c and de_saison(d["pages"][s]))
+        if ss:
+            saison.append(f'<section class="cat saison"><h2>{label}</h2><ul class="tiles">{tuiles(ss, False)}</ul></section>')
+    if saison:
+        groups.append('<div id="de-saison" class="saison-bloc">' + "".join(saison) + '</div>')
+    ancres = {"Fruit": "fruits", "Légume": "legumes", "Aromate": "aromates"}
     for c, label in CATS:
-        slugs = sorted({p["page"] for p in d["produits"] if p["c"] == c and p.get("page") and p["actif"] and p["page"] in d["pages"]},
-                       key=lambda s: d["pages"][s]["nom"].lower())
-        if slugs:
-            tiles = "".join(f'<li><a href="{s}/"><b>{e(d["pages"][s]["nom"])}</b><span>{e(tuile(d["pages"][s]))}</span></a></li>' for s in slugs)
-            groups.append(f'<section class="cat"><h2>{label}</h2><ul class="tiles">{tiles}</ul></section>')
+        ss = tri(s for s in actifs if cat_de.get(s) == c)
+        if ss:
+            groups.append(f'<section class="cat" id="{ancres.get(c, "")}"><h2>{label}</h2><ul class="tiles">{tuiles(ss, True)}</ul></section>')
     return (head("Les recettes de la semaine | Payet Primeur",
                  "Une recette de saison pour chaque fruit et légume de la boutique Payet Primeur, renouvelée chaque dimanche.", "")
             + '<div class="wrap"><header class="top"><img src="logo.png" alt="Payet Primeur" width="230" height="65">'
