@@ -79,6 +79,15 @@ def de_saison(pg, mois=None):
     return a <= mois <= b if a <= b else (mois >= a or mois <= b)
 
 
+# « De saison » = produit en France métropolitaine à cette période. On écarte les produits d'import
+# (exotiques, agrumes étrangers…) et les légumes d'été hors saison, même si leur fiche couvre le mois.
+JAMAIS_DE_SAISON = ("avocat", "mangue", "passion", "datte", "ananas", "banane", "litchi", "papaye", "goyave",
+                    "citron", "orange", "pomelo", "pamplemousse", "mandarine", "espagne", "portugal", "maroc",
+                    "italie", "grenade", "kaki", "chayotte", "patate-douce", "fenouil",
+                    "courgette", "tomate", "padron", "poivron", "aubergine", "concombre", "haricot",
+                    "kiwi-gold", "raisin")
+
+
 def autres(ancre):
     """Bouton vers la liste de tous les fruits et légumes, positionnée sur le produit."""
     return f'<a class="btn-list" href="../#{e(ancre)}">Les autres fruits et légumes</a>'
@@ -280,7 +289,7 @@ def page_accueil(d):
     # en premier : ce qui est de saison ce mois-ci
     saison = []
     for c, label in (("Fruit", "Fruits de saison"), ("Légume", "Légumes de saison")):
-        ss = tri(s for s in actifs if cat_de.get(s) == c and de_saison(d["pages"][s]))
+        ss = tri(s for s in actifs if cat_de.get(s) == c and de_saison(d["pages"][s]) and not any(m in s for m in JAMAIS_DE_SAISON))
         if ss:
             saison.append(f'<section class="cat saison"><h2>{label}</h2><ul class="tiles">{tuiles(ss, False)}</ul></section>')
     if saison:
