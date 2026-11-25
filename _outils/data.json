@@ -980,6 +980,13 @@
 "id": "tomate-ronde",
 "page": "tomate-ronde",
 "actif": true
+},
+{
+"n": "Mâches",
+"c": "Légume",
+"id": "maches",
+"page": "maches",
+"actif": true
 }
 ],
 "pages": {
@@ -5930,6 +5937,13 @@ null
 ],
 "conseil": "Pour farcir, choisissez des tomates rondes de taille moyenne, bien fermes et lourdes en main. Gardez-les à température ambiante, jamais au réfrigérateur qui leur fait perdre leur goût."
 }
+},
+"maches": {
+"nom": "Mâches",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true
 }
 },
 "paniers": [
