@@ -408,13 +408,6 @@
 "actif": true
 },
 {
-"n": "Fraise",
-"c": "Fruit",
-"id": "fraise",
-"page": "fraise",
-"actif": true
-},
-{
 "n": "Framboise",
 "c": "Fruit",
 "id": "framboise",
@@ -552,6 +545,13 @@
 "c": "Fruit",
 "id": "kiwi-rouge",
 "page": "kiwi-rouge",
+"actif": true
+},
+{
+"n": "Mâches",
+"c": "Légume",
+"id": "maches",
+"page": "maches",
 "actif": true
 },
 {
@@ -979,13 +979,6 @@
 "c": "Légume",
 "id": "tomate-ronde",
 "page": "tomate-ronde",
-"actif": true
-},
-{
-"n": "Mâches",
-"c": "Légume",
-"id": "maches",
-"page": "maches",
 "actif": true
 }
 ],
