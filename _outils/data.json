@@ -5863,8 +5863,73 @@ null
 "nom": "Tomate ronde",
 "saison": "",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Tomates farcies"
+],
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Tomates farcies",
+"intro": "Le plat familial par excellence : des tomates rondes bien charnues garnies de chair à saucisse aux herbes, cuites au four sur un lit de riz qui s'imprègne de leur jus.",
+"prep": "25 min",
+"cuisson": "1 h",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"8",
+"tomates rondes bien fermes",
+"Tomate ronde"
+],
+[
+"400 g",
+"de chair à saucisse",
+null
+],
+[
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"2 gousses",
+"d'ail violet",
+"Ail violet"
+],
+[
+"1/2 botte",
+"de persil plat",
+"Persil"
+],
+[
+"1",
+"œuf",
+"Œufs plein air"
+],
+[
+"1 tranche",
+"de pain rassis trempée dans un peu de lait",
+null
+],
+[
+"150 g",
+"de riz long",
+null
+],
+[
+"",
+"Huile d'olive, sel, poivre",
+null
+]
+],
+"etapes": [
+"Préchauffez le four à 180 °C. Coupez un chapeau sur chaque tomate, évidez-les à la petite cuillère en gardant la pulpe, salez l'intérieur et retournez-les sur une grille 10 minutes pour qu'elles rendent leur eau.",
+"Hachez finement l'oignon, l'ail et le persil. Mélangez-les avec la chair à saucisse, l'œuf et le pain essoré. Salez peu (la chair est déjà assaisonnée) et poivrez.",
+"Garnissez les tomates de farce en formant un petit dôme, puis reposez les chapeaux dessus.",
+"Versez le riz cru au fond d'un plat huilé, ajoutez la pulpe hachée et 25 cl d'eau, salez. Posez les tomates dessus, arrosez d'un filet d'huile d'olive.",
+"Enfournez 1 heure environ : le riz doit être tendre et les tomates fondantes. Ajoutez un peu d'eau en cours de cuisson si le riz se dessèche."
+],
+"conseil": "Pour farcir, choisissez des tomates rondes de taille moyenne, bien fermes et lourdes en main. Gardez-les à température ambiante, jamais au réfrigérateur qui leur fait perdre leur goût."
+}
 }
 },
 "paniers": [
