@@ -527,17 +527,10 @@
 "actif": true
 },
 {
-"n": "Kiwi gold",
+"n": "Kiwi jaune",
 "c": "Fruit",
-"id": "kiwi-gold",
-"page": "kiwi-gold",
-"actif": true
-},
-{
-"n": "Kiwi NZ",
-"c": "Fruit",
-"id": "kiwi",
-"page": "kiwi",
+"id": "kiwi-jaune",
+"page": "kiwi-jaune",
 "actif": true
 },
 {
@@ -545,6 +538,20 @@
 "c": "Fruit",
 "id": "kiwi-rouge",
 "page": "kiwi-rouge",
+"actif": true
+},
+{
+"n": "Kiwi vert",
+"c": "Fruit",
+"id": "kiwi-vert",
+"page": "kiwi-vert",
+"actif": true
+},
+{
+"n": "Lauriet",
+"c": "Aromate",
+"id": "lauriet",
+"page": "lauriet",
 "actif": true
 },
 {
@@ -5996,6 +6003,29 @@ null
 ],
 "conseil": "Choisissez une mâche aux petites rosettes bien vertes, fermes et sans feuilles jaunies. Gardez-la au bac à légumes du réfrigérateur dans un sachet, 2 à 3 jours maximum, et ne l'assaisonnez qu'au dernier moment."
 }
+},
+"kiwi-jaune": {
+"nom": "Kiwi jaune",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true,
+"type": "fruit"
+},
+"kiwi-vert": {
+"nom": "Kiwi vert",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true,
+"type": "fruit"
+},
+"lauriet": {
+"nom": "Lauriet",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true
 }
 },
 "paniers": [
