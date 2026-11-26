@@ -6006,26 +6006,87 @@ null
 },
 "kiwi-jaune": {
 "nom": "Kiwi jaune",
-"saison": "",
+"saison": "De novembre à avril",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "Sa peau presque lisse, sans poils, est d'un brun doré. Il est à point quand il cède légèrement sous une pression du pouce, comme un avocat mûr. Sa chair jaune est alors très juteuse et sucrée, avec peu d'acidité.",
+"conservation": "Ferme, laissez-le mûrir 2 à 4 jours à température ambiante. Une fois mûr, gardez-le au bac à légumes du frigo, il tient environ une semaine. Rangez-le à l'écart des pommes et des bananes s'il doit rester ferme."
 },
 "kiwi-vert": {
 "nom": "Kiwi vert",
-"saison": "",
+"saison": "De novembre à avril",
 "photo": null,
 "historique": [],
-"aRevoir": true,
-"type": "fruit"
+"type": "fruit",
+"maturite": "Choisissez un kiwi à la peau duvetée bien tendue, sans tache ni zone molle. Il est mûr quand il cède légèrement sous le doigt, sans être mou. Trop ferme, il reste acide ; trop mou, sa chair devient farineuse.",
+"conservation": "C'est un excellent fruit de garde : ferme, il se conserve 3 à 4 semaines au frigo. Pour le faire mûrir, laissez-le quelques jours à température ambiante, ou dans un sac avec une pomme. Mûr, consommez-le dans la semaine."
 },
 "lauriet": {
 "nom": "Lauriet",
 "saison": "",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Petit salé aux lentilles"
+],
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Petit salé aux lentilles",
+"intro": "Le plat mijoté de bistrot par excellence : le petit salé cuit doucement avec les lentilles, la carotte, l'oignon piqué de girofle et un bon bouquet de laurier qui parfume tout le plat.",
+"prep": "20 min",
+"cuisson": "1 h 30",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"1 kg",
+"de petit salé (poitrine et palette demi-sel)",
+null
+],
+[
+"400 g",
+"de lentilles vertes",
+null
+],
+[
+"2",
+"carottes",
+"Carotte"
+],
+[
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"2",
+"clous de girofle",
+null
+],
+[
+"4 feuilles",
+"de laurier",
+"Lauriet"
+],
+[
+"2 gousses",
+"d'ail violet",
+"Ail violet"
+],
+[
+"",
+"Poivre",
+null
+]
+],
+"etapes": [
+"Mettez le petit salé dans une grande cocotte d'eau froide, portez à ébullition 5 min pour le dessaler, puis jetez l'eau.",
+"Remettez la viande dans la cocotte, couvrez d'eau froide, ajoutez 2 feuilles de laurier, l'ail et l'oignon piqué des clous de girofle. Laissez frémir 1 h à couvert.",
+"Rincez les lentilles, ajoutez-les avec les carottes coupées en rondelles et les 2 dernières feuilles de laurier. Ajoutez de l'eau si besoin pour qu'elles soient juste couvertes.",
+"Poursuivez la cuisson 30 min à petits frémissements, jusqu'à ce que les lentilles soient tendres. Poivrez, goûtez avant de saler et servez bien chaud, avec une moutarde forte à part."
+],
+"conseil": "Le laurier se garde des mois au sec, dans un bocal fermé à l'abri de la lumière. Frais, ses feuilles sont plus parfumées : une ou deux suffisent pour un plat."
+}
 }
 },
 "paniers": [
