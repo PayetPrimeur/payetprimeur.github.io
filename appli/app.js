@@ -10,7 +10,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 let role = null; // "admin" ou "equipe", lu dans acces/<uid> (modifiable seulement depuis la console Firebase)
-const APP_V = "202611191020";
+const APP_V = "202611271932";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -43,7 +43,7 @@ const CAT_LABEL = { "Fruit": "Fruits", "Légume": "Légumes", "Aromate": "Aromat
 const TYPES = [["Retrait libre", "Libre"], ["Panier", "Panier"], ["Panier Garni", "Panier garni"], ["Plateau", "Plateau"]];
 const PRIX = ["10€", "20€"];
 
-let data = { products: [], stocks: {}, reservations: {}, paniers: {}, sauvegardes: {} };
+let data = { products: [], stocks: {}, reservations: {}, paniers: {}, pensebetes: {}, sauvegardes: {} };
 let view = "stock", curSite = "st-selve", curCat = "Tout", query = "";
 let selDate = isoDay(new Date()), monthStart = monthOf(new Date());
 let showAllBackups = false, newCat = "Fruit";
@@ -72,7 +72,7 @@ function toast(t) {
 
 /* ---------- données ---------- */
 // chaque partie de la base est écoutée séparément ; les sauvegardes ne sont chargées qu'à l'ouverture de l'admin
-const NODES = ["products", "stocks", "reservations", "paniers", "categories"], loaded = {};
+const NODES = ["products", "stocks", "reservations", "paniers", "categories", "pensebetes"], loaded = {};
 function startData() { NODES.forEach(k => db.ref(k).on("value", snap => {
   const v = snap.val();
   if (k === "products") {
@@ -165,7 +165,7 @@ function renderAgenda() {
   $("week").innerHTML = w;
   const res = ordersOf(selDate).sort((a, b) => (a[1].done === b[1].done ? 0 : a[1].done ? 1 : -1));
   const dd = parseDay(selDate).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
-  let html = `<div class="day-title"><h2>${dd.charAt(0).toUpperCase() + dd.slice(1)}</h2><span>${res.length} commande${res.length > 1 ? "s" : ""}</span></div>`;
+  let html = pbHtml() + `<div class="day-title"><h2>${dd.charAt(0).toUpperCase() + dd.slice(1)}</h2><span>${res.length} commande${res.length > 1 ? "s" : ""}</span></div>`;
   if (res.length) {
     html += `<div class="recap">` + Object.keys(SITES).map(site => {
       const c = {};
@@ -188,6 +188,35 @@ function renderAgenda() {
   $("orders").innerHTML = html;
 }
 
+/* ---------- pense-bête ----------
+   Une note à part (pensebetes/<id> : {t, le}) : pas de date, pas de pastille dans le calendrier.
+   Elle reste en tête des commandes, dans la liste à cocher et sur le PDF tant qu'elle n'est pas cochée ;
+   cochée, elle est supprimée. */
+const pbList = () => Object.entries(data.pensebetes || {}).filter(([, p]) => p && p.t).sort((a, b) => String(a[1].le || "").localeCompare(String(b[1].le || "")));
+function pbHtml() {
+  const l = pbList(); if (!l.length) return "";
+  return `<section class="pb" aria-label="Pense-bête"><h2>Pense-bête <span>${l.length}</span></h2>` + l.map(([id, p]) =>
+    `<div class="pb-item"><button type="button" class="check" data-pbok="${esc(id)}" aria-label="C'est fait : retirer « ${esc(p.t)} »">${icon.check}</button>
+      <p>${esc(p.t)}</p><button type="button" data-pbedit="${esc(id)}" aria-label="Modifier ce pense-bête">${icon.pen}</button></div>`).join("") + `</section>`;
+}
+function pbDone(id) { db.ref("pensebetes/" + id).remove(); toast("Pense-bête fait"); }
+function pbSheet(id) {
+  const p = id && data.pensebetes[id];
+  const sheet = openSheet(id ? "Modifier le pense-bête" : "Nouveau pense-bête", `
+    <label class="field">À ne pas oublier<textarea id="pb-t" rows="3" maxlength="500" placeholder="Ex : commander des cagettes, rappeler le fournisseur de pommes…">${esc(p ? p.t : "")}</textarea></label>
+    <p class="err" id="pb-err" role="alert"></p>
+    <button type="button" class="btn main wide" id="pb-save">Enregistrer</button>
+    ${id ? `<button type="button" class="btn danger wide" id="pb-del">${icon.trash} Supprimer</button>` : ""}`);
+  $("pb-save").onclick = () => {
+    const t = $("pb-t").value.trim();
+    if (!t) { $("pb-err").textContent = "Écrivez ce qu'il ne faut pas oublier."; $("pb-t").focus(); return; }
+    if (id) db.ref("pensebetes/" + id).update({ t }); else db.ref("pensebetes").push({ t, le: new Date().toISOString() });
+    sheet.close(); toast(id ? "Pense-bête modifié" : "Pense-bête ajouté");
+  };
+  if ($("pb-del")) $("pb-del").onclick = () => { db.ref("pensebetes/" + id).remove(); sheet.close(); toast("Pense-bête supprimé"); };
+  setTimeout(() => $("pb-t") && $("pb-t").focus(), 50);
+}
+
 function orderSheet(id) {
   const r = id ? Object.assign({}, data.reservations[id]) : { date: selDate, boutique: curSite, type: "Retrait libre", prix: "", client: "", tel: "", desc: "", done: false };
   const st = { boutique: r.boutique || "st-selve", type: r.type || "Retrait libre", prix: r.prix || "20€", nb: qtyOf(r), confirmDel: false };
@@ -195,7 +224,7 @@ function orderSheet(id) {
   const draw = () => {
     sheet.body.innerHTML = `
       <div class="field">Boutique<div class="seg" role="group" aria-label="Boutique">${Object.entries(SITES).map(([k, v]) => `<button type="button" data-b="${k}" aria-pressed="${st.boutique === k}">${v}</button>`).join("")}</div></div>
-      <div class="field">Type de commande<div class="pick">${TYPES.map(([k, v]) => `<button type="button" data-t="${esc(k)}" aria-pressed="${st.type === k}">${v}</button>`).join("")}</div>
+      <div class="field">Type de commande<div class="pick">${TYPES.map(([k, v]) => `<button type="button" data-t="${esc(k)}" aria-pressed="${st.type === k}">${v}</button>`).join("")}${id ? "" : `<button type="button" class="pb-pick" id="f-pb">Pense-bête</button>`}</div>
         ${st.type === "Panier" ? `<div class="pick" aria-label="Budget">${PRIX.map(p => `<button type="button" data-p="${p}" aria-pressed="${st.prix === p}">${p.replace("€", " €")}</button>`).join("")}</div>` : ""}</div>
       <div class="field">Quantité<div class="qty-row"><div class="stepper">
         <button type="button" data-q="-1" aria-label="Une de moins"${st.nb <= 1 ? " disabled" : ""}>${icon.minus}</button>
@@ -212,6 +241,7 @@ function orderSheet(id) {
         : `<button type="button" class="btn danger wide" id="f-del">${icon.trash} Supprimer la commande</button>`) : ""}`;
     const keep = () => { r.client = $("f-client").value; r.date = $("f-date").value; r.tel = $("f-tel").value; r.desc = $("f-desc").value; };
     sheet.body.querySelectorAll("[data-b]").forEach(b => b.onclick = () => { keep(); st.boutique = b.dataset.b; draw(); });
+    if ($("f-pb")) $("f-pb").onclick = () => { sheet.close(); pbSheet(null); };
     sheet.body.querySelectorAll("[data-t]").forEach(b => b.onclick = () => { keep(); st.type = b.dataset.t; draw(); });
     sheet.body.querySelectorAll("[data-p]").forEach(b => b.onclick = () => { keep(); st.prix = b.dataset.p; draw(); });
     sheet.body.querySelectorAll("[data-q]").forEach(b => b.onclick = () => { keep(); st.nb = Math.max(1, Math.min(99, st.nb + Number(b.dataset.q))); draw(); });
@@ -488,6 +518,20 @@ function generatePDF(stocks, titre, fichier, cleSauvegarde) {
   doc.setFont("helvetica", "normal"); doc.setFontSize(9.5); doc.setTextColor(60);
   doc.text(nb ? `${nb} produit${nb > 1 ? "s" : ""} à prévoir · « – » = rien à prévoir dans cette boutique` : "Rien à prévoir.", M, 31);
   let y = 35;
+  const pbs = pbList();
+  if (pbs.length) {
+    doc.autoTable({
+      startY: y, margin: { left: M, right: M, top: 16, bottom: 18 }, showHead: "everyPage", theme: "plain", rowPageBreak: "avoid",
+      head: [[{ content: "PENSE-BÊTE", styles: { fillColor: [17, 17, 17], textColor: 255, fontStyle: "bold", fontSize: 12, halign: "left", cellPadding: { top: 2.2, bottom: 2.2, left: 3, right: 2 } } },
+              { content: "FAIT", styles: { fillColor: [17, 17, 17], textColor: 255, fontSize: 8.5, halign: "center", valign: "middle" } }]],
+      body: pbs.map(([, p]) => [p.t, ""]),
+      bodyStyles: { fillColor: [255, 255, 255], fontSize: 11, textColor: [17, 17, 17], valign: "top", cellPadding: { top: 2.4, bottom: 2.4, left: 3, right: 2 }, lineWidth: { bottom: 0.2 }, lineColor: [190, 190, 190] },
+      alternateRowStyles: { fillColor: [241, 241, 241] },
+      columnStyles: { 0: { cellWidth: W * 0.865, fontStyle: "bold" }, 1: { cellWidth: W * 0.135 } },
+      didDrawCell: d => { if (d.section === "body" && d.column.index === 1) { const s = 3.6; doc.setDrawColor(17); doc.setLineWidth(0.35); doc.rect(d.cell.x + (d.cell.width - s) / 2, d.cell.y + 2.4, s, s); } }
+    });
+    y = doc.lastAutoTable.finalY + 6;
+  }
   order.filter(c => groups[c]).forEach(c => {
     const rows = groups[c].sort((a, b) => a[0].localeCompare(b[0], "fr"));
     const label = (CAT_LABEL[c] || c).toUpperCase();
@@ -574,6 +618,8 @@ document.addEventListener("click", e => {
   else if (ds.day) { selDate = ds.day; renderAgenda(); }
   else if (ds.done) { const r = data.reservations[ds.done]; db.ref("reservations/" + ds.done).update({ done: !(r && r.done) }); }
   else if (ds.edit) orderSheet(ds.edit);
+  else if (ds.pbok) pbDone(ds.pbok);
+  else if (ds.pbedit) pbSheet(ds.pbedit);
   else if (ds.nc) { newCat = ds.nc; renderAdmin(); }
   else if (ds.eq) eqSheet(ds.eq);
   else if (ds.delcat) delCategory(ds.delcat);

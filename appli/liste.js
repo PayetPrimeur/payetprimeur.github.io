@@ -69,6 +69,7 @@
         <label class="li-toggle"><input type="checkbox" id="li-hide"${st.hideDone ? " checked" : ""}> Masquer ce qui est fait</label>
         ${majBtn}
       </div>`;
+    h += pensebete();
     if (!all.length) h += `<p class="empty">Rien à prévoir sur cette sauvegarde.</p>`;
     order.filter(c => groups[c]).forEach(c => {
       const rows = groups[c].sort((x, y) => x.n.localeCompare(y.n, "fr"));
@@ -123,11 +124,20 @@
     return h + `</section>`;
   }
 
+  // pense-bête : en tête de liste ; cocher = c'est fait, il disparaît partout
+  function pensebete() {
+    const l = pbList(); if (!l.length) return "";
+    return `<section class="li-cat li-pb"><h2><span>PENSE-BÊTE</span><small>${l.length}</small></h2>` + l.map(([id, p]) =>
+      `<button type="button" class="li-row li-cmd" data-lpb="${esc(id)}" aria-label="C'est fait : retirer « ${esc(p.t)} »">
+        <span class="li-box" aria-hidden="true"></span><span class="li-who"><b>${esc(p.t)}</b></span></button>`).join("") + `</section>`;
+  }
+
   function onClick(e) {
     const t = e.target.closest("button, input"); if (!t) return;
     if (t.id === "liste-close") return close();
     if (t.id === "li-hide") { st.hideDone = t.checked; return render(); }
     if (t.id === "li-maj") return miseAJour();
+    if (t.dataset.lpb) { delete data.pensebetes[t.dataset.lpb]; render(); return pbDone(t.dataset.lpb); }
     if (t.dataset.lc && st.key) {
       const k = "cmd-" + enc(t.dataset.lc), v = !st.coches[k];
       st.coches[k] = v; render();
