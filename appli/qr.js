@@ -216,6 +216,46 @@
     saveFile(doc.output("blob"), `cartes-${p.id}${noirBlanc ? "-noir-et-blanc" : ""}.pdf`);
     say(`8 cartes « ${p.n} » prêtes à imprimer.`);
   }
+  // affiche A4 « Nos fruits & légumes de saison » : QR code fixe vers /saison/ (la liste change toute seule chaque mois)
+  async function saisonCanvas() {
+    const logo = await ensureLibs();
+    try { await document.fonts.load("800 40px Figtree"); await document.fonts.load("600 20px Figtree"); } catch (e) {}
+    const mm = v => Math.round(v / 25.4 * 200);
+    const W = mm(210), H = mm(297);
+    const c = document.createElement("canvas"); c.width = W; c.height = H;
+    const g = c.getContext("2d");
+    g.fillStyle = "#fff"; g.fillRect(0, 0, W, H);
+    g.strokeStyle = "#b6115c"; g.lineWidth = mm(1.2); rr(g, mm(10), mm(10), W - mm(20), H - mm(20), mm(8)); g.stroke();
+    const lw = mm(120), lh = Math.round(logo.height * lw / logo.width);
+    g.drawImage(logo, (W - lw) / 2, mm(24), lw, lh);
+    g.textAlign = "center"; g.textBaseline = "top"; g.fillStyle = "#b6115c";
+    g.font = `800 ${mm(15)}px Figtree, Helvetica, Arial, sans-serif`;
+    let y = mm(24) + lh + mm(12);
+    ["Nos fruits & légumes", "de saison"].forEach(t => { g.fillText(t, W / 2, y); y += mm(17); });
+    g.fillStyle = "#6b625a"; g.font = `600 ${mm(7)}px Figtree, Helvetica, Arial, sans-serif`; y += mm(3);
+    g.fillText("Scannez pour les découvrir,", W / 2, y); y += mm(9);
+    g.fillText("avec leurs recettes et nos conseils", W / 2, y); y += mm(14);
+    const qr = qrcode(0, "Q"); qr.addData(`${SITE}/saison/`); qr.make();
+    const n = qr.getModuleCount(), quiet = 2, qs = Math.min(mm(115), H - y - mm(40)), cell = qs / (n + 2 * quiet);
+    const qx = (W - qs) / 2, qy = y;
+    g.fillStyle = "#690834";
+    for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (qr.isDark(r, k))
+      g.fillRect(Math.floor(qx + (k + quiet) * cell), Math.floor(qy + (r + quiet) * cell), Math.ceil(cell), Math.ceil(cell));
+    g.fillStyle = "#f9b00f"; rr(g, W / 2 - mm(15), qy + qs + mm(8), mm(30), mm(3), mm(1.5)); g.fill();
+    g.fillStyle = "#6b625a"; g.font = `600 ${mm(4.5)}px Figtree, Helvetica, Arial, sans-serif`;
+    g.fillText(SITE.replace(/^https?:\/\//, "") + "/saison", W / 2, qy + qs + mm(16));
+    return enNB(c);
+  }
+  async function downloadSaison(quatre) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: "mm", format: "a4" });
+    const img = (await saisonCanvas()).toDataURL("image/png");
+    if (!quatre) doc.addImage(img, "PNG", 0, 0, 210, 297, "saison", "FAST");
+    else for (let k = 0; k < 4; k++) doc.addImage(img, "PNG", (k % 2) * 105, Math.floor(k / 2) * 148.5, 105, 148.5, "saison", "FAST");
+    if (quatre) { doc.setDrawColor(200); doc.setLineWidth(0.2); doc.setLineDashPattern([2, 2], 0); doc.line(105, 0, 105, 297); doc.line(0, 148.5, 210, 148.5); }
+    saveFile(doc.output("blob"), `affiche-de-saison${quatre ? "-4-par-page" : ""}${noirBlanc ? "-noir-et-blanc" : ""}.pdf`);
+    say(quatre ? "4 petites affiches « de saison » prêtes : découpez selon les pointillés." : "Affiche A4 « de saison » prête à imprimer.");
+  }
   function download(blob, name) { saveFile(blob, name); }
   async function downloadLabel(p) {
     const c = await labelCanvas(p.id);
@@ -326,6 +366,8 @@
         <div class="qr-card">
           <p class="qr-help">Le site des recettes suit ce catalogue tout seul, en moins d'une heure : un produit désactivé disparaît du site, un nouveau produit reçoit sa recette (ou sa fiche, pour un fruit). Les recettes de légumes changent chaque dimanche.${etat && etat.maj ? ` Dernière mise à jour du site : ${new Date(etat.maj).toLocaleString("fr-FR", { weekday: "short", hour: "2-digit", minute: "2-digit" })}.` : ""}</p>
           <div class="qr-actions"><button class="qr-btn main" type="button" id="qr-sheet">Planche de toutes les étiquettes (PDF)</button><a class="qr-btn" href="${SITE}/" target="_blank" rel="noopener">Voir le site</a></div>
+          <div class="qr-saison"><b>Affiche « Fruits &amp; légumes de saison »</b><span>Un seul QR code pour la boutique : il ouvre la liste des produits de saison du mois, qui se met à jour toute seule.</span>
+            <div class="qr-actions"><button class="qr-btn main" type="button" id="qr-saison">Affiche A4 (PDF)</button><button class="qr-btn" type="button" id="qr-saison4">4 par page (A6)</button><a class="qr-btn" href="${SITE}/saison/" target="_blank" rel="noopener">Voir la page</a></div></div>
           <label class="qr-nb"><input type="checkbox" id="qr-nb"${noirBlanc ? " checked" : ""}> Impression noir et blanc (étiquettes, planche et cartes des paniers)</label>
           <p class="qr-msg" id="qr-msg" role="status">${esc(msgText)}</p>
         </div>
@@ -342,6 +384,7 @@
 
   function bind(root) {
     $("qr-close").onclick = close;
+    [["qr-saison", false], ["qr-saison4", true]].forEach(([i, q]) => { $(i).onclick = async () => { const b = $(i); b.disabled = true; say("Préparation de l'affiche…"); try { await ensureLibs(); await downloadSaison(q); } catch (e) { say("L'affiche n'a pas pu être créée."); } b.disabled = false; }; });
     $("qr-nb").onchange = e => { noirBlanc = e.target.checked; try { localStorage.setItem("qrNB", noirBlanc ? "1" : "0"); } catch (err) {} say(noirBlanc ? "Les téléchargements sortiront en noir et blanc." : "Les téléchargements sortiront en couleur."); };
     $("qr-sheet").onclick = async e => { e.target.disabled = true; say("Préparation de la planche…"); try { await downloadSheet(); } catch (err) { say("La planche n'a pas pu être créée."); } e.target.disabled = false; };
     root.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { tab = b.dataset.tab; editId = confirmDel = null; render(); });
