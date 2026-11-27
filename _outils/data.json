@@ -1156,51 +1156,67 @@
 "photo": null,
 "recette": {
 "origine": "Spécialité provençale",
-"titre": "Aïoli",
-"intro": "La sauce provençale montée à l'huile d'olive, sans moutarde : de l'ail pilé, un jaune d'œuf et beaucoup de patience. Servez-la avec des légumes cuits et du poisson.",
-"prep": "20 min",
-"cuisson": "",
-"pers": "6",
-"niveau": "Moyen",
+"titre": "Soupe à l'ail (aïgo boulido)",
+"intro": "La fameuse « eau bouillie » provençale : une soupe toute simple, parfumée à l'ail et à la sauge, qu'on verse sur du pain grillé.",
+"prep": "10 min",
+"cuisson": "20 min",
+"pers": "4",
+"niveau": "Très facile",
 "ingredients": [
 [
-"6 gousses",
+"1 tête",
 "d'ail violet",
 "Ail violet"
 ],
 [
-"1",
-"jaune d'œuf",
+"1,2 L",
+"d'eau",
+null
+],
+[
+"4 feuilles",
+"de sauge",
+null
+],
+[
+"1 feuille",
+"de laurier",
+"Lauriet"
+],
+[
+"2",
+"jaunes d'œufs",
 "Œufs plein air"
 ],
 [
-"25 cl",
+"3 c. à soupe",
 "d'huile d'olive",
 null
 ],
 [
-"",
-"Sel",
+"8 tranches",
+"de pain de campagne",
 null
 ],
 [
 "",
-"Légumes cuits à l'eau pour servir (carottes, pommes de terre)",
+"Sel, poivre",
 null
 ]
 ],
 "etapes": [
-"Sortez l'œuf à l'avance : tous les ingrédients doivent être à température ambiante.",
-"Épluchez l'ail, retirez le germe et pilez les gousses au mortier avec une pincée de sel jusqu'à obtenir une pâte.",
-"Ajoutez le jaune d'œuf, puis versez l'huile en mince filet en tournant toujours dans le même sens, jusqu'à ce que la sauce soit bien ferme.",
-"Servez aussitôt avec des légumes cuits à l'eau, de la morue ou un poisson poché."
+"Épluchez les gousses d'ail et écrasez-les légèrement.",
+"Portez l'eau à ébullition avec l'ail, la sauge, le laurier et 1 cuillère d'huile, salez et laissez frémir 15 min.",
+"Faites griller les tranches de pain et arrosez-les du reste d'huile d'olive.",
+"Hors du feu, retirez les herbes, versez un peu de bouillon sur les jaunes battus puis reversez dans la casserole sans faire bouillir. Servez sur le pain grillé."
 ],
-"conseil": "Retirez le germe vert au centre de la gousse en hiver : c'est lui qui rend l'ail indigeste et amer. L'ail violet se garde au sec, jamais au frigo."
+"conseil": "Choisissez des têtes d'ail bien fermes et lourdes, sans germe vert. Gardez-les au sec, à l'abri de la lumière, jamais au frigo."
 },
 "historique": [
 "Tourin à l'ail",
 "Poulet aux quarante gousses d'ail",
-"Aïoli"
+"Aïoli",
+"Soupe à l'ail (aïgo boulido)"
 ]
 },
 "aubergine": {
@@ -1287,41 +1303,46 @@ null
 "photo": null,
 "recette": {
 "origine": "Grand classique de la cuisine française",
-"titre": "Velouté de brocoli",
-"intro": "Un velouté bien vert et doux, épaissi par une pomme de terre et adouci par un peu de crème. La tige se cuisine aussi : ne la jetez pas.",
-"prep": "15 min",
-"cuisson": "25 min",
-"pers": "4",
-"niveau": "Très facile",
+"titre": "Quiche au brocoli",
+"intro": "Une quiche moelleuse et généreuse où le brocoli garde son croquant et sa belle couleur.",
+"prep": "20 min",
+"cuisson": "35 min",
+"pers": "6",
+"niveau": "Facile",
 "ingredients": [
 [
 "1",
-"gros brocoli",
+"brocoli",
 "Brocoli"
 ],
 [
 "1",
-"pomme de terre",
-"Pdt Bintje"
-],
-[
-"1",
-"oignon jaune",
-"Oignon jaune"
-],
-[
-"20 g",
-"de beurre",
+"pâte brisée",
 null
 ],
 [
-"1 L",
-"de bouillon de légumes",
+"3",
+"œufs",
+"Œufs plein air"
+],
+[
+"20 cl",
+"de crème fraîche",
 null
 ],
 [
-"10 cl",
-"de crème liquide",
+"20 cl",
+"de lait",
+null
+],
+[
+"100 g",
+"de lardons",
+null
+],
+[
+"80 g",
+"de fromage râpé",
 null
 ],
 [
@@ -1331,17 +1352,18 @@ null
 ]
 ],
 "etapes": [
-"Détaillez le brocoli en bouquets, épluchez la tige et coupez-la en rondelles. Épluchez la pomme de terre et coupez-la en dés.",
-"Faites fondre l'oignon émincé dans le beurre 5 min, sans coloration.",
-"Ajoutez le brocoli, la pomme de terre et le bouillon, et laissez cuire 20 min à petits frémissements.",
-"Mixez finement, ajoutez la crème, salez et poivrez. Servez aussitôt pour garder la belle couleur verte."
+"Préchauffez le four à 180 °C. Détaillez le brocoli en petits bouquets et faites-les cuire 4 min à l'eau bouillante salée.",
+"Faites dorer les lardons à sec dans une poêle.",
+"Foncez un moule avec la pâte, répartissez le brocoli et les lardons.",
+"Battez les œufs avec la crème, le lait et le fromage, salez peu, poivrez, versez sur la garniture et enfournez 35 min."
 ],
-"conseil": "Le brocoli doit être vert foncé, bien serré, sans aucune fleur jaune. Gardez-le 3 à 4 jours au frigo dans un sac percé."
+"conseil": "Un bon brocoli a des bouquets bien serrés, d'un vert soutenu, sans fleurs jaunes. Il se garde 3 à 4 jours au frigo."
 },
 "historique": [
 "Gratin de brocolis",
 "Brocolis sautés à l'ail",
-"Velouté de brocoli"
+"Velouté de brocoli",
+"Quiche au brocoli"
 ]
 },
 "butternut": {
@@ -1349,48 +1371,38 @@ null
 "saison": "De septembre à février",
 "photo": null,
 "recette": {
-"origine": "Classique de la cuisine familiale",
-"titre": "Gratin de butternut",
-"intro": "Des tranches de butternut nappées de crème à l'ail et gratinées au fromage : la courge devient fondante et légèrement sucrée.",
-"prep": "20 min",
-"cuisson": "45 min",
+"origine": "Grand classique de la cuisine française",
+"titre": "Butternut rôtie au four",
+"intro": "Des quartiers de butternut rôtis au four jusqu'à caraméliser, parfumés à l'ail et au thym.",
+"prep": "10 min",
+"cuisson": "40 min",
 "pers": "4",
-"niveau": "Facile",
+"niveau": "Très facile",
 "ingredients": [
 [
 "1",
-"butternut (1 kg)",
+"butternut",
 "Butternut (pièce)"
 ],
 [
-"2 gousses",
-"d'ail violet",
+"3 gousses",
+"d'ail",
 "Ail violet"
 ],
 [
-"25 cl",
-"de crème liquide",
+"4 c. à soupe",
+"d'huile d'olive",
 null
 ],
 [
-"10 cl",
-"de lait",
+"3 brins",
+"de thym",
 null
 ],
 [
-"80 g",
-"d'emmental râpé",
-null
-],
-[
-"1 pincée",
-"de muscade",
-null
-],
-[
-"",
-"Beurre pour le plat",
-null
+"1 c. à soupe",
+"de miel",
+"Miel de fleurs"
 ],
 [
 "",
@@ -1399,17 +1411,18 @@ null
 ]
 ],
 "etapes": [
-"Préchauffez le four à 180 °C. Épluchez la butternut, retirez les graines et coupez-la en tranches de 5 mm.",
-"Faites chauffer la crème et le lait avec l'ail écrasé, du sel, du poivre et la muscade.",
-"Rangez les tranches de courge dans un plat beurré, versez la crème chaude et parsemez de fromage.",
-"Enfournez 45 min, jusqu'à ce que la courge soit tendre et le dessus bien doré."
+"Préchauffez le four à 200 °C. Coupez la butternut en deux, retirez les graines et taillez-la en quartiers (vous pouvez garder la peau).",
+"Disposez les quartiers sur une plaque avec les gousses d'ail en chemise.",
+"Arrosez d'huile et de miel, parsemez de thym, salez et poivrez.",
+"Enfournez 35 à 40 min en retournant à mi-cuisson, jusqu'à ce que la chair soit fondante et dorée."
 ],
-"conseil": "Une butternut lourde, à la peau beige mate et sans taches, se garde un à deux mois dans un endroit frais et sec. Entamée, filmez-la et gardez-la une semaine au frigo."
+"conseil": "Choisissez une butternut lourde, à la peau beige mate, sans taches, avec son pédoncule. Entière, elle se garde plusieurs mois dans un endroit frais et sec."
 },
 "historique": [
 "Velouté de butternut",
 "Risotto à la butternut",
-"Gratin de butternut"
+"Gratin de butternut",
+"Butternut rôtie au four"
 ]
 },
 "carotte": {
@@ -1418,377 +1431,36 @@ null
 "photo": null,
 "recette": {
 "origine": "Grand classique de la cuisine française",
-"titre": "Flan de carottes",
-"intro": "Un flan doux et moelleux, cuit au bain-marie, où la carotte des sables, très sucrée, se marie avec la crème et les œufs. En entrée ou à côté d'une viande.",
-"prep": "20 min",
-"cuisson": "50 min",
-"pers": "6",
-"niveau": "Facile",
-"ingredients": [
-[
-"600 g",
-"de carottes des sables",
-"Carotte des sables"
-],
-[
-"3",
-"œufs",
-"Œufs plein air"
-],
-[
-"20 cl",
-"de crème liquide",
-null
-],
-[
-"10 cl",
-"de lait",
-null
-],
-[
-"1 pincée",
-"de cumin ou de muscade",
-null
-],
-[
-"",
-"Beurre pour les ramequins",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Brossez les carottes, coupez-les en rondelles et faites-les cuire 20 min à l'eau salée. Égouttez-les bien.",
-"Mixez-les avec les œufs, la crème et le lait jusqu'à obtenir une préparation lisse. Salez, poivrez, ajoutez le cumin.",
-"Versez dans 6 ramequins beurrés, posés dans un plat rempli d'eau chaude à mi-hauteur.",
-"Faites cuire 30 min au four à 160 °C : la lame d'un couteau doit ressortir propre. Démoulez tiède ou servez dans les ramequins."
-],
-"conseil": "La carotte des sables a une peau très fine : un coup de brosse suffit. Gardez-la au frais, dans un sac en papier, une dizaine de jours."
-},
-"historique": [
-"Carottes Vichy",
-"Purée de carottes",
-"Flan de carottes"
-]
-},
-"celeri": {
-"nom": "Céleri branche",
-"saison": "D'août à décembre",
-"photo": null,
-"recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Velouté de céleri branche",
-"intro": "Un velouté vert pâle, au goût frais et légèrement anisé du céleri, adouci par la pomme de terre et la crème.",
-"prep": "15 min",
-"cuisson": "30 min",
+"titre": "Carottes glacées",
+"intro": "Des carottes fondantes et brillantes, cuites doucement au beurre et au sucre : l'accompagnement parfait des rôtis.",
+"prep": "10 min",
+"cuisson": "25 min",
 "pers": "4",
 "niveau": "Très facile",
 "ingredients": [
 [
-"1 pied",
-"de céleri branche",
-"Celerie branche"
+"800 g",
+"de carottes des sables",
+"Carotte des sables"
 ],
 [
-"2",
-"pommes de terre",
-"Pdt Bintje"
-],
-[
-"1",
-"oignon jaune",
-"Oignon jaune"
-],
-[
-"20 g",
+"30 g",
 "de beurre",
 null
 ],
 [
-"1 L",
-"de bouillon de volaille",
-null
-],
-[
-"10 cl",
-"de crème liquide",
+"1 c. à soupe",
+"de sucre",
 null
 ],
 [
 "",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Effilez les branches de céleri et coupez-les en tronçons. Gardez quelques feuilles pour décorer. Épluchez les pommes de terre et coupez-les en dés.",
-"Faites fondre l'oignon émincé et le céleri dans le beurre 10 min à feu doux.",
-"Ajoutez les pommes de terre et le bouillon, et laissez cuire 20 min.",
-"Mixez très finement, passez au chinois si vous voulez un velouté bien lisse, ajoutez la crème, salez et poivrez."
-],
-"conseil": "Les côtes doivent être cassantes et les feuilles bien vertes. Enveloppé dans un torchon humide, le céleri se garde une semaine au frigo."
-},
-"historique": [
-"Céleri branche braisé",
-"Minestrone",
-"Velouté de céleri branche"
-]
-},
-"champignon": {
-"nom": "Champignon à farcir",
-"saison": "Toute l'année",
-"photo": null,
-"recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Quiche aux champignons",
-"intro": "Une quiche généreuse, avec des champignons bien poêlés et des lardons dans un appareil œufs-crème.",
-"prep": "20 min",
-"cuisson": "40 min",
-"pers": "6",
-"niveau": "Facile",
-"ingredients": [
-[
-"1",
-"pâte brisée",
+"eau",
 null
 ],
 [
-"500 g",
-"de champignons à farcir",
-"Champignon farcir"
-],
-[
-"150 g",
-"de lardons",
-null
-],
-[
-"1",
-"échalote",
-"Échalote"
-],
-[
-"3",
-"œufs",
-"Œufs plein air"
-],
-[
-"20 cl",
-"de crème liquide",
-null
-],
-[
-"10 cl",
-"de lait",
-null
-],
-[
-"60 g",
-"de gruyère râpé",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Préchauffez le four à 180 °C et foncez un moule avec la pâte. Piquez-la à la fourchette.",
-"Émincez les champignons et faites-les sauter à feu vif avec les lardons et l'échalote hachée, jusqu'à ce que leur eau soit évaporée.",
-"Battez les œufs avec la crème, le lait, du poivre et un peu de sel.",
-"Répartissez les champignons sur la pâte, versez l'appareil, parsemez de gruyère et enfournez 35 à 40 min."
-],
-"conseil": "Les gros champignons à farcir ont beaucoup de chair : coupez-les en tranches épaisses pour qu'ils restent moelleux. 3 à 4 jours au frigo dans un sac en papier."
-},
-"historique": [
-"Champignons farcis",
-"Champignons en persillade",
-"Quiche aux champignons"
-]
-},
-"chou": {
-"nom": "Chou vert",
-"saison": "D'octobre à mars",
-"photo": null,
-"recette": {
-"origine": "Spécialité auvergnate",
-"titre": "Soupe au chou",
-"intro": "La soupe paysanne d'Auvergne : chou vert, pommes de terre et lard mijotés longuement, à servir bien chaude sur une tranche de pain de campagne.",
-"prep": "20 min",
-"cuisson": "1 h 30",
-"pers": "6",
-"niveau": "Facile",
-"ingredients": [
-[
-"1",
-"chou vert",
-"Chou vert"
-],
-[
-"300 g",
-"de lard demi-sel",
-null
-],
-[
-"4",
-"pommes de terre",
-"Pdt Bintje"
-],
-[
-"3",
-"carottes",
-"Carotte"
-],
-[
-"2",
-"navets",
-"Navet"
-],
-[
-"1",
-"oignon",
-"Oignon jaune"
-],
-[
-"2 l",
-"d'eau ou de bouillon",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Faites dessaler le lard 30 minutes dans l'eau froide, puis mettez-le dans une grande marmite avec 2 litres d'eau. Portez à frémissement et écumez.",
-"Retirez les grosses côtes du chou, coupez-le en lanières et blanchissez-le 5 minutes dans l'eau bouillante, puis égouttez.",
-"Ajoutez dans la marmite le chou, les carottes et les navets en morceaux et l'oignon émincé. Laissez cuire 1 heure à petit feu.",
-"Ajoutez les pommes de terre en gros cubes et poursuivez 30 minutes. Salez peu (le lard est salé), poivrez et servez sur du pain de campagne avec le lard en tranches."
-],
-"conseil": "Choisissez un chou vert lourd, aux feuilles bien craquantes et sans taches jaunes. Entier, il se garde une bonne semaine dans le bac à légumes."
-},
-"historique": [
-"Chou farci",
-"Potée auvergnate",
-"Garbure",
-"Soupe au chou"
-]
-},
-"chou-chinois": {
-"nom": "Chou chinois",
-"saison": "D'octobre à mars",
-"photo": null,
-"recette": {
-"origine": "Spécialité japonaise",
-"titre": "Gyoza au chou chinois",
-"intro": "Les raviolis japonais grillés puis cuits à la vapeur dans la même poêle, farcis de porc, de chou chinois, d'ail et de gingembre.",
-"prep": "40 min",
-"cuisson": "10 min",
-"pers": "4",
-"niveau": "Moyen",
-"ingredients": [
-[
-"300 g",
-"de chou chinois",
-"Chou chinois à la pièce"
-],
-[
-"250 g",
-"de porc haché",
-null
-],
-[
-"2 gousses",
-"d'ail violet",
-"Ail violet"
-],
-[
-"2 cm",
-"de gingembre",
-"Gingembre"
-],
-[
-"30",
-"feuilles à raviolis (gyoza)",
-null
-],
-[
-"2 c. à s.",
-"de sauce soja",
-null
-],
-[
-"1 c. à s.",
-"d'huile de sésame",
-null
-],
-[
-"2 c. à s.",
-"d'huile",
-null
-],
-[
-"",
-"Sel",
-null
-]
-],
-"etapes": [
-"Hachez finement le chou, salez-le et laissez-le dégorger 15 min. Pressez-le fort dans un torchon pour retirer l'eau.",
-"Mélangez le chou, le porc, l'ail et le gingembre râpés, la sauce soja et l'huile de sésame.",
-"Posez une cuillère de farce au centre de chaque feuille, mouillez le bord, repliez et pincez en formant des plis.",
-"Faites dorer les gyoza dans l'huile 2 min, versez 10 cl d'eau, couvrez et laissez cuire 6 min, jusqu'à évaporation. Servez avec de la sauce soja et un peu de vinaigre."
-],
-"conseil": "Le chou chinois se garde 2 semaines au frigo. Choisissez-le bien serré, aux feuilles blanches et sans petites taches noires."
-},
-"historique": [
-"Chou chinois sauté à l'ail et au gingembre",
-"Kimchi de chou chinois",
-"Gyoza au chou chinois"
-]
-},
-"chou-fleur": {
-"nom": "Chou-fleur",
-"saison": "D'octobre à avril",
-"photo": null,
-"recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Chou-fleur à la polonaise",
-"intro": "Le chou-fleur cuit à l'eau, servi sous une pluie de chapelure dorée au beurre, d'œuf dur haché et de persil.",
-"prep": "15 min",
-"cuisson": "20 min",
-"pers": "4",
-"niveau": "Facile",
-"ingredients": [
-[
-"1",
-"chou-fleur",
-"Chou fleur (par 6)"
-],
-[
-"2",
-"œufs",
-"Œufs plein air"
-],
-[
-"60 g",
-"de beurre",
-null
-],
-[
-"4 c. à s.",
-"de chapelure",
-null
-],
-[
-"2 c. à s.",
-"de persil haché",
+"2 brins",
+"de persil",
 "Persil"
 ],
 [
@@ -1798,17 +1470,359 @@ null
 ]
 ],
 "etapes": [
-"Détaillez le chou-fleur en gros bouquets et faites-le cuire 12 à 15 min à l'eau bouillante salée : il doit rester un peu ferme.",
-"Pendant ce temps, faites cuire les œufs 10 min, écalez-les et hachez-les.",
-"Faites mousser le beurre dans une poêle, ajoutez la chapelure et laissez-la dorer en remuant.",
-"Dressez le chou-fleur égoutté dans un plat, parsemez d'œuf haché et de persil, puis nappez de chapelure au beurre."
+"Épluchez les carottes et coupez-les en tronçons ou en bâtonnets réguliers.",
+"Mettez-les dans une sauteuse avec le beurre, le sucre et une pincée de sel, couvrez juste d'eau.",
+"Faites cuire à découvert 20 à 25 min, jusqu'à évaporation complète de l'eau.",
+"Roulez les carottes dans le jus sirupeux pour les glacer, poivrez et parsemez de persil."
 ],
-"conseil": "Les feuilles autour du chou-fleur doivent être vertes et fermes, la tête blanche et bien serrée. Il se garde une semaine au frigo."
+"conseil": "Les carottes des sables ont une peau fine et un goût très sucré. Gardez-les au frais dans leur sable ou dans un sachet papier, une à deux semaines."
+},
+"historique": [
+"Carottes Vichy",
+"Purée de carottes",
+"Flan de carottes",
+"Carottes glacées"
+]
+},
+"celeri": {
+"nom": "Céleri branche",
+"saison": "D'août à décembre",
+"photo": null,
+"recette": {
+"origine": "Classique de la cuisine italienne",
+"titre": "Soupe de lentilles au céleri branche",
+"intro": "Une soupe rustique et nourrissante où le céleri apporte sa fraîcheur et son parfum.",
+"prep": "15 min",
+"cuisson": "40 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"4 branches",
+"de céleri",
+"Celerie branche"
+],
+[
+"250 g",
+"de lentilles vertes",
+null
+],
+[
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"2",
+"carottes",
+"Carotte"
+],
+[
+"2 gousses",
+"d'ail",
+"Ail violet"
+],
+[
+"1 feuille",
+"de laurier",
+"Lauriet"
+],
+[
+"1,5 L",
+"de bouillon",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Coupez le céleri, les carottes et l'oignon en petits dés.",
+"Faites-les revenir 5 min dans un filet d'huile avec l'ail haché.",
+"Ajoutez les lentilles rincées, le laurier et le bouillon, et laissez cuire 35 à 40 min.",
+"Salez en fin de cuisson, poivrez et servez avec un filet d'huile d'olive."
+],
+"conseil": "Un bon céleri branche a des côtes bien droites et cassantes, et des feuilles vertes. Il se garde une semaine au frigo, enveloppé d'un linge humide."
+},
+"historique": [
+"Céleri branche braisé",
+"Minestrone",
+"Velouté de céleri branche",
+"Soupe de lentilles au céleri branche"
+]
+},
+"champignon": {
+"nom": "Champignon à farcir",
+"saison": "Toute l'année",
+"photo": null,
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Champignons farcis à la duxelles",
+"intro": "De gros champignons garnis d'une farce aux champignons, échalote et persil, gratinés au four.",
+"prep": "20 min",
+"cuisson": "20 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"12",
+"gros champignons à farcir",
+"Champignon farcir"
+],
+[
+"2",
+"échalotes",
+"Échalote"
+],
+[
+"1 gousse",
+"d'ail",
+"Ail violet"
+],
+[
+"1 bouquet",
+"de persil",
+"Persil"
+],
+[
+"30 g",
+"de beurre",
+null
+],
+[
+"40 g",
+"de chapelure",
+null
+],
+[
+"40 g",
+"de fromage râpé",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Préchauffez le four à 200 °C. Retirez les pieds des champignons et hachez-les finement.",
+"Faites revenir les pieds hachés dans le beurre avec les échalotes et l'ail jusqu'à évaporation de l'eau (la duxelles). Ajoutez le persil, salez, poivrez.",
+"Garnissez les chapeaux de duxelles et parsemez de chapelure et de fromage.",
+"Enfournez 20 min, jusqu'à ce que le dessus soit bien doré."
+],
+"conseil": "Choisissez des champignons bien fermes, au chapeau fermé et sans taches. Gardez-les au frigo dans un sac en papier, 3 à 4 jours."
+},
+"historique": [
+"Champignons farcis",
+"Champignons en persillade",
+"Quiche aux champignons",
+"Champignons farcis à la duxelles"
+]
+},
+"chou": {
+"nom": "Chou vert",
+"saison": "D'octobre à mars",
+"photo": null,
+"recette": {
+"origine": "Spécialité alsacienne",
+"titre": "Chou vert braisé aux saucisses",
+"intro": "Le chou vert fondant, longuement braisé avec des lardons et des saucisses : un plat d'hiver généreux.",
+"prep": "20 min",
+"cuisson": "1 h",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"1",
+"chou vert",
+"Chou vert"
+],
+[
+"200 g",
+"de lardons",
+null
+],
+[
+"4",
+"saucisses de Toulouse ou de Montbéliard",
+null
+],
+[
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"2",
+"carottes",
+"Carotte"
+],
+[
+"1 feuille",
+"de laurier",
+"Lauriet"
+],
+[
+"30 cl",
+"de bouillon",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Coupez le chou en quartiers, retirez le trognon et faites-le blanchir 5 min à l'eau bouillante. Égouttez.",
+"Dans une cocotte, faites revenir les lardons, l'oignon émincé et les carottes en rondelles.",
+"Ajoutez le chou, le laurier, le bouillon et les saucisses piquées. Poivrez.",
+"Couvrez et laissez mijoter 50 min à 1 h à feu doux."
+],
+"conseil": "Un bon chou vert est lourd, aux feuilles bien serrées et craquantes. Il se garde une semaine au frigo, entier."
+},
+"historique": [
+"Chou farci",
+"Potée auvergnate",
+"Garbure",
+"Soupe au chou",
+"Chou vert braisé aux saucisses"
+]
+},
+"chou-chinois": {
+"nom": "Chou chinois",
+"saison": "D'octobre à mars",
+"photo": null,
+"recette": {
+"origine": "Classique de la cuisine chinoise",
+"titre": "Soupe de nouilles au chou chinois",
+"intro": "Un bouillon parfumé au gingembre, avec des nouilles et du chou chinois juste fondant.",
+"prep": "15 min",
+"cuisson": "15 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"1/2",
+"chou chinois",
+"Chou chinois à la pièce"
+],
+[
+"200 g",
+"de nouilles de blé",
+null
+],
+[
+"1 morceau",
+"de gingembre (3 cm)",
+"Gingembre"
+],
+[
+"2 gousses",
+"d'ail",
+"Ail violet"
+],
+[
+"1,2 L",
+"de bouillon de volaille",
+null
+],
+[
+"3 c. à soupe",
+"de sauce soja",
+null
+],
+[
+"4",
+"œufs",
+"Œufs plein air"
+]
+],
+"etapes": [
+"Émincez le chou chinois. Râpez le gingembre et hachez l'ail.",
+"Portez le bouillon à ébullition avec le gingembre, l'ail et la sauce soja.",
+"Ajoutez les nouilles et le chou, et laissez cuire 4 à 5 min.",
+"Pendant ce temps, faites cuire les œufs mollets 6 min. Servez la soupe avec un œuf coupé en deux par bol."
+],
+"conseil": "Un chou chinois frais a des feuilles bien serrées, croquantes et sans taches noires. Il se garde une semaine au frigo dans un sac."
+},
+"historique": [
+"Chou chinois sauté à l'ail et au gingembre",
+"Kimchi de chou chinois",
+"Gyoza au chou chinois",
+"Soupe de nouilles au chou chinois"
+]
+},
+"chou-fleur": {
+"nom": "Chou-fleur",
+"saison": "D'octobre à avril",
+"photo": null,
+"recette": {
+"origine": "Spécialité indienne",
+"titre": "Curry de chou-fleur",
+"intro": "Un curry doux et parfumé, au lait de coco, où le chou-fleur absorbe toutes les épices.",
+"prep": "15 min",
+"cuisson": "30 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"1",
+"chou-fleur",
+"Chou fleur (par 6)"
+],
+[
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"2 gousses",
+"d'ail",
+"Ail violet"
+],
+[
+"1 morceau",
+"de gingembre (3 cm)",
+"Gingembre"
+],
+[
+"2 c. à soupe",
+"de curry en poudre",
+null
+],
+[
+"40 cl",
+"de lait de coco",
+null
+],
+[
+"1 bouquet",
+"de coriandre",
+"Coriandre"
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Détaillez le chou-fleur en petits bouquets. Hachez l'oignon, l'ail et le gingembre.",
+"Faites revenir l'oignon, l'ail et le gingembre 5 min dans un filet d'huile, ajoutez le curry et mélangez 1 min.",
+"Ajoutez le chou-fleur, le lait de coco et un verre d'eau, salez, couvrez et laissez cuire 20 à 25 min.",
+"Parsemez de coriandre et servez avec du riz."
+],
+"conseil": "Choisissez un chou-fleur bien blanc et serré, entouré de feuilles vertes et fermes. Il se garde 4 à 5 jours au frigo."
 },
 "historique": [
 "Gratin de chou-fleur",
 "Velouté Du Barry",
-"Chou-fleur à la polonaise"
+"Chou-fleur à la polonaise",
+"Curry de chou-fleur"
 ]
 },
 "chou-rave": {
@@ -1828,12 +1842,13 @@ null
 "historique": [
 "Tzatziki au concombre, aneth et menthe",
 "Concombre poêlé au gingembre et aux noisettes",
-"Concombres à la crème"
+"Concombres à la crème",
+"Salade de concombre à la crème et à la ciboulette"
 ],
 "recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Concombres à la crème",
-"intro": "L'entrée fraîche des tables familiales : de fines rondelles de concombre dégorgées, nappées d'une crème vinaigrée aux herbes.",
+"origine": "Classique de la cuisine française",
+"titre": "Salade de concombre à la crème et à la ciboulette",
+"intro": "Une salade fraîche et légère, en version crème et herbes, toute simple.",
 "prep": "15 min",
 "cuisson": "",
 "pers": "4",
@@ -1845,87 +1860,24 @@ null
 "Concombre"
 ],
 [
-"1",
-"échalote",
-"Échalote"
-],
-[
-"1/2 bouquet",
-"persil plat",
-"Persil"
-],
-[
-"20 cl",
-"crème fraîche épaisse",
+"15 cl",
+"de crème fraîche épaisse",
 null
 ],
 [
 "1 c. à soupe",
-"vinaigre de vin blanc",
+"de vinaigre de vin blanc",
 null
 ],
 [
-"1 c. à café",
-"moutarde",
+"1 bouquet",
+"de ciboulette",
 null
 ],
-[
-"",
-"sel, poivre",
-null
-]
-],
-"etapes": [
-"Pelez les concombres en laissant une bande de peau sur deux, coupez-les en deux dans la longueur, retirez les graines à la cuillère si elles sont grosses, puis taillez-les en fines demi-rondelles.",
-"Mettez-les dans une passoire avec une bonne pincée de sel, mélangez et laissez dégorger 30 minutes au frais, puis pressez-les légèrement dans les mains pour en retirer l'eau.",
-"Dans un saladier, fouettez la crème avec la moutarde, le vinaigre, l'échalote finement ciselée et le persil haché ; poivrez.",
-"Ajoutez les concombres égouttés, mélangez et goûtez avant de saler (ils le sont déjà). Servez bien frais, en entrée ou avec un poisson grillé."
-],
-"conseil": "Choisissez un concombre bien ferme sur toute sa longueur, à la peau lisse et d'un vert franc, sans partie molle aux extrémités. Il se garde 4 à 5 jours dans le bac à légumes, loin des tomates et des fruits qui le font jaunir ; une fois entamé, filmez la partie coupée."
-}
-},
-"courge-spaghetti": {
-"nom": "Courge spaghetti",
-"saison": "De septembre à janvier",
-"photo": null,
-"recette": {
-"origine": "Classique de la cuisine familiale",
-"titre": "Courge spaghetti au beurre et au parmesan",
-"intro": "La façon la plus simple de la servir : rôtie au four, ses filaments égrenés à la fourchette et mélangés avec du beurre, de l'ail et du parmesan, comme des pâtes.",
-"prep": "10 min",
-"cuisson": "50 min",
-"pers": "4",
-"niveau": "Très facile",
-"ingredients": [
 [
 "1",
-"courge spaghetti",
-"Courge spaghettis"
-],
-[
-"40 g",
-"de beurre",
-null
-],
-[
-"2 gousses",
-"d'ail violet",
-"Ail violet"
-],
-[
-"60 g",
-"de parmesan râpé",
-null
-],
-[
-"2 c. à s.",
-"de persil haché",
-"Persil"
-],
-[
-"2 c. à s.",
-"d'huile d'olive",
-null
+"échalote",
+"Échalote"
 ],
 [
 "",
@@ -1934,17 +1886,71 @@ null
 ]
 ],
 "etapes": [
-"Préchauffez le four à 200 °C. Coupez la courge en deux dans la longueur et retirez les graines.",
-"Badigeonnez la chair d'huile, salez, poivrez et posez les moitiés face coupée sur une plaque. Enfournez 45 à 50 min.",
-"Faites fondre le beurre avec l'ail haché 2 min dans une grande poêle.",
-"Grattez la chair à la fourchette pour obtenir les filaments, mettez-les dans la poêle avec le parmesan et le persil, mélangez et servez."
+"Épluchez les concombres une bande sur deux, coupez-les en fines rondelles.",
+"Salez-les et laissez-les dégorger 10 min dans une passoire, puis épongez-les.",
+"Mélangez la crème, le vinaigre, l'échalote finement hachée et la ciboulette ciselée.",
+"Ajoutez les concombres, poivrez et servez bien frais."
 ],
-"conseil": "Une courge spaghetti bien jaune, dure et sans taches se garde plusieurs semaines à température ambiante, dans un endroit sec."
+"conseil": "Choisissez un concombre ferme sur toute sa longueur, à la peau brillante. Il se garde 5 jours dans le bac à légumes, loin des tomates."
+}
+},
+"courge-spaghetti": {
+"nom": "Courge spaghetti",
+"saison": "De septembre à janvier",
+"photo": null,
+"recette": {
+"origine": "Classique de la cuisine italienne",
+"titre": "Courge spaghetti carbonara",
+"intro": "Les filaments de la courge remplacent les pâtes dans une carbonara gourmande et plus légère.",
+"prep": "10 min",
+"cuisson": "45 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"1",
+"courge spaghetti",
+"Courge spaghettis"
+],
+[
+"150 g",
+"de lardons ou de pancetta",
+null
+],
+[
+"3",
+"jaunes d'œufs",
+"Œufs plein air"
+],
+[
+"60 g",
+"de parmesan râpé",
+null
+],
+[
+"1 gousse",
+"d'ail",
+"Ail violet"
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Coupez la courge en deux dans la longueur, retirez les graines et faites-la cuire 40 min au four à 200 °C, face coupée vers le bas.",
+"Faites dorer les lardons avec l'ail écrasé dans une grande poêle.",
+"Battez les jaunes avec le parmesan et beaucoup de poivre.",
+"Grattez la chair de la courge à la fourchette, mélangez-la hors du feu aux lardons puis aux jaunes, et servez aussitôt."
+],
+"conseil": "Choisissez une courge spaghetti bien jaune, lourde et sans taches. Entière, elle se garde plusieurs semaines dans un endroit frais et sec."
 },
 "historique": [
 "Courge spaghetti à la bolognaise",
 "Gratin de courge spaghetti",
-"Courge spaghetti au beurre et au parmesan"
+"Courge spaghetti au beurre et au parmesan",
+"Courge spaghetti carbonara"
 ]
 },
 "courgette": {
@@ -2031,100 +2037,42 @@ null
 "photo": null,
 "recette": {
 "origine": "Grand classique de la cuisine française",
-"titre": "Sauce béarnaise",
-"intro": "La grande sauce de la cuisine française, servie avec une viande grillée : une réduction d'échalote, de vinaigre et d'estragon montée au beurre avec des jaunes d'œufs.",
-"prep": "15 min",
-"cuisson": "15 min",
-"pers": "4",
-"niveau": "Moyen",
-"ingredients": [
-[
-"3",
-"échalotes",
-"Échalote"
-],
-[
-"5 cl",
-"de vinaigre de vin blanc",
-null
-],
-[
-"5 cl",
-"de vin blanc sec",
-null
-],
-[
-"2 c. à s.",
-"d'estragon haché",
-null
-],
-[
-"3",
-"jaunes d'œufs",
-"Œufs plein air"
-],
-[
-"150 g",
-"de beurre",
-null
-],
-[
-"",
-"Sel, poivre mignonnette",
-null
-]
-],
-"etapes": [
-"Hachez très finement les échalotes. Mettez-les dans une petite casserole avec le vinaigre, le vin, la moitié de l'estragon et le poivre, et faites réduire jusqu'à ce qu'il ne reste presque plus de liquide. Laissez tiédir.",
-"Faites fondre le beurre doucement et gardez-le tiède.",
-"Ajoutez les jaunes d'œufs et une cuillère d'eau à la réduction et fouettez sur feu très doux (ou au bain-marie) jusqu'à ce que le mélange devienne mousseux et épais.",
-"Hors du feu, versez le beurre en filet en fouettant sans arrêt. Ajoutez le reste de l'estragon, salez et servez aussitôt."
-],
-"conseil": "Une bonne échalote est ferme, bien sèche et sans germe. Gardez-la comme l'ail, dans un endroit sec et aéré : elle tient plusieurs mois."
-},
-"historique": [
-"Tarte tatin aux échalotes",
-"Entrecôte à la bordelaise",
-"Sauce béarnaise"
-]
-},
-"endive": {
-"nom": "Endive",
-"saison": "D'octobre à avril",
-"photo": null,
-"recette": {
-"origine": "Spécialité du Nord",
-"titre": "Endives braisées",
-"intro": "Les endives cuites doucement au beurre jusqu'à devenir fondantes et légèrement caramélisées. Une pincée de sucre adoucit leur amertume.",
+"titre": "Échalotes confites au vin rouge",
+"intro": "Des échalotes entières fondantes, confites dans un vin rouge réduit : l'accompagnement idéal d'une viande rouge.",
 "prep": "10 min",
 "cuisson": "45 min",
 "pers": "4",
-"niveau": "Très facile",
+"niveau": "Facile",
 "ingredients": [
 [
-"8",
-"endives",
-"Endives"
+"500 g",
+"d'échalotes",
+"Échalote"
 ],
 [
-"40 g",
+"30 g",
 "de beurre",
 null
 ],
 [
-"1 c. à c.",
+"1 c. à soupe",
 "de sucre",
 null
 ],
 [
-"10 cl",
-"d'eau ou de bouillon",
+"40 cl",
+"de vin rouge",
 null
 ],
 [
-"1 c. à s.",
-"de persil haché",
-"Persil"
+"2 brins",
+"de thym",
+null
+],
+[
+"1 feuille",
+"de laurier",
+"Lauriet"
 ],
 [
 "",
@@ -2133,17 +2081,87 @@ null
 ]
 ],
 "etapes": [
-"Retirez les feuilles abîmées des endives et creusez un petit cône à la base pour enlever la partie la plus amère. Ne les lavez pas : essuyez-les.",
-"Faites fondre le beurre dans une sauteuse, rangez les endives côte à côte et faites-les dorer 10 min en les retournant.",
-"Saupoudrez de sucre, salez, poivrez, ajoutez l'eau, couvrez et laissez cuire 30 min à feu doux.",
-"Retirez le couvercle et laissez caraméliser encore 5 min. Parsemez de persil et servez."
+"Épluchez les échalotes en les gardant entières.",
+"Faites-les dorer 5 min dans le beurre, saupoudrez de sucre et laissez caraméliser légèrement.",
+"Versez le vin, ajoutez le thym et le laurier, salez, poivrez.",
+"Laissez mijoter à couvert 30 min, puis à découvert jusqu'à ce que la sauce soit sirupeuse."
 ],
-"conseil": "Gardez les endives au frigo, à l'abri de la lumière dans leur papier bleu : à la lumière, elles verdissent et deviennent amères."
+"conseil": "Choisissez des échalotes fermes, à la peau sèche et cuivrée, sans germe. Elles se gardent plusieurs semaines au sec, à l'abri de la lumière."
+},
+"historique": [
+"Tarte tatin aux échalotes",
+"Entrecôte à la bordelaise",
+"Sauce béarnaise",
+"Échalotes confites au vin rouge"
+]
+},
+"endive": {
+"nom": "Endive",
+"saison": "D'octobre à avril",
+"photo": null,
+"recette": {
+"origine": "Spécialité du Nord",
+"titre": "Tarte aux endives et au maroilles",
+"intro": "Une tarte du Nord où l'amertume des endives fondues rencontre le caractère du maroilles.",
+"prep": "20 min",
+"cuisson": "40 min",
+"pers": "6",
+"niveau": "Facile",
+"ingredients": [
+[
+"6",
+"endives",
+"Endives"
+],
+[
+"1",
+"pâte brisée",
+null
+],
+[
+"200 g",
+"de maroilles",
+null
+],
+[
+"3",
+"œufs",
+"Œufs plein air"
+],
+[
+"20 cl",
+"de crème fraîche",
+null
+],
+[
+"30 g",
+"de beurre",
+null
+],
+[
+"1 c. à café",
+"de sucre",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Émincez les endives et faites-les fondre 15 min dans le beurre avec le sucre, jusqu'à évaporation de l'eau.",
+"Préchauffez le four à 180 °C et foncez un moule avec la pâte.",
+"Répartissez les endives, puis le maroilles en tranches.",
+"Battez les œufs avec la crème, salez peu, poivrez, versez sur la tarte et enfournez 35 à 40 min."
+],
+"conseil": "Choisissez des endives bien blanches et serrées, à la pointe jaune pâle (le vert les rend amères). Gardez-les au frigo, à l'abri de la lumière, une semaine."
 },
 "historique": [
 "Endives au jambon",
 "Salade d'endives au roquefort",
-"Endives braisées"
+"Endives braisées",
+"Tarte aux endives et au maroilles"
 ]
 },
 "epinard": {
@@ -2160,47 +2178,37 @@ null
 "saison": "De juin à mars",
 "photo": null,
 "recette": {
-"origine": "Spécialité provençale",
-"titre": "Dorade au fenouil",
-"intro": "Une dorade entière rôtie au four sur un lit de fenouil émincé, avec de l'huile d'olive, du thym et du vin blanc. Le fenouil fond et parfume le poisson.",
+"origine": "Classique de la cuisine italienne",
+"titre": "Gratin de fenouil",
+"intro": "Le fenouil fondant, nappé de crème et de parmesan : son petit goût anisé s'adoucit à la cuisson.",
 "prep": "15 min",
-"cuisson": "35 min",
+"cuisson": "45 min",
 "pers": "4",
 "niveau": "Facile",
 "ingredients": [
 [
-"2",
-"dorades (environ 500 g chacune), vidées et écaillées",
-null
-],
-[
-"2",
+"3",
 "bulbes de fenouil",
 "Fenouil"
 ],
 [
-"1",
-"oignon jaune",
-"Oignon jaune"
+"20 cl",
+"de crème liquide",
+null
 ],
 [
-"2 gousses",
-"d'ail violet",
+"60 g",
+"de parmesan râpé",
+null
+],
+[
+"1 gousse",
+"d'ail",
 "Ail violet"
 ],
 [
-"10 cl",
-"de vin blanc sec",
-null
-],
-[
-"5 cl",
-"d'huile d'olive",
-null
-],
-[
-"4 branches",
-"de thym",
+"20 g",
+"de beurre",
 null
 ],
 [
@@ -2210,17 +2218,18 @@ null
 ]
 ],
 "etapes": [
-"Préchauffez le four à 200 °C. Émincez finement le fenouil et l'oignon, gardez les plumets verts.",
-"Étalez le fenouil, l'oignon et l'ail émincé dans un plat, arrosez de la moitié de l'huile, salez et enfournez 15 min.",
-"Salez et poivrez les dorades à l'intérieur, glissez-y le thym et les plumets de fenouil, puis posez-les sur les légumes.",
-"Arrosez du vin blanc et du reste de l'huile, et faites cuire 20 min. Servez directement dans le plat."
+"Coupez les fenouils en quartiers et faites-les cuire 12 min à l'eau bouillante salée. Égouttez.",
+"Frottez un plat avec l'ail et beurrez-le. Préchauffez le four à 200 °C.",
+"Disposez le fenouil, versez la crème, salez légèrement et poivrez.",
+"Parsemez de parmesan et enfournez 30 min, jusqu'à ce que le dessus soit doré."
 ],
-"conseil": "Un bon fenouil est blanc, bien rond et lourd, sans taches brunes, avec des plumets verts et frais. Il se garde une semaine au frigo."
+"conseil": "Choisissez des bulbes de fenouil bien blancs, ronds et fermes, avec des pluches vertes. Ils se gardent une semaine au frigo."
 },
 "historique": [
 "Fenouil braisé au parmesan",
 "Salade de fenouil cru à l'huile d'olive",
-"Dorade au fenouil"
+"Dorade au fenouil",
+"Gratin de fenouil"
 ]
 },
 "navet": {
@@ -2229,12 +2238,12 @@ null
 "photo": null,
 "recette": {
 "origine": "Grand classique de la cuisine française",
-"titre": "Gratin de navets boule d'or",
-"intro": "Un gratin crémeux à la manière du dauphinois, où la chair jaune et douce du navet boule d'or remplace une partie des pommes de terre.",
-"prep": "20 min",
-"cuisson": "1 h",
+"titre": "Purée de navets boule d'or",
+"intro": "Une purée douce et légèrement sucrée, grâce à la chair jaune du navet boule d'or.",
+"prep": "15 min",
+"cuisson": "25 min",
 "pers": "4",
-"niveau": "Facile",
+"niveau": "Très facile",
 "ingredients": [
 [
 "800 g",
@@ -2244,478 +2253,6 @@ null
 [
 "2",
 "pommes de terre",
-"Pdt agata"
-],
-[
-"1 gousse",
-"d'ail",
-"Ail violet"
-],
-[
-"25 cl",
-"de crème",
-null
-],
-[
-"25 cl",
-"de lait",
-null
-],
-[
-"60 g",
-"de fromage râpé",
-null
-],
-[
-"20 g",
-"de beurre",
-null
-],
-[
-"",
-"Sel, poivre, muscade",
-null
-]
-],
-"etapes": [
-"Préchauffez le four à 180 °C. Épluchez les navets et les pommes de terre et coupez-les en fines rondelles.",
-"Frottez un plat à gratin avec la gousse d'ail coupée, puis beurrez-le.",
-"Disposez les rondelles en couches en salant et poivrant chaque couche. Mélangez le lait, la crème et une pointe de muscade, et versez sur les légumes.",
-"Parsemez de fromage râpé et enfournez 1 heure, jusqu'à ce que la pointe d'un couteau s'enfonce sans résistance et que le dessus soit doré."
-],
-"conseil": "Le navet boule d'or doit être ferme, lisse et lourd : un navet léger est souvent creux ou fibreux. Retirez les fanes et gardez-le au frais, il tient deux semaines."
-},
-"historique": [
-"Navets glacés",
-"Navarin d'agneau",
-"Velouté de navets boule d'or",
-"Gratin de navets boule d'or"
-]
-},
-"oignon": {
-"nom": "Oignon jaune",
-"saison": "Toute l'année",
-"photo": null,
-"recette": {
-"origine": "Spécialité belge",
-"titre": "Carbonade flamande",
-"intro": "Le bœuf mijoté à la bière brune et aux oignons, adouci de cassonade et de pain d'épices. Les oignons jaunes fondent et font toute la sauce.",
-"prep": "20 min",
-"cuisson": "2 h 30",
-"pers": "6",
-"niveau": "Facile",
-"ingredients": [
-[
-"1,2 kg",
-"de bœuf à braiser (paleron, joue)",
-null
-],
-[
-"4",
-"oignons jaunes",
-"Oignon jaune"
-],
-[
-"75 cl",
-"de bière brune",
-null
-],
-[
-"2 tranches",
-"de pain d'épices",
-null
-],
-[
-"1 c. à s.",
-"de moutarde",
-null
-],
-[
-"1 c. à s.",
-"de cassonade",
-null
-],
-[
-"1",
-"bouquet garni",
-null
-],
-[
-"30 g",
-"de beurre",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Coupez la viande en gros cubes et faites-la dorer dans le beurre, dans une cocotte. Retirez-la.",
-"Faites fondre les oignons émincés 15 min dans la cocotte, jusqu'à ce qu'ils soient bien dorés. Ajoutez la cassonade.",
-"Remettez la viande, versez la bière et ajoutez le bouquet garni. Tartinez le pain d'épices de moutarde et posez-le sur le dessus.",
-"Couvrez et laissez mijoter 2 h 30 à feu très doux. Salez, poivrez et servez avec des frites ou des pommes de terre vapeur."
-],
-"conseil": "Un bon oignon jaune est ferme, bien sec, avec une peau qui crisse. Gardez-le dans un endroit sec et sombre, jamais à côté des pommes de terre."
-},
-"historique": [
-"Soupe à l'oignon gratinée",
-"Pissaladière",
-"Carbonade flamande"
-]
-},
-"panais": {
-"nom": "Panais",
-"saison": "D'octobre à mars",
-"photo": null,
-"recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Velouté de panais",
-"intro": "Le panais donne un velouté très doux, crémeux, au goût légèrement sucré. Un des meilleurs potages d'hiver.",
-"prep": "15 min",
-"cuisson": "30 min",
-"pers": "4",
-"niveau": "Très facile",
-"ingredients": [
-[
-"600 g",
-"de panais",
-"Panais"
-],
-[
-"1",
-"pomme de terre",
-"Pdt Bintje"
-],
-[
-"1",
-"oignon jaune",
-"Oignon jaune"
-],
-[
-"20 g",
-"de beurre",
-null
-],
-[
-"1 L",
-"de bouillon de volaille",
-null
-],
-[
-"15 cl",
-"de crème liquide",
-null
-],
-[
-"1 pincée",
-"de muscade",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Épluchez les panais et la pomme de terre et coupez-les en rondelles.",
-"Faites fondre l'oignon émincé dans le beurre 5 min.",
-"Ajoutez les légumes et le bouillon, et laissez cuire 25 min, jusqu'à ce que tout soit très tendre.",
-"Mixez finement avec la crème, assaisonnez de sel, poivre et muscade, et servez."
-],
-"conseil": "Choisissez des panais petits ou moyens, bien fermes : les très gros ont un cœur fibreux. Ils se gardent 2 semaines au frigo."
-},
-"historique": [
-"Purée de panais",
-"Panais rôtis au miel",
-"Velouté de panais"
-]
-},
-"patate-douce": {
-"nom": "Patate douce",
-"saison": "D'octobre à mars",
-"photo": null,
-"recette": {
-"origine": "Classique de la cuisine familiale",
-"titre": "Gratin de patates douces",
-"intro": "Des rondelles de patate douce cuites dans la crème à l'ail, comme un gratin dauphinois : le résultat est fondant et légèrement sucré.",
-"prep": "20 min",
-"cuisson": "1 h",
-"pers": "6",
-"niveau": "Facile",
-"ingredients": [
-[
-"1 kg",
-"de patates douces",
-"Patate douce"
-],
-[
-"2 gousses",
-"d'ail violet",
-"Ail violet"
-],
-[
-"30 cl",
-"de crème liquide",
-null
-],
-[
-"20 cl",
-"de lait",
-null
-],
-[
-"60 g",
-"de comté râpé",
-null
-],
-[
-"1 pincée",
-"de muscade",
-null
-],
-[
-"",
-"Beurre pour le plat",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Préchauffez le four à 170 °C. Épluchez les patates douces et coupez-les en fines rondelles de 3 mm.",
-"Frottez un plat avec une gousse d'ail coupée puis beurrez-le.",
-"Rangez les rondelles en couches en salant et poivrant. Mélangez la crème, le lait, l'autre gousse d'ail écrasée et la muscade, et versez sur les patates douces.",
-"Parsemez de comté et enfournez 1 h, jusqu'à ce que la pointe d'un couteau s'enfonce sans résistance."
-],
-"conseil": "La patate douce n'aime pas le froid : gardez-la à température ambiante, dans un endroit sec et sombre, 2 à 3 semaines."
-},
-"historique": [
-"Frites de patate douce au four",
-"Velouté de patate douce au gingembre",
-"Gratin de patates douces"
-]
-},
-"pomme-de-terre": {
-"nom": "Pomme de terre Chérie",
-"saison": "Toute l'année",
-"photo": null,
-"recette": {
-"origine": "Spécialité savoyarde",
-"titre": "Tartiflette",
-"intro": "Le grand plat de montagne : pommes de terre, lardons et oignons, recouverts d'un reblochon qui fond au four. La Chérie, à chair ferme, se tient très bien.",
-"prep": "20 min",
-"cuisson": "50 min",
-"pers": "6",
-"niveau": "Facile",
-"ingredients": [
-[
-"1,2 kg",
-"de pommes de terre Chérie",
-"Pdt chérie 2kg"
-],
-[
-"1",
-"reblochon",
-null
-],
-[
-"200 g",
-"de lardons fumés",
-null
-],
-[
-"2",
-"oignons jaunes",
-"Oignon jaune"
-],
-[
-"10 cl",
-"de vin blanc sec",
-null
-],
-[
-"10 cl",
-"de crème fraîche",
-null
-],
-[
-"",
-"Beurre pour le plat",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Faites cuire les pommes de terre avec leur peau 20 min à l'eau salée. Épluchez-les et coupez-les en rondelles.",
-"Faites revenir les lardons et les oignons émincés 10 min, versez le vin blanc et laissez réduire.",
-"Dans un plat beurré, alternez pommes de terre et lardons aux oignons, poivrez et versez la crème.",
-"Coupez le reblochon en deux dans l'épaisseur, posez-le croûte vers le haut, et enfournez 25 min à 200 °C."
-],
-"conseil": "La Chérie, à peau rose et chair ferme, se cuit avec sa peau, très fine. Gardez-la au frais, au sec et à l'abri de la lumière."
-},
-"historique": [
-"Pommes de terre sarladaises",
-"Pommes de terre boulangère",
-"Tartiflette"
-]
-},
-"poireau": {
-"nom": "Poireau",
-"saison": "D'octobre à avril",
-"photo": null,
-"recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Potage poireaux-pommes de terre",
-"intro": "La soupe de tous les foyers français : simple, douce et réconfortante. Mixée et servie froide avec de la crème, elle devient la vichyssoise.",
-"prep": "15 min",
-"cuisson": "30 min",
-"pers": "4",
-"niveau": "Très facile",
-"ingredients": [
-[
-"3",
-"poireaux",
-"Poireaux"
-],
-[
-"3",
-"pommes de terre",
-"Pdt Bintje"
-],
-[
-"1",
-"oignon jaune",
-"Oignon jaune"
-],
-[
-"30 g",
-"de beurre",
-null
-],
-[
-"1,2 L",
-"d'eau ou de bouillon",
-null
-],
-[
-"10 cl",
-"de crème liquide",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Coupez les poireaux en rondelles et lavez-les bien pour retirer la terre. Épluchez les pommes de terre et coupez-les en dés.",
-"Faites fondre les poireaux et l'oignon émincé dans le beurre 10 min à feu doux, sans coloration.",
-"Ajoutez les pommes de terre et l'eau, salez et laissez cuire 20 min.",
-"Mixez (ou laissez en morceaux, à votre goût), ajoutez la crème, poivrez et servez."
-],
-"conseil": "Choisissez des poireaux bien droits, au blanc long et ferme, et aux feuilles vertes sans jaunir. Ils se gardent une semaine au frigo."
-},
-"historique": [
-"Poireaux vinaigrette",
-"Flamiche aux poireaux",
-"Potage poireaux-pommes de terre"
-]
-},
-"poivron": {
-"nom": "Poivron rouge",
-"saison": "De juillet à octobre",
-"photo": null,
-"recette": {
-"origine": "Spécialité italienne",
-"titre": "Peperonata",
-"intro": "Des poivrons rouges fondus lentement avec des oignons, de l'ail et de la tomate à l'huile d'olive. Se sert chaud avec une viande, ou froid en antipasto.",
-"prep": "15 min",
-"cuisson": "45 min",
-"pers": "4",
-"niveau": "Très facile",
-"ingredients": [
-[
-"4",
-"poivrons rouges",
-"Poivrons rouges"
-],
-[
-"2",
-"oignons rouges",
-"Oignon rouge"
-],
-[
-"2 gousses",
-"d'ail violet",
-"Ail violet"
-],
-[
-"200 g",
-"de tomates concassées en conserve",
-null
-],
-[
-"5 c. à s.",
-"d'huile d'olive",
-null
-],
-[
-"1 c. à s.",
-"de vinaigre de vin rouge",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Épépinez les poivrons et coupez-les en lanières. Émincez les oignons et l'ail.",
-"Faites revenir les oignons dans l'huile 5 min dans une sauteuse, puis ajoutez les poivrons et l'ail.",
-"Couvrez et laissez fondre 20 min à feu doux en remuant de temps en temps.",
-"Ajoutez les tomates, salez, poivrez et laissez mijoter encore 20 min à découvert. Ajoutez le vinaigre en fin de cuisson."
-],
-"conseil": "Choisissez des poivrons bien rouges, lourds et à la peau tendue. Ils se gardent une semaine dans le bac à légumes."
-},
-"historique": [
-"Poivrons farcis",
-"Poivrons marinés à l'huile d'olive",
-"Peperonata"
-]
-},
-"potimarron": {
-"nom": "Potimarron",
-"saison": "De septembre à février",
-"photo": null,
-"recette": {
-"origine": "Classique de la cuisine familiale",
-"titre": "Purée de potimarron",
-"intro": "Une purée douce et veloutée, sans même besoin d'éplucher la courge : la peau du potimarron fond à la cuisson.",
-"prep": "10 min",
-"cuisson": "25 min",
-"pers": "4",
-"niveau": "Très facile",
-"ingredients": [
-[
-"1",
-"potimarron (1,2 kg)",
-"Potimarron (pièce)"
-],
-[
-"1",
-"pomme de terre",
 "Pdt Bintje"
 ],
 [
@@ -2725,7 +2262,7 @@ null
 ],
 [
 "10 cl",
-"de crème liquide",
+"de crème ou de lait chaud",
 null
 ],
 [
@@ -2740,17 +2277,442 @@ null
 ]
 ],
 "etapes": [
-"Lavez le potimarron, coupez-le en deux, retirez les graines et coupez-le en morceaux, avec la peau.",
-"Épluchez la pomme de terre et coupez-la en morceaux.",
-"Faites cuire le tout 20 à 25 min à la vapeur ou à l'eau salée, jusqu'à ce que ce soit très tendre. Égouttez bien.",
-"Écrasez au presse-purée avec le beurre et la crème, assaisonnez de sel, poivre et muscade."
+"Épluchez les navets et les pommes de terre, coupez-les en morceaux.",
+"Faites-les cuire 20 à 25 min à l'eau salée, jusqu'à ce qu'ils soient bien tendres.",
+"Égouttez soigneusement et écrasez au presse-purée.",
+"Ajoutez le beurre, la crème chaude et la muscade, salez, poivrez et mélangez."
 ],
-"conseil": "Un potimarron bien mûr a une peau bien colorée et une queue sèche. Entier, il se garde plusieurs semaines au frais et au sec."
+"conseil": "Choisissez des navets boule d'or lourds, à la peau lisse et sans fissures. Ils se gardent une à deux semaines au frigo."
+},
+"historique": [
+"Navets glacés",
+"Navarin d'agneau",
+"Velouté de navets boule d'or",
+"Gratin de navets boule d'or",
+"Purée de navets boule d'or"
+]
+},
+"oignon": {
+"nom": "Oignon jaune",
+"saison": "Toute l'année",
+"photo": null,
+"recette": {
+"origine": "Spécialité alsacienne",
+"titre": "Tarte à l'oignon alsacienne",
+"intro": "Une tarte fondante où les oignons cuits longuement deviennent doux et presque sucrés.",
+"prep": "20 min",
+"cuisson": "1 h",
+"pers": "6",
+"niveau": "Facile",
+"ingredients": [
+[
+"1 kg",
+"d'oignons jaunes",
+"Oignon jaune"
+],
+[
+"1",
+"pâte brisée",
+null
+],
+[
+"100 g",
+"de lardons",
+null
+],
+[
+"3",
+"œufs",
+"Œufs plein air"
+],
+[
+"20 cl",
+"de crème fraîche",
+null
+],
+[
+"30 g",
+"de beurre",
+null
+],
+[
+"1 pincée",
+"de muscade",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Émincez finement les oignons et faites-les fondre 25 min dans le beurre à feu doux, sans coloration.",
+"Faites dorer les lardons et ajoutez-les aux oignons. Préchauffez le four à 200 °C.",
+"Foncez un moule avec la pâte et garnissez-le d'oignons.",
+"Battez les œufs avec la crème, la muscade, du sel et du poivre, versez sur les oignons et enfournez 35 min."
+],
+"conseil": "Un bon oignon jaune est dur, à la peau bien sèche et sans germe. Il se garde plusieurs semaines au sec, hors du frigo."
+},
+"historique": [
+"Soupe à l'oignon gratinée",
+"Pissaladière",
+"Carbonade flamande",
+"Tarte à l'oignon alsacienne"
+]
+},
+"panais": {
+"nom": "Panais",
+"saison": "D'octobre à mars",
+"photo": null,
+"recette": {
+"origine": "Classique de la cuisine anglaise",
+"titre": "Chips de panais au four",
+"intro": "De fines lamelles de panais rôties au four jusqu'à être croustillantes : un apéritif de saison.",
+"prep": "15 min",
+"cuisson": "25 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"3",
+"panais",
+"Panais"
+],
+[
+"3 c. à soupe",
+"d'huile d'olive",
+null
+],
+[
+"1 c. à café",
+"de paprika",
+null
+],
+[
+"2 brins",
+"de thym",
+null
+],
+[
+"",
+"Fleur de sel",
+null
+]
+],
+"etapes": [
+"Préchauffez le four à 160 °C. Épluchez les panais et taillez-les en très fines lamelles à l'économe ou à la mandoline.",
+"Mélangez les lamelles avec l'huile, le paprika et le thym effeuillé.",
+"Étalez-les sans les superposer sur des plaques couvertes de papier cuisson.",
+"Enfournez 20 à 25 min en surveillant, jusqu'à ce qu'elles soient dorées. Salez à la sortie et laissez refroidir pour qu'elles croustillent."
+],
+"conseil": "Choisissez des panais petits ou moyens, bien fermes et sans taches : les gros ont un cœur plus fibreux. Ils se gardent deux semaines au frigo."
+},
+"historique": [
+"Purée de panais",
+"Panais rôtis au miel",
+"Velouté de panais",
+"Chips de panais au four"
+]
+},
+"patate-douce": {
+"nom": "Patate douce",
+"saison": "D'octobre à mars",
+"photo": null,
+"recette": {
+"origine": "Classique de la cuisine antillaise",
+"titre": "Purée de patate douce",
+"intro": "Une purée orange, douce et veloutée, parfaite avec une volaille ou un poisson.",
+"prep": "15 min",
+"cuisson": "25 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"1 kg",
+"de patates douces",
+"Patate douce"
+],
+[
+"40 g",
+"de beurre",
+null
+],
+[
+"10 cl",
+"de lait chaud",
+null
+],
+[
+"1 pincée",
+"de muscade",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Épluchez les patates douces et coupez-les en gros cubes.",
+"Faites-les cuire 20 à 25 min à l'eau salée, jusqu'à ce qu'elles soient bien tendres.",
+"Égouttez-les et écrasez-les au presse-purée.",
+"Ajoutez le beurre, le lait chaud et la muscade, salez, poivrez et mélangez."
+],
+"conseil": "Choisissez des patates douces fermes, à la peau lisse et sans taches molles. Gardez-les au sec et à température ambiante, jamais au frigo : deux à trois semaines."
+},
+"historique": [
+"Frites de patate douce au four",
+"Velouté de patate douce au gingembre",
+"Gratin de patates douces",
+"Purée de patate douce"
+]
+},
+"pomme-de-terre": {
+"nom": "Pomme de terre Chérie",
+"saison": "Toute l'année",
+"photo": null,
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Pommes de terre au four, crème à la ciboulette",
+"intro": "La Chérie à peau rose cuite entière au four, ouverte et garnie d'une crème fraîche aux herbes.",
+"prep": "10 min",
+"cuisson": "1 h",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"4",
+"grosses pommes de terre Chérie",
+"Pdt chérie 2kg"
+],
+[
+"20 cl",
+"de crème fraîche épaisse",
+null
+],
+[
+"1 bouquet",
+"de ciboulette",
+null
+],
+[
+"1",
+"échalote",
+"Échalote"
+],
+[
+"2 c. à soupe",
+"d'huile d'olive",
+null
+],
+[
+"",
+"Fleur de sel, poivre",
+null
+]
+],
+"etapes": [
+"Préchauffez le four à 200 °C. Lavez et séchez les pommes de terre, piquez-les à la fourchette et frottez-les d'huile et de fleur de sel.",
+"Enfournez-les 1 h, jusqu'à ce que la pointe d'un couteau s'y enfonce facilement.",
+"Mélangez la crème avec la ciboulette ciselée, l'échalote hachée, du sel et du poivre.",
+"Fendez les pommes de terre en croix, écartez la chair et garnissez de crème."
+],
+"conseil": "La Chérie a une peau rose fine qui se mange et une chair fondante. Gardez-la dans le noir, au frais et au sec, deux à trois semaines."
+},
+"historique": [
+"Pommes de terre sarladaises",
+"Pommes de terre boulangère",
+"Tartiflette",
+"Pommes de terre au four, crème à la ciboulette"
+]
+},
+"poireau": {
+"nom": "Poireau",
+"saison": "D'octobre à avril",
+"photo": null,
+"recette": {
+"origine": "Spécialité du Nord",
+"titre": "Fondue de poireaux à la crème",
+"intro": "Des poireaux fondus doucement au beurre puis liés à la crème : l'accompagnement parfait d'un poisson.",
+"prep": "15 min",
+"cuisson": "30 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"6",
+"poireaux",
+"Poireaux"
+],
+[
+"40 g",
+"de beurre",
+null
+],
+[
+"20 cl",
+"de crème fraîche",
+null
+],
+[
+"10 cl",
+"d'eau",
+null
+],
+[
+"1 pincée",
+"de muscade",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Coupez les poireaux en fines rondelles (le blanc et le vert tendre) et lavez-les bien.",
+"Faites-les fondre dans le beurre avec l'eau, à couvert et à feu doux, 25 min, en remuant de temps en temps.",
+"Ajoutez la crème et la muscade, et laissez réduire 5 min à découvert.",
+"Salez, poivrez et servez."
+],
+"conseil": "Choisissez des poireaux bien droits, au blanc long et ferme, et aux feuilles vertes sans jaunir. Ils se gardent une semaine au frigo."
+},
+"historique": [
+"Poireaux vinaigrette",
+"Flamiche aux poireaux",
+"Potage poireaux-pommes de terre",
+"Fondue de poireaux à la crème"
+]
+},
+"poivron": {
+"nom": "Poivron rouge",
+"saison": "De juillet à octobre",
+"photo": null,
+"recette": {
+"origine": "Spécialité basque",
+"titre": "Poulet basquaise",
+"intro": "Le poulet mijoté dans une sauce aux poivrons, tomates et piment d'Espelette : un classique du Sud-Ouest.",
+"prep": "20 min",
+"cuisson": "1 h",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"3",
+"poivrons rouges",
+"Poivrons rouges"
+],
+[
+"1",
+"poulet découpé en morceaux",
+null
+],
+[
+"2",
+"oignons jaunes",
+"Oignon jaune"
+],
+[
+"4",
+"tomates",
+"Tomate ronde"
+],
+[
+"3 gousses",
+"d'ail",
+"Ail violet"
+],
+[
+"1 c. à café",
+"de piment d'Espelette",
+null
+],
+[
+"3 c. à soupe",
+"d'huile d'olive",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Faites dorer les morceaux de poulet dans l'huile d'olive dans une cocotte, puis réservez-les.",
+"Faites revenir les oignons et les poivrons émincés 10 min, ajoutez l'ail et les tomates en morceaux.",
+"Remettez le poulet, ajoutez le piment d'Espelette, salez, couvrez et laissez mijoter 45 min.",
+"Servez avec du riz."
+],
+"conseil": "Choisissez des poivrons bien lisses, brillants et lourds, avec une queue verte. Ils se gardent une semaine au frigo."
+},
+"historique": [
+"Poivrons farcis",
+"Poivrons marinés à l'huile d'olive",
+"Peperonata",
+"Poulet basquaise"
+]
+},
+"potimarron": {
+"nom": "Potimarron",
+"saison": "De septembre à février",
+"photo": null,
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Gratin de potimarron",
+"intro": "Le potimarron au goût de châtaigne, en gratin crémeux : pas besoin de l'éplucher, sa peau devient fondante.",
+"prep": "15 min",
+"cuisson": "45 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"1",
+"potimarron",
+"Potimarron (pièce)"
+],
+[
+"20 cl",
+"de crème fraîche",
+null
+],
+[
+"80 g",
+"de fromage râpé",
+null
+],
+[
+"1 gousse",
+"d'ail",
+"Ail violet"
+],
+[
+"1 pincée",
+"de muscade",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Préchauffez le four à 190 °C. Lavez le potimarron, coupez-le en deux, retirez les graines et taillez-le en fines tranches avec la peau.",
+"Frottez un plat avec l'ail et disposez les tranches en les faisant se chevaucher.",
+"Mélangez la crème avec la muscade, du sel et du poivre, et versez sur le potimarron.",
+"Parsemez de fromage et enfournez 45 min."
+],
+"conseil": "Choisissez un potimarron lourd, d'un orange vif, avec son pédoncule bien sec. Entier, il se garde plusieurs mois dans un endroit frais et sec."
 },
 "historique": [
 "Velouté de potimarron",
 "Potimarron rôti au four",
-"Purée de potimarron"
+"Purée de potimarron",
+"Gratin de potimarron"
 ]
 },
 "potiron": {
@@ -2769,33 +2731,33 @@ null
 "saison": "De mars à octobre",
 "photo": null,
 "recette": {
-"origine": "Classique de la cuisine familiale",
-"titre": "Radis roses sautés au beurre",
-"intro": "Cuits quelques minutes à la poêle, les radis roses perdent leur piquant et deviennent doux et fondants. Un accompagnement surprenant et très rapide.",
+"origine": "Classique de bistrot",
+"titre": "Tartines de radis au beurre et à la fleur de sel",
+"intro": "La tartine de bistrot : pain de campagne, beurre demi-sel, radis en fines lamelles et ciboulette.",
 "prep": "10 min",
-"cuisson": "10 min",
+"cuisson": "",
 "pers": "4",
 "niveau": "Très facile",
 "ingredients": [
 [
-"2 bottes",
+"1 botte",
 "de radis roses",
 "Radis rose"
 ],
 [
-"1",
-"échalote",
-"Échalote"
-],
-[
-"30 g",
-"de beurre",
+"4 grandes tranches",
+"de pain de campagne",
 null
 ],
 [
-"1 c. à s.",
-"de persil haché",
-"Persil"
+"80 g",
+"de beurre demi-sel",
+null
+],
+[
+"1/2 bouquet",
+"de ciboulette",
+null
 ],
 [
 "",
@@ -2804,17 +2766,18 @@ null
 ]
 ],
 "etapes": [
-"Coupez les fanes des radis en laissant un petit bout de tige, lavez-les et coupez-les en deux.",
-"Faites fondre le beurre dans une poêle et faites-y revenir l'échalote hachée 2 min.",
-"Ajoutez les radis et faites-les sauter 6 à 8 min à feu moyen : ils doivent rester un peu croquants.",
-"Parsemez de persil, de fleur de sel et de poivre, et servez."
+"Lavez les radis et coupez-les en fines rondelles.",
+"Faites légèrement griller le pain.",
+"Tartinez généreusement de beurre et recouvrez de rondelles de radis.",
+"Parsemez de ciboulette ciselée, de fleur de sel et d'un tour de poivre."
 ],
-"conseil": "Coupez les fanes en arrivant : elles pompent l'eau des radis. Gardez les radis dans un sac au frigo, 4 à 5 jours. Les fanes font une très bonne soupe."
+"conseil": "Choisissez des radis fermes, aux fanes bien vertes. Coupez les fanes en rentrant : les radis se garderont 4 à 5 jours au frigo."
 },
 "historique": [
 "Radis au beurre et fleur de sel",
 "Soupe de fanes de radis",
-"Radis roses sautés au beurre"
+"Radis roses sautés au beurre",
+"Tartines de radis au beurre et à la fleur de sel"
 ]
 },
 "radis-hiver": {
@@ -2822,241 +2785,42 @@ null
 "saison": "D'octobre à mars",
 "photo": null,
 "recette": {
-"origine": "Classique de la cuisine italienne",
-"titre": "Carpaccio de radis red meat",
-"intro": "Le radis red meat, vert dehors et rose fuchsia dedans, coupé en tranches très fines et assaisonné comme un carpaccio : huile d'olive, fleur de sel et parmesan.",
+"origine": "Classique de la cuisine française",
+"titre": "Velouté de radis red meat",
+"intro": "Un velouté rose, doux et légèrement piquant, avec le radis red meat à la chair framboise.",
 "prep": "15 min",
-"cuisson": "",
+"cuisson": "25 min",
 "pers": "4",
-"niveau": "Très facile",
+"niveau": "Facile",
 "ingredients": [
 [
-"1",
+"2",
 "radis red meat",
 "Radis red meat"
 ],
 [
-"4 c. à s.",
-"d'huile d'olive",
-null
+"2",
+"pommes de terre",
+"Pdt Bintje"
 ],
 [
-"1 c. à s.",
-"de vinaigre balsamique blanc",
-null
+"1",
+"oignon jaune",
+"Oignon jaune"
 ],
 [
 "30 g",
-"de parmesan",
+"de beurre",
 null
 ],
 [
-"1 c. à s.",
-"de persil haché",
-"Persil"
-],
-[
-"",
-"Fleur de sel, poivre",
-null
-]
-],
-"etapes": [
-"Épluchez le radis et coupez-le en tranches très fines, à la mandoline si possible.",
-"Disposez les tranches en rosace sur un grand plat.",
-"Mélangez l'huile et le vinaigre, et versez sur le radis.",
-"Parsemez de copeaux de parmesan, de persil, de fleur de sel et de poivre. Servez aussitôt."
-],
-"conseil": "Le radis red meat se garde 2 semaines au frigo dans le bac à légumes. Plus il est lourd et ferme, plus il est juteux et croquant."
-},
-"historique": [
-"Pickles de radis",
-"Radis rôtis au four",
-"Carpaccio de radis red meat"
-]
-},
-"roquette": {
-"nom": "Roquette",
-"saison": "Toute l'année",
-"photo": null,
-"recette": {
-"origine": "Spécialité italienne",
-"titre": "Tagliata de bœuf à la roquette",
-"intro": "Une pièce de bœuf saisie, tranchée finement et servie sur un lit de roquette, avec du parmesan et de l'huile d'olive. Un plat de trattoria prêt en 20 minutes.",
-"prep": "10 min",
-"cuisson": "8 min",
-"pers": "2",
-"niveau": "Facile",
-"ingredients": [
-[
-"400 g",
-"de bœuf (faux-filet ou entrecôte)",
+"1 L",
+"de bouillon de légumes",
 null
 ],
 [
-"100 g",
-"de roquette",
-"Roquette"
-],
-[
-"40 g",
-"de parmesan",
-null
-],
-[
-"1 branche",
-"de romarin",
-null
-],
-[
-"4 c. à s.",
-"d'huile d'olive",
-null
-],
-[
-"1 c. à s.",
-"de vinaigre balsamique",
-null
-],
-[
-"",
-"Fleur de sel, poivre",
-null
-]
-],
-"etapes": [
-"Sortez la viande du frigo 30 min à l'avance. Badigeonnez-la d'un peu d'huile et de romarin haché.",
-"Saisissez-la dans une poêle très chaude, 3 à 4 min de chaque côté selon l'épaisseur. Laissez-la reposer 5 min sous une feuille d'aluminium.",
-"Disposez la roquette sur les assiettes et arrosez-la d'huile et de vinaigre.",
-"Tranchez la viande en fines lamelles, posez-la sur la roquette, ajoutez des copeaux de parmesan, de la fleur de sel et du poivre."
-],
-"conseil": "La roquette est fragile : gardez-la 2 à 3 jours au frigo dans une boîte, avec un papier absorbant. Plus les feuilles sont petites, plus elles sont douces."
-},
-"historique": [
-"Pâtes au pesto de roquette",
-"Salade de roquette au parmesan",
-"Tagliata de bœuf à la roquette"
-]
-},
-"salade": {
-"nom": "Salade feuille de chêne",
-"saison": "Toute l'année",
-"photo": null,
-"recette": {
-"origine": "Classique de bistrot",
-"titre": "Salade parisienne",
-"intro": "La salade composée des bistrots parisiens : jambon blanc, emmental, pommes de terre et œufs durs, sur des feuilles de chêne bien tendres.",
-"prep": "20 min",
-"cuisson": "20 min",
-"pers": "4",
-"niveau": "Très facile",
-"ingredients": [
-[
-"1",
-"salade feuille de chêne",
-"Salade feuille de chêne"
-],
-[
-"4 tranches",
-"de jambon blanc",
-null
-],
-[
-"150 g",
-"d'emmental",
-null
-],
-[
-"4",
-"pommes de terre",
-"Pdt agata"
-],
-[
-"2",
-"œufs",
-"Œufs plein air"
-],
-[
-"1",
-"échalote",
-"Échalote"
-],
-[
-"1 c. à s.",
-"de moutarde",
-null
-],
-[
-"2 c. à s.",
-"de vinaigre de vin",
-null
-],
-[
-"5 c. à s.",
-"d'huile",
-null
-]
-],
-"etapes": [
-"Faites cuire les pommes de terre 20 min à l'eau salée et les œufs 10 min. Laissez refroidir, épluchez et coupez-les en morceaux.",
-"Lavez et essorez délicatement la salade.",
-"Coupez le jambon en lanières et l'emmental en dés. Préparez la vinaigrette avec la moutarde, le vinaigre, l'huile et l'échalote hachée.",
-"Mélangez la salade avec la vinaigrette, et répartissez dessus le jambon, le fromage, les pommes de terre et les œufs."
-],
-"conseil": "La feuille de chêne est très tendre : lavez-la sans la laisser tremper et assaisonnez-la au dernier moment. Elle se garde 3 jours au frigo."
-},
-"historique": [
-"Salade landaise",
-"Salade lyonnaise",
-"Salade parisienne"
-]
-},
-"tomate-cerise": {
-"nom": "Tomate cerise",
-"saison": "De mai à octobre",
-"photo": null,
-"recette": {
-"origine": "Spécialité italienne",
-"titre": "Bruschetta aux tomates cerises",
-"intro": "Des tranches de pain grillé frottées à l'ail, garnies de tomates cerises en dés, d'huile d'olive et d'herbes. Une entrée ou un apéritif prêt en 15 minutes.",
-"prep": "15 min",
-"cuisson": "5 min",
-"pers": "4",
-"niveau": "Très facile",
-"ingredients": [
-[
-"300 g",
-"de tomates cerises",
-"Tomate cerise"
-],
-[
-"8 tranches",
-"de pain de campagne",
-null
-],
-[
-"2 gousses",
-"d'ail violet",
-"Ail violet"
-],
-[
-"1",
-"échalote",
-"Échalote"
-],
-[
-"1 c. à s.",
-"de persil haché",
-"Persil"
-],
-[
-"5 c. à s.",
-"d'huile d'olive",
-null
-],
-[
-"1 c. à c.",
-"de vinaigre balsamique",
+"10 cl",
+"de crème liquide",
 null
 ],
 [
@@ -3066,17 +2830,215 @@ null
 ]
 ],
 "etapes": [
-"Coupez les tomates cerises en quatre. Mélangez-les avec l'échalote hachée, le persil, 3 c. à s. d'huile, le vinaigre, du sel et du poivre. Laissez reposer 10 min.",
-"Faites griller les tranches de pain au grille-pain ou au four.",
-"Frottez-les encore chaudes avec une gousse d'ail coupée en deux et arrosez-les d'un filet d'huile.",
-"Garnissez de tomates au dernier moment et servez aussitôt."
+"Épluchez les radis et les pommes de terre, coupez-les en cubes. Émincez l'oignon.",
+"Faites fondre l'oignon dans le beurre 5 min.",
+"Ajoutez les radis, les pommes de terre et le bouillon, et laissez cuire 20 min.",
+"Mixez, ajoutez la crème, salez, poivrez et servez."
 ],
-"conseil": "Ne mettez jamais les tomates cerises au frigo : elles y perdent leur goût. Gardez-les dans une coupe, à température ambiante, 4 à 5 jours."
+"conseil": "Choisissez un radis red meat bien ferme et lourd. Il se garde deux à trois semaines au frigo, enveloppé dans un sachet."
+},
+"historique": [
+"Pickles de radis",
+"Radis rôtis au four",
+"Carpaccio de radis red meat",
+"Velouté de radis red meat"
+]
+},
+"roquette": {
+"nom": "Roquette",
+"saison": "Toute l'année",
+"photo": null,
+"recette": {
+"origine": "Classique de la cuisine italienne",
+"titre": "Pizza blanche à la roquette et au jambon cru",
+"intro": "Une pizza blanche à la crème et à la mozzarella, garnie à la sortie du four de roquette fraîche et de jambon cru.",
+"prep": "15 min",
+"cuisson": "15 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"100 g",
+"de roquette",
+"Roquette"
+],
+[
+"1",
+"pâte à pizza",
+null
+],
+[
+"10 cl",
+"de crème fraîche",
+null
+],
+[
+"1 boule",
+"de mozzarella",
+null
+],
+[
+"4 tranches",
+"de jambon cru",
+null
+],
+[
+"40 g",
+"de parmesan en copeaux",
+null
+],
+[
+"2 c. à soupe",
+"d'huile d'olive",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Préchauffez le four à 250 °C. Étalez la pâte sur une plaque.",
+"Tartinez-la de crème, ajoutez la mozzarella en tranches, salez et poivrez.",
+"Enfournez 12 à 15 min, jusqu'à ce que la pâte soit dorée.",
+"À la sortie du four, garnissez de roquette, de jambon cru et de copeaux de parmesan, et arrosez d'huile d'olive."
+],
+"conseil": "Choisissez une roquette aux feuilles bien vertes et croquantes, sans feuilles jaunies. Elle se garde 2 à 3 jours au frigo dans une boîte."
+},
+"historique": [
+"Pâtes au pesto de roquette",
+"Salade de roquette au parmesan",
+"Tagliata de bœuf à la roquette",
+"Pizza blanche à la roquette et au jambon cru"
+]
+},
+"salade": {
+"nom": "Salade feuille de chêne",
+"saison": "Toute l'année",
+"photo": null,
+"recette": {
+"origine": "Classique de la cuisine française",
+"titre": "Salade de feuille de chêne au chèvre et au miel",
+"intro": "Une salade tendre avec des toasts de chèvre chaud au miel : l'entrée qui plaît à tout le monde.",
+"prep": "15 min",
+"cuisson": "10 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"1",
+"salade feuille de chêne",
+"Salade feuille de chêne"
+],
+[
+"1",
+"bûche de chèvre",
+null
+],
+[
+"8 tranches",
+"de baguette",
+null
+],
+[
+"2 c. à soupe",
+"de miel",
+"Miel de fleurs"
+],
+[
+"1 c. à soupe",
+"de vinaigre balsamique",
+null
+],
+[
+"3 c. à soupe",
+"d'huile d'olive",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Préchauffez le four en position gril. Lavez et essorez la salade.",
+"Posez une rondelle de chèvre sur chaque tranche de pain et ajoutez un filet de miel.",
+"Passez 5 à 8 min sous le gril, jusqu'à ce que le chèvre soit doré.",
+"Assaisonnez la salade avec l'huile, le vinaigre, du sel et du poivre, et servez avec les toasts chauds."
+],
+"conseil": "La feuille de chêne est tendre et fragile. Choisissez-la avec un cœur bien ferme et sans feuilles flétries ; elle se garde 2 à 3 jours au frigo."
+},
+"historique": [
+"Salade landaise",
+"Salade lyonnaise",
+"Salade parisienne",
+"Salade de feuille de chêne au chèvre et au miel"
+]
+},
+"tomate-cerise": {
+"nom": "Tomate cerise",
+"saison": "De mai à octobre",
+"photo": null,
+"recette": {
+"origine": "Classique de la cuisine italienne",
+"titre": "Pâtes aux tomates cerises rôties",
+"intro": "Des tomates cerises rôties au four jusqu'à éclater, mélangées à des pâtes avec de l'ail et du basilic.",
+"prep": "10 min",
+"cuisson": "25 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"500 g",
+"de tomates cerises",
+"Tomate cerise"
+],
+[
+"350 g",
+"de pâtes",
+null
+],
+[
+"3 gousses",
+"d'ail",
+"Ail violet"
+],
+[
+"4 c. à soupe",
+"d'huile d'olive",
+null
+],
+[
+"1 bouquet",
+"de basilic",
+null
+],
+[
+"50 g",
+"de parmesan râpé",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Préchauffez le four à 200 °C. Mettez les tomates cerises et l'ail émincé dans un plat, arrosez d'huile, salez et poivrez.",
+"Enfournez 20 à 25 min, jusqu'à ce que les tomates éclatent.",
+"Pendant ce temps, faites cuire les pâtes dans l'eau salée.",
+"Mélangez les pâtes égouttées avec les tomates et leur jus, le basilic et le parmesan."
+],
+"conseil": "Choisissez des tomates cerises brillantes et fermes, encore sur la grappe si possible. Gardez-les à température ambiante, jamais au frigo : 4 à 5 jours."
 },
 "historique": [
 "Clafoutis aux tomates cerises",
 "Spaghetti aux tomates cerises",
-"Bruschetta aux tomates cerises"
+"Bruschetta aux tomates cerises",
+"Pâtes aux tomates cerises rôties"
 ]
 },
 "topinambour": {
@@ -3188,40 +3150,41 @@ null
 "photo": null,
 "historique": [
 "Guacamole à la coriandre",
-"Soupe de carottes à la coriandre"
+"Soupe de carottes à la coriandre",
+"Raïta à la coriandre"
 ],
 "recette": {
-"origine": "Classique de la cuisine britannique",
-"titre": "Soupe de carottes à la coriandre",
-"intro": "Un grand classique des soupes d'hiver outre-Manche : des carottes fondantes relevées par la coriandre fraîche, mixée dans la soupe et parsemée au moment de servir.",
-"prep": "15 min",
-"cuisson": "30 min",
+"origine": "Classique de la cuisine indienne",
+"titre": "Raïta à la coriandre",
+"intro": "Une sauce fraîche au yaourt et à la coriandre, parfaite avec les plats épicés ou les grillades.",
+"prep": "10 min",
+"cuisson": "",
 "pers": "4",
 "niveau": "Très facile",
 "ingredients": [
 [
-"800 g",
-"de carottes",
-"Carotte"
-],
-[
-"1",
-"oignon jaune",
-"Oignon jaune"
-],
-[
-"1 botte",
-"de coriandre fraîche",
+"1 bouquet",
+"de coriandre",
 "Coriandre"
 ],
 [
-"30 g",
-"de beurre",
+"2",
+"yaourts nature",
 null
 ],
 [
-"1 litre",
-"de bouillon de légumes",
+"1/2",
+"concombre",
+"Concombre"
+],
+[
+"1 gousse",
+"d'ail",
+"Ail violet"
+],
+[
+"1 pincée",
+"de cumin",
 null
 ],
 [
@@ -3231,12 +3194,12 @@ null
 ]
 ],
 "etapes": [
-"Épluchez et émincez l'oignon, pelez les carottes et coupez-les en rondelles. Séparez les tiges et les feuilles de coriandre ; hachez finement les tiges.",
-"Faites fondre le beurre dans une grande casserole, ajoutez l'oignon et les tiges de coriandre et laissez-les suer 5 minutes à feu doux sans coloration.",
-"Ajoutez les carottes, versez le bouillon, salez peu et poivrez. Portez à ébullition puis laissez cuire 25 minutes à frémissement, jusqu'à ce que les carottes s'écrasent facilement.",
-"Ajoutez la moitié des feuilles de coriandre, mixez finement et rectifiez l'assaisonnement. Servez bien chaud, parsemé du reste de coriandre ciselée."
+"Épluchez le demi-concombre, retirez les graines et râpez-le. Pressez-le pour retirer l'eau.",
+"Ciselez finement la coriandre et hachez l'ail.",
+"Mélangez les yaourts, le concombre, l'ail, la coriandre et le cumin.",
+"Salez, poivrez et gardez au frais jusqu'au service."
 ],
-"conseil": "Choisissez une botte de coriandre aux feuilles bien vertes et fermes, sans jaunissement. Elle se garde 4 à 5 jours au réfrigérateur, tiges plongées dans un verre d'eau et feuilles couvertes d'un sachet."
+"conseil": "Choisissez une coriandre aux feuilles bien vertes, sans jaunir. Gardez-la au frigo, tiges dans un verre d'eau, comme un bouquet."
 }
 },
 "gingembre": {
@@ -3244,72 +3207,63 @@ null
 "saison": "Toute l'année",
 "photo": null,
 "recette": {
-"origine": "Spécialité indienne",
-"titre": "Dal de lentilles corail",
-"intro": "Le plat de lentilles indien, épicé au gingembre frais, à l'ail et au curcuma. Les lentilles corail cuisent vite et fondent en une purée onctueuse.",
+"origine": "Classique de la cuisine thaïlandaise",
+"titre": "Soupe de poulet au lait de coco et au gingembre",
+"intro": "Une soupe parfumée inspirée du tom kha thaï, où le gingembre frais réchauffe tout le bouillon.",
 "prep": "15 min",
-"cuisson": "30 min",
+"cuisson": "20 min",
 "pers": "4",
 "niveau": "Facile",
 "ingredients": [
 [
-"250 g",
-"de lentilles corail",
-null
-],
-[
-"4 cm",
-"de gingembre frais",
+"1 morceau",
+"de gingembre (5 cm)",
 "Gingembre"
 ],
 [
-"1",
-"oignon jaune",
-"Oignon jaune"
+"2",
+"blancs de poulet",
+null
 ],
 [
-"3 gousses",
-"d'ail violet",
-"Ail violet"
+"40 cl",
+"de lait de coco",
+null
+],
+[
+"60 cl",
+"de bouillon de volaille",
+null
 ],
 [
 "200 g",
-"de tomates concassées en conserve",
+"de champignons blancs",
+"Champignon blanc"
+],
+[
+"2 c. à soupe",
+"de sauce nuoc-mâm",
 null
 ],
 [
-"1 c. à c.",
-"de curcuma",
-null
-],
-[
-"1 c. à c.",
-"de cumin",
-null
-],
-[
-"2 c. à s.",
-"d'huile ou de beurre",
-null
-],
-[
-"",
-"Sel",
-null
+"1 bouquet",
+"de coriandre",
+"Coriandre"
 ]
 ],
 "etapes": [
-"Rincez les lentilles. Hachez l'oignon et râpez l'ail et le gingembre.",
-"Faites revenir l'oignon dans l'huile 5 min, ajoutez l'ail, le gingembre et les épices, et faites revenir encore 1 min.",
-"Ajoutez les lentilles, les tomates et 75 cl d'eau, et laissez cuire 20 à 25 min en remuant, jusqu'à ce que les lentilles se défassent.",
-"Salez et servez avec du riz basmati."
+"Épluchez le gingembre et coupez-le en fines lamelles. Émincez le poulet et les champignons.",
+"Portez le bouillon et le lait de coco à frémissement avec le gingembre, laissez infuser 5 min.",
+"Ajoutez le poulet et les champignons, et laissez cuire 10 min à petits frémissements.",
+"Assaisonnez avec le nuoc-mâm et servez parsemé de coriandre."
 ],
-"conseil": "Choisissez un gingembre à la peau fine et brillante, bien ferme. Il se garde 3 semaines au frigo, et se râpe très bien encore congelé."
+"conseil": "Un bon gingembre a une peau fine, lisse et tendue, et casse net. Il se garde trois semaines au frigo, ou se congèle et se râpe sans décongeler."
 },
 "historique": [
 "Poulet sauté au gingembre",
 "Poisson vapeur au gingembre",
-"Dal de lentilles corail"
+"Dal de lentilles corail",
+"Soupe de poulet au lait de coco et au gingembre"
 ]
 },
 "menthe": {
@@ -3326,47 +3280,47 @@ null
 "saison": "Toute l'année",
 "photo": null,
 "recette": {
-"origine": "Spécialité italienne",
-"titre": "Salsa verde",
-"intro": "La sauce verte italienne au persil, aux câpres, à l'anchois et à l'ail, servie avec un pot-au-feu, un poisson ou des légumes grillés.",
-"prep": "15 min",
-"cuisson": "",
-"pers": "6",
-"niveau": "Très facile",
+"origine": "Spécialité du Sud-Ouest",
+"titre": "Moules en persillade",
+"intro": "Des moules gratinées sous une persillade beurrée à l'ail : simple et irrésistible.",
+"prep": "20 min",
+"cuisson": "15 min",
+"pers": "4",
+"niveau": "Facile",
 "ingredients": [
 [
-"1 botte",
+"1 bouquet",
 "de persil plat",
 "Persil"
 ],
 [
-"1 gousse",
-"d'ail violet",
+"2 kg",
+"de moules",
+null
+],
+[
+"3 gousses",
+"d'ail",
 "Ail violet"
 ],
 [
-"2 c. à s.",
-"de câpres",
+"2",
+"échalotes",
+"Échalote"
+],
+[
+"100 g",
+"de beurre mou",
 null
 ],
 [
-"3",
-"filets d'anchois",
+"40 g",
+"de chapelure",
 null
 ],
 [
-"1 c. à c.",
-"de moutarde",
-null
-],
-[
-"2 c. à s.",
-"de vinaigre de vin",
-null
-],
-[
-"12 cl",
-"d'huile d'olive",
+"10 cl",
+"de vin blanc sec",
 null
 ],
 [
@@ -3376,17 +3330,18 @@ null
 ]
 ],
 "etapes": [
-"Lavez et séchez le persil, et retirez les grosses tiges.",
-"Hachez finement au couteau le persil, l'ail, les câpres et les anchois.",
-"Mettez le tout dans un bol avec la moutarde et le vinaigre, puis versez l'huile en mélangeant.",
-"Goûtez avant de saler (les anchois et les câpres le sont déjà), poivrez et laissez reposer 15 min avant de servir."
+"Grattez et lavez les moules. Faites-les ouvrir 5 min à feu vif à couvert avec le vin blanc et une échalote hachée.",
+"Retirez une demi-coquille à chaque moule et disposez-les dans un plat.",
+"Mélangez le beurre mou avec le persil, l'ail et l'autre échalote hachés, la chapelure et du poivre.",
+"Déposez un peu de beurre persillé sur chaque moule et passez 5 min sous le gril du four."
 ],
-"conseil": "Gardez le persil comme un bouquet, les tiges dans un verre d'eau au frigo : il tient une semaine. Il se congèle aussi très bien haché."
+"conseil": "Choisissez un persil aux feuilles bien vertes et fermes. Gardez-le au frigo, tiges dans un verre d'eau, ou hachez-le et congelez-le."
 },
 "historique": [
 "Sauce chimichurri",
 "Omelette aux fines herbes",
-"Salsa verde"
+"Salsa verde",
+"Moules en persillade"
 ]
 },
 "avocat-petit": {
@@ -3506,37 +3461,42 @@ null
 "saison": "Toute l'année",
 "photo": null,
 "recette": {
-"origine": "Classique de la cuisine familiale",
-"titre": "Betteraves rôties au four",
-"intro": "Les betteraves crues cuites lentement au four dans leur peau : elles confisent et prennent un goût sucré, presque fumé. Un accompagnement parfait pour un rôti ou une volaille.",
-"prep": "10 min",
-"cuisson": "1 h 15",
+"origine": "Grand classique de la cuisine française",
+"titre": "Velouté de betterave",
+"intro": "Un velouté à la couleur éclatante, doux et légèrement sucré, idéal pour les soirées d'automne.",
+"prep": "15 min",
+"cuisson": "40 min",
 "pers": "4",
-"niveau": "Très facile",
+"niveau": "Facile",
 "ingredients": [
 [
-"4",
+"3",
 "betteraves crues",
 "Betterave crue à la pièce"
 ],
 [
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
 "2",
-"échalotes",
-"Échalote"
+"pommes de terre",
+"Pdt Bintje"
 ],
 [
-"3 c. à s.",
-"d'huile d'olive",
+"30 g",
+"de beurre",
 null
 ],
 [
-"4 branches",
-"de thym",
+"1 L",
+"de bouillon de légumes",
 null
 ],
 [
-"1 c. à s.",
-"de vinaigre balsamique",
+"10 cl",
+"de crème fraîche",
 null
 ],
 [
@@ -3546,17 +3506,18 @@ null
 ]
 ],
 "etapes": [
-"Préchauffez le four à 200 °C. Brossez les betteraves sous l'eau sans les éplucher.",
-"Enveloppez-les une par une dans du papier aluminium avec un filet d'huile, du sel et du thym. Enfournez 1 h à 1 h 15 : la pointe d'un couteau doit entrer sans résistance.",
-"Laissez tiédir, épluchez-les (la peau part toute seule) et coupez-les en quartiers.",
-"Faites revenir les échalotes émincées 3 min dans le reste de l'huile, ajoutez les betteraves et le vinaigre, mélangez et servez."
+"Épluchez les betteraves (avec des gants) et les pommes de terre, puis coupez-les en cubes. Émincez l'oignon.",
+"Faites fondre l'oignon dans le beurre 5 min, ajoutez les betteraves et les pommes de terre.",
+"Couvrez de bouillon et laissez cuire 35 à 40 min, jusqu'à ce que la betterave soit tendre.",
+"Mixez finement, ajoutez la crème, salez, poivrez et servez avec une cuillère de crème au centre."
 ],
-"conseil": "Prenez des betteraves fermes, à la peau lisse, sans parties molles. Coupez les fanes en arrivant : les betteraves se gardent alors 2 à 3 semaines au frigo."
+"conseil": "Choisissez des betteraves crues fermes, à la peau lisse et sans taches molles. Elles se gardent deux semaines au bas du frigo, fanes coupées."
 },
 "historique": [
 "Betterave crue râpée à l'échalote",
 "Bortsch",
-"Betteraves rôties au four"
+"Betteraves rôties au four",
+"Velouté de betterave"
 ]
 },
 "betterave-cuite": {
@@ -3564,119 +3525,46 @@ null
 "saison": "Toute l'année",
 "photo": null,
 "recette": {
-"origine": "Spécialité russe",
-"titre": "Vinegret",
-"intro": "La salade de betteraves de l'hiver russe : betterave, pommes de terre et carottes en petits dés, avec des cornichons et une vinaigrette à l'huile.",
-"prep": "20 min",
-"cuisson": "25 min",
+"origine": "Classique de bistrot",
+"titre": "Salade de betteraves aux œufs durs",
+"intro": "Une entrée de bistrot toute simple, fraîche et colorée, prête en quelques minutes.",
+"prep": "15 min",
+"cuisson": "10 min",
 "pers": "4",
-"niveau": "Facile",
+"niveau": "Très facile",
 "ingredients": [
 [
-"3",
+"2",
 "betteraves cuites",
 "Betterave cuite"
 ],
 [
-"3",
-"pommes de terre",
-"Pdt agata"
-],
-[
-"2",
-"carottes",
-"Carotte"
+"4",
+"œufs",
+"Œufs plein air"
 ],
 [
 "1",
-"oignon rouge",
-"Oignon rouge"
+"échalote",
+"Échalote"
 ],
 [
-"6",
-"cornichons",
+"1 bouquet",
+"de persil",
+"Persil"
+],
+[
+"1 c. à soupe",
+"de moutarde",
 null
 ],
 [
-"4 c. à s.",
-"d'huile de tournesol",
+"1 c. à soupe",
+"de vinaigre de vin",
 null
 ],
 [
-"1 c. à s.",
-"de vinaigre",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Faites cuire les pommes de terre et les carottes avec leur peau dans l'eau salée 20 à 25 min. Laissez refroidir et épluchez-les.",
-"Coupez les betteraves, les pommes de terre, les carottes et les cornichons en petits dés réguliers. Émincez finement l'oignon.",
-"Mélangez d'abord les betteraves avec un peu d'huile, pour qu'elles ne colorent pas tout le reste.",
-"Ajoutez les autres légumes, le reste de l'huile, le vinaigre, du sel et du poivre. Laissez reposer 30 min au frais avant de servir."
-],
-"conseil": "La betterave cuite se garde 4 à 5 jours au frigo dans son emballage. Épluchez-la avec des gants si vous ne voulez pas avoir les doigts roses."
-},
-"historique": [
-"Betteraves à la crème",
-"Betteraves en salade, vinaigrette à l'échalote",
-"Vinegret"
-]
-},
-"carottes": {
-"nom": "Carotte",
-"saison": "Toute l'année",
-"photo": null,
-"recette": {
-"origine": "Classique de bistrot",
-"titre": "Bœuf carottes",
-"intro": "Le plat mijoté de nos grands-mères : du bœuf à braiser qui cuit des heures avec les carottes, jusqu'à se couper à la cuillère.",
-"prep": "20 min",
-"cuisson": "2 h 30",
-"pers": "6",
-"niveau": "Facile",
-"ingredients": [
-[
-"1,2 kg",
-"de bœuf à braiser (paleron, macreuse)",
-null
-],
-[
-"1 kg",
-"de carottes",
-"Carotte"
-],
-[
-"2",
-"oignons jaunes",
-"Oignon jaune"
-],
-[
-"2 gousses",
-"d'ail violet",
-"Ail violet"
-],
-[
-"25 cl",
-"de vin blanc sec",
-null
-],
-[
-"50 cl",
-"de bouillon de bœuf",
-null
-],
-[
-"1",
-"bouquet garni",
-null
-],
-[
-"2 c. à s.",
+"3 c. à soupe",
 "d'huile",
 null
 ],
@@ -3687,17 +3575,77 @@ null
 ]
 ],
 "etapes": [
-"Coupez la viande en gros cubes et faites-la dorer de tous côtés dans l'huile, dans une cocotte. Retirez-la.",
-"Faites revenir les oignons émincés et l'ail 5 min, remettez la viande, versez le vin et laissez réduire de moitié.",
-"Ajoutez le bouillon et le bouquet garni, salez, poivrez, couvrez et laissez mijoter 1 h 30 à feu doux.",
-"Ajoutez les carottes épluchées et coupées en rondelles épaisses, et poursuivez la cuisson 1 h, jusqu'à ce que la viande soit fondante."
+"Faites cuire les œufs 10 min dans l'eau bouillante, refroidissez-les et écalez-les.",
+"Pelez les betteraves et coupez-les en dés. Ciselez l'échalote et le persil.",
+"Préparez la vinaigrette avec la moutarde, le vinaigre, l'huile, le sel et le poivre.",
+"Mélangez les betteraves, l'échalote et la vinaigrette, ajoutez les œufs en quartiers et parsemez de persil."
 ],
-"conseil": "Gardez les carottes au frigo sans leurs fanes, dans le bac à légumes : elles restent croquantes 2 à 3 semaines. Une carotte qui plie n'est plus fraîche."
+"conseil": "Une betterave cuite doit avoir une peau bien lisse et brillante. Gardez-la au frigo et consommez-la dans les 3 à 4 jours."
+},
+"historique": [
+"Betteraves à la crème",
+"Betteraves en salade, vinaigrette à l'échalote",
+"Vinegret",
+"Salade de betteraves aux œufs durs"
+]
+},
+"carottes": {
+"nom": "Carotte",
+"saison": "Toute l'année",
+"photo": null,
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Carottes Vichy",
+"intro": "Le grand classique : des rondelles de carottes cuites au beurre, tendres et sucrées.",
+"prep": "10 min",
+"cuisson": "25 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"800 g",
+"de carottes",
+"Carotte"
+],
+[
+"40 g",
+"de beurre",
+null
+],
+[
+"1 c. à café",
+"de sucre",
+null
+],
+[
+"",
+"eau",
+null
+],
+[
+"1 bouquet",
+"de persil",
+"Persil"
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Épluchez les carottes et coupez-les en fines rondelles.",
+"Mettez-les dans une casserole avec le beurre, le sucre, une pincée de sel, et couvrez à peine d'eau.",
+"Laissez cuire à couvert 20 min à feu doux, puis à découvert jusqu'à évaporation du liquide.",
+"Poivrez et servez parsemé de persil ciselé."
+],
+"conseil": "Choisissez des carottes bien fermes et lisses, d'un orange vif. Elles se gardent deux semaines dans le bac à légumes."
 },
 "historique": [
 "Potage Crécy",
 "Carottes râpées vinaigrette",
-"Bœuf carottes"
+"Bœuf carottes",
+"Carottes Vichy"
 ]
 },
 "champignon-blanc": {
@@ -3706,27 +3654,27 @@ null
 "photo": null,
 "recette": {
 "origine": "Grand classique de la cuisine française",
-"titre": "Omelette aux champignons",
-"intro": "L'omelette baveuse garnie de champignons de Paris poêlés au beurre : un dîner prêt en un quart d'heure.",
-"prep": "10 min",
-"cuisson": "10 min",
-"pers": "2",
+"titre": "Velouté de champignons",
+"intro": "Un velouté doux et crémeux, au goût de sous-bois, qui se prépare en une demi-heure.",
+"prep": "15 min",
+"cuisson": "25 min",
+"pers": "4",
 "niveau": "Très facile",
 "ingredients": [
 [
-"250 g",
+"500 g",
 "de champignons blancs",
 "Champignon blanc"
 ],
 [
-"5",
-"œufs",
-"Œufs plein air"
+"1",
+"oignon jaune",
+"Oignon jaune"
 ],
 [
 "1",
-"échalote",
-"Échalote"
+"pomme de terre",
+"Pdt Bintje"
 ],
 [
 "30 g",
@@ -3734,8 +3682,18 @@ null
 null
 ],
 [
-"1 c. à s.",
-"de persil haché",
+"75 cl",
+"de bouillon",
+null
+],
+[
+"15 cl",
+"de crème liquide",
+null
+],
+[
+"2 brins",
+"de persil",
 "Persil"
 ],
 [
@@ -3745,17 +3703,18 @@ null
 ]
 ],
 "etapes": [
-"Essuyez les champignons et émincez-les. Hachez l'échalote.",
-"Faites-les sauter à feu vif dans la moitié du beurre avec l'échalote 5 min, jusqu'à ce qu'ils soient dorés. Salez, poivrez, ajoutez le persil.",
-"Battez les œufs avec du sel et du poivre. Faites mousser le reste du beurre dans la poêle et versez les œufs, en ramenant les bords vers le centre.",
-"Quand l'omelette est encore baveuse, posez les champignons sur une moitié, repliez-la et servez."
+"Nettoyez les champignons et émincez-les. Émincez l'oignon, épluchez et coupez la pomme de terre en dés.",
+"Faites revenir l'oignon dans le beurre, ajoutez les champignons et laissez-les rendre leur eau 5 min.",
+"Ajoutez la pomme de terre et le bouillon, et laissez cuire 20 min.",
+"Mixez, ajoutez la crème, salez, poivrez et servez avec un peu de persil."
 ],
-"conseil": "Choisissez des champignons blancs bien fermés sous le chapeau. Gardez-les au frigo dans un sac en papier, jamais en plastique : 3 à 4 jours."
+"conseil": "Un champignon de Paris bien frais est blanc, ferme et a son chapeau bien fermé sur le pied. Il se garde 3 à 4 jours au frigo dans un sac papier."
 },
 "historique": [
 "Champignons à la crème",
 "Champignons à la grecque",
-"Omelette aux champignons"
+"Omelette aux champignons",
+"Velouté de champignons"
 ]
 },
 "champignon-brun": {
@@ -3763,42 +3722,37 @@ null
 "saison": "Toute l'année",
 "photo": null,
 "recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Poulet chasseur",
-"intro": "Le poulet mijoté aux champignons, à l'échalote, au vin blanc et à la tomate. Le champignon brun, plus goûteux, donne une sauce bien parfumée.",
-"prep": "20 min",
-"cuisson": "50 min",
+"origine": "Classique de bistrot",
+"titre": "Tagliatelles aux champignons et à la crème",
+"intro": "Des pâtes nappées d'une sauce crémeuse aux champignons bruns, prêtes en vingt minutes.",
+"prep": "10 min",
+"cuisson": "15 min",
 "pers": "4",
-"niveau": "Facile",
+"niveau": "Très facile",
 "ingredients": [
-[
-"1",
-"poulet découpé en 8 morceaux",
-null
-],
 [
 "400 g",
 "de champignons bruns",
 "Champignon brun"
 ],
 [
-"3",
+"350 g",
+"de tagliatelles",
+null
+],
+[
+"2",
 "échalotes",
 "Échalote"
 ],
 [
-"20 cl",
-"de vin blanc sec",
-null
-],
-[
-"200 g",
-"de tomates concassées en conserve",
-null
+"1 gousse",
+"d'ail",
+"Ail violet"
 ],
 [
 "20 cl",
-"de bouillon de volaille",
+"de crème fraîche",
 null
 ],
 [
@@ -3807,8 +3761,8 @@ null
 null
 ],
 [
-"1 c. à s.",
-"de persil haché",
+"1 bouquet",
+"de persil",
 "Persil"
 ],
 [
@@ -3818,17 +3772,18 @@ null
 ]
 ],
 "etapes": [
-"Salez et poivrez les morceaux de poulet, faites-les dorer dans le beurre dans une cocotte, puis retirez-les.",
-"Faites revenir les champignons émincés et les échalotes hachées 5 min dans la même cocotte.",
-"Versez le vin blanc et laissez réduire de moitié, puis ajoutez les tomates et le bouillon.",
-"Remettez le poulet, couvrez et laissez mijoter 40 min. Parsemez de persil au moment de servir."
+"Faites cuire les tagliatelles dans une grande casserole d'eau salée.",
+"Pendant ce temps, faites revenir les échalotes et l'ail hachés dans le beurre, puis ajoutez les champignons émincés et faites-les dorer 8 min.",
+"Ajoutez la crème, salez, poivrez et laissez réduire 2 min.",
+"Mélangez avec les pâtes égouttées et parsemez de persil."
 ],
-"conseil": "Le champignon brun se tient mieux à la cuisson que le blanc. Ne le lavez pas à grande eau : essuyez-le avec un papier humide."
+"conseil": "Les champignons bruns ont plus de goût que les blancs. Choisissez-les fermes et secs, et gardez-les au frigo dans du papier, 4 à 5 jours."
 },
 "historique": [
 "Champignons à la bordelaise",
 "Velouté de champignons",
-"Poulet chasseur"
+"Poulet chasseur",
+"Tagliatelles aux champignons et à la crème"
 ]
 },
 "chou-blanc": {
@@ -3836,86 +3791,22 @@ null
 "saison": "D'octobre à mars",
 "photo": null,
 "recette": {
-"origine": "Classique de la cuisine familiale",
-"titre": "Gratin de chou blanc",
-"intro": "Un gratin réconfortant : le chou blanc blanchi puis nappé de béchamel et gratiné au four, parfait avec une viande rôtie ou seul avec une salade.",
+"origine": "Spécialité alsacienne",
+"titre": "Choucroute maison de chou blanc braisé",
+"intro": "Une version rapide de l'esprit choucroute : du chou blanc émincé, braisé avec lardons et genièvre.",
 "prep": "20 min",
 "cuisson": "1 h",
 "pers": "4",
 "niveau": "Facile",
 "ingredients": [
 [
-"1/2",
+"1",
 "chou blanc",
 "Chou blanc (pièce)"
 ],
 [
-"1",
-"oignon",
-"Oignon jaune"
-],
-[
-"40 g",
-"de beurre",
-null
-],
-[
-"40 g",
-"de farine",
-null
-],
-[
-"50 cl",
-"de lait",
-null
-],
-[
-"80 g",
-"de fromage râpé",
-null
-],
-[
-"",
-"Sel, poivre, muscade",
-null
-]
-],
-"etapes": [
-"Émincez le chou en lanières et faites-le blanchir 8 minutes dans l'eau bouillante salée. Égouttez bien.",
-"Faites fondre l'oignon émincé dans un peu de beurre, mélangez-le au chou et versez le tout dans un plat beurré.",
-"Préparez la béchamel : faites fondre le reste du beurre, ajoutez la farine, puis le lait petit à petit en fouettant jusqu'à épaississement. Salez, poivrez, muscadez.",
-"Nappez le chou de béchamel, parsemez de fromage et enfournez 40 minutes à 190 °C, jusqu'à ce que le dessus soit bien doré."
-],
-"conseil": "Un bon chou blanc est dense, lourd et serré, aux feuilles brillantes. Entamé, filmez la coupe : il se garde ainsi une semaine au frigo."
-},
-"historique": [
-"Coleslaw",
-"Chou blanc braisé aux lardons",
-"Soupe au chou",
-"Gratin de chou blanc"
-]
-},
-"courgette-espagne": {
-"nom": "Courgette",
-"saison": "D'octobre à mai",
-"photo": null,
-"recette": {
-"origine": "Spécialité niçoise",
-"titre": "Courgettes farcies",
-"intro": "Les petits farcis niçois : des courgettes évidées et garnies d'une farce de viande, de leur chair, d'ail et de persil, puis dorées au four.",
-"prep": "30 min",
-"cuisson": "45 min",
-"pers": "4",
-"niveau": "Moyen",
-"ingredients": [
-[
-"4",
-"courgettes",
-"Courgette"
-],
-[
-"300 g",
-"de chair à saucisse ou de veau haché",
+"200 g",
+"de lardons",
 null
 ],
 [
@@ -3924,27 +3815,92 @@ null
 "Oignon jaune"
 ],
 [
-"2 gousses",
-"d'ail violet",
-"Ail violet"
-],
-[
-"½ botte",
-"de persil",
-"Persil"
-],
-[
-"1",
-"œuf",
-"Œufs plein air"
-],
-[
-"40 g",
-"de parmesan râpé",
+"6 baies",
+"de genièvre",
 null
 ],
 [
-"3 c. à s.",
+"1 feuille",
+"de laurier",
+"Lauriet"
+],
+[
+"20 cl",
+"de vin blanc sec",
+null
+],
+[
+"4",
+"saucisses de Strasbourg",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Émincez finement le chou et l'oignon.",
+"Dans une cocotte, faites revenir les lardons et l'oignon, puis ajoutez le chou.",
+"Ajoutez le vin blanc, le genièvre et le laurier, poivrez, couvrez et laissez cuire 50 min à feu doux.",
+"Ajoutez les saucisses les 10 dernières minutes pour les réchauffer."
+],
+"conseil": "Choisissez un chou blanc bien lourd et compact, aux feuilles lisses et brillantes. Entier, il se garde jusqu'à deux semaines au frais."
+},
+"historique": [
+"Coleslaw",
+"Chou blanc braisé aux lardons",
+"Soupe au chou",
+"Gratin de chou blanc",
+"Choucroute maison de chou blanc braisé"
+]
+},
+"courgette-espagne": {
+"nom": "Courgette",
+"saison": "D'octobre à mai",
+"photo": null,
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Tian de courgettes",
+"intro": "Des courgettes en rondelles, cuites au four en couches avec du riz et du fromage : un plat provençal complet.",
+"prep": "15 min",
+"cuisson": "40 min",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"4",
+"courgettes",
+"Courgette"
+],
+[
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"2 gousses",
+"d'ail",
+"Ail violet"
+],
+[
+"100 g",
+"de riz",
+null
+],
+[
+"2",
+"œufs",
+"Œufs plein air"
+],
+[
+"80 g",
+"de fromage râpé",
+null
+],
+[
+"3 c. à soupe",
 "d'huile d'olive",
 null
 ],
@@ -3955,17 +3911,18 @@ null
 ]
 ],
 "etapes": [
-"Coupez les courgettes en deux dans la longueur et faites-les blanchir 5 min à l'eau bouillante. Videz-les à la cuillère en gardant la chair.",
-"Faites revenir l'oignon haché et la chair des courgettes hachée 10 min dans un peu d'huile.",
-"Mélangez avec la viande, l'œuf, l'ail et le persil hachés, la moitié du parmesan, du sel et du poivre.",
-"Garnissez les courgettes, parsemez du reste de parmesan, arrosez d'huile et faites cuire 40 min au four à 180 °C."
+"Faites cuire le riz 10 min à l'eau salée. Préchauffez le four à 200 °C.",
+"Râpez les courgettes et faites-les revenir 10 min à l'huile d'olive avec l'oignon et l'ail hachés.",
+"Mélangez les courgettes, le riz, les œufs battus et la moitié du fromage. Salez, poivrez.",
+"Versez dans un plat huilé, parsemez du reste de fromage et enfournez 30 min."
 ],
-"conseil": "Choisissez des courgettes fermes, brillantes, de taille moyenne : trop grosses, elles ont beaucoup de graines. 5 jours au frigo dans le bac à légumes."
+"conseil": "Choisissez des courgettes fermes, petites ou moyennes, à la peau brillante. Elles se gardent 4 à 5 jours au frigo."
 },
 "historique": [
 "Gratin de courgettes",
 "Ratatouille",
-"Courgettes farcies"
+"Courgettes farcies",
+"Tian de courgettes"
 ]
 },
 "jeunes-pousses": {
@@ -4124,57 +4081,58 @@ null
 "photo": null,
 "recette": {
 "origine": "Grand classique de la cuisine française",
-"titre": "Navets glacés",
-"intro": "La garniture classique des rôtis et des volailles : des navets cuits à court mouillement avec du beurre et du sucre, jusqu'à ce qu'ils soient brillants et caramélisés.",
-"prep": "10 min",
+"titre": "Navets à la crème",
+"intro": "Des navets fondants, cuits doucement puis nappés de crème : un accompagnement délicat pour volailles et rôtis.",
+"prep": "15 min",
 "cuisson": "25 min",
 "pers": "4",
-"niveau": "Facile",
+"niveau": "Très facile",
 "ingredients": [
 [
 "800 g",
-"de petits navets",
+"de navets",
 "Navet"
 ],
 [
-"40 g",
+"30 g",
 "de beurre",
 null
 ],
 [
-"1 c. à soupe",
+"20 cl",
+"de crème fraîche",
+null
+],
+[
+"1 c. à café",
 "de sucre",
 null
 ],
 [
-"",
-"Eau ou bouillon",
-null
+"1 bouquet",
+"de persil",
+"Persil"
 ],
 [
 "",
 "Sel, poivre",
 null
-],
-[
-"",
-"Persil haché",
-"Persil"
 ]
 ],
 "etapes": [
-"Épluchez les navets et coupez-les en quartiers réguliers (laissez les petits entiers).",
-"Mettez-les dans une sauteuse en une seule couche, avec le beurre, le sucre, une pincée de sel, et de l'eau à mi-hauteur.",
-"Couvrez d'un papier sulfurisé percé au centre et laissez cuire à feu moyen 20 minutes, jusqu'à évaporation presque complète de l'eau.",
-"Faites rouler les navets dans le sirop restant quelques minutes pour les glacer et les dorer. Poivrez, parsemez de persil et servez."
+"Épluchez les navets et coupez-les en quartiers.",
+"Faites-les cuire 10 min à l'eau bouillante salée, puis égouttez-les.",
+"Faites-les dorer 10 min dans le beurre avec le sucre.",
+"Ajoutez la crème, laissez réduire 5 min, salez, poivrez et parsemez de persil."
 ],
-"conseil": "Préférez des navets petits à moyens, à la peau fine et sans taches : ils sont plus tendres et moins piquants. Gardez-les au frais, sans les fanes."
+"conseil": "Choisissez des navets petits ou moyens, bien fermes et lourds : les gros peuvent être creux et filandreux. Ils se gardent une semaine au frigo."
 },
 "historique": [
 "Canard aux navets",
 "Gratin de navets",
 "Pot-au-feu",
-"Navets glacés"
+"Navets glacés",
+"Navets à la crème"
 ]
 },
 "oignon-botte": {
@@ -4193,36 +4151,105 @@ null
 "photo": null,
 "recette": {
 "origine": "Grand classique de la cuisine française",
-"titre": "Petits pois à la française",
-"intro": "Les petits pois cuits à l'étouffée avec des oignons grelots, une laitue et du beurre : un accompagnement doux et fondant, très traditionnel.",
-"prep": "15 min",
-"cuisson": "25 min",
-"pers": "4",
-"niveau": "Facile",
+"titre": "Blanquette de veau à l'ancienne",
+"intro": "La blanquette d'autrefois, avec ses petits oignons grelots et ses champignons dans une sauce crémeuse.",
+"prep": "30 min",
+"cuisson": "2 h",
+"pers": "6",
+"niveau": "Moyen",
 "ingredients": [
 [
-"600 g",
-"de petits pois (surgelés en hiver)",
-null
-],
-[
-"12",
-"oignons grelots",
+"300 g",
+"d'oignons grelots",
 "Oignon grelot"
 ],
 [
-"1",
-"laitue",
-"Salade laitue"
+"1,2 kg",
+"de veau (épaule, tendron)",
+null
 ],
 [
-"50 g",
+"250 g",
+"de champignons blancs",
+"Champignon blanc"
+],
+[
+"2",
+"carottes",
+"Carotte"
+],
+[
+"1 feuille",
+"de laurier",
+"Lauriet"
+],
+[
+"40 g",
 "de beurre",
 null
 ],
 [
-"1 c. à c.",
-"de sucre",
+"40 g",
+"de farine",
+null
+],
+[
+"20 cl",
+"de crème fraîche",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Mettez le veau dans une cocotte, couvrez d'eau froide, portez à ébullition et écumez. Ajoutez les carottes, le laurier, du sel et du poivre, puis laissez cuire 1 h 30.",
+"Faites cuire les oignons grelots épluchés et les champignons 15 min dans un peu de bouillon de cuisson.",
+"Préparez un roux avec le beurre et la farine, mouillez avec 50 cl de bouillon et faites épaissir.",
+"Ajoutez la crème, puis la viande, les oignons et les champignons. Réchauffez 10 min sans bouillir et servez avec du riz."
+],
+"conseil": "Les oignons grelots doivent être bien fermes et secs. Pour les éplucher facilement, plongez-les 1 min dans l'eau bouillante. Ils se gardent un mois au sec."
+},
+"historique": [
+"Oignons grelots glacés à brun",
+"Bœuf bourguignon",
+"Petits pois à la française",
+"Blanquette de veau à l'ancienne"
+]
+},
+"oignon-roscoff": {
+"nom": "Oignon de Roscoff",
+"saison": "De septembre à mai",
+"photo": null,
+"recette": {
+"origine": "Spécialité bretonne",
+"titre": "Oignons de Roscoff rôtis au four",
+"intro": "L'oignon rosé de Roscoff, doux et fruité, rôti entier jusqu'à devenir fondant et caramélisé.",
+"prep": "10 min",
+"cuisson": "1 h",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"4",
+"oignons de Roscoff",
+"Oignon roscoff"
+],
+[
+"40 g",
+"de beurre salé",
+null
+],
+[
+"2 c. à soupe",
+"de miel",
+"Miel de fleurs"
+],
+[
+"3 brins",
+"de thym",
 null
 ],
 [
@@ -4237,60 +4264,179 @@ null
 ]
 ],
 "etapes": [
-"Épluchez les oignons grelots. Lavez la laitue et coupez-la en lanières.",
-"Faites fondre la moitié du beurre dans une cocotte et faites-y revenir les oignons 5 min sans les colorer.",
-"Ajoutez les petits pois, la laitue, le sucre, l'eau, du sel et du poivre. Couvrez et laissez cuire 20 min à feu doux.",
-"Hors du feu, ajoutez le reste du beurre, mélangez et servez."
+"Préchauffez le four à 180 °C. Retirez la première peau des oignons et coupez-les en deux dans l'épaisseur.",
+"Posez-les face coupée vers le haut dans un plat, ajoutez une noisette de beurre salé et un peu de miel sur chacun.",
+"Parsemez de thym, salez, poivrez et versez l'eau au fond du plat.",
+"Enfournez 1 h en arrosant de temps en temps, jusqu'à ce qu'ils soient fondants et dorés."
 ],
-"conseil": "Pour éplucher les grelots facilement, plongez-les 1 min dans l'eau bouillante : la peau glisse toute seule. Ils se gardent des semaines au sec."
+"conseil": "L'oignon de Roscoff (AOP) a une peau cuivrée rosée. Choisissez-le bien ferme, et gardez-le au sec et à l'air, en tresse si possible : il se conserve plusieurs mois."
 },
 "historique": [
-"Oignons grelots glacés à brun",
-"Bœuf bourguignon",
-"Petits pois à la française"
+"Tarte à l'oignon",
+"Oignons farcis",
+"Tarte flambée",
+"Oignons de Roscoff rôtis au four"
 ]
 },
-"oignon-roscoff": {
-"nom": "Oignon de Roscoff",
-"saison": "De septembre à mai",
+"oignon-rouge": {
+"nom": "Oignon rouge",
+"saison": "Toute l'année",
 "photo": null,
 "recette": {
-"origine": "Spécialité alsacienne",
-"titre": "Tarte flambée",
-"intro": "La flammekueche alsacienne : une pâte très fine couverte de crème, d'oignons crus émincés et de lardons, cuite à four très chaud. L'oignon de Roscoff, doux et sucré, y est parfait.",
-"prep": "20 min",
-"cuisson": "12 min",
+"origine": "Classique de la cuisine mexicaine",
+"titre": "Pico de gallo",
+"intro": "Une salsa fraîche et croquante à base d'oignon rouge, de tomate et de coriandre, pour les tacos ou les grillades.",
+"prep": "15 min",
+"cuisson": "",
 "pers": "4",
-"niveau": "Facile",
+"niveau": "Très facile",
 "ingredients": [
 [
 "1",
-"pâte à pain ou pâte à pizza",
+"oignon rouge",
+"Oignon rouge"
+],
+[
+"3",
+"tomates",
+"Tomate ronde"
+],
+[
+"1 bouquet",
+"de coriandre",
+"Coriandre"
+],
+[
+"1",
+"petit piment",
 null
 ],
 [
-"2",
-"oignons de Roscoff",
-"Oignon roscoff"
+"2 c. à soupe",
+"de vinaigre de cidre",
+null
 ],
 [
-"200 g",
-"de lardons fumés",
+"2 c. à soupe",
+"d'huile d'olive",
 null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Hachez finement l'oignon rouge et rincez-le à l'eau froide pour l'adoucir.",
+"Épépinez les tomates et coupez-les en petits dés. Ciselez la coriandre et le piment.",
+"Mélangez le tout avec le vinaigre et l'huile, salez et poivrez.",
+"Laissez reposer 10 min au frais avant de servir."
+],
+"conseil": "Choisissez des oignons rouges fermes, à la peau brillante et bien sèche. Ils se gardent plusieurs semaines au sec ; entamés, au frigo dans une boîte."
+},
+"historique": [
+"Confit d'oignons rouges",
+"Pickles d'oignons rouges",
+"Salade de lentilles à l'oignon rouge",
+"Pico de gallo"
+]
+},
+"pdt-agata": {
+"nom": "Pomme de terre Agata",
+"saison": "Toute l'année",
+"photo": null,
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Pommes de terre sautées à l'ail et au persil",
+"intro": "Des pommes de terre dorées et croustillantes à la poêle, avec une persillade ajoutée au dernier moment.",
+"prep": "15 min",
+"cuisson": "30 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"1 kg",
+"de pommes de terre Agata",
+"Pdt agata"
+],
+[
+"3 gousses",
+"d'ail",
+"Ail violet"
+],
+[
+"1 bouquet",
+"de persil",
+"Persil"
+],
+[
+"3 c. à soupe",
+"d'huile",
+null
+],
+[
+"30 g",
+"de beurre",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Épluchez les pommes de terre, coupez-les en cubes réguliers, rincez-les et séchez-les bien.",
+"Faites-les dorer dans l'huile et le beurre à feu moyen, 25 à 30 min, en les retournant souvent.",
+"Hachez ensemble l'ail et le persil.",
+"Ajoutez la persillade 2 min avant la fin, salez, poivrez et servez."
+],
+"conseil": "L'Agata a une chair ferme qui tient bien à la cuisson. Gardez les pommes de terre dans le noir, au frais et au sec, hors du frigo, pour éviter qu'elles verdissent."
+},
+"historique": [
+"Salade de pommes de terre tiède à l'échalote",
+"Gratin dauphinois",
+"Tortilla de patatas",
+"Pommes de terre sautées à l'ail et au persil"
+]
+},
+"pdt-bintje": {
+"nom": "Pomme de terre Bintje",
+"saison": "Toute l'année",
+"photo": null,
+"recette": {
+"origine": "Spécialité savoyarde",
+"titre": "Gratin savoyard",
+"intro": "Le cousin du dauphinois : des pommes de terre cuites dans le bouillon et gratinées au fromage, sans crème.",
+"prep": "20 min",
+"cuisson": "1 h 15",
+"pers": "6",
+"niveau": "Facile",
+"ingredients": [
+[
+"1,2 kg",
+"de pommes de terre Bintje",
+"Pdt Bintje"
 ],
 [
 "150 g",
-"de fromage blanc",
+"de beaufort ou de comté râpé",
 null
 ],
 [
-"10 cl",
-"de crème fraîche épaisse",
+"50 cl",
+"de bouillon de volaille",
 null
 ],
 [
-"1 c. à s.",
-"d'huile",
+"1 gousse",
+"d'ail",
+"Ail violet"
+],
+[
+"40 g",
+"de beurre",
 null
 ],
 [
@@ -4305,216 +4451,18 @@ null
 ]
 ],
 "etapes": [
-"Préchauffez le four au maximum (250 °C) avec la plaque à l'intérieur.",
-"Émincez les oignons très finement. Mélangez le fromage blanc et la crème avec la muscade, du sel et du poivre.",
-"Étalez la pâte le plus finement possible sur une feuille de papier cuisson, tartinez-la de crème, répartissez les oignons et les lardons, et arrosez d'un filet d'huile.",
-"Glissez sur la plaque chaude et faites cuire 10 à 12 min, jusqu'à ce que les bords soient bien dorés."
+"Préchauffez le four à 180 °C. Épluchez les pommes de terre et coupez-les en fines rondelles, sans les laver.",
+"Frottez un plat à gratin avec l'ail et beurrez-le généreusement.",
+"Alternez des couches de pommes de terre et de fromage, en salant, poivrant et ajoutant la muscade. Terminez par du fromage et des noisettes de beurre.",
+"Versez le bouillon chaud et enfournez 1 h 15, jusqu'à ce que le dessus soit bien doré."
 ],
-"conseil": "L'oignon de Roscoff, rosé et doux, se vend en tresse : suspendez-la dans un endroit sec et aéré, il se garde ainsi plusieurs mois."
-},
-"historique": [
-"Tarte à l'oignon",
-"Oignons farcis",
-"Tarte flambée"
-]
-},
-"oignon-rouge": {
-"nom": "Oignon rouge",
-"saison": "Toute l'année",
-"photo": null,
-"recette": {
-"origine": "Classique de bistrot",
-"titre": "Salade de lentilles à l'oignon rouge",
-"intro": "Des lentilles vertes tièdes, assaisonnées d'une vinaigrette moutardée avec de l'oignon rouge cru et du persil. On peut ajouter des lardons ou une saucisse.",
-"prep": "15 min",
-"cuisson": "25 min",
-"pers": "4",
-"niveau": "Très facile",
-"ingredients": [
-[
-"300 g",
-"de lentilles vertes",
-null
-],
-[
-"1",
-"oignon rouge",
-"Oignon rouge"
-],
-[
-"1",
-"carotte",
-"Carotte"
-],
-[
-"½ botte",
-"de persil",
-"Persil"
-],
-[
-"1",
-"bouquet garni",
-null
-],
-[
-"1 c. à s.",
-"de moutarde",
-null
-],
-[
-"2 c. à s.",
-"de vinaigre de vin",
-null
-],
-[
-"5 c. à s.",
-"d'huile",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Rincez les lentilles et mettez-les dans une casserole d'eau froide avec la carotte coupée en dés et le bouquet garni. Faites cuire 20 à 25 min : elles doivent rester fermes. Salez en fin de cuisson.",
-"Pendant ce temps, émincez finement l'oignon rouge et hachez le persil.",
-"Préparez la vinaigrette avec la moutarde, le vinaigre, l'huile, du sel et du poivre.",
-"Égouttez les lentilles, mélangez-les encore tièdes avec la vinaigrette, l'oignon et le persil. Servez tiède ou froid."
-],
-"conseil": "L'oignon rouge est le plus doux pour être mangé cru. Gardez-le au sec et à l'abri de la lumière ; entamé, filmez-le et mettez-le au frigo 3 jours."
-},
-"historique": [
-"Confit d'oignons rouges",
-"Pickles d'oignons rouges",
-"Salade de lentilles à l'oignon rouge"
-]
-},
-"pdt-agata": {
-"nom": "Pomme de terre Agata",
-"saison": "Toute l'année",
-"photo": null,
-"recette": {
-"origine": "Spécialité espagnole",
-"titre": "Tortilla de patatas",
-"intro": "L'omelette épaisse espagnole aux pommes de terre et aux oignons confits à l'huile d'olive. L'Agata, à chair ferme, garde bien sa forme.",
-"prep": "15 min",
-"cuisson": "40 min",
-"pers": "4",
-"niveau": "Moyen",
-"ingredients": [
-[
-"700 g",
-"de pommes de terre Agata",
-"Pdt agata"
-],
-[
-"1",
-"oignon jaune",
-"Oignon jaune"
-],
-[
-"6",
-"œufs",
-"Œufs plein air"
-],
-[
-"25 cl",
-"d'huile d'olive",
-null
-],
-[
-"",
-"Sel",
-null
-]
-],
-"etapes": [
-"Épluchez les pommes de terre et coupez-les en fines lamelles. Émincez l'oignon.",
-"Faites-les cuire doucement dans l'huile, à feu moyen, 20 à 25 min en remuant : elles doivent être tendres sans dorer. Égouttez-les en gardant l'huile.",
-"Battez les œufs avec du sel, ajoutez les pommes de terre et l'oignon, et laissez reposer 10 min.",
-"Faites chauffer 2 c. à s. d'huile dans une poêle, versez le mélange et laissez cuire 5 min à feu doux. Retournez la tortilla à l'aide d'une assiette et faites cuire encore 3 min."
-],
-"conseil": "L'Agata est une pomme de terre polyvalente à chair ferme. Gardez-la dans un endroit frais, sec et sombre : à la lumière, elle verdit."
-},
-"historique": [
-"Salade de pommes de terre tiède à l'échalote",
-"Gratin dauphinois",
-"Tortilla de patatas"
-]
-},
-"pdt-bintje": {
-"nom": "Pomme de terre Bintje",
-"saison": "Toute l'année",
-"photo": null,
-"recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Hachis parmentier",
-"intro": "Le plat familial par excellence : de la viande hachée revenue aux oignons, recouverte d'une purée bien beurrée et gratinée. La Bintje, farineuse, fait une purée parfaite.",
-"prep": "30 min",
-"cuisson": "50 min",
-"pers": "6",
-"niveau": "Facile",
-"ingredients": [
-[
-"1,2 kg",
-"de pommes de terre Bintje",
-"Pdt Bintje"
-],
-[
-"600 g",
-"de bœuf haché",
-null
-],
-[
-"2",
-"oignons jaunes",
-"Oignon jaune"
-],
-[
-"2 gousses",
-"d'ail violet",
-"Ail violet"
-],
-[
-"1 c. à s.",
-"de persil haché",
-"Persil"
-],
-[
-"25 cl",
-"de lait",
-null
-],
-[
-"60 g",
-"de beurre",
-null
-],
-[
-"60 g",
-"de gruyère râpé",
-null
-],
-[
-"",
-"Sel, poivre, muscade",
-null
-]
-],
-"etapes": [
-"Faites cuire les pommes de terre épluchées 25 min à l'eau salée. Écrasez-les avec le lait chaud et 50 g de beurre, salez et ajoutez la muscade.",
-"Faites revenir les oignons et l'ail hachés dans le reste du beurre, ajoutez la viande et faites-la dorer 10 min. Salez, poivrez, ajoutez le persil.",
-"Étalez la viande dans un plat, couvrez de purée et lissez à la fourchette.",
-"Parsemez de gruyère et faites gratiner 20 min au four à 200 °C."
-],
-"conseil": "La Bintje, farineuse, est idéale pour la purée et les frites, mais se défait dans les plats mijotés. Gardez-la au frais, au sec et dans le noir."
+"conseil": "La Bintje a une chair farineuse, idéale pour les purées, frites et gratins. Gardez-la dans le noir, au frais et au sec, plusieurs semaines."
 },
 "historique": [
 "Frites maison en deux cuissons",
 "Purée de pommes de terre maison",
-"Hachis parmentier"
+"Hachis parmentier",
+"Gratin savoyard"
 ]
 },
 "pdt-grenailles": {
@@ -4597,50 +4545,56 @@ null
 "historique": [
 "Mitrailles en papillote au beurre d'herbes",
 "Mitrailles croustillantes écrasées, œuf mollet et rillettes",
-"Pommes de terre sarladaises"
+"Pommes de terre sarladaises",
+"Mitrailles rôties à la graisse de canard"
 ],
 "recette": {
-"origine": "Spécialité du Périgord",
-"titre": "Pommes de terre sarladaises",
-"intro": "La recette emblématique de Sarlat : des pommes de terre dorées dans la graisse de canard, finies avec de l'ail et du persil. Les petites mitrailles s'y prêtent à merveille, entières ou coupées en deux.",
-"prep": "15 min",
-"cuisson": "35 min",
+"origine": "Spécialité du Sud-Ouest",
+"titre": "Mitrailles rôties à la graisse de canard",
+"intro": "Les petites pommes de terre rôties entières dans la graisse de canard, avec de l'ail en chemise : un régal du Sud-Ouest.",
+"prep": "10 min",
+"cuisson": "40 min",
 "pers": "4",
-"niveau": "Facile",
+"niveau": "Très facile",
 "ingredients": [
 [
 "1 kg",
-"de pommes de terre mitrailles",
+"de pommes de terre mitraille",
 "Pdt mitrailles"
 ],
 [
-"4 cuillères à soupe",
+"3 c. à soupe",
 "de graisse de canard",
 null
 ],
 [
-"3 gousses",
-"d'ail violet",
+"6 gousses",
+"d'ail",
 "Ail violet"
 ],
 [
-"1/2 botte",
-"de persil plat",
-"Persil"
+"3 brins",
+"de thym",
+null
+],
+[
+"1 feuille",
+"de laurier",
+"Lauriet"
 ],
 [
 "",
-"Sel, poivre",
+"Fleur de sel, poivre",
 null
 ]
 ],
 "etapes": [
-"Lavez soigneusement les mitrailles (inutile de les éplucher) et coupez les plus grosses en deux. Séchez-les bien dans un torchon.",
-"Faites chauffer la graisse de canard dans une grande poêle ou une sauteuse. Ajoutez les pommes de terre en une seule couche et faites-les dorer 5 minutes à feu vif en remuant.",
-"Baissez le feu, couvrez et laissez cuire 25 minutes en remuant de temps en temps, jusqu'à ce qu'elles soient tendres à cœur.",
-"Pendant ce temps, hachez l'ail et le persil ensemble. Découvrez, augmentez le feu pour bien rissoler 5 minutes, ajoutez la persillade, salez, poivrez, mélangez une minute et servez aussitôt."
+"Préchauffez le four à 200 °C. Lavez les pommes de terre sans les éplucher et séchez-les bien.",
+"Mettez-les dans un plat avec la graisse de canard, les gousses d'ail entières, le thym et le laurier. Mélangez.",
+"Enfournez 40 min en remuant deux fois, jusqu'à ce qu'elles soient dorées et fondantes.",
+"Parsemez de fleur de sel, poivrez et servez avec l'ail confit à écraser."
 ],
-"conseil": "Prenez des mitrailles fermes, à la peau lisse et sans germe ni tache verte. Gardez-les dans un endroit frais, sec et à l'abri de la lumière, jamais au réfrigérateur : elles se conservent ainsi 2 à 3 semaines."
+"conseil": "Les mitrailles sont de toutes petites pommes de terre à peau fine qu'on cuit entières. Gardez-les dans le noir et au frais, et consommez-les en une à deux semaines."
 }
 },
 "poivron-vert": {
@@ -4648,51 +4602,46 @@ null
 "saison": "De juillet à octobre",
 "photo": null,
 "recette": {
-"origine": "Spécialité du Maghreb et du Moyen-Orient",
-"titre": "Chakchouka",
-"intro": "Des poivrons et des oignons mijotés à la tomate et aux épices, dans lesquels on fait cuire des œufs. Un plat complet, à servir avec du pain.",
-"prep": "15 min",
-"cuisson": "30 min",
-"pers": "4",
-"niveau": "Facile",
+"origine": "Classique de la cuisine française",
+"titre": "Ratatouille au poivron vert",
+"intro": "La ratatouille où le poivron vert apporte son goût plus vif : chaque légume cuit à part avant de mijoter ensemble.",
+"prep": "25 min",
+"cuisson": "1 h",
+"pers": "6",
+"niveau": "Moyen",
 "ingredients": [
 [
-"3",
+"2",
 "poivrons verts",
 "Poivron vert"
 ],
 [
+"2",
+"courgettes",
+"Courgette"
+],
+[
 "1",
-"oignon jaune",
-"Oignon jaune"
-],
-[
-"3 gousses",
-"d'ail violet",
-"Ail violet"
-],
-[
-"400 g",
-"de tomates concassées en conserve",
+"aubergine",
 null
 ],
 [
 "4",
-"œufs",
-"Œufs plein air"
+"tomates",
+"Tomate ronde"
 ],
 [
-"1 c. à c.",
-"de cumin",
-null
+"2",
+"oignons jaunes",
+"Oignon jaune"
 ],
 [
-"1 c. à c.",
-"de paprika",
-null
+"3 gousses",
+"d'ail",
+"Ail violet"
 ],
 [
-"3 c. à s.",
+"6 c. à soupe",
 "d'huile d'olive",
 null
 ],
@@ -4703,17 +4652,18 @@ null
 ]
 ],
 "etapes": [
-"Épépinez les poivrons et coupez-les en lanières. Émincez l'oignon et l'ail.",
-"Faites-les revenir dans l'huile, dans une grande poêle, 10 min à feu moyen.",
-"Ajoutez les épices, les tomates, du sel et du poivre, et laissez mijoter 15 min jusqu'à ce que la sauce épaississe.",
-"Creusez 4 puits dans la sauce, cassez-y les œufs, couvrez et laissez cuire 5 à 6 min : le blanc doit être pris et le jaune encore coulant."
+"Coupez tous les légumes en dés.",
+"Faites revenir séparément dans l'huile d'olive les poivrons, les courgettes et l'aubergine, chacun 8 à 10 min.",
+"Dans une cocotte, faites fondre les oignons, ajoutez l'ail et les tomates, puis tous les légumes.",
+"Salez, poivrez et laissez mijoter 40 min à feu doux à couvert."
 ],
-"conseil": "Un poivron vert frais est brillant, lisse et ferme, avec un pédoncule bien vert. Il se garde une semaine au frigo."
+"conseil": "Le poivron vert est cueilli avant maturité, d'où son goût plus vif. Choisissez-le ferme et brillant ; il se garde une semaine au frigo."
 },
 "historique": [
 "Piperade",
 "Axoa de veau",
-"Chakchouka"
+"Chakchouka",
+"Ratatouille au poivron vert"
 ]
 },
 "citrouille": {
@@ -4721,91 +4671,18 @@ null
 "saison": "De septembre à décembre",
 "photo": null,
 "recette": {
-"origine": "Spécialité américaine",
-"titre": "Tarte à la citrouille",
-"intro": "La pumpkin pie d'Amérique du Nord : une crème épicée à la cannelle et au gingembre, cuite dans une pâte brisée. Un dessert d'automne doux et parfumé.",
-"prep": "25 min",
-"cuisson": "1 h 10",
-"pers": "8",
-"niveau": "Facile",
-"ingredients": [
-[
-"1",
-"pâte brisée",
-null
-],
-[
-"600 g",
-"de chair de citrouille",
-"Citrouille à manger"
-],
-[
-"3",
-"œufs",
-"Œufs plein air"
-],
-[
-"120 g",
-"de sucre roux",
-null
-],
-[
-"20 cl",
-"de crème liquide",
-null
-],
-[
-"1 c. à c.",
-"de cannelle",
-null
-],
-[
-"1 cm",
-"de gingembre frais râpé",
-"Gingembre"
-],
-[
-"1 pincée",
-"de sel",
-null
-]
-],
-"etapes": [
-"Coupez la citrouille en cubes et faites-la cuire 20 min à la vapeur. Égouttez-la bien et laissez-la refroidir dans une passoire.",
-"Préchauffez le four à 180 °C et foncez un moule avec la pâte.",
-"Mixez la citrouille avec les œufs, le sucre, la crème, la cannelle, le gingembre et le sel.",
-"Versez sur la pâte et enfournez 45 à 50 min : le centre doit être juste pris. Laissez refroidir avant de servir."
-],
-"conseil": "Choisissez une citrouille lourde, à la peau dure et à la queue bien sèche. Entière, elle se garde des semaines au frais ; entamée, 5 jours au frigo, filmée."
-},
-"historique": [
-"Soupe de citrouille au lait",
-"Gratin de citrouille",
-"Tarte à la citrouille"
-]
-},
-"radis-noir": {
-"nom": "Radis noir",
-"saison": "D'octobre à mars",
-"photo": null,
-"recette": {
-"origine": "Classique de la cuisine familiale",
-"titre": "Velouté de radis noir",
-"intro": "Un velouté d'hiver où la pomme de terre et la crème adoucissent le goût piquant du radis noir. Il devient doux et légèrement poivré.",
+"origine": "Spécialité du Nord",
+"titre": "Velouté de citrouille",
+"intro": "Le velouté orange de l'automne, onctueux et doux, à servir avec quelques croûtons.",
 "prep": "15 min",
 "cuisson": "30 min",
 "pers": "4",
 "niveau": "Très facile",
 "ingredients": [
 [
-"1",
-"radis noir",
-"Radis noir"
-],
-[
-"3",
-"pommes de terre",
-"Pdt Bintje"
+"1 kg",
+"de citrouille",
+"Citrouille à manger"
 ],
 [
 "1",
@@ -4813,7 +4690,12 @@ null
 "Oignon jaune"
 ],
 [
-"20 g",
+"2",
+"pommes de terre",
+"Pdt Bintje"
+],
+[
+"30 g",
 "de beurre",
 null
 ],
@@ -4834,17 +4716,72 @@ null
 ]
 ],
 "etapes": [
-"Épluchez le radis noir et les pommes de terre, et coupez-les en dés.",
-"Faites fondre l'oignon émincé dans le beurre 5 min.",
-"Ajoutez les légumes et le bouillon, et laissez cuire 25 min.",
-"Mixez finement avec la crème, salez, poivrez et servez."
+"Épluchez la citrouille, retirez les graines et coupez la chair en cubes. Épluchez les pommes de terre et émincez l'oignon.",
+"Faites fondre l'oignon dans le beurre 5 min.",
+"Ajoutez la citrouille, les pommes de terre et le bouillon, et laissez cuire 25 min.",
+"Mixez, ajoutez la crème, salez, poivrez et servez bien chaud."
 ],
-"conseil": "Un bon radis noir est lourd et très dur. Enveloppé dans du papier journal au frigo, il se garde 2 à 3 semaines."
+"conseil": "Une bonne citrouille sonne creux quand on la tapote et a une écorce sans taches. Entamée, filmez-la et gardez-la 5 jours au frigo."
+},
+"historique": [
+"Soupe de citrouille au lait",
+"Gratin de citrouille",
+"Tarte à la citrouille",
+"Velouté de citrouille"
+]
+},
+"radis-noir": {
+"nom": "Radis noir",
+"saison": "D'octobre à mars",
+"photo": null,
+"recette": {
+"origine": "Spécialité alsacienne",
+"titre": "Radis noir en salade à la crème",
+"intro": "Le radis noir râpé fin, adouci par une sauce à la crème et à la ciboulette : l'entrée d'hiver alsacienne.",
+"prep": "15 min",
+"cuisson": "",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"1",
+"radis noir",
+"Radis noir"
+],
+[
+"15 cl",
+"de crème fraîche épaisse",
+null
+],
+[
+"1 c. à soupe",
+"de vinaigre de vin blanc",
+null
+],
+[
+"1/2 bouquet",
+"de ciboulette",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Épluchez le radis noir et râpez-le finement.",
+"Salez-le et laissez-le dégorger 15 min dans une passoire pour adoucir son piquant. Pressez-le.",
+"Mélangez la crème, le vinaigre et la ciboulette ciselée.",
+"Ajoutez le radis, poivrez et servez frais."
+],
+"conseil": "Choisissez un radis noir bien ferme et lourd, sans parties molles. Il se garde plusieurs semaines au frigo dans un sachet."
 },
 "historique": [
 "Radis noir à la crème",
 "Radis noir en rémoulade",
-"Velouté de radis noir"
+"Velouté de radis noir",
+"Radis noir en salade à la crème"
 ]
 },
 "radis-blue-meat": {
@@ -4852,11 +4789,11 @@ null
 "saison": "D'octobre à mars",
 "photo": null,
 "recette": {
-"origine": "Spécialité japonaise",
-"titre": "Namasu de radis",
-"intro": "Une salade japonaise de radis et de carotte en fins bâtonnets, marinés dans du vinaigre de riz sucré. Fraîche et croquante, elle accompagne bien un poisson ou une viande grillée.",
+"origine": "Classique de la cuisine française",
+"titre": "Salade de radis blue meat aux œufs mimosa",
+"intro": "Le radis blue meat, à la chair violette, râpé en salade avec des œufs durs émiettés : une entrée très colorée.",
 "prep": "15 min",
-"cuisson": "",
+"cuisson": "10 min",
 "pers": "4",
 "niveau": "Très facile",
 "ingredients": [
@@ -4866,43 +4803,49 @@ null
 "Radis blue meat"
 ],
 [
-"1",
-"carotte",
-"Carotte"
+"3",
+"œufs",
+"Œufs plein air"
 ],
 [
-"5 cl",
-"de vinaigre de riz",
+"1 c. à soupe",
+"de moutarde",
 null
 ],
 [
-"2 c. à s.",
-"de sucre",
+"1 c. à soupe",
+"de vinaigre de cidre",
 null
 ],
 [
-"1 c. à c.",
-"de sel",
+"3 c. à soupe",
+"d'huile",
 null
 ],
 [
-"1 c. à s.",
-"de graines de sésame",
+"1/2 bouquet",
+"de persil",
+"Persil"
+],
+[
+"",
+"Sel, poivre",
 null
 ]
 ],
 "etapes": [
-"Épluchez le radis et la carotte, et taillez-les en très fins bâtonnets.",
-"Saupoudrez-les de sel, mélangez et laissez dégorger 10 min. Pressez-les entre vos mains pour retirer l'eau.",
-"Mélangez le vinaigre et le sucre jusqu'à ce que le sucre fonde, et versez sur les légumes.",
-"Laissez mariner au moins 30 min au frais. Parsemez de sésame avant de servir."
+"Faites cuire les œufs 10 min dans l'eau bouillante, refroidissez-les et écalez-les.",
+"Épluchez le radis et râpez-le finement.",
+"Préparez une vinaigrette avec la moutarde, le vinaigre, l'huile, du sel et du poivre, et mélangez-la au radis.",
+"Émiettez les œufs par-dessus et parsemez de persil."
 ],
-"conseil": "Le radis blue meat a une peau blanche et un cœur violet. Gardez-le au frigo dans le bac à légumes, il tient 2 semaines."
+"conseil": "Choisissez un radis blue meat lourd et ferme, sans fissures. Il se garde deux semaines au frigo dans un sachet."
 },
 "historique": [
 "Radis glacés au beurre",
 "Radis râpés vinaigrette",
-"Namasu de radis"
+"Namasu de radis",
+"Salade de radis blue meat aux œufs mimosa"
 ]
 },
 "salade-batavia": {
@@ -4910,13 +4853,13 @@ null
 "saison": "Toute l'année",
 "photo": null,
 "recette": {
-"origine": "Spécialité du Sud-Ouest",
-"titre": "Salade périgourdine",
-"intro": "La grande salade du Périgord : gésiers confits, magret fumé et croûtons sur un lit de batavia croquante, avec une vinaigrette à l'échalote.",
-"prep": "15 min",
-"cuisson": "10 min",
+"origine": "Spécialité lyonnaise",
+"titre": "Salade lyonnaise aux croûtons et à l'œuf poché",
+"intro": "Lardons, croûtons dorés et œuf poché sur une batavia croquante : une salade-repas généreuse.",
+"prep": "20 min",
+"cuisson": "15 min",
 "pers": "4",
-"niveau": "Facile",
+"niveau": "Moyen",
 "ingredients": [
 [
 "1",
@@ -4924,18 +4867,18 @@ null
 "Salade batavia"
 ],
 [
-"200 g",
-"de gésiers de canard confits",
-null
+"4",
+"œufs",
+"Œufs plein air"
 ],
 [
-"100 g",
-"de magret de canard fumé",
+"200 g",
+"de lardons",
 null
 ],
 [
 "2 tranches",
-"de pain de campagne",
+"de pain",
 null
 ],
 [
@@ -4944,17 +4887,12 @@ null
 "Échalote"
 ],
 [
-"1 c. à c.",
-"de moutarde",
-null
-],
-[
-"2 c. à s.",
+"2 c. à soupe",
 "de vinaigre de vin",
 null
 ],
 [
-"5 c. à s.",
+"3 c. à soupe",
 "d'huile",
 null
 ],
@@ -4965,17 +4903,18 @@ null
 ]
 ],
 "etapes": [
-"Lavez et essorez la batavia, et déchirez les feuilles.",
-"Préparez la vinaigrette avec la moutarde, le vinaigre, l'huile, l'échalote hachée, du sel et du poivre.",
-"Coupez le pain en dés et faites-les dorer à la poêle. Faites ensuite revenir les gésiers émincés 5 min dans un peu de leur graisse.",
-"Mélangez la salade avec la vinaigrette, répartissez dans les assiettes et ajoutez les gésiers chauds, le magret et les croûtons."
+"Lavez et essorez la salade. Coupez le pain en dés et faites-le dorer à la poêle avec un peu d'huile.",
+"Faites dorer les lardons à sec.",
+"Pochez les œufs 3 min dans une eau frémissante vinaigrée, puis égouttez-les.",
+"Assaisonnez la salade avec l'huile, le vinaigre, l'échalote ciselée, du sel et du poivre, ajoutez lardons et croûtons, et posez un œuf poché sur chaque assiette."
 ],
-"conseil": "La batavia a des feuilles croquantes qui tiennent bien la vinaigrette. Gardez-la entière au frigo, enveloppée dans un linge humide : 4 à 5 jours."
+"conseil": "Choisissez une batavia au cœur bien ferme et aux feuilles croquantes. Elle se garde 3 à 4 jours au frigo dans un linge humide."
 },
 "historique": [
 "Salade de chèvre chaud",
 "Salade niçoise",
-"Salade périgourdine"
+"Salade périgourdine",
+"Salade lyonnaise aux croûtons et à l'œuf poché"
 ]
 },
 "salade-laitue": {
@@ -4983,13 +4922,13 @@ null
 "saison": "Toute l'année",
 "photo": null,
 "recette": {
-"origine": "Spécialité du Nord et de l'Est",
-"titre": "Salade à la crème",
-"intro": "La laitue de nos grands-mères, assaisonnée d'une sauce à la crème, à la moutarde et au vinaigre. Douce et rafraîchissante, elle accompagne un plat chaud.",
-"prep": "10 min",
-"cuisson": "",
+"origine": "Grand classique de la cuisine française",
+"titre": "Petits pois et laitue à la française",
+"intro": "Les petits pois mijotés avec de la laitue et des oignons : une recette de grand-mère toute en douceur.",
+"prep": "15 min",
+"cuisson": "25 min",
 "pers": "4",
-"niveau": "Très facile",
+"niveau": "Facile",
 "ingredients": [
 [
 "1",
@@ -4997,29 +4936,29 @@ null
 "Salade laitue"
 ],
 [
-"1",
-"échalote",
-"Échalote"
+"600 g",
+"de petits pois (surgelés)",
+null
+],
+[
+"12",
+"oignons grelots",
+"Oignon grelot"
+],
+[
+"50 g",
+"de beurre",
+null
+],
+[
+"1 c. à café",
+"de sucre",
+null
 ],
 [
 "10 cl",
-"de crème fraîche épaisse",
+"d'eau",
 null
-],
-[
-"1 c. à c.",
-"de moutarde",
-null
-],
-[
-"1 c. à s.",
-"de vinaigre de vin",
-null
-],
-[
-"1 c. à s.",
-"de persil haché",
-"Persil"
 ],
 [
 "",
@@ -5028,17 +4967,18 @@ null
 ]
 ],
 "etapes": [
-"Lavez la laitue feuille à feuille, essorez-la bien et déchirez les plus grandes feuilles.",
-"Hachez finement l'échalote.",
-"Mélangez la crème, la moutarde, le vinaigre, l'échalote, le persil, du sel et du poivre.",
-"Versez la sauce sur la laitue au moment de servir et mélangez délicatement."
+"Lavez la laitue et coupez-la en lanières. Épluchez les oignons grelots.",
+"Faites fondre le beurre dans une cocotte et faites revenir les oignons 5 min.",
+"Ajoutez les petits pois, la laitue, le sucre, l'eau, du sel et du poivre.",
+"Couvrez et laissez cuire 20 min à feu doux."
 ],
-"conseil": "Une laitue fraîche a un cœur bien pommé et des feuilles brillantes. Gardez-la entière au frigo dans un sac ou un linge humide : 3 à 4 jours."
+"conseil": "Choisissez une laitue au cœur bien formé et aux feuilles sans traces brunes. Elle se garde 3 à 4 jours au frigo dans un linge humide."
 },
 "historique": [
 "Potage Choisy",
 "Laitues braisées",
-"Salade à la crème"
+"Salade à la crème",
+"Petits pois et laitue à la française"
 ]
 },
 "blette": {
@@ -5046,14 +4986,15 @@ null
 "saison": "De juin à novembre",
 "photo": null,
 "historique": [
-"Gratin de blettes"
+"Gratin de blettes",
+"Blettes à la béchamel"
 ],
 "recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Gratin de blettes",
-"intro": "Les côtes et les feuilles de blettes réunies sous une béchamel gratinée : un plat de famille simple, qui utilise tout le légume.",
-"prep": "25 min",
-"cuisson": "45 min",
+"origine": "Spécialité lyonnaise",
+"titre": "Blettes à la béchamel",
+"intro": "Les côtes et les feuilles de blette nappées d'une béchamel onctueuse : un plat de grand-mère réconfortant.",
+"prep": "20 min",
+"cuisson": "25 min",
 "pers": "4",
 "niveau": "Facile",
 "ingredients": [
@@ -5061,11 +5002,6 @@ null
 "1 botte",
 "de blettes",
 "Blette"
-],
-[
-"1 gousse",
-"d'ail",
-"Ail violet"
 ],
 [
 "40 g",
@@ -5083,23 +5019,28 @@ null
 null
 ],
 [
-"60 g",
-"de fromage râpé",
+"1 pincée",
+"de muscade",
 null
 ],
 [
+"1 gousse",
+"d'ail",
+"Ail violet"
+],
+[
 "",
-"Sel, poivre, muscade",
+"Sel, poivre",
 null
 ]
 ],
 "etapes": [
-"Séparez les feuilles des côtes. Effilez les côtes et coupez-les en tronçons, puis faites-les cuire 10 minutes à l'eau bouillante salée ; ajoutez les feuilles hachées les 2 dernières minutes. Égouttez en pressant bien.",
-"Préparez une béchamel avec le beurre, la farine et le lait, puis salez, poivrez et muscadez.",
-"Frottez un plat avec l'ail, déposez les blettes, nappez de béchamel et parsemez de fromage.",
-"Enfournez 25 à 30 minutes à 200 °C, jusqu'à ce que le gratin soit doré."
+"Séparez les côtes des feuilles. Coupez les côtes en tronçons et faites-les cuire 15 min à l'eau salée.",
+"Faites tomber les feuilles émincées 3 min à la poêle avec l'ail haché et une noix de beurre.",
+"Préparez la béchamel : faites fondre le beurre, ajoutez la farine, puis le lait en fouettant jusqu'à épaississement. Salez, poivrez, ajoutez la muscade.",
+"Mélangez côtes, feuilles et béchamel, et laissez mijoter 5 min avant de servir."
 ],
-"conseil": "Choisissez des côtes bien blanches et fermes et des feuilles d'un vert vif, sans flétrissure. Les blettes se gardent 3 à 4 jours au frigo, enveloppées dans un linge humide."
+"conseil": "Choisissez des blettes aux côtes bien blanches et fermes, aux feuilles vertes et brillantes. Elles se gardent 3 à 4 jours au frigo dans un linge humide."
 }
 },
 "cepes": {
@@ -5163,14 +5104,15 @@ null
 "saison": "D'octobre à décembre",
 "photo": null,
 "historique": [
-"Chou romanesco à la polonaise"
+"Chou romanesco à la polonaise",
+"Gratin de romanesco"
 ],
 "recette": {
 "origine": "Grand classique de la cuisine française",
-"titre": "Chou romanesco à la polonaise",
-"intro": "La garniture « à la polonaise » des choux-fleurs, appliquée au romanesco : œuf dur haché, chapelure dorée au beurre et persil.",
+"titre": "Gratin de romanesco",
+"intro": "Les jolies pyramides du romanesco nappées de béchamel et gratinées : doux et fondant.",
 "prep": "15 min",
-"cuisson": "15 min",
+"cuisson": "35 min",
 "pers": "4",
 "niveau": "Facile",
 "ingredients": [
@@ -5180,23 +5122,90 @@ null
 "Chou romanesco"
 ],
 [
-"2",
-"œufs",
-"Œufs plein air"
-],
-[
-"60 g",
+"40 g",
 "de beurre",
 null
 ],
 [
-"3 c. à soupe",
-"de chapelure",
+"40 g",
+"de farine",
 null
 ],
 [
-"2 c. à soupe",
-"de persil haché",
+"50 cl",
+"de lait",
+null
+],
+[
+"80 g",
+"de fromage râpé",
+null
+],
+[
+"1 pincée",
+"de muscade",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Détaillez le romanesco en bouquets et faites-les cuire 6 min à l'eau bouillante salée. Égouttez.",
+"Préparez une béchamel avec le beurre, la farine et le lait. Salez, poivrez, ajoutez la muscade.",
+"Disposez le romanesco dans un plat, nappez de béchamel et parsemez de fromage.",
+"Faites gratiner 25 min au four à 200 °C."
+],
+"conseil": "Un bon romanesco est d'un vert vif, aux pointes bien serrées et sans taches brunes. Il se garde 4 à 5 jours au frigo."
+}
+},
+"chou-rouge": {
+"nom": "Chou rouge",
+"saison": "D'octobre à mars",
+"photo": null,
+"historique": [
+"Chou rouge braisé",
+"Salade de chou rouge"
+],
+"recette": {
+"origine": "Classique de la cuisine française",
+"titre": "Salade de chou rouge",
+"intro": "Une salade croquante et acidulée, qui se garde plusieurs jours au frigo et se bonifie avec le temps.",
+"prep": "15 min",
+"cuisson": "",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"1/2",
+"chou rouge",
+"Chou rouge"
+],
+[
+"1",
+"oignon rouge",
+"Oignon rouge"
+],
+[
+"3 c. à soupe",
+"de vinaigre de vin",
+null
+],
+[
+"1 c. à soupe",
+"de moutarde",
+null
+],
+[
+"4 c. à soupe",
+"d'huile",
+null
+],
+[
+"1 bouquet",
+"de persil",
 "Persil"
 ],
 [
@@ -5206,73 +5215,12 @@ null
 ]
 ],
 "etapes": [
-"Faites cuire les œufs 10 minutes à l'eau bouillante, écalez-les et hachez-les grossièrement.",
-"Détaillez le romanesco en bouquets et faites-le cuire 8 à 10 minutes à la vapeur ou à l'eau salée : il doit rester légèrement croquant.",
-"Faites mousser le beurre dans une poêle et dorez-y la chapelure 2 minutes.",
-"Dressez le romanesco, parsemez d'œuf haché et de persil, puis versez la chapelure au beurre bien chaude. Salez, poivrez et servez."
+"Émincez très finement le chou rouge, en retirant le trognon. Émincez l'oignon rouge.",
+"Salez le chou et laissez-le reposer 10 min pour l'attendrir.",
+"Préparez la vinaigrette avec la moutarde, le vinaigre, l'huile et le poivre.",
+"Mélangez le chou, l'oignon et la vinaigrette, et parsemez de persil ciselé."
 ],
-"conseil": "Choisissez un romanesco bien vert, aux pointes serrées et sans taches brunes. Il se garde 4 à 5 jours au frigo dans un sac perforé."
-}
-},
-"chou-rouge": {
-"nom": "Chou rouge",
-"saison": "D'octobre à mars",
-"photo": null,
-"historique": [
-"Chou rouge braisé"
-],
-"recette": {
-"origine": "Spécialité alsacienne",
-"titre": "Chou rouge braisé",
-"intro": "Le chou rouge mijoté longuement avec oignon, vinaigre et une touche de sucre, qui accompagne traditionnellement le gibier, le porc ou les saucisses.",
-"prep": "15 min",
-"cuisson": "1 h 15",
-"pers": "6",
-"niveau": "Facile",
-"ingredients": [
-[
-"1",
-"chou rouge",
-"Chou rouge"
-],
-[
-"2",
-"oignons",
-"Oignon jaune"
-],
-[
-"40 g",
-"de beurre ou de graisse de canard",
-null
-],
-[
-"5 cl",
-"de vinaigre de vin rouge",
-null
-],
-[
-"2 c. à soupe",
-"de sucre",
-null
-],
-[
-"20 cl",
-"de bouillon",
-null
-],
-[
-"",
-"Sel, poivre",
-null
-]
-],
-"etapes": [
-"Retirez les feuilles abîmées et le trognon du chou, puis émincez-le finement.",
-"Dans une cocotte, faites fondre les oignons émincés dans le beurre 5 minutes.",
-"Ajoutez le chou, le vinaigre, le sucre et le bouillon. Salez, poivrez et mélangez bien : le vinaigre garde au chou sa belle couleur.",
-"Couvrez et laissez mijoter 1 heure à feu doux en remuant de temps en temps. Rectifiez l'assaisonnement en fin de cuisson, le chou doit être fondant et légèrement aigre-doux."
-],
-"conseil": "Un bon chou rouge est lourd, compact et d'un violet brillant. Entier, il tient deux semaines au frais ; et ce plat est encore meilleur réchauffé le lendemain."
+"conseil": "Choisissez un chou rouge lourd, aux feuilles bien serrées et d'une couleur intense. Entamé, filmez-le : il se garde une semaine au frigo."
 }
 },
 "clementine-portugal": {
@@ -5316,14 +5264,15 @@ null
 "saison": "De juin à novembre",
 "photo": null,
 "historique": [
-"Pimientos de Padrón"
+"Pimientos de Padrón",
+"Pimientos de Padrón et chorizo à la plancha"
 ],
 "recette": {
-"origine": "Spécialité espagnole (Galice)",
-"titre": "Pimientos de Padrón",
-"intro": "Les petits piments verts de Galice simplement poêlés à l'huile d'olive et parsemés de gros sel : la tapa la plus simple qui soit. La plupart sont doux, un de temps en temps pique !",
+"origine": "Spécialité basque",
+"titre": "Pimientos de Padrón et chorizo à la plancha",
+"intro": "Les petits piments verts poêlés avec du chorizo basque : une tapa à partager à l'apéritif.",
 "prep": "5 min",
-"cuisson": "8 min",
+"cuisson": "10 min",
 "pers": "4",
 "niveau": "Très facile",
 "ingredients": [
@@ -5333,33 +5282,28 @@ null
 "Padron"
 ],
 [
-"4 c. à soupe",
+"100 g",
+"de chorizo basque",
+"Chorizo basque"
+],
+[
+"3 c. à soupe",
 "d'huile d'olive",
 null
 ],
 [
 "",
-"Gros sel ou fleur de sel",
-null
-],
-[
-"1 gousse",
-"d'ail (facultatif)",
-"Ail violet"
-],
-[
-"",
-"Pain de campagne pour servir",
+"Fleur de sel",
 null
 ]
 ],
 "etapes": [
-"Rincez les piments et séchez-les soigneusement : l'eau ferait gicler l'huile. Gardez les queues, elles servent à les attraper.",
-"Faites bien chauffer l'huile dans une grande poêle, avec la gousse d'ail écrasée si vous le souhaitez.",
-"Ajoutez les piments et faites-les sauter 5 à 8 minutes à feu vif en remuant, jusqu'à ce que la peau cloque et noircisse par endroits.",
-"Égouttez-les sur du papier, parsemez généreusement de gros sel et servez aussitôt, avec du pain."
+"Rincez et séchez soigneusement les piments en gardant leur queue. Coupez le chorizo en rondelles.",
+"Faites chauffer l'huile dans une grande poêle bien chaude et faites griller le chorizo 2 min. Réservez.",
+"Mettez les piments dans la poêle et faites-les sauter 5 à 6 min, jusqu'à ce que la peau cloque et noircisse par endroits.",
+"Mélangez avec le chorizo, parsemez de fleur de sel et servez aussitôt, en les tenant par la queue."
 ],
-"conseil": "Choisissez des piments d'un vert brillant, fermes et sans plis. Ils se gardent 4 à 5 jours dans le bac à légumes. Plus la saison avance, plus ils ont de chances de piquer."
+"conseil": "Choisissez des Padrón bien verts, brillants et fermes. Ils se gardent 4 à 5 jours au frigo. Attention, un sur dix environ est piquant !"
 }
 },
 "rutabaga": {
@@ -5367,55 +5311,56 @@ null
 "saison": "D'octobre à mars",
 "photo": null,
 "historique": [
-"Purée de rutabaga"
+"Purée de rutabaga",
+"Rutabaga rôti au four"
 ],
 "recette": {
-"origine": "Classique de la cuisine familiale",
-"titre": "Purée de rutabaga",
-"intro": "Une purée douce et légèrement sucrée, mi-rutabaga mi-pomme de terre, montée au beurre : l'accompagnement idéal d'un rôti ou d'une saucisse.",
+"origine": "Classique de la cuisine scandinave",
+"titre": "Rutabaga rôti au four",
+"intro": "Des cubes de rutabaga rôtis jusqu'à être dorés : son goût doux, entre navet et chou, se révèle au four.",
 "prep": "15 min",
-"cuisson": "30 min",
+"cuisson": "40 min",
 "pers": "4",
 "niveau": "Très facile",
 "ingredients": [
 [
-"800 g",
-"de rutabaga",
+"1",
+"rutabaga",
 "Rutabaga"
 ],
 [
-"400 g",
-"de pommes de terre",
-"Pdt Bintje"
-],
-[
-"50 g",
-"de beurre",
+"3 c. à soupe",
+"d'huile d'olive",
 null
 ],
 [
-"10 cl",
-"de lait chaud",
+"2 gousses",
+"d'ail",
+"Ail violet"
+],
+[
+"3 brins",
+"de thym",
 null
+],
+[
+"1 c. à soupe",
+"de miel",
+"Miel de fleurs"
 ],
 [
 "",
-"Sel, poivre, muscade",
+"Sel, poivre",
 null
-],
-[
-"",
-"Persil haché",
-"Persil"
 ]
 ],
 "etapes": [
-"Épluchez le rutabaga (la peau est épaisse) et les pommes de terre, puis coupez-les en gros cubes.",
-"Mettez-les dans une casserole d'eau froide salée, portez à ébullition et laissez cuire 25 à 30 minutes, jusqu'à ce qu'ils soient bien tendres.",
-"Égouttez soigneusement, puis écrasez au presse-purée avec le beurre en ajoutant le lait chaud petit à petit.",
-"Salez, poivrez, ajoutez une pointe de muscade, parsemez de persil et servez bien chaud."
+"Préchauffez le four à 200 °C. Épluchez le rutabaga et coupez-le en cubes de 2 cm.",
+"Mélangez-le avec l'huile, le miel, l'ail écrasé et le thym. Salez, poivrez.",
+"Étalez sur une plaque sans superposer.",
+"Enfournez 35 à 40 min en remuant à mi-cuisson, jusqu'à ce qu'il soit doré et tendre."
 ],
-"conseil": "Prenez un rutabaga lourd et ferme, de taille moyenne : les très gros sont souvent fibreux. Il se garde trois semaines au frais et au sec."
+"conseil": "Choisissez un rutabaga lourd et ferme, à la peau lisse. Il se garde deux à trois semaines au frigo."
 }
 },
 "celeri-rave": {
@@ -5502,65 +5447,56 @@ null
 "saison": "De juin à novembre, du Lot-et-Garonne",
 "photo": null,
 "historique": [
-"Clafoutis de tomates cerises"
+"Clafoutis de tomates cerises",
+"Salade caprese aux tomates cerises"
 ],
 "recette": {
-"origine": "Grand classique de la cuisine familiale française",
-"titre": "Clafoutis de tomates cerises",
-"intro": "La version salée du clafoutis : un appareil aux œufs et au fromage qui gonfle au four autour de tomates cerises entières. Les tomates gustatives du Lot-et-Garonne, sucrées et parfumées, y éclatent en bouche.",
-"prep": "15 min",
-"cuisson": "35 min",
+"origine": "Classique de la cuisine italienne",
+"titre": "Salade caprese aux tomates cerises",
+"intro": "Des tomates cerises du Lot-et-Garonne, de la mozzarella et du basilic : une salade toute simple qui laisse parler le goût.",
+"prep": "10 min",
+"cuisson": "",
 "pers": "4",
-"niveau": "Facile",
+"niveau": "Très facile",
 "ingredients": [
 [
-"400 g",
-"de tomates cerises gustatives",
+"500 g",
+"de tomates cerises",
 "Tomate cerise gustatives (47)"
 ],
 [
-"3",
-"œufs",
-"Œufs plein air"
-],
-[
-"20 cl",
-"de crème liquide",
+"2 boules",
+"de mozzarella",
 null
 ],
 [
-"10 cl",
-"de lait",
+"1 bouquet",
+"de basilic",
 null
 ],
 [
-"50 g",
-"de farine",
+"4 c. à soupe",
+"d'huile d'olive",
 null
 ],
 [
-"80 g",
-"de fromage râpé (comté ou emmental)",
+"1 c. à soupe",
+"de vinaigre balsamique",
 null
-],
-[
-"1 petit bouquet",
-"de persil",
-"Persil"
 ],
 [
 "",
-"Sel, poivre, un peu de beurre pour le moule",
+"Fleur de sel, poivre",
 null
 ]
 ],
 "etapes": [
-"Préchauffez le four à 180 °C. Lavez et séchez les tomates cerises, beurrez un plat à gratin et disposez-y les tomates entières en une seule couche.",
-"Dans un saladier, fouettez les œufs avec la farine jusqu'à ce qu'il n'y ait plus de grumeaux, puis ajoutez la crème et le lait petit à petit.",
-"Incorporez le fromage râpé et le persil ciselé, salez légèrement et poivrez.",
-"Versez l'appareil sur les tomates et enfournez 35 minutes, jusqu'à ce que le clafoutis soit gonflé et bien doré. Servez tiède avec une salade verte."
+"Coupez les tomates cerises en deux.",
+"Coupez la mozzarella en morceaux.",
+"Mélangez les tomates et la mozzarella avec le basilic effeuillé.",
+"Arrosez d'huile et de vinaigre balsamique, parsemez de fleur de sel et poivrez."
 ],
-"conseil": "Choisissez des tomates cerises bien brillantes, fermes et encore attachées à la grappe si possible. Ne les mettez jamais au réfrigérateur : gardées à température ambiante, elles conservent tout leur goût sucré 4 à 5 jours."
+"conseil": "Gardez les tomates cerises à température ambiante, jamais au frigo, pour qu'elles gardent tout leur goût : 4 à 5 jours."
 }
 },
 "chayotte": {
@@ -5568,12 +5504,13 @@ null
 "saison": "octobre à décembre",
 "photo": null,
 "historique": [
-"Christophines au gratin"
+"Christophines au gratin",
+"Chouchou en gratin à la béchamel"
 ],
 "recette": {
-"origine": "Spécialité antillaise et réunionnaise",
-"titre": "Christophines au gratin",
-"intro": "Le grand classique des Antilles et de la Réunion : la chair fondante de la chayotte, mêlée à une béchamel à l'ail, gratinée dans sa propre écorce.",
+"origine": "Spécialité réunionnaise",
+"titre": "Chouchou en gratin à la béchamel",
+"intro": "À La Réunion, la chayotte s'appelle « chouchou » : en gratin, elle devient fondante et délicate.",
 "prep": "20 min",
 "cuisson": "45 min",
 "pers": "4",
@@ -5585,48 +5522,43 @@ null
 "Chayotte"
 ],
 [
-"2 gousses",
-"ail",
-"Ail violet"
-],
-[
-"1 petit bouquet",
-"persil",
-"Persil"
+"40 g",
+"de beurre",
+null
 ],
 [
 "40 g",
-"beurre",
+"de farine",
 null
 ],
 [
-"30 g",
-"farine",
-null
-],
-[
-"30 cl",
-"lait",
+"50 cl",
+"de lait",
 null
 ],
 [
 "80 g",
-"fromage râpé (emmental ou gruyère)",
+"de fromage râpé",
+null
+],
+[
+"1 pincée",
+"de muscade",
 null
 ],
 [
 "",
-"sel, poivre, muscade",
+"Sel, poivre",
 null
 ]
 ],
 "etapes": [
-"Coupez les chayottes en deux dans la longueur et faites-les cuire 20 à 25 minutes dans une grande casserole d'eau salée bouillante, jusqu'à ce que la pointe d'un couteau s'enfonce sans résistance.",
-"Égouttez-les, laissez-les tiédir, retirez le noyau central puis évidez-les délicatement à la cuillère en gardant 5 mm de chair contre la peau. Écrasez la chair à la fourchette et laissez-la s'égoutter dans une passoire.",
-"Préchauffez le four à 200 °C. Faites fondre le beurre, ajoutez la farine, mélangez 1 minute puis versez le lait en fouettant jusqu'à obtenir une béchamel épaisse. Ajoutez l'ail haché, le persil ciselé, la chair de chayotte, la moitié du fromage, sel, poivre et une pointe de muscade.",
-"Garnissez les demi-écorces de cette farce, parsemez du reste de fromage et faites gratiner 15 à 20 minutes au four, jusqu'à ce que le dessus soit bien doré. Servez chaud, en entrée ou avec une viande grillée."
+"Épluchez les chayottes (avec des gants, elles collent), retirez le noyau et coupez-les en cubes.",
+"Faites-les cuire 15 min à l'eau salée, puis égouttez-les bien.",
+"Préparez une béchamel avec le beurre, la farine et le lait. Salez, poivrez, ajoutez la muscade.",
+"Mélangez les chayottes à la béchamel, versez dans un plat, parsemez de fromage et faites gratiner 25 min à 200 °C."
 ],
-"conseil": "Choisissez des chayottes fermes, bien vertes et sans taches brunes, de la taille d'une grosse poire : trop grosses, elles deviennent fibreuses. Elles se gardent deux semaines dans le bac à légumes du réfrigérateur."
+"conseil": "Choisissez des chayottes bien vertes, fermes et lisses, sans pousse. Elles se gardent une à deux semaines au bas du frigo."
 }
 },
 "clementine-corse-6kg": {
@@ -5643,16 +5575,17 @@ null
 "saison": "Récoltée en fin d'été, se garde tout l'hiver",
 "photo": null,
 "historique": [
-"Purée de pommes de terre maison"
+"Purée de pommes de terre maison",
+"Galettes de pommes de terre (Grumbeerekiechle)"
 ],
 "recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Purée de pommes de terre maison",
-"intro": "La Monique, à chair tendre et peau claire, se défait facilement à la cuisson : c'est la pomme de terre idéale pour une purée onctueuse, au beurre et au lait chaud.",
-"prep": "15 min",
-"cuisson": "25 min",
+"origine": "Spécialité alsacienne",
+"titre": "Galettes de pommes de terre (Grumbeerekiechle)",
+"intro": "Des galettes de pommes de terre râpées, croustillantes dehors et moelleuses dedans, à servir avec une salade.",
+"prep": "20 min",
+"cuisson": "20 min",
 "pers": "4",
-"niveau": "Très facile",
+"niveau": "Facile",
 "ingredients": [
 [
 "1 kg",
@@ -5660,39 +5593,43 @@ null
 "Pdt Monique"
 ],
 [
-"80 g",
-"de beurre",
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"2",
+"œufs",
+"Œufs plein air"
+],
+[
+"2 c. à soupe",
+"de farine",
 null
 ],
 [
-"25 cl",
-"de lait entier",
+"1 bouquet",
+"de persil",
+"Persil"
+],
+[
+"",
+"huile pour la cuisson",
 null
 ],
 [
 "",
-"Sel",
-null
-],
-[
-"",
-"Poivre",
-null
-],
-[
-"1 pincée",
-"de muscade râpée",
+"Sel, poivre",
 null
 ]
 ],
 "etapes": [
-"Épluchez les pommes de terre, coupez-les en gros morceaux de taille égale et mettez-les dans une casserole d'eau froide salée.",
-"Portez à ébullition et laissez cuire 20 à 25 minutes, jusqu'à ce que la pointe d'un couteau s'y enfonce sans résistance.",
-"Égouttez-les soigneusement, puis remettez-les une minute sur feu doux pour évaporer l'eau restante. Pendant ce temps, faites chauffer le lait.",
-"Écrasez les pommes de terre au presse-purée (jamais au mixeur, la purée deviendrait collante), incorporez le beurre en morceaux puis le lait chaud petit à petit en mélangeant à la cuillère en bois.",
-"Salez, poivrez, ajoutez la muscade et servez aussitôt."
+"Épluchez et râpez les pommes de terre et l'oignon, puis pressez-les dans un torchon pour retirer le maximum d'eau.",
+"Mélangez-les avec les œufs, la farine, le persil ciselé, du sel et du poivre.",
+"Faites chauffer un bon fond d'huile dans une poêle et déposez des petits tas de préparation en les aplatissant.",
+"Faites dorer 4 à 5 min de chaque côté, égouttez sur du papier absorbant et servez chaud."
 ],
-"conseil": "Choisissez des Monique bien fermes, sans germes ni taches vertes. Conservez-les dans un endroit frais, sec et à l'abri de la lumière (pas au réfrigérateur) : elles se gardent ainsi plusieurs semaines."
+"conseil": "La Monique est une pomme de terre polyvalente, à chair tendre. Gardez-la dans le noir, au frais et au sec, à l'abri du gel."
 }
 },
 "clementine-espagne": {
@@ -5718,60 +5655,61 @@ null
 "saison": "D'octobre à avril",
 "photo": null,
 "historique": [
-"Velouté de cresson"
+"Velouté de cresson",
+"Salade de cresson aux œufs mollets et lardons"
 ],
 "recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Velouté de cresson",
-"intro": "Le potage de cresson à l'ancienne : une soupe d'un beau vert, poivrée et douce à la fois, liée simplement par la pomme de terre.",
+"origine": "Classique de bistrot",
+"titre": "Salade de cresson aux œufs mollets et lardons",
+"intro": "Le cresson poivré, des lardons croustillants et un œuf mollet : une entrée de bistrot pleine de caractère.",
 "prep": "15 min",
-"cuisson": "25 min",
+"cuisson": "10 min",
 "pers": "4",
-"niveau": "Très facile",
+"niveau": "Facile",
 "ingredients": [
 [
 "1 botte",
-"cresson",
+"de cresson",
 "Cresson uniquement vo"
 ],
 [
-"300 g",
-"pommes de terre",
-"Pdt Bintje"
+"4",
+"œufs",
+"Œufs plein air"
+],
+[
+"150 g",
+"de lardons",
+null
 ],
 [
 "1",
-"poireau (le blanc)",
-"Poireaux"
+"échalote",
+"Échalote"
 ],
 [
-"30 g",
-"beurre",
+"1 c. à soupe",
+"de vinaigre de vin",
 null
 ],
 [
-"1 l",
-"bouillon de volaille ou de légumes",
-null
-],
-[
-"10 cl",
-"crème fraîche",
+"3 c. à soupe",
+"d'huile",
 null
 ],
 [
 "",
-"sel, poivre",
+"Sel, poivre",
 null
 ]
 ],
 "etapes": [
-"Lavez soigneusement le cresson, retirez les grosses tiges et gardez quelques feuilles pour le service. Épluchez les pommes de terre et coupez-les en cubes ; émincez le blanc de poireau.",
-"Faites fondre le beurre dans une casserole et faites suer le poireau 5 minutes sans coloration. Ajoutez les pommes de terre et le bouillon, puis laissez cuire 15 minutes à frémissement.",
-"Ajoutez le cresson et poursuivez la cuisson 5 minutes seulement, pour qu'il garde sa couleur.",
-"Mixez finement, incorporez la crème, salez et poivrez. Servez bien chaud avec les feuilles de cresson réservées."
+"Lavez soigneusement le cresson et gardez les feuilles et les tiges fines.",
+"Faites cuire les œufs 6 min dans l'eau bouillante, refroidissez-les et écalez-les délicatement.",
+"Faites dorer les lardons à sec, puis déglacez la poêle avec le vinaigre.",
+"Mélangez le cresson avec l'huile, l'échalote ciselée et les lardons chauds, poivrez et posez un œuf mollet sur chaque assiette."
 ],
-"conseil": "Choisissez un cresson aux feuilles bien vertes et fermes, sans jaunissement. Il se garde 2 jours au frigo, les tiges dans un verre d'eau ou enveloppé dans un torchon humide."
+"conseil": "Le cresson doit être bien vert, sans feuilles jaunes. Il est fragile : gardez-le 2 jours maximum au frigo, tiges dans l'eau."
 }
 },
 "figue-sechees": {
@@ -5797,55 +5735,56 @@ null
 "saison": "D'octobre à mars",
 "photo": null,
 "historique": [
-"Choux de Bruxelles poêlés aux lardons"
+"Choux de Bruxelles poêlés aux lardons",
+"Gratin de choux de Bruxelles"
 ],
 "recette": {
-"origine": "Classique de la cuisine familiale française",
-"titre": "Choux de Bruxelles poêlés aux lardons",
-"intro": "Blanchis puis dorés à la poêle avec des lardons et de l'échalote, les choux de Bruxelles deviennent fondants et légèrement caramélisés.",
+"origine": "Grand classique de la cuisine française",
+"titre": "Gratin de choux de Bruxelles",
+"intro": "Les choux de Bruxelles adoucis par la crème et le fromage : le gratin qui réconcilie avec ce légume.",
 "prep": "15 min",
-"cuisson": "20 min",
+"cuisson": "35 min",
 "pers": "4",
 "niveau": "Facile",
 "ingredients": [
 [
 "600 g",
-"choux de Bruxelles",
+"de choux de Bruxelles",
 "Choux de Bruxelles"
 ],
 [
 "150 g",
-"lardons fumés",
+"de lardons",
 null
 ],
 [
-"2",
-"échalotes",
-"Échalote"
-],
-[
-"20 g",
-"beurre",
+"20 cl",
+"de crème fraîche",
 null
 ],
 [
-"1 c. à soupe",
-"huile",
+"80 g",
+"de fromage râpé",
+null
+],
+[
+"1 pincée",
+"de muscade",
 null
 ],
 [
 "",
-"sel, poivre",
+"Sel, poivre",
 null
 ]
 ],
 "etapes": [
-"Retirez les premières feuilles abîmées des choux et coupez le bout du pied. Faites-les cuire 8 minutes dans une grande casserole d'eau bouillante salée, puis égouttez-les.",
-"Dans une grande poêle, faites revenir les lardons à sec jusqu'à ce qu'ils soient dorés. Réservez-les.",
-"Ajoutez le beurre et l'huile dans la poêle, puis les échalotes émincées et les choux coupés en deux. Faites-les dorer 8 à 10 minutes à feu moyen en remuant.",
-"Remettez les lardons, poivrez, salez légèrement et servez aussitôt, par exemple avec une volaille rôtie."
+"Retirez les premières feuilles des choux et coupez la base. Faites-les cuire 10 min à l'eau bouillante salée, puis égouttez.",
+"Faites dorer les lardons à sec dans une poêle.",
+"Mélangez les choux, les lardons et la crème dans un plat, poivrez et ajoutez la muscade.",
+"Parsemez de fromage et faites gratiner 20 à 25 min à 200 °C."
 ],
-"conseil": "Prenez des petits choux bien serrés, d'un vert vif, sans feuilles jaunies : ce sont les plus doux. Ils se gardent 4 à 5 jours au bac à légumes, non lavés."
+"conseil": "Choisissez des choux de Bruxelles petits, bien fermés et d'un vert vif. Ils se gardent 4 à 5 jours au frigo."
 }
 },
 "grenadilles": {
@@ -5871,71 +5810,56 @@ null
 "saison": "",
 "photo": null,
 "historique": [
-"Tomates farcies"
+"Tomates farcies",
+"Tomates à la provençale"
 ],
 "recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Tomates farcies",
-"intro": "Le plat familial par excellence : des tomates rondes bien charnues garnies de chair à saucisse aux herbes, cuites au four sur un lit de riz qui s'imprègne de leur jus.",
-"prep": "25 min",
-"cuisson": "1 h",
+"origine": "Spécialité provençale",
+"titre": "Tomates à la provençale",
+"intro": "Des demi-tomates rôties sous une persillade à l'ail et à la chapelure : l'accompagnement du soleil.",
+"prep": "10 min",
+"cuisson": "30 min",
 "pers": "4",
-"niveau": "Facile",
+"niveau": "Très facile",
 "ingredients": [
 [
-"8",
-"tomates rondes bien fermes",
+"6",
+"tomates rondes",
 "Tomate ronde"
 ],
 [
-"400 g",
-"de chair à saucisse",
-null
-],
-[
-"1",
-"oignon jaune",
-"Oignon jaune"
-],
-[
-"2 gousses",
-"d'ail violet",
+"3 gousses",
+"d'ail",
 "Ail violet"
 ],
 [
-"1/2 botte",
-"de persil plat",
+"1 bouquet",
+"de persil",
 "Persil"
 ],
 [
-"1",
-"œuf",
-"Œufs plein air"
-],
-[
-"1 tranche",
-"de pain rassis trempée dans un peu de lait",
+"3 c. à soupe",
+"de chapelure",
 null
 ],
 [
-"150 g",
-"de riz long",
+"4 c. à soupe",
+"d'huile d'olive",
 null
 ],
 [
 "",
-"Huile d'olive, sel, poivre",
+"Sel, poivre",
 null
 ]
 ],
 "etapes": [
-"Préchauffez le four à 180 °C. Coupez un chapeau sur chaque tomate, évidez-les à la petite cuillère en gardant la pulpe, salez l'intérieur et retournez-les sur une grille 10 minutes pour qu'elles rendent leur eau.",
-"Hachez finement l'oignon, l'ail et le persil. Mélangez-les avec la chair à saucisse, l'œuf et le pain essoré. Salez peu (la chair est déjà assaisonnée) et poivrez.",
-"Garnissez les tomates de farce en formant un petit dôme, puis reposez les chapeaux dessus.",
-"Versez le riz cru au fond d'un plat huilé, ajoutez la pulpe hachée et 25 cl d'eau, salez. Posez les tomates dessus, arrosez d'un filet d'huile d'olive.",
-"Enfournez 1 heure environ : le riz doit être tendre et les tomates fondantes. Ajoutez un peu d'eau en cours de cuisson si le riz se dessèche."
+"Préchauffez le four à 200 °C. Coupez les tomates en deux et disposez-les dans un plat, face coupée vers le haut.",
+"Hachez l'ail et le persil, et mélangez-les avec la chapelure.",
+"Salez et poivrez les tomates, puis couvrez-les de persillade et arrosez d'huile d'olive.",
+"Enfournez 30 min, jusqu'à ce qu'elles soient fondantes et le dessus doré."
 ],
-"conseil": "Pour farcir, choisissez des tomates rondes de taille moyenne, bien fermes et lourdes en main. Gardez-les à température ambiante, jamais au réfrigérateur qui leur fait perdre leur goût."
+"conseil": "Choisissez des tomates rondes fermes et parfumées. Gardez-les à température ambiante, queue en bas, jamais au frigo."
 }
 },
 "maches": {
@@ -5943,14 +5867,15 @@ null
 "saison": "d'octobre à mars",
 "photo": null,
 "historique": [
-"Salade de mâche à la betterave et aux œufs durs"
+"Salade de mâche à la betterave et aux œufs durs",
+"Salade de mâche, pommes de terre tièdes et lardons"
 ],
 "recette": {
-"origine": "Grand classique de la cuisine française",
-"titre": "Salade de mâche à la betterave et aux œufs durs",
-"intro": "L'entrée d'hiver par excellence : la douceur de la mâche, le sucré de la betterave et une vinaigrette bien moutardée. Simple et toujours réussie.",
+"origine": "Classique de la cuisine française",
+"titre": "Salade de mâche, pommes de terre tièdes et lardons",
+"intro": "Une salade d'hiver complète : la mâche fondante, des pommes de terre tièdes et des lardons dorés.",
 "prep": "15 min",
-"cuisson": "10 min",
+"cuisson": "20 min",
 "pers": "4",
 "niveau": "Très facile",
 "ingredients": [
@@ -5960,14 +5885,14 @@ null
 "Mâches"
 ],
 [
-"2",
-"betteraves cuites",
-"Betterave cuite"
+"500 g",
+"de pommes de terre",
+"Pdt agata"
 ],
 [
-"4",
-"œufs",
-"Œufs plein air"
+"150 g",
+"de lardons",
+null
 ],
 [
 "1",
@@ -5980,12 +5905,12 @@ null
 null
 ],
 [
-"2 c. à soupe",
+"1 c. à soupe",
 "de vinaigre de vin",
 null
 ],
 [
-"6 c. à soupe",
+"3 c. à soupe",
 "d'huile",
 null
 ],
@@ -5996,12 +5921,12 @@ null
 ]
 ],
 "etapes": [
-"Faites cuire les œufs 10 minutes dans l'eau bouillante, refroidissez-les à l'eau froide, écalez-les et coupez-les en quartiers.",
-"Épluchez les betteraves et taillez-les en petits dés. Pelez et ciselez finement l'échalote.",
-"Dans le saladier, fouettez la moutarde, le vinaigre, le sel et le poivre, puis ajoutez l'huile petit à petit et l'échalote.",
-"Lavez délicatement la mâche, essorez-la bien, puis mélangez-la à la vinaigrette juste avant de servir. Disposez la betterave et les œufs par-dessus."
+"Faites cuire les pommes de terre 20 min à l'eau salée, puis coupez-les en rondelles.",
+"Faites dorer les lardons à sec dans une poêle.",
+"Préparez la vinaigrette avec la moutarde, le vinaigre, l'huile, l'échalote ciselée, du sel et du poivre.",
+"Mélangez la mâche, les pommes de terre tièdes et les lardons avec la vinaigrette juste avant de servir."
 ],
-"conseil": "Choisissez une mâche aux petites rosettes bien vertes, fermes et sans feuilles jaunies. Gardez-la au bac à légumes du réfrigérateur dans un sachet, 2 à 3 jours maximum, et ne l'assaisonnez qu'au dernier moment."
+"conseil": "Choisissez une mâche aux petites rosettes bien vertes et sans feuilles flétries. Elle se garde 2 à 3 jours au frigo dans une boîte."
 }
 },
 "kiwi-jaune": {
@@ -6027,65 +5952,71 @@ null
 "saison": "",
 "photo": null,
 "historique": [
-"Petit salé aux lentilles"
+"Petit salé aux lentilles",
+"Pot-au-feu"
 ],
 "recette": {
 "origine": "Grand classique de la cuisine française",
-"titre": "Petit salé aux lentilles",
-"intro": "Le plat mijoté de bistrot par excellence : le petit salé cuit doucement avec les lentilles, la carotte, l'oignon piqué de girofle et un bon bouquet de laurier qui parfume tout le plat.",
-"prep": "20 min",
-"cuisson": "1 h 30",
-"pers": "4",
+"titre": "Pot-au-feu",
+"intro": "Le plat du dimanche par excellence : viandes et légumes cuits longuement dans un bouillon parfumé au laurier.",
+"prep": "30 min",
+"cuisson": "3 h 30",
+"pers": "6",
 "niveau": "Facile",
 "ingredients": [
 [
-"1 kg",
-"de petit salé (poitrine et palette demi-sel)",
-null
-],
-[
-"400 g",
-"de lentilles vertes",
-null
-],
-[
-"2",
-"carottes",
-"Carotte"
-],
-[
-"1",
-"oignon jaune",
-"Oignon jaune"
-],
-[
-"2",
-"clous de girofle",
-null
-],
-[
-"4 feuilles",
+"3 feuilles",
 "de laurier",
 "Lauriet"
 ],
 [
-"2 gousses",
-"d'ail violet",
-"Ail violet"
+"1,5 kg",
+"de bœuf (paleron, jarret, plat de côtes)",
+null
+],
+[
+"1",
+"os à moelle",
+null
+],
+[
+"6",
+"carottes",
+"Carotte"
+],
+[
+"4",
+"poireaux",
+"Poireaux"
+],
+[
+"4",
+"navets",
+"Navet"
+],
+[
+"1",
+"oignon jaune piqué de 2 clous de girofle",
+"Oignon jaune"
+],
+[
+"6",
+"pommes de terre",
+"Pdt agata"
 ],
 [
 "",
-"Poivre",
+"Sel, poivre",
 null
 ]
 ],
 "etapes": [
-"Mettez le petit salé dans une grande cocotte d'eau froide, portez à ébullition 5 min pour le dessaler, puis jetez l'eau.",
-"Remettez la viande dans la cocotte, couvrez d'eau froide, ajoutez 2 feuilles de laurier, l'ail et l'oignon piqué des clous de girofle. Laissez frémir 1 h à couvert.",
-"Rincez les lentilles, ajoutez-les avec les carottes coupées en rondelles et les 2 dernières feuilles de laurier. Ajoutez de l'eau si besoin pour qu'elles soient juste couvertes.",
-"Poursuivez la cuisson 30 min à petits frémissements, jusqu'à ce que les lentilles soient tendres. Poivrez, goûtez avant de saler et servez bien chaud, avec une moutarde forte à part."
+"Mettez la viande dans une grande marmite, couvrez d'eau froide, portez à ébullition et écumez.",
+"Ajoutez l'oignon piqué, le laurier, du sel et du poivre, et laissez frémir 2 h.",
+"Ajoutez les carottes, les poireaux ficelés, les navets et l'os à moelle, puis laissez cuire encore 1 h.",
+"Faites cuire les pommes de terre à part dans un peu de bouillon. Servez la viande et les légumes avec gros sel, moutarde et cornichons."
 ],
-"conseil": "Le laurier se garde des mois au sec, dans un bocal fermé à l'abri de la lumière. Frais, ses feuilles sont plus parfumées : une ou deux suffisent pour un plat."
+"conseil": "Le laurier sec se garde un an dans un bocal fermé, à l'abri de la lumière. Frais, mettez-le au frigo dans un sachet : il garde son parfum deux semaines."
 }
 }
 },
