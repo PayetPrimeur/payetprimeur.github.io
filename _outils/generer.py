@@ -283,6 +283,14 @@ def tuile(pg):
 MOIS_NOMS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
 
 
+def nom_client(n):
+    """Nom affiché aux clients sur la page de saison : sans poids, conditionnement ni mention interne."""
+    n = re.sub(r"\s*\(?\d+\s*(kg|g|pi[eè]ces?)\)?\b", "", n, flags=re.I)
+    n = re.sub(r"\s*\((pi[eè]ce|\d+|par \d+)\)", "", n, flags=re.I)
+    n = re.sub(r"\s+(uniquement\s+\w+|à la pièce|en vrac)$", "", n, flags=re.I)
+    return n.strip() or n
+
+
 def page_saison(d):
     """/saison/ : seulement les fruits et légumes de saison du mois (QR code de la boutique)."""
     import datetime
@@ -301,15 +309,16 @@ def page_saison(d):
         ss = sorted((s for s in actifs if cat_de.get(s) == c and de_saison(d["pages"][s], mois)
                      and not any(m in s for m in JAMAIS_DE_SAISON)), key=lambda s: d["pages"][s]["nom"].lower())
         if ss:
-            tiles = "".join(f'<li id="{s}"><a href="../{s}/"><b>{e(d["pages"][s]["nom"])}</b><span>{e(tuile(d["pages"][s]))}</span></a></li>' for s in ss)
-            sections += f'<section class="cat saison sp"><h2>{label}</h2><ul class="tiles">{tiles}</ul></section>'
+            cl = "fr" if c == "Fruit" else "lg"
+            tiles = "".join(f'<li id="{s}"><a href="../{s}/"><b>{e(nom_client(d["pages"][s]["nom"]))}</b><i aria-hidden="true">→</i></a></li>' for s in ss)
+            sections += f'<section class="cat sq {cl}"><h2>{label}</h2><ul class="sq-grid">{tiles}</ul></section>'
     m = MOIS_NOMS[mois - 1]
     return (head(f"Fruits et légumes de saison | Payet Primeur",
                  f"Les fruits et légumes de saison en {m} chez Payet Primeur, avec leurs recettes et conseils.", "../")
             + '<div class="wrap"><header class="top"><img src="../logo.png" alt="Payet Primeur" width="230" height="65">'
             f'<p>Nos fruits et légumes de saison en {m}</p></header>'
             '<p class="saison-intro">Touchez un produit pour découvrir sa recette ou nos conseils.</p>'
-            + '<div class="saison-bloc">' + sections + '</div>' + footer() + "</div></body></html>")
+            + sections + footer() + "</div></body></html>")
 
 
 def page_accueil(d):

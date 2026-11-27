@@ -141,3 +141,19 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 .saison-intro { margin: -12px 0 0; text-align: center; color: var(--muted); font-size: 15px; }
 .cat.saison.sp h2::after { content: none; }
+
+/* Page « de saison » : grille de carrés colorés */
+.cat.sq h2 { display: flex; align-items: center; gap: 10px; }
+.cat.sq h2::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--sq-c); }
+.cat.sq.fr { --sq-c: #e0701b; --sq-bg: #fff1e3; --sq-line: #f6cfa9; --sq-ink: #a2490a; }
+.cat.sq.lg { --sq-c: var(--vert); --sq-bg: var(--vert-soft); --sq-line: #cfdcb4; --sq-ink: #46601c; }
+.cat.sq h2 { color: var(--sq-ink); }
+.sq-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (min-width: 560px) { .sq-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.sq-grid li { scroll-margin-top: 16px; }
+.sq-grid a { position: relative; display: flex; align-items: center; min-height: 64px; height: 100%; padding: 10px 30px 10px 13px; box-sizing: border-box;
+  background: var(--sq-bg); border: 2px solid var(--sq-line); border-radius: 12px; text-decoration: none; color: var(--sq-ink); }
+.sq-grid a:hover, .sq-grid a:focus-visible { border-color: var(--sq-c); }
+.sq-grid b { font-weight: 900; font-size: 16.5px; line-height: 1.2; overflow-wrap: anywhere; hyphens: auto; }
+.sq-grid i { position: absolute; top: 50%; transform: translateY(-50%); right: 11px; font-style: normal; font-weight: 900; font-size: 17px; color: var(--sq-c); }
+.sq-grid li:target a { border-color: var(--framboise); box-shadow: 0 0 0 3px var(--framboise-soft); }
