@@ -157,3 +157,8 @@ html { scroll-behavior: smooth; }
 .sq-grid b { font-weight: 900; font-size: 16.5px; line-height: 1.2; overflow-wrap: anywhere; hyphens: auto; }
 .sq-grid i { position: absolute; top: 50%; transform: translateY(-50%); right: 11px; font-style: normal; font-weight: 900; font-size: 17px; color: var(--sq-c); }
 .sq-grid li:target a { border-color: var(--framboise); box-shadow: 0 0 0 3px var(--framboise-soft); }
+.sq-nav a, .sq-nav a:first-child { flex: 1 1 0; font-size: 16px; padding: 9px 12px; color: #fff; }
+.sq-nav a.fr { background: #e0701b; border-color: #e0701b; }
+.sq-nav a.lg { background: var(--vert); border-color: var(--vert); }
+.sq-nav a.fr:hover { background: #c45f12; } .sq-nav a.lg:hover { background: #4a6420; }
+.cat.sq { scroll-margin-top: 72px; } .sq-grid li { scroll-margin-top: 72px; }

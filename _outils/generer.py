@@ -304,20 +304,23 @@ def page_saison(d):
     for p in d["produits"]:
         if p.get("page") in actifs:
             cat_de.setdefault(p["page"], p["c"])
-    sections = ""
+    sections, liens = "", []
     for c, label in (("Fruit", "Fruits"), ("Légume", "Légumes")):
         ss = sorted((s for s in actifs if cat_de.get(s) == c and de_saison(d["pages"][s], mois)
                      and not any(m in s for m in JAMAIS_DE_SAISON)), key=lambda s: d["pages"][s]["nom"].lower())
         if ss:
             cl = "fr" if c == "Fruit" else "lg"
             tiles = "".join(f'<li id="{s}"><a href="../{s}/"><b>{e(nom_client(d["pages"][s]["nom"]))}</b><i aria-hidden="true">→</i></a></li>' for s in ss)
-            sections += f'<section class="cat sq {cl}"><h2>{label}</h2><ul class="sq-grid">{tiles}</ul></section>'
+            ids = {"fr": "fruits", "lg": "legumes"}
+            liens.append(f'<a class="{cl}" href="#{ids[cl]}">{label}</a>')
+            sections += f'<section class="cat sq {cl}" id="{ids[cl]}"><h2>{label}</h2><ul class="sq-grid">{tiles}</ul></section>'
     m = MOIS_NOMS[mois - 1]
     return (head(f"Fruits et légumes de saison | Payet Primeur",
                  f"Les fruits et légumes de saison en {m} chez Payet Primeur, avec leurs recettes et conseils.", "../")
             + '<div class="wrap"><header class="top"><img src="../logo.png" alt="Payet Primeur" width="230" height="65">'
             f'<p>Nos fruits et légumes de saison en {m}</p></header>'
             '<p class="saison-intro">Touchez un produit pour découvrir sa recette ou nos conseils.</p>'
+            + (f'<nav class="cat-nav sq-nav" aria-label="Aller à">{"".join(liens)}</nav>' if len(liens) > 1 else "")
             + sections + footer() + "</div></body></html>")
 
 
