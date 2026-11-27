@@ -90,7 +90,10 @@ JAMAIS_DE_SAISON = ("avocat", "mangue", "passion", "datte", "ananas", "banane", 
 
 def autres(ancre):
     """Bouton vers la liste de tous les fruits et légumes, positionnée sur le produit."""
-    return f'<a class="btn-list" href="../#{e(ancre)}">Les autres fruits et légumes</a>'
+    # arrivé depuis la page « de saison » (QR code de la boutique) : on y revient, sur le même produit
+    return (f'<a class="btn-list" id="btn-list" href="../#{e(ancre)}">Les autres fruits et légumes</a>'
+            '<script>try{if(/\\/saison\\/(#.*)?$/.test(new URL(document.referrer).pathname+new URL(document.referrer).hash)&&new URL(document.referrer).host===location.host)'
+            f'document.getElementById("btn-list").href="../saison/#{e(ancre)}"}}catch(x){{}}</script>')
 
 
 def page_mentions():
@@ -277,6 +280,38 @@ def tuile(pg):
     return pg["recette"]["titre"] if pg.get("recette") else "Recette en préparation"
 
 
+MOIS_NOMS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+
+
+def page_saison(d):
+    """/saison/ : seulement les fruits et légumes de saison du mois (QR code de la boutique)."""
+    import datetime
+    try:
+        from zoneinfo import ZoneInfo
+        mois = datetime.datetime.now(ZoneInfo("Europe/Paris")).month
+    except Exception:
+        mois = datetime.date.today().month
+    actifs = {p["page"] for p in d["produits"] if p.get("page") and p["actif"] and p["page"] in d["pages"]}
+    cat_de = {}
+    for p in d["produits"]:
+        if p.get("page") in actifs:
+            cat_de.setdefault(p["page"], p["c"])
+    sections = ""
+    for c, label in (("Fruit", "Fruits"), ("Légume", "Légumes")):
+        ss = sorted((s for s in actifs if cat_de.get(s) == c and de_saison(d["pages"][s], mois)
+                     and not any(m in s for m in JAMAIS_DE_SAISON)), key=lambda s: d["pages"][s]["nom"].lower())
+        if ss:
+            tiles = "".join(f'<li id="{s}"><a href="../{s}/"><b>{e(d["pages"][s]["nom"])}</b><span>{e(tuile(d["pages"][s]))}</span></a></li>' for s in ss)
+            sections += f'<section class="cat saison sp"><h2>{label}</h2><ul class="tiles">{tiles}</ul></section>'
+    m = MOIS_NOMS[mois - 1]
+    return (head(f"Fruits et légumes de saison | Payet Primeur",
+                 f"Les fruits et légumes de saison en {m} chez Payet Primeur, avec leurs recettes et conseils.", "../")
+            + '<div class="wrap"><header class="top"><img src="../logo.png" alt="Payet Primeur" width="230" height="65">'
+            f'<p>Nos fruits et légumes de saison en {m}</p></header>'
+            '<p class="saison-intro">Touchez un produit pour découvrir sa recette ou nos conseils.</p>'
+            + '<div class="saison-bloc">' + sections + '</div>' + footer() + "</div></body></html>")
+
+
 def page_accueil(d):
     actifs = {p["page"] for p in d["produits"] if p.get("page") and p["actif"] and p["page"] in d["pages"]}
     cat_de = {}
@@ -326,7 +361,7 @@ def generer(data_path, out):
         shutil.copy(os.path.join(ICI, "polices", f), os.path.join(out, "polices", f))
     n = 0
     for slug, pg in d["pages"].items():
-        if not re.fullmatch(r"[a-z0-9-]+", slug):
+        if not re.fullmatch(r"[a-z0-9-]+", slug) or slug == "saison":
             continue
         os.makedirs(os.path.join(out, slug), exist_ok=True)
         open(os.path.join(out, slug, "index.html"), "w", encoding="utf-8").write(page_recette(d, slug, pg))
@@ -337,6 +372,8 @@ def generer(data_path, out):
             open(os.path.join(out, b["id"], "index.html"), "w", encoding="utf-8").write(page_panier(d, b))
             n += 1
     open(os.path.join(out, "index.html"), "w", encoding="utf-8").write(page_accueil(d))
+    os.makedirs(os.path.join(out, "saison"), exist_ok=True)
+    open(os.path.join(out, "saison", "index.html"), "w", encoding="utf-8").write(page_saison(d))
     open(os.path.join(out, "404.html"), "w", encoding="utf-8").write(
         head("Page introuvable | Payet Primeur", "Page introuvable", "/") +
         '<div class="wrap"><header class="top"><img src="/logo.png" alt="Payet Primeur" width="230" height="65"></header>'

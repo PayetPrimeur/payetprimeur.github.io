@@ -139,3 +139,5 @@ html { scroll-behavior: smooth; }
 .cat.saison h2::after { content: " · ce mois-ci"; font-family: var(--font-hand); font-weight: 400; font-size: 17px; }
 .tiles li:target a { border: 2px solid var(--framboise); background: var(--framboise-soft); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.saison-intro { margin: -12px 0 0; text-align: center; color: var(--muted); font-size: 15px; }
+.cat.saison.sp h2::after { content: none; }
