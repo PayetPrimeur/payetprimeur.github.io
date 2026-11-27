@@ -242,9 +242,7 @@
     for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (qr.isDark(r, k))
       g.fillRect(Math.floor(qx + (k + quiet) * cell), Math.floor(qy + (r + quiet) * cell), Math.ceil(cell), Math.ceil(cell));
     g.fillStyle = "#f9b00f"; rr(g, W / 2 - mm(15), qy + qs + mm(8), mm(30), mm(3), mm(1.5)); g.fill();
-    g.fillStyle = "#6b625a"; g.font = `600 ${mm(4.5)}px Figtree, Helvetica, Arial, sans-serif`;
-    g.fillText(SITE.replace(/^https?:\/\//, "") + "/saison", W / 2, qy + qs + mm(16));
-    return enNB(c);
+    return c; // toujours en couleur
   }
   async function downloadSaison(quatre) {
     const { jsPDF } = window.jspdf;
@@ -253,7 +251,7 @@
     if (!quatre) doc.addImage(img, "PNG", 0, 0, 210, 297, "saison", "FAST");
     else for (let k = 0; k < 4; k++) doc.addImage(img, "PNG", (k % 2) * 105, Math.floor(k / 2) * 148.5, 105, 148.5, "saison", "FAST");
     if (quatre) { doc.setDrawColor(200); doc.setLineWidth(0.2); doc.setLineDashPattern([2, 2], 0); doc.line(105, 0, 105, 297); doc.line(0, 148.5, 210, 148.5); }
-    saveFile(doc.output("blob"), `affiche-de-saison${quatre ? "-4-par-page" : ""}${noirBlanc ? "-noir-et-blanc" : ""}.pdf`);
+    saveFile(doc.output("blob"), `affiche-de-saison${quatre ? "-4-par-page" : ""}.pdf`);
     say(quatre ? "4 petites affiches « de saison » prêtes : découpez selon les pointillés." : "Affiche A4 « de saison » prête à imprimer.");
   }
   function download(blob, name) { saveFile(blob, name); }
