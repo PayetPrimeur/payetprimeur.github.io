@@ -10,7 +10,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 let role = null; // "admin" ou "equipe", lu dans acces/<uid> (modifiable seulement depuis la console Firebase)
-const APP_V = "202611271932";
+const APP_V = "202611271937";
 // mise à jour automatique : si une version plus récente est en ligne, on recharge une fois
 (function checkVersion() {
   const run = () => fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(j => {
@@ -169,9 +169,16 @@ function renderAgenda() {
   if (res.length) {
     html += `<div class="recap">` + Object.keys(SITES).map(site => {
       const c = {};
-      res.filter(([, r]) => r.boutique === site).forEach(([, r]) => { const k = typeLabel(r); c[k] = (c[k] || 0) + qtyOf(r); });
-      const txt = Object.entries(c).map(([k, n]) => `${n} × ${k}`).join(" · ") || "Rien";
-      return `<div><b class="s-${site}">${SITES[site]}</b><span>${esc(txt)}</span></div>`;
+      res.filter(([, r]) => r.boutique === site).forEach(([, r]) => {
+        const k = typeLabel(r).replace(/ €/g, "\u00a0€"), x = c[k] = c[k] || { n: 0, reste: 0 };
+        x.n += qtyOf(r); if (!r.done) x.reste += qtyOf(r);
+      });
+      const lignes = Object.entries(c).map(([k, x]) => {
+        const mot = /^Panier/.test(k) ? "panier" : /^Plateau/.test(k) ? "plateau" : "commande";
+        const reste = x.reste === x.n ? "" : x.reste ? `${x.reste} ${mot}${x.reste > 1 ? "s" : ""} restant${x.reste > 1 ? "s" : ""}` : "Tout est retiré";
+        return `<span class="rc-l">${esc(`${x.n} × ${k}`)}${reste ? `<small>${esc(reste)}</small>` : ""}</span>`;
+      }).join("");
+      return `<div><b class="s-${site}">${SITES[site]}</b>${lignes || "<span>Rien</span>"}</div>`;
     }).join("") + `</div>`;
     html += res.map(([id, r]) => {
       const tel = (r.tel || "").trim();

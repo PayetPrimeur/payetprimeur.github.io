@@ -204,3 +204,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .pb-item .check { border-color: #d9b44a; color: #8a6a00; }
 .pick .pb-pick { background: #fff6d6; border-color: #f1d98a; }
 .li-pb h2 span { color: #8a6a00; }
+.recap .rc-l { display: grid; gap: 1px; }
+.recap .rc-l small { font-size: 12px; font-weight: 600; color: var(--muted); }
+.recap div { align-content: start; }
