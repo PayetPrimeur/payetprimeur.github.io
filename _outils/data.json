@@ -37,6 +37,13 @@
 "actif": false
 },
 {
+"n": "Assiette de charcut",
+"c": "Épicerie",
+"id": "assiette-de-charcut",
+"page": null,
+"actif": true
+},
+{
 "n": "Avocat",
 "c": "Fruit",
 "id": "avocat",
@@ -98,6 +105,13 @@
 "id": "bouquet-garni",
 "page": "bouquet-garni",
 "actif": false
+},
+{
+"n": "Brie à la truffe",
+"c": "Épicerie",
+"id": "brie-a-la-truffe",
+"page": null,
+"actif": true
 },
 {
 "n": "Brocoli",
@@ -359,10 +373,10 @@
 "actif": false
 },
 {
-"n": "Cresson uniquement vo",
+"n": "Cresson ( à l’unité )",
 "c": "Légume",
-"id": "cresson-uniquement-vo",
-"page": "cresson-uniquement-vo",
+"id": "cresson-a-l-unite",
+"page": "cresson-a-l-unite",
 "actif": true
 },
 {
@@ -986,6 +1000,13 @@
 "c": "Légume",
 "id": "tomate-ronde",
 "page": "tomate-ronde",
+"actif": true
+},
+{
+"n": "Poivron jaune",
+"c": "Légume",
+"id": "poivron-jaune",
+"page": "poivron-jaune",
 "actif": true
 }
 ],
@@ -6018,6 +6039,20 @@ null
 ],
 "conseil": "Le laurier sec se garde un an dans un bocal fermé, à l'abri de la lumière. Frais, mettez-le au frigo dans un sachet : il garde son parfum deux semaines."
 }
+},
+"cresson-a-l-unite": {
+"nom": "Cresson ( à l’unité )",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true
+},
+"poivron-jaune": {
+"nom": "Poivron jaune",
+"saison": "",
+"photo": null,
+"historique": [],
+"aRevoir": true
 }
 },
 "paniers": [
