@@ -6042,17 +6042,135 @@ null
 },
 "cresson-a-l-unite": {
 "nom": "Cresson ( à l’unité )",
-"saison": "",
+"saison": "D'octobre à avril",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Potage cressonnière"
+],
+"recette": {
+"origine": "Grand classique de la cuisine française",
+"titre": "Potage cressonnière",
+"intro": "Le velouté de cresson et de pommes de terre des grands-mères : vert vif, poivré et tout doux grâce à la crème.",
+"prep": "15 min",
+"cuisson": "30 min",
+"pers": "4",
+"niveau": "Très facile",
+"ingredients": [
+[
+"1 botte",
+"de cresson",
+"Cresson ( à l’unité )"
+],
+[
+"400 g",
+"de pommes de terre",
+"Pdt Bintje"
+],
+[
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"30 g",
+"de beurre",
+null
+],
+[
+"1 L",
+"de bouillon de volaille",
+null
+],
+[
+"10 cl",
+"de crème fraîche",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Lavez soigneusement le cresson, retirez les grosses tiges et gardez quelques pluches pour le décor.",
+"Faites fondre l'oignon émincé dans le beurre 5 min sans coloration, puis ajoutez le cresson et laissez-le tomber 2 min en remuant.",
+"Ajoutez les pommes de terre épluchées et coupées en cubes, couvrez de bouillon et laissez cuire 25 min à feu doux.",
+"Mixez finement, ajoutez la crème, salez, poivrez et servez bien chaud avec les pluches de cresson."
+],
+"conseil": "Choisissez un cresson aux feuilles bien vertes et fermes, sans jaunissement. Il se garde 2 jours au réfrigérateur, tiges dans un verre d'eau et feuilles couvertes d'un sac."
+}
 },
 "poivron-jaune": {
 "nom": "Poivron jaune",
-"saison": "",
+"saison": "De juillet à novembre",
 "photo": null,
-"historique": [],
-"aRevoir": true
+"historique": [
+"Poivrons farcis à la viande"
+],
+"recette": {
+"origine": "Grand classique de la cuisine familiale",
+"titre": "Poivrons farcis à la viande",
+"intro": "Des poivrons jaunes garnis de viande, de riz et d'herbes, qui confisent doucement au four dans une sauce tomate.",
+"prep": "25 min",
+"cuisson": "1 h",
+"pers": "4",
+"niveau": "Facile",
+"ingredients": [
+[
+"4",
+"poivrons jaunes",
+"Poivron jaune"
+],
+[
+"400 g",
+"de chair à saucisse ou bœuf haché",
+null
+],
+[
+"80 g",
+"de riz",
+null
+],
+[
+"1",
+"oignon jaune",
+"Oignon jaune"
+],
+[
+"2 gousses",
+"d'ail violet",
+"Ail violet"
+],
+[
+"4",
+"tomates",
+"Tomate ronde"
+],
+[
+"1/2 botte",
+"de persil",
+"Persil"
+],
+[
+"2 c. à soupe",
+"d'huile d'olive",
+null
+],
+[
+"",
+"Sel, poivre",
+null
+]
+],
+"etapes": [
+"Faites cuire le riz 10 min à l'eau salée et égouttez-le. Préchauffez le four à 180 °C.",
+"Coupez un chapeau sur chaque poivron, retirez les graines et les membranes.",
+"Mélangez la viande, le riz, l'oignon et l'ail hachés, le persil ciselé, salez et poivrez. Garnissez les poivrons et replacez les chapeaux.",
+"Disposez-les dans un plat avec les tomates coupées en morceaux et l'huile, ajoutez un petit verre d'eau et enfournez 1 h en arrosant de temps en temps."
+],
+"conseil": "Un bon poivron jaune est lourd, à la peau lisse et brillante, sans parties molles. Il se garde une semaine dans le bac à légumes du réfrigérateur."
+}
 }
 },
 "paniers": [
